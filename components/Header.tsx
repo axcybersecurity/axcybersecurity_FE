@@ -4,11 +4,11 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    // shadow-md: 그림자 효과, bg-white: 배경색 흰색
-    <header className="bg-white shadow-md">
+    // 절대 배치 헤더: 히어로와 겹치되 스크롤에는 따라오지 않음
+    <header className="bg-transparent absolute inset-x-0 top-0 z-20">
       {/* container: 내용물의 최대 너비를 제한
         mx-auto: 가운데 정렬
-        px-6: 좌우 패딩(여백)
+        px-6: 좌우 패딩(여백) 
         h-20: 높이 지정 (80px)
         flex: 내부 요소들을 가로로 배치
         justify-between: 요소들 사이에 공간을 균등하게 배분 (로고는 왼쪽, 메뉴는 오른쪽)
