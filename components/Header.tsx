@@ -2,10 +2,14 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
-
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const pathname = usePathname();
+  
+  // 메인페이지(/)인지 확인
+  const isHomePage = pathname === '/';
 
   const navLinks = [
     {
@@ -19,7 +23,6 @@ export default function Header() {
     {
       title: '연구실 소개',
       href: '/about',
-
       sublinks: [
         { title: '교수진', href: '/about?tab=professors' },
         { title: '구성원', href: '/about?tab=members' },
@@ -28,7 +31,6 @@ export default function Header() {
         { title: '갤러리', href: '/about?tab=gallery' },
         { title: '새소식', href: '/about?tab=news' },
       ],
-     
     },
     {
       title: '연구 실적',
@@ -41,15 +43,18 @@ export default function Header() {
     {
       title: '수업 강의',
       href: '/courses',
-      sublinks: [
-        
-      ],
+      sublinks: [],
     },
   ];
 
   return (
-    // 절대 배치 헤더: 히어로와 겹치되 스크롤에는 따라오지 않음
-    <header className="bg-transparent absolute inset-x-0 top-0 z-20">
+    <header 
+      className={`bg-transparent ${
+        isHomePage 
+          ? 'absolute inset-x-0 top-0 z-20' 
+          : 'relative z-10'
+      }`}
+    >
       {/* container: 내용물의 최대 너비를 제한
         mx-auto: 가운데 정렬
         px-6: 좌우 패딩(여백) 
