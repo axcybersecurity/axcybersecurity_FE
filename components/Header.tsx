@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+// useState는 드롭다운 메뉴에 더 이상 필요하지 않습니다.
+// import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  // const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
   
   // 메인페이지(/)인지 확인
@@ -43,7 +44,8 @@ export default function Header() {
     {
       title: '수업 강의',
       href: '/courses',
-      sublinks: [],
+      sublinks: [ { title: '2025-학부', href: '/courses?tab=undergraduate' },
+        { title: '2025-대학원', href: '/courses?tab=graduate' },],
     },
   ];
 
@@ -76,14 +78,12 @@ export default function Header() {
           {navLinks.map((link) => (
             <div
               key={link.title}
-              className="relative"
-              onMouseEnter={() => setOpenDropdown(link.title)}
-              onMouseLeave={() => setOpenDropdown(null)}
+              className="relative group"
             >
               <Link href={link.href} className="text-gray-800 hover:text-blue-600 focus:outline-none flex items-center">
                 {link.title}
                 <svg
-                  className={`w-4 h-4 ml-1 transform transition-transform ${openDropdown === link.title ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 ml-1 transform transition-transform group-hover:rotate-180`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -93,19 +93,17 @@ export default function Header() {
                 </svg>
               </Link>
               
-              {openDropdown === link.title && (
-                <div className="absolute left-0 top-full mt-1 w-auto bg-white border border-gray-200 rounded-md shadow-lg py-2 z-10">
-                  {link.sublinks.map((sublink) => (
-                    <Link
-                      key={sublink.title}
-                      href={sublink.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      {sublink.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <div className="absolute left-0 top-full mt-1 w-auto bg-white border border-gray-200 rounded-md shadow-lg py-2 z-10 hidden group-hover:block">
+                {link.sublinks.map((sublink) => (
+                  <Link
+                    key={sublink.title}
+                    href={sublink.href}
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    {sublink.title}
+                  </Link>
+                ))}
+              </div>
             </div>
           ))}
         </div>
