@@ -1,15 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-// useState는 드롭다운 메뉴에 더 이상 필요하지 않습니다.
-// import { useState } from 'react';
+
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
-  // const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
   const pathname = usePathname();
-  
-  // 메인페이지(/)인지 확인
+
   const isHomePage = pathname === '/';
 
   const navLinks = [

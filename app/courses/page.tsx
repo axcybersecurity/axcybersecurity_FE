@@ -40,7 +40,7 @@ function CoursesPageContent() {
           className={`py-2 px-6 text-lg font-medium ${
             activeTab === 'undergraduate'
               ? 'border-b-2 border-[#043A6F] text-[#043A6F]'
-              : 'text-gray-500'
+              : 'text-gray-500' 
           }`}
         >
           2025-학부
