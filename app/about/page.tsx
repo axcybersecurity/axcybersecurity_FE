@@ -2,13 +2,9 @@
 
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
+import MainContent from './components/MainContent';
 
 // --- 각 탭에 들어갈 예시 콘텐츠 컴포넌트들 ---
-const MainContent = () => (
-    <div>
-      여기에 연구실을 소개해
-    </div>
-);
 const ProfessorsContent = () => (<div>여기에 교수님들을 소개해</div>);
 const MembersContent = () => (<div>여기에 구성원을 소개해</div>);
 const GraduatedContent = () => (<div>여기에 졸업생들을 소개해</div>);
