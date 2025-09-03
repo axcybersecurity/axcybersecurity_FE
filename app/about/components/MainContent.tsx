@@ -63,16 +63,15 @@ function ResearchCard({ id, title, topics }: ResearchCardProps) {
 
 export default function MainContent() {
   return (
-    <div className="space-y-16">
+    <div className="space-y-16 mt-10">
       {/* 연구실 소개 */}
       <div className="flex flex-col items-center gap-12">
         {/* 소개글 영역 */}
         <div className="w-full space-y-4">
             <br></br>
-            <h2 className="text-3xl font-bold text-gray-800">연구실 소개</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-10">연구실 소개</h2>
             <p className="text-gray-600">
-                <br></br><strong className="text-xl">01 연구실</strong> 
-                <span className="text-white">spacespace</span>부산대학교 제6공학관 컴퓨터공학관
+                <br></br><strong className="text-xl">01&nbsp;&nbsp;&nbsp;연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 제6공학관 컴퓨터공학관
             </p>
         </div>
         {/* 이미지 영역 */}
@@ -112,9 +111,8 @@ export default function MainContent() {
 
       {/* 연구 과제 */}
         <div className="w-full space-y-4">
-            <p className="text-gray-600">
-                <br></br><strong className="text-xl">02 연구 과제</strong> 
-                <span className="text-white">spacespace</span>정보보호 및 지능형 IoT 주제로 진행되는 다양한 연구
+            <p className="text-gray-600 mb-8">
+                <br></br><strong className="text-xl">02&nbsp;&nbsp;&nbsp;연구 과제</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;정보보호 및 지능형 IoT 주제로 진행되는 다양한 연구
             </p>
             {/* 그리드 블록 */}
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 pt-4">
@@ -132,7 +130,7 @@ export default function MainContent() {
       {/* 연구실 연혁 */}
         <div className="w-full space-y-4">
             <br></br>
-            <h2 className="text-3xl font-bold text-gray-800">연구실 연혁</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-10">연구실 연혁</h2>
           <div className="col-span-2">
             <Image src="/정지인_연구실 연혁.png" alt="연구실 사진 1" width={500} height={100} className="object-cover w-full h-full" />
           </div>
@@ -141,7 +139,7 @@ export default function MainContent() {
       {/* 오시는 길 */}
         <div className="w-full space-y-4 container mx-auto px-6 py-16">
         <div>
-            <h2 className="text-3xl font-bold text-gray-800">오시는 길</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-8">오시는 길</h2>
         </div>
 
         {/* 지도와 텍스트를 감싸는 컨테이너 */}
@@ -161,7 +159,7 @@ export default function MainContent() {
             {/* 오른쪽: 텍스트 영역 */}
             <div className="flex-1">
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                부산대학교 정보보호 및 자율지능 연구실
+                부산대학교 정보보호 및 사물지능 연구실
             </h3><br></br>
             <div className="space-y-2 text-gray-700">
                 <p>(46241) 부산광역시 금정구 부산대학로 63번길 2 (장전동)</p>

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
@@ -66,8 +66,13 @@ export default function Header() {
       <nav className="container mx-auto px-6 h-20 flex justify-between items-center">
         {/* 왼쪽 로고 */}
         <div>
-          <Link href="/" className="text-xl font-bold" style={{ color: '#282828' }}>
-            PNU InfoSec
+          <Link href="/">
+            <Image 
+              src="/메인로고.png" 
+              alt="PNU InfoSec 로고" 
+              width={200}
+              height={50}
+            />
           </Link>
         </div>
 
