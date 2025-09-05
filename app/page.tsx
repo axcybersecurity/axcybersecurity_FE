@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -12,6 +13,19 @@ export default function Home() {
           fill
           priority
         />
+
+        {/* 로그인 버튼 - 오른쪽 상단 (반응형) */}
+        <div className="absolute top-[2%] right-[3%] sm:right-[4%] md:right-[5%] lg:right-[6%] z-30">
+          <Link href="/login" className="flex items-center">
+            <Image
+              src="/loginbutton.svg"
+              alt="로그인"
+              width={132}
+              height={48}
+              className="hover:opacity-80 transition-opacity w-auto h-auto"
+            />
+          </Link>
+        </div>
 
         {/* 히어로 텍스트 오버레이 (헤더 아래에 오도록 z 낮춤) */}
         <div className="absolute z-10 top-[65%] left-[20.8%] w-full max-w-[777px] -translate-y-1/2">
