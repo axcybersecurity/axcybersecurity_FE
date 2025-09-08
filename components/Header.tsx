@@ -1,16 +1,29 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // useEffect 추가
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
-  
-  // 메인페이지(/)인지 확인
   const isHomePage = pathname === '/';
 
+  // --- 스크롤 감지를 위한 상태 추가 ---
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // 스크롤 위치가 10px보다 크면 true
+      setIsScrolled(window.scrollY > 10);
+    };
+    // 스크롤 이벤트 리스너 등록
+    window.addEventListener('scroll', handleScroll);
+    // 컴포넌트가 사라질 때 리스너 제거 (메모리 누수 방지)
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
   const navLinks = [
     {
       title: '대학원 진학',
@@ -47,27 +60,16 @@ export default function Header() {
     },
   ];
 
+  // --- 동적 클래스를 위한 변수 선언 ---
+  const headerClasses = isHomePage && !isScrolled ? 'bg-transparent text-black' : 'bg-white text-gray-800 shadow-md';
+  
   return (
-    <header 
-      className={`bg-transparent ${
-        isHomePage 
-          ? 'absolute inset-x-0 top-0 z-20' 
-          : 'relative z-10'
-      }`}
-    >
-      {/* container: 내용물의 최대 너비를 제한
-        mx-auto: 가운데 정렬
-        px-6: 좌우 패딩(여백) 
-        h-20: 높이 지정 (80px)
-        flex: 내부 요소들을 가로로 배치
-        justify-between: 요소들 사이에 공간을 균등하게 배분 (로고는 왼쪽, 메뉴는 오른쪽)
-        items-center: 요소들을 세로축 가운데로 정렬
-      */}
+    <header className={`sticky top-0 z-50 transition-colors duration-300 ${headerClasses}`}>
       <nav className="container mx-auto px-6 h-20 flex justify-between items-center">
         {/* 왼쪽 로고 */}
         <div>
-          <Link href="/" className="text-xl font-bold" style={{ color: '#282828' }}>
-            PNU InfoSec
+          <Link href="/">
+            <Image src="/메인로고.png" alt="메인로고" width={250} height={50}/>
           </Link>
         </div>
 
@@ -80,26 +82,25 @@ export default function Header() {
               onMouseEnter={() => setOpenDropdown(link.title)}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <Link href={link.href} className="text-gray-800 hover:text-blue-600 focus:outline-none flex items-center">
+              <Link href={link.href} className="hover:text-blue-600 focus:outline-none flex items-center">
                 {link.title}
                 <svg
                   className={`w-4 h-4 ml-1 transform transition-transform ${openDropdown === link.title ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </Link>
               
-              {openDropdown === link.title && (
+              {openDropdown === link.title && link.sublinks.length > 0 && (
                 <div className="absolute left-0 top-full mt-1 w-auto bg-white border border-gray-200 rounded-md shadow-lg py-2 z-10">
                   {link.sublinks.map((sublink) => (
                     <Link
                       key={sublink.title}
                       href={sublink.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 whitespace-nowrap"
                     >
                       {sublink.title}
                     </Link>

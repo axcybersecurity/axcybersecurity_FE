@@ -2,13 +2,15 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Bio_Kim from './Bio_Kim';
+import Bio_Son from './Bio_Son';
 
 interface Professor {
   name: string;
   title: string;
   major: string;
   imageUrl: string;
-  detailedBio: string;
+  detailedBio: React.ComponentType;
 }
 
 const professorsData: Professor[] = [
@@ -17,16 +19,14 @@ const professorsData: Professor[] = [
     title: '교수',
     major: '정보보호/사물지능',
     imageUrl: '/김호원교수님.png',
-    detailedBio:
-      '설명란'  
+    detailedBio: Bio_Kim
   },
   {
     name: '손준영',
     title: '조교수',
     major: '지능정보기술 활용 사이버보안 연구',
     imageUrl: '/손준영교수님.png',
-    detailedBio:
-      '설명란'
+    detailedBio: Bio_Son
     }
 ];
 
@@ -48,52 +48,59 @@ const ProfessorsContext = () => {
         <div className="relative border border-gray-300 p-8 pt-10">
           {/* === 제목 === */}
 
-<h2 className="absolute -top-6 left-6 bg-white px-3 py-1 text-4xl font-bold text-gray-800 flex items-center gap-2">
-  <Image 
-    src="/logo.png" // public 폴더에 logo.png 파일이 있어야 합니다.
-    alt="로고" 
-    width={35}  // 로고 이미지의 너비
-    height={35} // 로고 이미지의 높이
-    className="flex-shrink-0" // 이미지가 줄어들지 않도록
-  />
-   Professor
-</h2>
+          <h2 className="absolute -top-6 left-6 bg-gray-50 px-3 py-1 text-4xl font-bold text-gray-800 flex items-center gap-2">
+            <Image 
+              src="/logo.png"
+              alt="로고" 
+              width={35} 
+              height={35}
+              className="flex-shrink-0"
+            />
+            Professor
+          </h2>
 
           {/* --- 교수님 카드 그리드 --- */}
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-10 p-8">
-  {professorsData.map((prof, index) => (
-    <div
-      key={index}
-      onClick={() => handleCardClick(prof)}
-      className={`bg-white shadow-lg transition-all duration-300 cursor-pointer ${
-        selectedProf?.name === prof.name
-          ? 'ring-2 ring-blue-800 scale-105'
-          : 'hover:scale-105'
-      }`}
-    >
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8">
-        
-        <div className="flex-shrink-0 w-52 h-80">
-          <Image
-            src={prof.imageUrl}
-            alt={`${prof.name} 교수님 프로필 사진`}
-            width={232}
-            height={292} 
-            className="-full h-full object-cover"
-          />
-        </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 p-8">
+            {professorsData.map((prof, index) => (
+              <div
+                key={index}
+                onClick={() => handleCardClick(prof)}
+                className={`relative bg-white shadow-lg transition-all duration-300 cursor-pointer overflow-hidden ${
+                  selectedProf?.name === prof.name
+                    ? 'ring-2 ring-blue-800 scale-105'
+                    : 'hover:scale-105'
+                }`}
+              >
+                <Image 
+                  src="/부산대로고.png"
+                  alt="로고"
+                  width={130}
+                  height={130}
+                  className="absolute top-6 right-6"
+                />
+                
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8">
+                  <div className="flex-shrink-0 w-52 h-80">
+                    <Image
+                      src={prof.imageUrl}
+                      alt={`${prof.name} 교수님 프로필 사진`}
+                      width={232}
+                      height={292} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-        <div className="text-center sm:text-left mt-40">
-          <p className="text-gray-500 text-lg">{prof.title}</p>
-          <h2 className="text-3xl font-bold text-gray-900 mt-1 mb-4">
-            {prof.name}
-          </h2>
-          <p className="text-gray-500 text-s pt-6">{prof.major}</p>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
+                  <div className="text-center sm:text-left mt-40">
+                    <p className="text-gray-500 text-lg">{prof.title}</p>
+                    <h2 className="text-3xl font-bold text-gray-900 mt-1 mb-4">
+                      {prof.name}
+                    </h2>
+                    <p className="text-gray-500 text-sm pt-6">{prof.major}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* 선택된 교수님의 상세 설명 섹션 */}
@@ -107,9 +114,7 @@ const ProfessorsContext = () => {
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 {selectedProf.name} 교수님
               </h2>
-              <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">
-                {selectedProf.detailedBio}
-              </p>
+                <selectedProf.detailedBio />
             </div>
           )}
         </div>
