@@ -14,11 +14,33 @@ interface Member {
 }
 
 const allMembersData: Member[] = [
-  { name: '최봉준', role: '박사과정', professor: '김호원', imageUrl: '/members/member2.jpg', interests: '', email:'bongjun@islab.re.kr'},
-  { name: '김명진', role: '박사과정', professor: '김호원', imageUrl: '/members/member2.jpg', interests: 'AI', email:'mj.kim@komeri.re.kr'},
-  { name: '김지호', role: '박사과정', professor: '김호원', imageUrl: '/members/member2.jpg', interests: 'AI', email:'jihokim0015@gmail.com'},
-  { name: 'Le Thi Thu Huong', role: '박사과정', professor: '김호원', imageUrl: '/members/member2.jpg', interests: 'XAI / Industrial AI / AI Security', email:'lehuong7885@gmail.com'},
+  { name: '최봉준', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/최봉준.jpg', interests: 'Security', email:'bongjun@islab.re.kr'},
+  { name: '김명진', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/김명진.jpg', interests: 'AI', email:'mj.kim@komeri.re.kr'},
+  { name: '김지호', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/김지호.jpg', interests: 'AI', email:'jihokim0015@gmail.com'},
+  { name: 'Le Thi Thu Huong', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Le Thi Thu Huong.jpg', interests: 'XAI / Industrial AI / AI Security', email:'lehuong7885@gmail.com'},
+  { name: 'Rini Wisnu Wardhani', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Rini Wisnu Wardhani.jpg', interests: 'Quantun / Cryptography / Security', email:'rini@islab.re.kr'},
+  { name: 'Dedy Septono Catur Putranto', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Dedy Septono Catur Putranto.jpg', interests: 'Quantun / Cryptography / Security', email:'dedy@islab.re.kr'},
+  { name: '최창우', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/최창우.jpg', interests: 'AI / Security', email:'changwoo@islab.re.kr'},
+  { name: 'Naufal Suryanto', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Naufal Suryanto.jpg', interests: 'IoT / AI / Security', email:'naufal@islab.re.kr'},
+  { name: 'Ismail', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Ismail.jpg', interests: 'IoT / Security', email:'ismail@islab.re.kr'},
+  { name: '허신욱', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/허신욱.jpg', interests: 'IoT Security / Blockchain', email:'shinwook@islab.re.kr'},
+  { name: '지창현', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/지창현.jpg', interests: 'HW / Quantum / Cryptography', email:'janghyun@islab.re.kr'},
+  { name: 'Derry Pratama', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Derry Pratama.jpg', interests: 'HW / Security', email:'derry@islab.re.kr'},
+  { name: '조욱', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/조욱.jpg', interests: 'Blockchain', email:'jouk@islab.re.kr'},
 
+  
+  { name: 'Morsheda Akter Annie', role: '박사과정', professor: '손준영', imageUrl: '/부산대로고.png', interests: 'Security', email:'annie@islab.re.kr'},
+  { name: '조재한', role: '박사과정', professor: '손준영', imageUrl: '/구성원소개사진/조재한.jpg', interests: 'Security', email:'jaehan@islab.re.kr'},
+  
+  { name: '강은세', role: '석사과정', professor: '김호원', imageUrl: '/구성원소개사진/강은세.jpg', interests: 'HW Security / Cryptography', email:'eunse@islab.re.kr'},
+
+  { name: '박영주', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/박영주.jpg', interests: 'AI / Security', email:'yeongju@islab.re.kr'},
+  { name: '성도범', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/성도범.jpg', interests: 'Security', email:'dobeom@islab.re.kr'},
+  { name: '정지인', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/정지인.jpg', interests: 'AI / Security', email:'jiin@islab.re.kr'},
+  { name: '김진수', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/김진수.jpg', interests: 'Blockchain', email:'jinsu@islab.re.kr'},
+  { name: '이경윤', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/이경윤.jpg', interests: 'Blockchain', email:'kyungyun@islab.re.kr'},
+  { name: '장현진', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/장현진.jpg', interests: 'AI Security', email:'hyunjin@islab.re.kr'}, 
+  
 ];
 
 export default function MembersContent() {
