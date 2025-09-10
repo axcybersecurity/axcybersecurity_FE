@@ -106,16 +106,11 @@ const ProfessorsContext = () => {
         {/* 선택된 교수님의 상세 설명 섹션 */}
         <div
           className={`transition-all duration-500 ease-in-out overflow-hidden ${
-            selectedProf ? 'max-h-[1000px] opacity-100 mt-12' : 'max-h-0 opacity-0'
+            selectedProf ? 'opacity-100 mt-12' : 'max-h-0 opacity-0'
           }`}
         >
           {selectedProf && (
-            <div className="bg-white p-10 rounded-xl shadow-lg">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                {selectedProf.name} 교수님
-              </h2>
-                <selectedProf.detailedBio />
-            </div>
+            <selectedProf.detailedBio />
           )}
         </div>
       </div>
