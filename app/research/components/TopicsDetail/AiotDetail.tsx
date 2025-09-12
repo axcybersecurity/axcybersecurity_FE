@@ -4,12 +4,12 @@ export default function AiotDetail() {
     return (
       <div className="mt-8 p-6">
         <h3 
-          className="mx-auto text-center"
+          className="mx-auto text-center font-semibold break-keep"
           style={{
-            width: '281px',
-            height: '43px',
+            // width: '281px',
+            // height: '43px',
             fontFamily: 'Pretendard',
-            fontStyle: 'semibold',
+            // fontStyle: 'semibold',
             fontWeight: 600,
             fontSize: '36px',
             lineHeight: '43px',

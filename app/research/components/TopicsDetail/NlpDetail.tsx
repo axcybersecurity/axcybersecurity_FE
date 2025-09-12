@@ -4,12 +4,12 @@ export default function NlpDetail() {
   return (
     <div className='mt-8 p-6'>
       <h3
-        className='mx-auto text-center'
+        className='mx-auto text-center font-semibold break-keep'
         style={{
-          width: '270px',
-          height: '43px',
-          fontFamily: 'Pretendart',
-          fontStyle: 'semibold',
+          // width: '270px',
+          // height: '43px',
+          fontFamily: 'Pretendard',
+          // fontStyle: 'semibold',
           fontWeight: 600,
           fontSize: '36px',
           lineHeight: '43px',
