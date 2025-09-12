@@ -9,7 +9,7 @@ export default function AiotDetail() {
             width: '281px',
             height: '43px',
             fontFamily: 'Pretendard',
-            fontStyle: 'normal',
+            fontStyle: 'semibold',
             fontWeight: 600,
             fontSize: '36px',
             lineHeight: '43px',
@@ -23,15 +23,24 @@ export default function AiotDetail() {
           className="mt-8 mx-auto"
           style={{
             width: '958px',
-            // height: '52px',
             fontFamily: 'Pretendard',
-            fontStyle: 'normal',
+            fontStyle: 'bold',
             color: '#043A6F'
           }}
         >
           <div style={{ fontWeight: 700, fontSize: '24px', lineHeight: '100%', letterSpacing: '0%' }}>
             적대적 인공지능 공격 및 방어 기술 연구
           </div>
+        </h4>
+        <h4 
+          className="mt-0 mx-auto"
+          style={{
+            width: '958px',
+            fontFamily: 'Pretendard',
+            fontStyle: 'normal',
+            color: '#000000'
+          }}
+        >
           <div style={{ fontWeight: 400, fontSize: '20px', lineHeight: '100%', letterSpacing: '0%', marginTop: '4px' }}>
             (Research on adversarial attack & defense for AI)
           </div>
@@ -41,7 +50,6 @@ export default function AiotDetail() {
           className="mt-6 mx-auto"
           style={{
             width: '958px',
-            // height: '336px',
             fontFamily: 'Pretendard',
             fontStyle: 'normal',
             fontWeight: 400,
@@ -100,18 +108,27 @@ export default function AiotDetail() {
               <div>(Research on synthetic data-based object recognition, detection and tracking technology)</div>
             </div>
         <h4 
-          className="mt-20 mx-auto mb-8"
+          className="mt-20 mx-auto mb-0"
           style={{
             width: '958px',
-            // height: '52px',
             fontFamily: 'Pretendard',
-            fontStyle: 'normal',
+            fontStyle: 'bold',
             color: '#043A6F'
           }}
         >
           <div style={{ fontWeight: 700, fontSize: '24px', lineHeight: '100%', letterSpacing: '0%' }}>
             가상 데이터 기반 객체 인식·탐지·추적 기술 연구
           </div>
+        </h4>
+        <h4 
+          className="mt-0 mx-auto mb-8"
+          style={{
+            width: '958px',
+            fontFamily: 'Pretendard',
+            fontStyle: 'normal',
+            color: '#000000'
+          }}
+        >
           <div style={{ fontWeight: 400, fontSize: '20px', lineHeight: '100%', letterSpacing: '0%', marginTop: '4px' }}>
             (Research on synthetic data-based object recognition, detection and tracking technology)
           </div>
@@ -120,7 +137,6 @@ export default function AiotDetail() {
           className="mt-6 mx-auto"
           style={{
             width: '958px',
-            // height: '336px',
             fontFamily: 'Pretendard',
             fontStyle: 'normal',
             fontWeight: 400,
@@ -177,7 +193,6 @@ export default function AiotDetail() {
           width={325}
           height={228}
           className='object-contain'
-          // style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
         />
       </div>
     </div>
@@ -201,7 +216,6 @@ export default function AiotDetail() {
           width={218}
           height={340}
           className='object-contain'
-          // style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
         />
       </div>
     </div>
@@ -225,25 +239,33 @@ export default function AiotDetail() {
           width={309}
           height={311}
           className='object-contain'
-          // style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
         />
       </div>
     </div>
   </div>
 </div>            
         <h4 
-          className="mt-20 mx-auto mb-8"
+          className="mt-20 mx-auto mb-0"
           style={{
             width: '958px',
-            // height: '52px',
             fontFamily: 'Pretendard',
-            fontStyle: 'normal',
+            fontStyle: 'bold',
             color: '#043A6F'
           }}
         >
           <div style={{ fontWeight: 700, fontSize: '24px', lineHeight: '100%', letterSpacing: '0%' }}>
             가상 데이터 기반 객체 인식·탐지·추적 기술 연구 딥러닝 기반의 유체 운동 예측 기술 연구
           </div>
+        </h4>
+        <h4 
+          className="mt-0 mx-auto mb-8"
+          style={{
+            width: '958px',
+            fontFamily: 'Pretendard',
+            fontStyle: 'normal',
+            color: '#000000'
+          }}
+        >
           <div style={{ fontWeight: 400, fontSize: '20px', lineHeight: '100%', letterSpacing: '0%', marginTop: '4px' }}>
             (Research on Fluid Motion Prediction Technology based on Deep Learning)
           </div>
@@ -252,7 +274,6 @@ export default function AiotDetail() {
           className="mt-6 mx-auto"
           style={{
             width: '958px',
-            // height: '336px',
             fontFamily: 'Pretendard',
             fontStyle: 'normal',
             fontWeight: 400,

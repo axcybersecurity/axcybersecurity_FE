@@ -9,7 +9,7 @@ export default function SocDetail() {
           width: '384px',
           height: '43px',
           fontFamily: 'Pretendard',
-          fontStyle: 'normal',
+          fontStyle: 'semibold',
           fontWeight: 600,
           fontSize: '36px',
           lineHeight: '43px',
@@ -23,13 +23,23 @@ export default function SocDetail() {
           style={{
             width: '958px',
             fontFamily: 'Pretendard',
-            fontStyle: 'normal',
+            fontStyle: 'bold',
             color: '#043A6F'
           }}
           >
           <div style={{ fontWeight: 700, fontSize: '24px', lineHeight: '100%', letterSpacing: '0%' }}>
             TLS/SSL(TLS1.2, TLS1.3)지원 보안칩 개발 연구
           </div>
+          </h4>
+        <h4
+          className='mt-0 mx-auto'
+          style={{
+            width: '958px',
+            fontFamily: 'Pretendard',
+            fontStyle: 'normal',
+            color: '#000000'
+          }}
+          >
           <div style={{ fontWeight: 400, fontSize: '20px', lineHeight: '100%', letterSpacing: '0%', marginTop: '4px' }}>
             (Research on TLS Security Chip Optimization and Implementation)
           </div>
@@ -88,13 +98,23 @@ export default function SocDetail() {
           style={{
             width: '958px',
             fontFamily: 'Pretendard',
-            fontStyle: 'normal',
+            fontStyle: 'bold',
             color: '#043A6F',
           }}
           >
           <div style={{ fontWeight: 700, fontSize: '24px', lineHeight: '100%', letterSpacing: '0%' }}>
             Hardware 기반 딥러닝 가속기 연구
           </div>
+          </h4>
+        <h4
+          className='mt-0 mx-auto'
+          style={{
+            width: '958px',
+            fontFamily: 'Pretendard',
+            fontStyle: 'normal',
+            color: '#000000',
+          }}
+          >
           <div style={{ fontWeight: 400, fontSize: '20px', lineHeight: '100%', letterSpacing: '-0.05%', marginTop: '4px' }}>
             (Research on Hardware Based Deep Learning Accelator)
           </div>
@@ -180,7 +200,171 @@ export default function SocDetail() {
               <div>–딥러닝 가속기 메모리 스케줄링 최적화(Line based Reuse, Hybrid Reuse) 기법 연구</div>
               <div>-Binarized Layer 연산기 최적화 기법(Logic Gate 기반 Binarized Convolution Method, Bit Shift 기반 Batch Normalization 등 연구</div>
             </div>
-          </div>                             
+          </div>   
+        <h4
+          className='mt-20 mx-auto'
+          style={{
+            width: '958px',
+            fontFamily: 'Pretendard',
+            fontStyle: 'bold',
+            color: '#043A6F',
+          }}
+          >
+          <div style={{ fontWeight: 700, fontSize: '24px', lineHeight: '100%', letterSpacing: '0%' }}>
+            시스템 구조 및 보안 연구
+          </div>
+          </h4>
+        <h4
+          className='mt-0 mx-auto'
+          style={{
+            width: '958px',
+            fontFamily: 'Pretendard',
+            fontStyle: 'normal',
+            color: '#000000',
+          }}
+          >
+          <div style={{ fontWeight: 400, fontSize: '20px', lineHeight: '100%', letterSpacing: '-0.05%', marginTop: '4px' }}>
+            (RISC-V,ARM,Intel,Research on System Architecture and Security)
+          </div>
+          </h4>
+          <div
+            className='mt-6 mx-auto'
+            style={{
+              width: '958px',
+              fontFamily: 'Pretendard',
+              fontStyle: 'normal',
+              fontWeight: 400,
+              fontSize: '16px',
+              lineHeight: '150%',
+              color: '#282828'
+            }}
+            >
+            <div>
+              <div>-저사양 및 임베디드 디바이스를 위한 32-bit/64-bit 코프로세서(Coprocessor) 구조 설계 및 개발 연구</div>
+              <div>-명령어 파이프라인 최적화 연구(Out-Of-Order Completion) 및 명령어 확장(Vector Processing Unit) 연구</div>
+            </div>
+          </div>   
+          <div
+            className="mt-12 mx-auto text-center"
+            style={{
+                fontFamily: 'Pretendard',
+                fontWeight: 400,
+                fontSize: '16px',
+                lineHeight: '150%',
+                color: '#000000'
+            }}
+            >
+            [내부 메모리 스케줄링 기법 최적화 연구]
+            </div>  
+            <div className="mt-4 mx-auto" style={{ width: '985px' }}>
+              <Image
+                src="/Table.svg"
+                alt="내부 메모리 스케줄링 기법 최적화 연구"
+                width="985"
+                height="369"
+                className="max-w-full h-auto"
+              />
+          </div>
+          <div
+            className='mt-6 mx-auto'
+            style={{
+              width: '958px',
+              fontFamily: 'Pretendard',
+              fontStyle: 'normal',
+              fontWeight: 400,
+              fontSize: '16px',
+              lineHeight: '150%',
+              color: '#282828'
+            }}
+            >
+            <div>
+              <div>–ARIA-GCM 및 HMAC 기반 메모리 격리(무결성/기밀성 보장) 기술 연구(키, IV 등 파라미터 보호 기법, 초기화 및 인터페이스 차단 등)</div>
+              <div>–RISC-V ISA(Instruction Set Architecture) 및 PMP(Physical Memory Protection)를 활용한 명령어 수준의 도메인 격리</div>
+              <div>(Domain Isolation) 및 TMA(Tagged Memory Architecture)기술 연구</div>
+            </div>
+          </div>  
+          <div
+            className="mt-12 mx-auto text-center"
+            style={{
+                fontFamily: 'Pretendard',
+                fontWeight: 400,
+                fontSize: '16px',
+                lineHeight: '150%',
+                color: '#000000'
+            }}
+            >
+            [명령어 수준의 도메인 격리 기술 연구]
+            </div>    
+            <div className="mt-4 mx-auto" style={{ width: '744px' }}>
+              <Image
+                src="/domain.svg"
+                alt="Domain"
+                width="744"
+                height="377"
+                className="max-w-full h-auto"
+              />
+          </div>  
+        <h4
+          className='mt-20 mx-auto'
+          style={{
+            width: '958px',
+            fontFamily: 'Pretendard',
+            fontStyle: 'bold',
+            color: '#043A6F',
+          }}
+          >
+          <div style={{ fontWeight: 700, fontSize: '24px', lineHeight: '100%', letterSpacing: '0%' }}>
+            KCMVP Security Level 3용 보안칩 개발 및 Tamper Resistence 기술 연구
+          </div>
+          </h4>  
+        <h4
+          className='mt-0 mx-auto'
+          style={{
+            width: '958px',
+            fontFamily: 'Pretendard',
+            fontStyle: 'normal',
+            color: '#000000',
+          }}
+          >
+          <div style={{ fontWeight: 400, fontSize: '20px', lineHeight: '100%', letterSpacing: '-0.05%', marginTop: '4px' }}>
+            (RISC-V,ARM,Intel,Research on System Architecture and Security)
+          </div>
+          </h4> 
+          <div
+            className='mt-4 mb-8 mx-auto'
+            style={{
+              width: '958px',
+              fontFamily: 'Pretendard',
+              fontStyle: 'normal',
+              fontWeight: 400,
+              fontSize: '16px',
+              lineHeight: '150%',
+              color: '#282828'
+            }}
+            >
+            <div className='space-y-6'>
+              <div>
+                <div>–Security Level 3를 갖는 고보안성 하드웨어 보안 모듈 핵심 기술 연구</div>
+                <div>–Tamper Resistence, Tamper Evidence 기술 연구</div>
+              </div>
+
+              <div>
+                <div>■Security Level 3 이상의 고보안성 하드웨어 보안 핵심 기술 연구</div>
+                <div>–HSM(Hardware Security Modeul), TPM(Trusted Platform Module)에서처럼, 높은 보안성을 갖는 키 관리 기술 연구 필요</div>
+                <div>–부채널 공격(Side-channel Attack) 저항성 제공 필요 (Timing attack, SPA/DPA 공격 대응 기술 보유 필요)</div>
+                <div>–높은 엔트로피 값을 갖는 암호키(비밀정보) 생성 기술 필요</div>
+                <div>–자격 기반 주요 기능/데이터 접근 제어 기술 제공 필요</div>
+              </div>
+
+              <div>
+                <div>■Security Level 3를 위한 Tamper Resistance, Tamper Evidence 기술 연구</div>
+                <div>–물리적 Tamper Resistance 기술로는 물리적 보안 강화(특수 케이스, 홀로그램 스티커, 개봉 여부 확인 스티커, eSeal 등) 기술 및 수단 존재함</div>
+                <div>–논리적 Tamper Resistance 기술로는 S/W 무결성 검증, 보안 부팅, eSeal, Isolation/Segmentation 등, 다양한 기술이 존재할 수 있음</div>
+                <div>–Tamper Resistance 기술은 침입탐지 센서나 물리적 손상 여부 확인 장치(홀로그램 스티커 등), 논리적 침입 탐지 기술을 기반으로하는</div>
+                <div>Tamper Evidence 기술과 함께 사용되어, 그 보안성을 높임</div>
+              </div>
+            </div>
+          </div>               
     </div>
   );
 } 

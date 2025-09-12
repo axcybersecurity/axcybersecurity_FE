@@ -9,7 +9,7 @@ export default function NlpDetail() {
           width: '270px',
           height: '43px',
           fontFamily: 'Pretendart',
-          fontStyle: 'normal',
+          fontStyle: 'semibold',
           fontWeight: 600,
           fontSize: '36px',
           lineHeight: '43px',
@@ -23,13 +23,23 @@ export default function NlpDetail() {
         style={{
           width: '958px',
           fontFamily: 'Pretendard',
-          fontStyle: 'normal',
+          fontStyle: 'bold',
           color: '#043A6F'
         }}
       >
        <div style={{ fontWeight: 700, fontSize: '24px', lineHeight: '100%', letterSpacing: '0%' }}>
         초거대 언어모델(LLM) 연구 및 LLM기반 서비스 연구
        </div>
+      </h4>
+      <h4
+        className='mt-0 mx-auto'
+        style={{
+          width: '958px',
+          fontFamily: 'Pretendard',
+          fontStyle: 'normal',
+          color: '#000000'
+        }}
+      >
        <div style={{ fontWeight: 400, fontSize: '20px', lineHeight: '100%', letterSpacing: '0%' }}>
         (Research on LLM and its applications to Services)
        </div>
@@ -90,17 +100,27 @@ export default function NlpDetail() {
                 />
             </div>
             <h4
-              className='mt-20 mx-auto mb-8'
+              className='mt-20 mx-auto mb-0'
               style={{
                 width: '958px',
                 fontFamily: 'Pretendard',
-                fontStyle: 'normal',
+                fontStyle: 'bold',
                 color: '#043A6F'
               }}
               >
                 <div style={{ fontWeight: 700, fontSize: '24px', lineHeight: '100%', letterSpacing: '0%' }}>
                   딥러닝 기반의 테스트 스크립트 생성 모델 개발
                 </div>
+              </h4>
+            <h4
+              className='mt-0 mx-auto mb-8'
+              style={{
+                width: '958px',
+                fontFamily: 'Pretendard',
+                fontStyle: 'normal',
+                color: '#000000'
+              }}
+              >
                 <div style={{ fontWeight: 400, fontSize: '20px', lineHeight: '100%', letterSpacing: '0%' }}>
                   (Research on Test Script Generation Automation System on Deep Learning)
                 </div>
@@ -127,7 +147,7 @@ export default function NlpDetail() {
                       <div>■LG전자 에어솔루션연구소와 긴밀한 협력을 통한 산학과제 진행</div>
                     </div>
                   </div>
-                  <div className='mt-8 mb-16 mx-auto' style={{ width: '968px' }}>
+                  <div className='mt-8 mb-12 mx-auto' style={{ width: '968px' }}>
                     <Image
                       src="/참고3.svg"
                       alt="Test Script System"
