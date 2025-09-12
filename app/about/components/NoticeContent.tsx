@@ -101,7 +101,7 @@ export default function NoticeContent() {
         </div>
         
         {/* === 검색 및 필터 UI === */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mb-8 p-4 bg-gray-50 border rounded-lg shadow-sm">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mb-8 p-4 bg-gray-20 border rounded-lg shadow-sm">
           {/* 날짜 선택 (input type="date") */}
           <div className="flex-shrink-0">
             <input 
@@ -123,7 +123,7 @@ export default function NoticeContent() {
             <select 
               value={currentSearchType} 
               onChange={(e) => setCurrentSearchType(e.target.value)}
-              className="absolute left-0 top-0 bottom-0 px-3 border-r rounded-l-md bg-gray-100 outline-none z-10"
+              className="absolute left-0 top-0 bottom-0 px-3 border-r rounded-l-md bg-gray-200 text-gray-700 outline-none z-10"
             >
               <option value="title">제목</option>
               <option value="author">작성자</option> {/* 작성자 검색 추가 */}
@@ -160,7 +160,7 @@ export default function NoticeContent() {
             <thead className="bg-gray-100">
               <tr>
                 <th className="py-3 px-4 text-center text-sm font-semibold text-gray-600 w-16">번호</th>
-                <th className="py-3 px-4 text-left text-sm font-semibold text-gray-600">제목</th>
+                <th className="py-3 px-4 text-center text-sm font-semibold text-gray-600">제목</th>
                 <th className="py-3 px-4 text-center text-sm font-semibold text-gray-600 w-24">작성자</th>
                 <th className="py-3 px-4 text-center text-sm font-semibold text-gray-600 w-28">등록일자</th>
                 <th className="py-3 px-4 text-center text-sm font-semibold text-gray-600 w-20">조회</th>
@@ -196,9 +196,9 @@ export default function NoticeContent() {
             <button
               onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50 hover:bg-gray-300 transition"
+              className="px-4 py-2 bg-white rounded-md disabled:opacity-50 text-gray-800 border"
             >
-              이전
+              &lt;
             </button>
             <span className="font-semibold text-gray-700">
               {currentPage} / {totalPages}
@@ -206,9 +206,9 @@ export default function NoticeContent() {
             <button
               onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50 hover:bg-gray-300 transition"
+              className="px-4 py-2 bg-white rounded-md disabled:opacity-50 text-gray-800 border"
             >
-              다음
+              &gt;
             </button>
           </div>
         )}

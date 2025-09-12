@@ -41,12 +41,11 @@ export default function Header() {
         { title: '구성원', href: '/about?tab=members' },
         { title: '졸업생', href: '/about?tab=graduated' },
         { title: '공지사항', href: '/about?tab=notice' },
-        { title: '갤러리', href: '/about?tab=gallery' },
         { title: '새소식', href: '/about?tab=news' },
       ],
     },
     {
-      title: '연구 실적',
+      title: '연구 내용',
       href: '/research',
       sublinks: [
         { title: '연구주제', href: '/research?tab=topics' },
@@ -54,9 +53,12 @@ export default function Header() {
       ],
     },
     {
-      title: '수업 강의',
+      title: '자료실',
       href: '/courses',
-      sublinks: [],
+      sublinks: [
+        { title: '강의자료', href: '/about?tab=gallery' },
+        { title: '갤러리', href: '/about?tab=gallery' },
+      ],
     },
   ];
 

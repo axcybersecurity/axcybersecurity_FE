@@ -5,7 +5,6 @@ import { Suspense } from 'react';
 import MainContent from './components/MainContent';
 import ProfessorsContent from './components/ProfessorsContent';
 import MembersContent from './components/MembersContent';
-import GalleryContent from './components/GalleryContent';
 import GraduatedContent from './components/GraduatedContent';
 import NoticeContent from './components/NoticeContent';
 
@@ -20,7 +19,6 @@ function AboutPageContent() {
     { id: 'members', title: '구성원', href: '/about?tab=members' },
     { id: 'graduated', title: '졸업생', href: '/about?tab=graduated' },
     { id: 'notice', title: '공지사항', href: '/about?tab=notice' },
-    { id: 'gallery', title: '갤러리', href: '/about?tab=gallery' }
   ];
 
   return (
@@ -60,7 +58,6 @@ function AboutPageContent() {
           {activeTab === 'members' && <MembersContent />}
           {activeTab === 'graduated' && <GraduatedContent />}
           {activeTab === 'notice' && <NoticeContent />}
-          {activeTab === 'gallery' && <GalleryContent />}
         </div>
       </div>
     </div>

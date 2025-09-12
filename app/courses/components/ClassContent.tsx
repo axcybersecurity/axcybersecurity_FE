@@ -1,5 +1,3 @@
-// app/about/_components/GalleryContent.tsx
-
 'use client';
 
 import React, { useState } from 'react';
