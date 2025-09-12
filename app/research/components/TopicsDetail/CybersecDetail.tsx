@@ -18,7 +18,7 @@ export default function CybersecDetail() {
           사이버 보안
         </h3>
         <h4
-          className='mt-12 mx-auto'
+          className='mt-8 mx-auto'
           style={{
             width: '958px',
             fontFamily: 'Pretendard',

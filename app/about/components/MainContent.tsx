@@ -67,7 +67,7 @@ export default function MainContent() {
         {/* 소개글 영역 */}
         <div className="w-full space-y-4">
             <br></br>
-            <h2 className="text-5xl font-bold text-gray-800 mb-6">연구실 소개</h2>
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">연구실 소개</h2>
             <p className="text-gray-600">
                 <br></br><strong className="text-xl">01&nbsp;&nbsp;&nbsp;연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 제6공학관 컴퓨터공학관
             </p>

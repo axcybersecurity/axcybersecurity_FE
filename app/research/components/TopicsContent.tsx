@@ -96,7 +96,7 @@ export default function TopicsContent() {
                     : '0px 4px 8px rgba(0,0,0,0.1)',
                 }}
               >
-                <div className="flex flex-col items-start gap-2 w-full">
+                <div className="flex flex-col items-center gap-2 w-full">
                   <div
                     style={{
                       fontFamily: 'Pretendard',
