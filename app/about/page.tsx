@@ -1,17 +1,13 @@
-// app/about/page.tsx
-
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import MainContent from './components/MainContent';
 import ProfessorsContent from './components/ProfessorsContent';
-
-// --- 각 탭에 들어갈 예시 콘텐츠 컴포넌트들 ---
-const MembersContent = () => (<div className="py-8">여기에 구성원을 소개해</div>);
-const GraduatedContent = () => (<div className="py-8">여기에 졸업생들을 소개해</div>);
-const NoticeContent = () => (<div className="py-8">여기에 공지사항을 넣어</div>);
-const GalleryContent = () => (<div className="py-8">여기에 갤러리를 넣어</div>);
+import MembersContent from './components/MembersContent';
+import GalleryContent from './components/GalleryContent';
+import GraduatedContent from './components/GraduatedContent';
+import NoticeContent from './components/NoticeContent';
 
 
 function AboutPageContent() {

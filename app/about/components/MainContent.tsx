@@ -1,5 +1,3 @@
-// app/about/_components/MainContent.tsx
-
 import Image from 'next/image';
 
 const researchData = [
