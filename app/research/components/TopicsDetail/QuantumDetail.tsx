@@ -6,15 +6,9 @@ export default function QuantumDetail() {
       <h3
         className='mx-auto text-center font-semibold break-keep'
         style={{
-<<<<<<< HEAD
           width: '400px',
           height: '43px',
-=======
-          // width: '340px',
-          // height: '43px',
->>>>>>> 547b9c5ce83094326d11f1e0bc5d31e9a6210b9b
           fontFamily: 'Pretendard',
-          // fontStyle: 'semibold',
           fontWeight: 600,
           fontSize: '36px',
           lineHeight: '43px',
