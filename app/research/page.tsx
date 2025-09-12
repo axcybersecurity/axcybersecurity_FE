@@ -15,10 +15,8 @@ function ResearchPageContent() {
     { id: 'results', title: '연구실적', href: '/research?tab=results' }
   ];
 
-  // 활성 탭에 따른 제목 설정
-  const getPageTitle = () => {
-    return activeTab === 'topics' ? '연구주제' : '연구실적';
-  };
+  // 고정 제목 설정
+  const pageTitle = '연구내용';
 
   return (
     <div>
@@ -27,7 +25,7 @@ function ResearchPageContent() {
         <div className="absolute inset-0 bg-black/50" aria-hidden="true" />
         <div className="relative container mx-auto px-6 py-12 flex flex-col items-center">
           <h1 className="text-3xl font-bold mb-8 border-b-4 border-white pb-4 pt-20 text-white inline-block">
-            {getPageTitle()}
+            {pageTitle}
           </h1>
           <div className="flex pb-10">
             {tabs.map(tab => (
