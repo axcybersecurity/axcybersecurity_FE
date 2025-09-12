@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 
-// 구성원 데이터 타입을 교수님 카드와 유사하게 정의
 interface Member {
   name: string;
   role: string;
@@ -21,8 +20,6 @@ const allMembersData: Member[] = [
   { name: '김지현', role: '박사졸업', graduated: '2017', company: '(주)LOCS CEO', email: 'jihyunkim@pusan.ac.kr',web: 'http://flyingdcat4.tistory.com/'},
   { name: '이동건', role: '박사졸업', graduated: '2015', company: '한국전자통신연구원(국가보안기술연구소)', email: 'guneez@gmail.com',web: 'http://www.gunee.net'},
   { name: '서화정', role: '박사졸업', graduated: '2016', company: '한성대학교 교수', email: 'hwajeong84@gmail.com',web: 'https://crypto.modoo.at/'},
-
-  
   { name: '김재현', role: '석사졸업', graduated: '2025', company: 'SmartM2M', email: 'jaehyun@islab.re.kr',web: ''},
   { name: 'Muhammad Iqbal', role: '석사졸업', graduated: '2025', company: '', email: 'iqbal@islab.re.kr',web: ''},
   { name: '윤동욱', role: '석사졸업', graduated: '2025', company: '', email: 'dongwook@islab.re.kr',web: ''},
@@ -74,11 +71,29 @@ const allMembersData: Member[] = [
   { name: '김성윤', role: '석사졸업', graduated: '2011', company: '한국전자부품연구원', email: 'kims7y4@gmail.com',web: ''},
   { name: '이철희', role: '석사졸업', graduated: '2011', company: 'SK C&C', email: '2fehee@gmail.com',web: ''},
   { name: '황연자', role: '석사졸업', graduated: '2011', company: 'STX', email: 'tstcyanzi@gmail.com',web: ''},
-
   { name: 'Yustus Eko Oktian', role: '박사후연구원', graduated: '2023', company: '', email: 'yustus.oktian@gmail.com',web: ''}
 ];
 
-export default function MembersContent() {
+const InfoRow = ({ label, value, href }: { label: string; value: string; href?: string }) => {
+  if (!value) return null;
+
+  return (
+    <p className="text-gray-600 text-sm">
+      <strong className="text-white bg-gray-400 p-1 rounded">{label}</strong>
+      <span className="ml-2">
+        {href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+            {value}
+          </a>
+        ) : (
+          value
+        )}
+      </span>
+    </p>
+  );
+};
+
+export default function GraduatedContent() {
   const [activeTab, setActiveTab] = useState('박사졸업');
 
   const filteredMembers = allMembersData.filter(
@@ -86,6 +101,7 @@ export default function MembersContent() {
   );
 
   const tabs = ['박사졸업', '석사졸업', '박사후연구원'];
+  
   return (
     <div className="py-8">
       <div className="container mx-auto px-6">
@@ -95,40 +111,38 @@ export default function MembersContent() {
         </div>
         
         {/* --- 과정 탭 버튼 --- */}
-        <div className="flex border overflow-hidden mb-8">
-        {tabs.map(tab => (
+        <div className="flex border rounded-md overflow-hidden mb-8">
+          {tabs.map(tab => (
             <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`flex-1 p-5 font-semibold transition-colors duration-200 text-center ${
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`flex-1 p-5 font-semibold transition-colors duration-200 text-center ${
                 activeTab === tab 
-                ? 'bg-[#042A5B] text-white' 
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
+                  ? 'bg-[#042A5B] text-white' 
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
             >
-            {tab}
+              {tab}
             </button>
-        ))}
+          ))}
         </div>
 
         {/* --- 멤버 카드 그리드 --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredMembers.map((member, index) => (
             <div
               key={index}
-              className="bg-white border rounded-lg transition-all duration-300"
+              className="bg-white border rounded-lg p-6"
             >
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 p-4">
-                <div className="text-center sm:text-left pt-8">
-                  <h2 className="text-3xl font-bold text-gray-900 mt-1 mb-4">
-                    🎓 {member.name}
-                  </h2>
-                  <p className="text-gray-500 text-s pt-4"> {member.role}</p>
-                  <p className="text-gray-500 text-s pt-4"> {member.graduated}</p>
-                  <p className="text-gray-500 text-s pt-4"> {member.email}</p>
-                  <p className="text-gray-500 text-s pt-4"> {member.company}</p>
-                  <p className="text-gray-500 text-s pt-4"> {member.web}</p>
-                </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                🎓 {member.name}
+              </h3>
+              <div className="space-y-3">
+                <InfoRow label="과정" value={member.role} />
+                <InfoRow label="졸업" value={member.graduated} />
+                <InfoRow label="직장" value={member.company} />
+                <InfoRow label="메일" value={member.email} href={`mailto:${member.email}`} />
+                <InfoRow label="WEB" value={member.web} href={member.web} />
               </div>
             </div>
           ))}
