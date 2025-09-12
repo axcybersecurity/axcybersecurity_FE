@@ -105,10 +105,25 @@ export default function GraduatedContent() {
   return (
     <div className="py-8">
       <div className="container mx-auto px-6">
-        {/* === 제목과 탭 버튼 === */}
-        <div className="border-b-2 pb-4 mb-8">
-          <h2 className="text-3xl text-black font-bold inline-block border-b-4 border-blue-800 pb-2">졸업생 소개</h2>
+        {/* === 제목 === */}
+        <div className="mb-8">
+        <h2
+          style={{
+            fontFamily: 'Pretendard',
+            fontWeight: 600,
+            fontSize: '40px',
+            lineHeight: '48px',
+            color: '#02162E',
+            marginBottom: '24px',
+          }}
+        >
+          졸업생
+        </h2>
+        <div className="flex items-center">
+          <div className="w-35 border-t-[3px] border-blue-800" />
+          <div className="flex-1 border-t border-gray-300" />
         </div>
+      </div>
         
         {/* --- 과정 탭 버튼 --- */}
         <div className="flex border rounded-md overflow-hidden mb-8">

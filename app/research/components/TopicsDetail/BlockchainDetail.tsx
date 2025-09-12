@@ -6,7 +6,7 @@ export default function BlockchainDetail() {
       <h3
         className='mx-auto text-center'
         style={{
-          width: '125px',
+          width: '400px',
           height: '43px',
           fontFamily: 'Pretendard',
           fontStyle: 'semibold',

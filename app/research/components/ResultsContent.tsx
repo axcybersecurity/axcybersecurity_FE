@@ -54,7 +54,7 @@ export default function ResultsContent() {
           className="text-center mb-16"
           style={{
             fontFamily: 'Pretendard',
-            fontWeight: 800,
+            fontWeight: 600,
             fontSize: '32px',
             lineHeight: '38px',
             color: '#02162E'
@@ -107,7 +107,7 @@ export default function ResultsContent() {
           className="text-center mb-12"
           style={{
             fontFamily: 'Pretendard',
-            fontWeight: 800,
+            fontWeight: 600,
             fontSize: '32px',
             lineHeight: '38px',
             color: '#02162E'

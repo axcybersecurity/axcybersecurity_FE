@@ -6,7 +6,7 @@ export default function SocDetail() {
       <h3
         className='mx-auto text-center'
         style={{
-          width: '384px',
+          width: '450px',
           height: '43px',
           fontFamily: 'Pretendard',
           fontStyle: 'semibold',

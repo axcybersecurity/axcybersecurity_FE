@@ -12,8 +12,8 @@ function AboutPageContent() {
   const activeTab = searchParams.get('tab') || 'main';
 
   const tabs = [
-    { id: 'class', title: '강의자료', href: '/about?tab=class' },
-    { id: 'gallery', title: '갤러리', href: '/about?tab=gallery' }
+    { id: 'class', title: '강의자료', href: '/courses?tab=class' },
+    { id: 'gallery', title: '갤러리', href: '/courses?tab=gallery' }
   ];
 
   return (

@@ -16,7 +16,7 @@ function ResearchPageContent() {
   ];
 
   // 고정 제목 설정
-  const pageTitle = '연구내용';
+  const pageTitle = '연구 내용';
 
   return (
     <div>

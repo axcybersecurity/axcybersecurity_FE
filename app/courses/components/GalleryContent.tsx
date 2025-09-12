@@ -11,15 +11,6 @@ interface GalleryImage {
 
 const galleryData: GalleryImage[] = [
   { imageUrl: '/gallery/photo1.jpg', caption: '2025년 워크샵 단체 사진', date: '2025-07-07'},
-  { imageUrl: '/gallery/photo1.jpg', caption: '2025 인재양성대전', date: '2025-07-07'},
-  { imageUrl: '/gallery/photo1.jpg', caption: '2025 정보보호학회 하계학술대회', date: '2025-07-07'},
-  { imageUrl: '/gallery/photo1.jpg', caption: '연구실 단체 경주 워크숍', date: '2025-07-07'},
-  { imageUrl: '/gallery/photo1.jpg', caption: 'ㅁㄴㅇㄹ', date: '2025-07-07'},
-  { imageUrl: '/gallery/photo1.jpg', caption: '2025년 워크샵 단체 사진', date: '2025-07-07'},
-  { imageUrl: '/gallery/photo1.jpg', caption: '2025년 워크샵 단체 사진', date: '2025-07-07'},
-  { imageUrl: '/gallery/photo1.jpg', caption: '2025년 워크샵 단체 사진', date: '2025-07-07'},
-  { imageUrl: '/gallery/photo1.jpg', caption: '2025년 워크샵 단체 사진', date: '2025-07-07'},
-  { imageUrl: '/gallery/photo1.jpg', caption: '2025년 워크샵 단체 사진', date: '2025-07-07'},
 ];
 
 const ITEMS_PER_PAGE = 6;
@@ -40,13 +31,26 @@ export default function GalleryContent() {
     <div className="py-8">
       <div className="container mx-auto px-6">
         {/* --- 제목과 검색창 --- */}
-        <div className="border-b-2 pb-4 mb-8">
-          {/*  제목 영역 */}
-          <h2 className="text-3xl text-black font-bold inline-block border-b-4 border-blue-800 pb-2">갤러리</h2>
-          </div>
+        <div className="mb-8">
+        <h2
+          style={{
+            fontFamily: 'Pretendard',
+            fontWeight: 600,
+            fontSize: '40px',
+            lineHeight: '48px',
+            color: '#02162E',
+            marginBottom: '24px',
+          }}
+        >
+          갤러리
+        </h2>
+        <div className="flex items-center">
+          <div className="w-35 border-t-[3px] border-blue-800" />
+          <div className="flex-1 border-t border-gray-300" />
+        </div>
+      </div>
           {/* --- 검색창 영역 --- */}
           <div className="flex justify-end mt-4"> 
-            {/* max-w-xs: 최대 너비를 약 320px로 제한합니다. */}
             <div className="flex items-center border-2 rounded-md max-w-sm">
               <input
                 type="text"

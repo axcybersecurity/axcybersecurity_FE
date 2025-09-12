@@ -48,7 +48,7 @@ const ProfessorsContext = () => {
         <div className="relative border border-gray-300 p-8 pt-10">
           {/* === 제목 === */}
 
-          <h2 className="absolute -top-6 left-6 bg-gray-50 px-3 py-1 text-4xl font-bold text-gray-800 flex items-center gap-2">
+          <h2 className="absolute -top-6 left-6 bg-gray-50 px-4 py-0 text-5xl font-bold text-gray-800 flex items-center gap-3">
             <Image 
               src="/logo.png"
               alt="로고" 

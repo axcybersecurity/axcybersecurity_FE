@@ -6,7 +6,7 @@ export default function QuantumDetail() {
       <h3
         className='mx-auto text-center'
         style={{
-          width: '340px',
+          width: '400px',
           height: '43px',
           fontFamily: 'Pretendard',
           fontStyle: 'semibold',

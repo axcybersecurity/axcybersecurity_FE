@@ -96,9 +96,24 @@ export default function NoticeContent() {
     <div className="py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* === 제목 === */}
-        <div className="border-b-2 border-gray-300 pb-4 mb-8">
-          <h2 className="text-3xl text-black font-bold inline-block border-b-4 border-blue-800 pb-2">공지사항</h2>
+        <div className="mb-8">
+        <h2
+          style={{
+            fontFamily: 'Pretendard',
+            fontWeight: 600,
+            fontSize: '40px',
+            lineHeight: '48px',
+            color: '#02162E',
+            marginBottom: '24px',
+          }}
+        >
+          공지사항
+        </h2>
+        <div className="flex items-center">
+          <div className="w-45 border-t-[3px] border-blue-800" />
+          <div className="flex-1 border-t border-gray-300" />
         </div>
+      </div>
         
         {/* === 검색 및 필터 UI === */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mb-8 p-4 bg-gray-20 border rounded-lg shadow-sm">

@@ -6,7 +6,7 @@ export default function NlpDetail() {
       <h3
         className='mx-auto text-center'
         style={{
-          width: '270px',
+          width: '400px',
           height: '43px',
           fontFamily: 'Pretendart',
           fontStyle: 'semibold',

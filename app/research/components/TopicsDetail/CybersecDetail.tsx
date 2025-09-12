@@ -6,7 +6,7 @@ export default function CybersecDetail() {
       <h3
         className='mx-auto text-center'
         style={{
-          width: '169px',
+          width: '400px',
           height: '43px',
           fontFamily: 'Pretendard',
           fontStyle: 'semibold',

@@ -63,7 +63,7 @@ export default function TopicsContent() {
         <h2
           style={{
             fontFamily: 'Pretendard',
-            fontWeight: 800,
+            fontWeight: 600,
             fontSize: '40px',
             lineHeight: '48px',
             color: '#02162E',
@@ -73,7 +73,7 @@ export default function TopicsContent() {
           연구주제
         </h2>
         <div className="flex items-center">
-          <div className="w-52 border-t-[3px] border-black" />
+          <div className="w-45 border-t-[3px] border-blue-800" />
           <div className="flex-1 border-t border-gray-300" />
         </div>
       </div>

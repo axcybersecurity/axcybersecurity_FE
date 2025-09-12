@@ -41,7 +41,6 @@ export default function Header() {
         { title: '구성원', href: '/about?tab=members' },
         { title: '졸업생', href: '/about?tab=graduated' },
         { title: '공지사항', href: '/about?tab=notice' },
-        { title: '새소식', href: '/about?tab=news' },
       ],
     },
     {
