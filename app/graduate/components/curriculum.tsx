@@ -50,42 +50,48 @@ export default function Curriculum() {
             />
             <h2 className="text-3xl font-bold text-gray-800">연구분야</h2>
           </div>
-          <div className="border-t border-gray-200">
+          <div className="border-t border-gray-800">
             <div className="grid grid-cols-1 md:grid-cols-[240px_1fr]">
-              <div className="flex items-center border-b border-gray-200 bg-gray-50 p-4 font-semibold text-gray-700">
+              {/* 1열 div에 border-r, justify-center, text-center 추가 */}
+              <div className="flex items-center justify-center text-center border-b border-r border-gray-800 bg-gray-200 p-4 font-semibold text-gray-700">
                 정보보호
               </div>
-              <div className="flex items-center border-b border-gray-200 p-4">
+              <div className="flex items-center border-b border-gray-800 p-4 text-gray-700">
                 소프트웨어 보안, 시스템 보안, 네트워크 보안, 암호 모듈 설계, ASIC/FPGA 설계, 역공학, 경량화/최적화
               </div>
-              <div className="flex items-center border-b border-gray-200 bg-gray-50 p-4 font-semibold text-gray-700">
+
+              <div className="flex items-center justify-center text-center border-b border-r border-gray-800 bg-gray-200 p-4 font-semibold text-gray-700">
                 인공지능
               </div>
-              <div className="flex items-center border-b border-gray-200 p-4">
+              <div className="flex items-center border-b border-gray-800 p-4 text-gray-700">
                 자연어처리, Deep Learning(RNN, LSTM, CNN 등), Machine Learning, TensorFlow, Chatbot 분야
               </div>
-              <div className="flex items-center border-b border-gray-200 bg-gray-50 p-4 font-semibold text-gray-700">
-                지능형 사물인터넷<br/>(IoT:Internet of Things)
+
+              <div className="flex items-center justify-center text-center border-b border-r border-gray-800 bg-gray-200 p-4 font-semibold text-gray-700">
+                지능형 사물인터넷<br/>(IoT : Internet of Things)
               </div>
-              <div className="flex items-center border-b border-gray-200 p-4">
+              <div className="flex items-center border-b border-gray-800 p-4 text-gray-700">
                 데이터마이닝, 빅데이터, 확률/통계, 웹 서비스, 서비스 플랫폼, 센서네트워크
               </div>
-              <div className="flex items-center border-b border-gray-200 bg-gray-50 p-4 font-semibold text-gray-700">
+
+              <div className="flex items-center justify-center text-center border-b border-r border-gray-800 bg-gray-200 p-4 font-semibold text-gray-700">
                 블록체인
               </div>
-              <div className="flex items-center border-b border-gray-200 p-4">
+              <div className="flex items-center border-b border-gray-800 p-4 text-gray-700">
                 블록체인 기반 기술, 익명성 제공 블록체인, 프라이버시 보호형 블록체인, 금융 및 항만/물류용 블록체인,암호 화폐 기반 기술
               </div>
-              <div className="flex items-center border-b border-gray-200 bg-gray-50 p-4 font-semibold text-gray-700">
+
+              <div className="flex items-center justify-center text-center border-b border-r border-gray-800 bg-gray-200 p-4 font-semibold text-gray-700">
                 산업시설 사이버보안
               </div>
-              <div className="flex items-center border-b border-gray-200 p-4">
+              <div className="flex items-center border-b border-gray-800 p-4 text-gray-700">
                 원자력발전소, 원자로, 에너지 시설 등 산업시설에 대한 사이버보안 기술
               </div>
-              <div className="flex items-center border-b border-gray-200 bg-gray-50 p-4 font-semibold text-gray-700">
+
+              <div className="flex items-center justify-center text-center border-b border-r border-gray-800 bg-gray-200 p-4 font-semibold text-gray-700">
                 모바일 사이버보안
               </div>
-              <div className="flex items-center border-b border-gray-200 p-4">
+              <div className="flex items-center border-b border-gray-800 p-4 text-gray-700">
                 자동차 사이버보안, 안티드론/사이버전자전 및 드론 사이버보안 기술
               </div>
             </div>

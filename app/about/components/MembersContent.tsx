@@ -148,7 +148,7 @@ export default function MembersContent() {
                     alt={`${member.name} 프로필 사진`}
                     width={208}
                     height={256} 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover rounded-full"
                   />
                 </div>
                 <div className="text-center sm:text-left pt-8">
