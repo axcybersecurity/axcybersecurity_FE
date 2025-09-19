@@ -34,6 +34,7 @@ const allMembersData: Member[] = [
   
   { name: '강은세', role: '석사과정', professor: '김호원', imageUrl: '/구성원소개사진/강은세.jpg', interests: 'HW Security / Cryptography', email:'eunse@islab.re.kr'},
 
+  { name: '하승원', role: '학부연구생', professor: '손준영', imageUrl: '/부산대로고.png', interests: 'AI', email:'seungwon@islab.re.kr'},
   { name: '박영주', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/박영주.jpg', interests: 'AI / Security', email:'yeongju@islab.re.kr'},
   { name: '성도범', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/성도범.jpg', interests: 'Security', email:'dobeom@islab.re.kr'},
   { name: '정지인', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/정지인.jpg', interests: 'AI / Security', email:'jiin@islab.re.kr'},
