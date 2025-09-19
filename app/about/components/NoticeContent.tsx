@@ -14,7 +14,7 @@ interface Notice {
 }
 
 const allNoticeData: Notice[] = [
-  { id: 11, title: '오픈소스 컨트리뷰톤 참가자 모집', author: '관리자', date: '2025-10-05', views: 150 },
+  { id: 11, title: 'example', author: '정지인', date: '2025-09-09', views: 0 },
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const ITEMS_PER_PAGE = 10;
