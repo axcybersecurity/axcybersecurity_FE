@@ -15,11 +15,6 @@ interface Notice {
 
 const allNoticeData: Notice[] = [
   { id: 11, title: '오픈소스 컨트리뷰톤 참가자 모집', author: '관리자', date: '2025-10-05', views: 150 },
-  { id: 10, title: '동계 방학 특별 세미나 안내', author: '손준영', date: '2025-09-30', views: 220 },
-  { id: 9, title: '연구실 서버 점검 공지 (10/10)', author: '관리자', date: '2025-09-28', views: 180 },
-  { id: 8, title: '국제 정보보호 컨퍼런스 참가 후기', author: '김석사', date: '2025-09-25', views: 350 },
-  { id: 7, title: '학부 연구생 추가 모집', author: '김호원', date: '2025-09-20', views: 512 },
-  { id: 6, title: '연구실 비품 구매 목록 조사', author: '관리자', date: '2025-09-15', views: 98 },
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const ITEMS_PER_PAGE = 10;
