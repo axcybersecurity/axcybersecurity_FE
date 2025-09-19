@@ -20,7 +20,7 @@ export default function QuantumDetail() {
 
           <div className="mt-6 text-base text-[#282828] leading-relaxed space-y-6">
             <div>
-              <p className="font-bold">Building Shor's Algorithm circuit for cracking RSA/ECC cryptosystem</p>
+              <p className="font-bold">Building Shor&apos;s Algorithm circuit for cracking RSA/ECC cryptosystem</p>
               <ul className="list-disc list-inside space-y-1 pl-2">
                 <li>RSA 크랙용 기초 서브회로 개발
                   <ul className="list-['–'] list-inside ml-6">
