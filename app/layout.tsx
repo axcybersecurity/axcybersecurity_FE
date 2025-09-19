@@ -7,8 +7,8 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "정보보호 및 자율지능 연구실",
-  description: "부산대학교 정보보호 및 자율지능 연구실",
+  title: "AX 사이버보안 융합 연구실",
+  description: "부산대학교 AX 사이버보안 융합 연구실",
 };
 
 export default function RootLayout({
