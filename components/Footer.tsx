@@ -20,8 +20,8 @@ export default function Footer() {
             <p>(46241) 부산광역시 금정구 부산대학로 63번길 2 제6공학관 6512호</p>
             <p>(A06) 6512 School of computer science & engineering, Pusan National University, 2, BusanDaehak-ro 63beon-gil, Geumjeoung-gu, Busan, 46241, Republic of Korea</p>
             
-            <p className="pt-2">📞 +82 51-510-1010</p>
-            <p>✉️ howonkim@pusan.ac.kr</p>
+            <p className="pt-2">📞 +82 51-510-2219</p>
+            <p>✉️ jyson@pusan.ac.kr</p>
             <br></br>
             <p className="pt-4">© Copyright PUSAN NATIONAL UNIVERSITY. All Rights Reserved.</p>
           </div>

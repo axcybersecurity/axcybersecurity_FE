@@ -10,37 +10,28 @@ interface Member {
   interests: string;
   email: string;
   imageUrl: string;
-  professor: string;
 }
 
 const allMembersData: Member[] = [
-  { name: '최봉준', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/최봉준.jpg', interests: 'Security', email:'bongjun@islab.re.kr'},
-  { name: '김명진', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/김명진.jpg', interests: 'AI', email:'mj.kim@komeri.re.kr'},
-  { name: '김지호', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/김지호.jpg', interests: 'AI', email:'jihokim0015@gmail.com'},
-  { name: 'Le Thi Thu Huong', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Le Thi Thu Huong.jpg', interests: 'XAI / Industrial AI / AI Security', email:'lehuong7885@gmail.com'},
-  { name: 'Rini Wisnu Wardhani', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Rini Wisnu Wardhani.jpg', interests: 'Quantun / Cryptography / Security', email:'rini@islab.re.kr'},
-  { name: 'Dedy Septono Catur Putranto', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Dedy Septono Catur Putranto.jpg', interests: 'Quantun / Cryptography / Security', email:'dedy@islab.re.kr'},
-  { name: '최창우', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/최창우.jpg', interests: 'AI / Security', email:'changwoo@islab.re.kr'},
-  { name: 'Naufal Suryanto', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Naufal Suryanto.jpg', interests: 'IoT / AI / Security', email:'naufal@islab.re.kr'},
-  { name: 'Ismail', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Ismail.jpg', interests: 'IoT / Security', email:'ismail@islab.re.kr'},
-  { name: '허신욱', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/허신욱.jpg', interests: 'IoT Security / Blockchain', email:'shinwook@islab.re.kr'},
-  { name: '지창현', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/지창현.jpg', interests: 'HW / Quantum / Cryptography', email:'janghyun@islab.re.kr'},
-  { name: 'Derry Pratama', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/Derry Pratama.jpg', interests: 'HW / Security', email:'derry@islab.re.kr'},
-  { name: '조욱', role: '박사과정', professor: '김호원', imageUrl: '/구성원소개사진/조욱.jpg', interests: 'Blockchain', email:'jouk@islab.re.kr'},
 
+  { name: '조재한', role: '박사과정', imageUrl: '/구성원소개사진/조재한.jpg', interests: 'Security', email:'jaehan@islab.re.kr'},
   
-  { name: 'Morsheda Akter Annie', role: '박사과정', professor: '손준영', imageUrl: '/부산대로고.png', interests: 'Security', email:'annie@islab.re.kr'},
-  { name: '조재한', role: '박사과정', professor: '손준영', imageUrl: '/구성원소개사진/조재한.jpg', interests: 'Security', email:'jaehan@islab.re.kr'},
+  { name: '강은세', role: '석사과정', imageUrl: '/구성원소개사진/강은세.jpg', interests: 'HW Security / Cryptography', email:'eunse@islab.re.kr'},
+  { name: '고세화', role: '석사과정', imageUrl: '/구성원소개사진/고세화.jpg', interests: 'Security', email:'sehwa@islab.re.kr'},
+  { name: '신다윗', role: '석사과정', imageUrl: '/구성원소개사진/신다윗.jpg', interests: 'Quantum / Cryptography / Security', email:'dawit@islab.re.kr'},
+  { name: '이범수', role: '석사과정', imageUrl: '/구성원소개사진/이범수.jpg', interests: 'AI', email:'beomsu@islab.re.kr'},
+  { name: '이경민', role: '석사과정', imageUrl: '/구성원소개사진/이경민.jpg', interests: 'Security', email:'kyeongmin@islab.re.kr'},
+  { name: '윤지원', role: '석사과정', imageUrl: '/구성원소개사진/윤지원.jpg', interests: 'AI / Security', email:'jiwon@islab.re.kr'},
+  { name: '황연정', role: '석사과정', imageUrl: '/구성원소개사진/황연정.jpg', interests: 'Security', email:'yeonjeong@islab.re.kr'},
+  { name: '김희찬', role: '석사과정', imageUrl: '/구성원소개사진/김희찬.jpg', interests: 'Blockchain', email:'heechan@islab.re.kr'},
   
-  { name: '강은세', role: '석사과정', professor: '김호원', imageUrl: '/구성원소개사진/강은세.jpg', interests: 'HW Security / Cryptography', email:'eunse@islab.re.kr'},
-
-  { name: '하승원', role: '학부연구생', professor: '손준영', imageUrl: '/부산대로고.png', interests: 'AI', email:'seungwon@islab.re.kr'},
-  { name: '박영주', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/박영주.jpg', interests: 'AI / Security', email:'yeongju@islab.re.kr'},
-  { name: '성도범', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/성도범.jpg', interests: 'Security', email:'dobeom@islab.re.kr'},
-  { name: '정지인', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/정지인.jpg', interests: 'AI / Security', email:'jiin@islab.re.kr'},
-  { name: '김진수', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/김진수.jpg', interests: 'Blockchain', email:'jinsu@islab.re.kr'},
-  { name: '이경윤', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/이경윤.jpg', interests: 'Blockchain', email:'kyungyun@islab.re.kr'},
-  { name: '장현진', role: '학부연구생', professor: '손준영', imageUrl: '/구성원소개사진/장현진.jpg', interests: 'AI Security', email:'hyunjin@islab.re.kr'}, 
+  { name: '하승원', role: '학부연구생', imageUrl: '/부산대로고.png', interests: 'AI', email:'seungwon@islab.re.kr'},
+  { name: '박영주', role: '학부연구생', imageUrl: '/구성원소개사진/박영주.jpg', interests: 'AI / Security', email:'yeongju@islab.re.kr'},
+  { name: '성도범', role: '학부연구생', imageUrl: '/구성원소개사진/성도범.jpg', interests: 'Security', email:'dobeom@islab.re.kr'},
+  { name: '정지인', role: '학부연구생', imageUrl: '/구성원소개사진/정지인.jpg', interests: 'AI / Security', email:'jiin@islab.re.kr'},
+  { name: '김진수', role: '학부연구생', imageUrl: '/구성원소개사진/김진수.jpg', interests: 'Blockchain', email:'jinsu@islab.re.kr'},
+  { name: '이경윤', role: '학부연구생', imageUrl: '/구성원소개사진/이경윤.jpg', interests: 'Blockchain', email:'kyungyun@islab.re.kr'},
+  { name: '장현진', role: '학부연구생', imageUrl: '/구성원소개사진/장현진.jpg', interests: 'AI Security', email:'hyunjin@islab.re.kr'}, 
   
 ];
 
@@ -49,7 +40,7 @@ export default function MembersContent() {
   const [activeProfessor, setActiveProfessor] = useState('김호원');
 
   const filteredMembers = allMembersData.filter(
-    member => member.role === activeTab && member.professor === activeProfessor
+    member => member.role === activeTab
   );
 
   const tabs = ['박사과정', '석사과정', '학부연구생'];
@@ -96,44 +87,6 @@ export default function MembersContent() {
         </div>
 
         {/* --- 교수님 탭 버튼 --- */}
-<div className="flex justify-center mb-8">
-  <div className="flex items-center gap-4">
-    <div className="flex bg-gray-200 rounded-full"> 
-      {professors.map((prof, index) => (
-        <button
-          key={prof}
-          onClick={() => setActiveProfessor(prof)}
-          className={`
-            px-25 py-2 text-sm font-semibold transition-colors duration-200 flex flex-col items-center 
-            ${
-              activeProfessor === prof
-                ? 'bg-[#042A5B] text-white shadow'
-                : 'text-gray-600'
-            }
-            ${
-              activeProfessor === prof && index === 0
-                ? 'rounded-l-full'
-                : ''
-            }
-            ${
-              activeProfessor === prof && index === professors.length - 1
-                ? 'rounded-r-full'
-                : ''
-            }
-            ${
-              activeProfessor === prof && index > 0 && index < professors.length - 1
-                ? 'rounded-none'
-                : ''
-            }
-          `}
-        >
-          <span className='text-xs'>지도교수</span>
-          {prof} 교수님
-        </button>
-      ))}
-    </div>
-  </div>
-</div>
 
         {/* --- 멤버 카드 그리드 --- */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
