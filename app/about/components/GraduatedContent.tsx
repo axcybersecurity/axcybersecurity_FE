@@ -12,7 +12,7 @@ interface Member {
 }
 
 const allMembersData: Member[] = [
-  {/*{name: '김해용', role: '박사졸업', graduated: '2023', company: 'LG', email: '',web: ''} */}
+  
 ];
 
 const InfoRow = ({ label, value, href }: { label: string; value: string; href?: string }) => {
