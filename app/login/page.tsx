@@ -1,12 +1,18 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
+import { loginApi } from '../../lib/api';
 
 function LoginPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const activeTab = searchParams.get('tab') || 'login';
+  
+  const [loginData, setLoginData] = useState({
+    login_id: '',
+    password: ''
+  });
 
   const tabs = [
     { id: 'register', title: '가입하기', href: '/login?tab=register' },
@@ -16,6 +22,17 @@ function LoginPageContent() {
   // 활성 탭에 따른 제목 설정
   const getPageTitle = () => {
     return activeTab === 'login' ? '로그인' : '가입하기';
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await loginApi.login(loginData);
+      localStorage.setItem('token', response.data.access_token);
+      router.push('/');
+    } catch (error) {
+      console.error('로그인 실패:', error);
+    }
   };
 
   return (
@@ -127,7 +144,7 @@ function LoginPageContent() {
             
             {/* 로그인 폼 */}
             <div className="max-w-md mx-auto mt-8 mb-20">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleLogin}>
                 {/* 아이디 또는 이메일 입력 필드 */}
                 <div>
                   <label className="block mb-2">
@@ -160,6 +177,8 @@ function LoginPageContent() {
                   </label>
                   <input
                     type="text"
+                    value={loginData.login_id}
+                    onChange={(e) => setLoginData({...loginData, login_id: e.target.value})}
                     className="w-full px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     style={{ border: '1px solid #A8A3A3' }}
                   />
@@ -197,6 +216,8 @@ function LoginPageContent() {
                   </label>
                   <input
                     type="password"
+                    value={loginData.password}
+                    onChange={(e) => setLoginData({...loginData, password: e.target.value})}
                     className="w-full px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     style={{ border: '1px solid #A8A3A3' }}
                   />
@@ -246,11 +267,6 @@ function LoginPageContent() {
                       letterSpacing: '0%',
                       textAlign: 'center',
                       color: '#EFF2F5'
-                    }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      // 로그인 처리 로직
-                      console.log('로그인 버튼 클릭');
                     }}
                   >
                     로그인

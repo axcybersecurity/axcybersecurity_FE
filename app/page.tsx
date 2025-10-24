@@ -1,7 +1,41 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { logoutApi } from '../lib/api';
 
 export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    // 로그인 상태 확인
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      // 로그아웃 API 호출
+      await logoutApi.logout();
+      
+      // 로컬 스토리지에서 토큰 제거
+      localStorage.removeItem('token');
+      setIsLoggedIn(false);
+      
+      // 페이지 새로고침으로 상태 업데이트
+      window.location.reload();
+    } catch (error) {
+      console.error('로그아웃 실패:', error);
+      // API 실패해도 로컬에서라도 로그아웃 처리
+      localStorage.removeItem('token');
+      setIsLoggedIn(false);
+      window.location.reload();
+    }
+  };
+
   return (
     <div className="w-full relative">
       {/* 히어로 이미지 섹션 (일반 흐름, aspect 고정) */}
@@ -14,17 +48,32 @@ export default function Home() {
           priority
         />
 
-        {/* 로그인 버튼 - 오른쪽 상단 (반응형) */}
+        {/* 로그인/로그아웃 버튼 - 오른쪽 상단 (반응형) */}
         <div className="absolute top-[2%] right-[3%] sm:right-[4%] md:right-[5%] lg:right-[6%] z-30">
-          <Link href="/login" className="flex items-center">
-            <Image
-              src="/loginbutton.svg"
-              alt="로그인"
-              width={132}
-              height={48}
-              className="hover:opacity-80 transition-opacity w-auto h-auto"
-            />
-          </Link>
+          {isLoggedIn ? (
+            <button 
+              onClick={handleLogout}
+              className="flex items-center hover:opacity-80 transition-opacity"
+            >
+              <Image
+                src="/logout.svg"
+                alt="로그아웃"
+                width={132}
+                height={48}
+                className="w-auto h-auto"
+              />
+            </button>
+          ) : (
+            <Link href="/login" className="flex items-center">
+              <Image
+                src="/loginbutton.svg"
+                alt="로그인"
+                width={132}
+                height={48}
+                className="hover:opacity-80 transition-opacity w-auto h-auto"
+              />
+            </Link>
+          )}
         </div>
 
         {/* 히어로 텍스트 오버레이 (헤더 아래에 오도록 z 낮춤) */}
