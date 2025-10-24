@@ -139,6 +139,8 @@ export default function NoticeContent() {
           try {
             const response = await noticeApi.getNotices();
             setNotices(response.data.notices || []);
+            // 수정 완료 후 상세보기 상태도 초기화
+            setSelectedNotice(null);
           } catch (error) {
             console.error('목록 새로고침 실패:', error);
           }

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import NoticeList from '../../../components/NoticeList';
 
 const ClassContent: React.FC = () => {
 
@@ -35,7 +36,15 @@ const ClassContent: React.FC = () => {
         <div className="border-b-2 border-black mb-3"></div>
         
         <div className="space-y-2">
-          {/* 공지사항 목록이 여기에 표시됩니다 */}
+          <NoticeList 
+            limit={5} 
+            showIndex={true}
+            showDashedLine={true}
+            onNoticeClick={(notice) => {
+              // 공지사항 클릭 시 about 페이지로 이동
+              window.location.href = `/about?tab=notice&id=${notice.id}`;
+            }}
+          />
         </div>
       </div>
 

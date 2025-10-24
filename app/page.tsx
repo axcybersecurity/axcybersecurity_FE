@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { logoutApi } from '../lib/api';
+import NoticeList from '../components/NoticeList';
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -214,6 +215,14 @@ export default function Home() {
                 <div className="w-[90px] h-[3px] bg-[#043A6F]"></div>
                 <div className="w-full h-[0.75px] bg-black absolute top-0"></div>
               </div>
+              <NoticeList 
+                limit={3} 
+                fontSize="lg"
+                onNoticeClick={(notice) => {
+                  // 공지사항 클릭 시 about 페이지로 이동
+                  window.location.href = `/about?tab=notice&id=${notice.id}`;
+                }}
+              />
             </div>
 
             {/* 새소식 */}
