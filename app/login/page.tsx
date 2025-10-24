@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 function LoginPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const activeTab = searchParams.get('tab') || 'register';
+  const activeTab = searchParams.get('tab') || 'login';
 
   const tabs = [
     { id: 'register', title: '가입하기', href: '/login?tab=register' },
@@ -50,9 +50,21 @@ function LoginPageContent() {
       {/* 콘텐츠 영역 */}
       <div className="bg-white py-16 px-0">
         {activeTab === 'register' && (
-          <div className="container mx-auto px-6">
-            {/* 가입하기 폼 내용 */}
-            <p>가입하기 폼을 여기에 추가하세요</p>
+          <div className="container mx-auto px-6 flex justify-center items-center">
+            <p 
+              className="text-center"
+              style={{
+                fontFamily: 'Pretendard',
+                fontWeight: 600,
+                fontStyle: 'normal',
+                fontSize: '18px',
+                lineHeight: '100%',
+                letterSpacing: '0%',
+                color: '#02162E'
+              }}
+            >
+              관리자에게 문의바랍니다.
+            </p>
           </div>
         )}
         {activeTab === 'login' && (
@@ -218,11 +230,11 @@ function LoginPageContent() {
                   </label>
                 </div>
                 
-                {/* 로그인 및 멤버 가입 버튼 */}
-                <div className="flex space-x-3">
+                {/* 로그인 버튼 */}
+                <div>
                   <button
                     type="submit"
-                    className="flex-1 py-3.5 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                    className="w-full py-3.5 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
                     style={{ 
                       backgroundColor: '#3B99D3', 
                       borderRadius: '4px',
@@ -242,24 +254,6 @@ function LoginPageContent() {
                     }}
                   >
                     로그인
-                  </button>
-                  <button
-                    type="button"
-                    className="flex-1 bg-gray-200 py-3.5 px-4 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
-                    style={{ 
-                      borderRadius: '4px',
-                      fontFamily: 'Pretendard',
-                      fontWeight: 500,
-                      fontStyle: 'normal',
-                      fontSize: '14px',
-                      lineHeight: '100%',
-                      letterSpacing: '0%',
-                      textAlign: 'center',
-                      color: '#282828'
-                    }}
-                    onClick={() => router.push('/login?tab=register')}
-                  >
-                    멤버 가입
                   </button>
                 </div>
                 

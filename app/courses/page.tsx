@@ -9,7 +9,7 @@ import ClassContent from './components/ClassContent';
 function AboutPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const activeTab = searchParams.get('tab') || 'main';
+  const activeTab = searchParams.get('tab') || 'class';
 
   const tabs = [
     { id: 'class', title: '강의자료', href: '/courses?tab=class' },
@@ -20,27 +20,27 @@ function AboutPageContent() {
     <div>
       <div className="relative bg-[url('/후보.png')] bg-cover bg-center">
         <div className="absolute inset-0 bg-black/50" aria-hidden="true" />
-          <div className="relative container mx-auto px-6 py-12 flex flex-col items-center">
-            <h1 className="text-3xl font-bold mb-8 border-b-4 border-white pb-4 pt-20 text-white inline-block">
-              자료실
-            </h1>
-            <div className="flex pb-10">
-              {tabs.map(tab => (
-                <button
-                  key={tab.id}
-                  onClick={() => router.push(tab.href)}
-                  className={`py-2 px-6 text-lg font-medium transition-colors duration-300 ${
-                    activeTab === tab.id
-                      ? 'border-b-2 border-white text-white'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  <span className={activeTab === tab.id ? '' : ''}>
-                    {tab.title}
-                  </span>
-                </button>
-              ))}
-            </div>
+        <div className="relative container mx-auto px-6 py-12 flex flex-col items-center">
+          <h1 className="text-3xl font-bold mb-8 border-b-4 border-white pb-4 pt-20 text-white inline-block">
+            자료실
+          </h1>
+          <div className="flex pb-10">
+            {tabs.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => router.push(tab.href)}
+                className={`py-2 px-6 text-lg font-medium transition-colors duration-300 ${
+                  activeTab === tab.id
+                    ? 'border-b-2 border-white text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                <span className={activeTab === tab.id ? '' : ''}>
+                  {tab.title}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
