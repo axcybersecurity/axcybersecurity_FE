@@ -3,19 +3,20 @@
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
-import { useRouter } from 'next/navigation'; // 상세 페이지 이동을 위해 추가
+import { useRouter } from 'next/navigation';
+import NoticeDetail from './NoticeDetail';
+import NoticeWrite from './NoticeWrite';
+import NoticeEdit from './NoticeEdit';
+import { noticeApi } from '../../../lib/api';
 
 interface Notice {
   id: number;
   title: string;
   author: string;
-  date: string;
-  views: number;
+  created_at: string;
+  view_count: number;
 }
 
-const allNoticeData: Notice[] = [
-  { id: 11, title: 'example', author: '정지인', date: '2025-09-09', views: 0 },
-].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const ITEMS_PER_PAGE = 10;
 
@@ -26,13 +27,36 @@ export default function NoticeContent() {
   const [appliedSearchTerm, setAppliedSearchTerm] = useState('');
   const [appliedSearchType, setAppliedSearchType] = useState('title');
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedNotice, setSelectedNotice] = useState<Notice | null>(null);
+  const [isWriting, setIsWriting] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [notices, setNotices] = useState<Notice[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // API에서 공지사항 목록 가져오기
+  useEffect(() => {
+    const fetchNotices = async () => {
+      try {
+        setLoading(true);
+        const response = await noticeApi.getNotices();
+        setNotices(response.data.notices || []);
+      } catch (error) {
+        console.error('공지사항을 불러오는데 실패했습니다:', error);
+        setNotices([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNotices();
+  }, []);
 
   // '작성자' 검색 기능 추가
   const filteredItems = useMemo(() => {
     if (!appliedSearchTerm) {
-      return allNoticeData;
+      return notices;
     }
-    return allNoticeData.filter(item => {
+    return notices.filter(item => {
       if (appliedSearchType === 'title') {
         return item.title.toLowerCase().includes(appliedSearchTerm.toLowerCase());
       }
@@ -40,11 +64,11 @@ export default function NoticeContent() {
         return item.author.toLowerCase().includes(appliedSearchTerm.toLowerCase());
       }
       if (appliedSearchType === 'date') {
-        return item.date === appliedSearchTerm;
+        return item.created_at === appliedSearchTerm;
       }
       return true;
     });
-  }, [appliedSearchTerm, appliedSearchType]);
+  }, [notices, appliedSearchTerm, appliedSearchType]);
 
   const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
 
@@ -76,6 +100,91 @@ export default function NoticeContent() {
       setCurrentPage(totalPages);
     }
   }, [totalPages, currentPage]);
+
+  // 글쓰기 상태면 NoticeWrite 컴포넌트 렌더링
+  if (isWriting) {
+    return (
+      <NoticeWrite 
+        onBack={() => setIsWriting(false)}
+        onSave={async (newNotice) => {
+          try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+              alert('로그인이 필요합니다.');
+              return;
+            }
+            
+            await noticeApi.createNotice(newNotice, token);
+            setIsWriting(false);
+            
+            // 목록 새로고침
+            const response = await noticeApi.getNotices();
+            setNotices(response.data.notices || []);
+          } catch (error) {
+            console.error('공지사항 작성 실패:', error);
+          }
+        }}
+      />
+    );
+  }
+
+  // 수정 상태면 NoticeEdit 컴포넌트 렌더링
+  if (isEditing && selectedNotice) {
+    return (
+      <NoticeEdit 
+        notice={selectedNotice}
+        onBack={() => setIsEditing(false)}
+        onSave={async () => {
+          // 목록 새로고침
+          try {
+            const response = await noticeApi.getNotices();
+            setNotices(response.data.notices || []);
+          } catch (error) {
+            console.error('목록 새로고침 실패:', error);
+          }
+        }}
+      />
+    );
+  }
+
+  // 상세 보기 상태면 NoticeDetail 컴포넌트 렌더링
+  if (selectedNotice) {
+    return (
+      <NoticeDetail 
+        notice={selectedNotice} 
+        onBack={async () => {
+          setSelectedNotice(null);
+          // 목록 새로고침으로 업데이트된 조회수 반영
+          try {
+            const response = await noticeApi.getNotices();
+            setNotices(response.data.notices || []);
+          } catch (error) {
+            console.error('목록 새로고침 실패:', error);
+          }
+        }}
+        onEdit={() => setIsEditing(true)}
+        onDelete={async () => {
+          // 목록 새로고침
+          try {
+            const response = await noticeApi.getNotices();
+            setNotices(response.data.notices || []);
+          } catch (error) {
+            console.error('목록 새로고침 실패:', error);
+          }
+        }}
+      />
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="text-lg">로딩 중...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="py-8 px-4 sm:px-6 lg:px-8">
@@ -133,6 +242,12 @@ export default function NoticeContent() {
           >
             검색
           </button>
+          <button
+            onClick={() => setIsWriting(true)}
+            className="flex-shrink-0 px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 transition-colors"
+          >
+            글쓰기
+          </button>
         </div>
 
         {/* === 공지사항 테이블 === */}
@@ -153,16 +268,31 @@ export default function NoticeContent() {
                   <tr 
                     key={item.id} 
                     className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
-                    onClick={() => router.push(`/notice/${item.id}`)}
+                    onClick={async () => {
+                      // 클릭 시 즉시 상세 조회 API 호출
+                      try {
+                        const response = await noticeApi.getNotice(item.id);
+                        setSelectedNotice(response.data);
+                      } catch (error) {
+                        console.error('상세 조회 실패:', error);
+                        setSelectedNotice(item);
+                      }
+                    }}
                   >
                     <td className="py-3 px-4 text-center text-sm text-gray-700">
                       {filteredItems.length - ((currentPage - 1) * ITEMS_PER_PAGE) - index}
                     </td>
                     <td className="py-3 px-4 text-left text-sm text-gray-700">{item.title}</td>
                     <td className="py-3 px-4 text-center text-sm text-gray-700">{item.author}</td>
-                    <td className="py-3 px-4 text-center text-sm text-gray-700">{item.date}</td>
-                    <td className="py-3 px-4 text-center text-sm text-gray-700">{item.views}</td>
-                  </tr>
+                    <td className="py-3 px-4 text-center text-sm text-gray-700">
+                      {new Date(item.created_at).toLocaleDateString('ko-KR', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                      }).replace(/\./g, '-').replace(/\s/g, '').replace(/-$/, '')}
+                    </td>
+                    <td className="py-3 px-4 text-center text-sm text-gray-700">{item.view_count}</td>
+                    </tr>
                 ))
               ) : (
                 <tr>
