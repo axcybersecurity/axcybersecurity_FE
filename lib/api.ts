@@ -15,5 +15,9 @@ export const loginApi = {
 };
 
 export const logoutApi = {
-  logout: () => api.post('/auth/logout'),
+  logout: (token: string) => api.post('/auth/logout', {}, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  }),
 };
