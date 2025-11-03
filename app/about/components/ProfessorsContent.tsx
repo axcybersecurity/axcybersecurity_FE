@@ -14,8 +14,8 @@ const professorsData: Professor[] = [
   {
     name: '손준영',
     title: '교수',
-    major: '지능정보기술 활용 사이버보안 연구',
-    imageUrl: '/손준영교수님.png'
+    major: 'AX융합사이버보안 연구',
+    imageUrl: '/구성원소개사진/손준영.jpg'
     }
 ];
 
@@ -120,12 +120,12 @@ const ProfessorsContext = () => {
                     <div className="flex">
                       <strong className="w-24 flex-shrink-0">홈페이지</strong>
                       <a href="http://infosec.pusan.ac.kr" className="text-blue-600 hover:underline">
-                        http://infosec.pusan.ac.kr
+                        http://acslab@pusan.ac.kr
                       </a>
                     </div>
                     <div className="flex">
                       <strong className="w-24 flex-shrink-0">전공분야</strong>
-                      <span>지능정보기술 활용 사이버보안</span>
+                      <span>AX융합사이버보안</span>
                     </div>
                     <div className="flex">
                       <strong className="w-24 flex-shrink-0">연락처</strong>

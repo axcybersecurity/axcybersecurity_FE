@@ -23,7 +23,7 @@ const ClassContent: React.FC = () => {
       <div className="rounded p-4 mb-4 shadow-sm" style={{backgroundColor: '#EFF2F5'}}>
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center">
-            <img src="/logo.svg" alt="로고" className="w-6 h-6 mr-2" />
+            <img src="/logo.png" alt="로고" className="w-6 h-6 mr-2" />
             <div>
               <h2 className="text-lg font-bold text-gray-900">공지사항</h2>
               <p className="text-sm text-gray-500">Notice</p>
@@ -52,7 +52,7 @@ const ClassContent: React.FC = () => {
       <div className="rounded p-4 shadow-sm" style={{backgroundColor: '#EFF2F5'}}>
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center">
-            <img src="/logo.svg" alt="로고" className="w-6 h-6 mr-2" />
+            <img src="/logo.png" alt="로고" className="w-6 h-6 mr-2" />
             <div>
               <h2 className="text-lg font-bold text-gray-900">강의자료</h2>
               <p className="text-sm text-gray-500">Lecture materials</p>

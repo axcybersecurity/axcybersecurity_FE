@@ -16,14 +16,14 @@ const allMembersData: Member[] = [
 
   { name: '조재한', role: '박사과정', imageUrl: '/구성원소개사진/조재한.jpg', interests: 'Security', email:'jaehan@islab.re.kr'},
   
+  { name: '고세화 (랩장)', role: '석사과정', imageUrl: '/구성원소개사진/고세화.jpg', interests: 'Security', email:'sehwa@islab.re.kr'},
+  { name: '김희찬 (부랩장)', role: '석사과정', imageUrl: '/구성원소개사진/김희찬.jpg', interests: 'Blockchain', email:'heechan@islab.re.kr'},
   { name: '강은세', role: '석사과정', imageUrl: '/구성원소개사진/강은세.jpg', interests: 'HW Security / Cryptography', email:'eunse@islab.re.kr'},
-  { name: '고세화', role: '석사과정', imageUrl: '/구성원소개사진/고세화.jpg', interests: 'Security', email:'sehwa@islab.re.kr'},
   { name: '신다윗', role: '석사과정', imageUrl: '/구성원소개사진/신다윗.jpg', interests: 'Quantum / Cryptography / Security', email:'dawit@islab.re.kr'},
   { name: '이범수', role: '석사과정', imageUrl: '/구성원소개사진/이범수.jpg', interests: 'AI', email:'beomsu@islab.re.kr'},
   { name: '이경민', role: '석사과정', imageUrl: '/구성원소개사진/이경민.jpg', interests: 'Security', email:'kyeongmin@islab.re.kr'},
   { name: '윤지원', role: '석사과정', imageUrl: '/구성원소개사진/윤지원.jpg', interests: 'AI / Security', email:'jiwon@islab.re.kr'},
   { name: '황연정', role: '석사과정', imageUrl: '/구성원소개사진/황연정.jpg', interests: 'Security', email:'yeonjeong@islab.re.kr'},
-  { name: '김희찬', role: '석사과정', imageUrl: '/구성원소개사진/김희찬.jpg', interests: 'Blockchain', email:'heechan@islab.re.kr'},
   
   { name: '하승원', role: '학부연구생', imageUrl: '/부산대로고.png', interests: 'AI', email:'seungwon@islab.re.kr'},
   { name: '박영주', role: '학부연구생', imageUrl: '/구성원소개사진/박영주.jpg', interests: 'AI / Security', email:'yeongju@islab.re.kr'},
@@ -33,18 +33,20 @@ const allMembersData: Member[] = [
   { name: '이경윤', role: '학부연구생', imageUrl: '/구성원소개사진/이경윤.jpg', interests: 'Blockchain', email:'kyungyun@islab.re.kr'},
   { name: '장현진', role: '학부연구생', imageUrl: '/구성원소개사진/장현진.jpg', interests: 'AI Security', email:'hyunjin@islab.re.kr'}, 
   
+  { name: '윤승리', role: '박사후연구원', imageUrl: '/구성원소개사진/윤승리.jpg', interests: 'RAG / GraphRAG', email:'dbstmdfl11@pusan.ac.kr'}, 
+  { name: '주연신', role: '박사후연구원', imageUrl: '/구성원소개사진/주연신.jpg', interests: 'Computer Network / Security', email:'jy.soo@pusan.ac.kr'}, 
+  { name: '현창훈', role: '박사후연구원', imageUrl: '/구성원소개사진/현창훈.jpg', interests: 'AI Security', email:'chhyun@pusan.ac.kr'}, 
+  
 ];
 
 export default function MembersContent() {
   const [activeTab, setActiveTab] = useState('박사과정');
-  const [activeProfessor, setActiveProfessor] = useState('김호원');
 
   const filteredMembers = allMembersData.filter(
     member => member.role === activeTab
   );
 
-  const tabs = ['박사과정', '석사과정', '학부연구생'];
-  const professors = ['김호원', '손준영'];
+  const tabs = ['박사과정', '석사과정', '학부연구생', '박사후연구원'];
 
   return (
     <div className="py-8">
