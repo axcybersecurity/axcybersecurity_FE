@@ -125,15 +125,6 @@ export default function MainContent() {
         </div>
         </div>
 
-      {/* 연구실 연혁 */}
-        <div className="w-full space-y-4">
-            <br></br>
-            <h2 className="text-3xl font-bold text-gray-800 mb-10">연구실 연혁</h2>
-          <div className="col-span-2">
-            <Image src="/정지인_연구실 연혁.png" alt="연구실 사진 1" width={500} height={100} className="object-cover w-full h-full" />
-          </div>
-        </div>
-
       {/* 오시는 길 */}
         <div className="w-full space-y-4 container mx-auto px-6 py-16">
         <div>

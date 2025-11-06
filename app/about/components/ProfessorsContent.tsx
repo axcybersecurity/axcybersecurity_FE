@@ -20,92 +20,65 @@ const professorsData: Professor[] = [
 ];
 
 const ProfessorsContext = () => {
-  const [selectedProf, setSelectedProf] = useState<Professor | null>(null);
-
-  const handleCardClick = (prof: Professor) => {
-    if (selectedProf?.name === prof.name) setSelectedProf(null);
-    else setSelectedProf(prof);
-  };
 
   return (
-    <div className="bg-gray-50 py-10 sm:py-12 px-4">
+    <div className="bg-gray-50 py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        {/* === 테두리 컨테이너 === */}
-        <div className="relative border border-gray-300 p-4 sm:p-6 lg:p-10 pt-12">
-          {/* === 제목 === */}
-          <h2 className="absolute -top-6 left-4 sm:left-6 bg-gray-50 px-3 sm:px-4 py-0 text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 flex items-center gap-2 sm:gap-3">
-            <Image
-              src="/logo.png"
-              alt="로고"
-              width={30}
-              height={30}
-              className="flex-shrink-0"
-            />
+        {/* 외곽 박스 */}
+        <div className="relative border border-gray-300 bg-white pt-12 px-4 sm:px-6 lg:px-10 pb-8">
+          {/* 제목 (원본 위치 유지) */}
+          <h2 className="absolute -top-6 left-6 bg-gray-50 px-4 py-0 text-4xl lg:text-5xl font-bold text-gray-800 flex items-center gap-3">
+            <Image src="/logo.png" alt="로고" width={35} height={35} />
             Professor
           </h2>
 
-          {/* --- 교수님 카드 그리드 --- */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 p-4 sm:p-6">
-            {professorsData.map((prof, index) => (
-              <div
-                key={index}
-                onClick={() => handleCardClick(prof)}
-                className="relative bg-white shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
-              >
-                {/* 우상단 로고 (반응형 크기) */}
-                <div className="absolute top-3 right-3 sm:top-6 sm:right-6">
+          {/* 본문 레이아웃: PC는 좌우 2열(원본 유지), 모바일은 세로 */}
+          <div className="grid grid-cols-1 lg:grid-cols-[520px_1fr] gap-6 lg:gap-10">
+            {/* 왼쪽: 교수 카드 (원본 카드 느낌 유지) */}
+            <div className="bg-white border border-gray-200 shadow-sm px-8 py-10">
+              <div className="flex items-start gap-8">
+                <div className="w-[160px] h-[260px] flex-shrink-0 overflow-hidden bg-gray-100">
                   <Image
-                    src="/부산대로고.png"
-                    alt="부산대 로고"
-                    width={110}
-                    height={110}
-                    className="w-16 h-auto sm:w-[110px]"
+                    src={professorsData[0].imageUrl}
+                    alt={`${professorsData[0].name} 교수님 프로필 사진`}
+                    width={232}
+                    height={292}
+                    className="w-full h-full object-cover"
                   />
                 </div>
-
-                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 p-4 sm:p-6">
-                  {/* 이미지: 원본 비율 유지, 모바일 전체폭 */}
-                  <div className="w-full sm:w-52 h-72 sm:h-80 flex-shrink-0 overflow-hidden bg-gray-100">
-                    <Image
-                      src={prof.imageUrl}
-                      alt={`${prof.name} 교수님 프로필 사진`}
-                      width={232}
-                      height={292}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  {/* 텍스트 영역 */}
-                  <div className="w-full text-center sm:text-left mt-4 sm:mt-0">
-                    <p className="text-gray-500 text-base sm:text-lg">{prof.title}</p>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-1 mb-3">
-                      {prof.name}
-                    </h2>
-                    <p className="text-gray-500 text-sm sm:text-base pt-4 break-words">
-                      {prof.major}
-                    </p>
-                  </div>
+                <div className="flex-1 pt-40">
+                  <p className="text-gray-500 text-sm mb-1">{professorsData[0].title}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-5">{professorsData[0].name}</h3>
+                  <p className="text-gray-500 text-sm">{professorsData[0].major}</p>
+                </div>
+                {/* 카드 안 우상단 마크(원본 느낌) */}
+                <div className="hidden md:block ml-auto">
+                  <Image src="/부산대로고.png" alt="부산대 로고" width={90} height={90} />
                 </div>
               </div>
-            ))}
+            </div>
 
-            {/* 소개 텍스트 */}
-            <div className="flex-grow text-gray-800 p-4 sm:p-6">
-              <p className="text-lg sm:text-xl">Hello!</p>
-              <p className="leading-relaxed text-sm sm:text-base mt-2">
+            {/* 오른쪽: 소개 텍스트 박스 (원본처럼 테두리/연한 배경) */}
+            <div className="border border-gray-200 bg-gray-50 px-6 py-6 leading-6 text-sm text-gray-700">
+              <p className="font-semibold mb-2">Hello!</p>
+              <p>
                 I am currently an Assistant Professor in the School of Computer Science and
                 Engineering at Pusan National University, having joined in March 2024.
-                <br />
+              </p>
+              <p className="mt-2">
                 I hold a Ph.D. in Computer Science from the Graduate School of Information
                 Security at the Korea Advanced Institute of Science and Technology (KAIST).
-                <br />
+              </p>
+              <p className="mt-2">
                 From August 2009 to 2012, I worked as a researcher at the National Security
                 Research Institute (NSRI), and subsequently at RIMS from January 2013 to
                 February 13, 2013.
-                <br />
+              </p>
+              <p className="mt-2">
                 From February 2013 to 2017, I served as a senior researcher and auditor at the
                 Korea Institute of Nuclear Safety (KINS).
-                <br />
+              </p>
+              <p className="mt-2">
                 Since 2017, until February 2024, I was a senior researcher and team leader in
                 cybersecurity research at the Korea Atomic Energy Research Institute (KAERI).
               </p>
@@ -113,63 +86,45 @@ const ProfessorsContext = () => {
           </div>
         </div>
 
-        {/* 정보 섹션 (Connect) */}
-        <div className="text-gray-800 mt-8">
-          <h3 className="px-3 py-3 text-2xl sm:text-3xl font-semibold text-gray-800 flex items-center gap-2">
-            <Image
-              src="/logo.png"
-              alt="로고"
-              width={28}
-              height={28}
-              className="flex-shrink-0"
-            />
+        {/* Connect 섹션 (원본 여백 유지 + 모바일 줄바꿈만) */}
+        <div className="text-gray-800 mt-10">
+          <h3 className="px-3 py-3 text-3xl font-semibold text-gray-800 flex items-center gap-2">
+            <Image src="/logo.png" alt="로고" width={30} height={30} />
             Connect
           </h3>
-
-          <ul className="list-none space-y-2 p-4 sm:p-8 pt-2 sm:pt-4 text-gray-700">
-            <div className="space-y-3 text-gray-700">
-              <div className="flex flex-wrap items-center gap-2">
-                <strong className="w-20 sm:w-24 flex-shrink-0">이메일</strong>
-                <span className="break-words">jyson@pusan.ac.kr</span>
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <strong className="w-20 sm:w-24 flex-shrink-0">홈페이지</strong>
-                <a
-                  href="http://infosec.pusan.ac.kr"
-                  className="text-blue-600 hover:underline break-all"
-                >
-                  http://infosec.pusan.ac.kr
-                </a>
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <strong className="w-20 sm:w-24 flex-shrink-0">전공분야</strong>
-                <span className="break-words">AX융합사이버보안</span>
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <strong className="w-20 sm:w-24 flex-shrink-0">연락처</strong>
-                <span className="break-words">051) 510-2219</span>
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <strong className="w-20 sm:w-24 flex-shrink-0">연구실</strong>
-                <span className="break-words">이사 후 수정</span>
-              </div>
-            </div>
+          <ul className="list-none space-y-2 px-6 lg:px-8 pt-1 text-gray-700">
+            <li className="flex flex-wrap items-center gap-2">
+              <strong className="w-20 lg:w-24">이메일</strong>
+              <span className="break-all">jyson@pusan.ac.kr</span>
+            </li>
+            <li className="flex flex-wrap items-center gap-2">
+              <strong className="w-20 lg:w-24">홈페이지</strong>
+              <a href="http://infosec.pusan.ac.kr" className="text-blue-600 hover:underline break-all">
+                http://infosec.pusan.ac.kr
+              </a>
+            </li>
+            <li className="flex flex-wrap items-center gap-2">
+              <strong className="w-20 lg:w-24">전공분야</strong>
+              <span>AX융합사이버보안</span>
+            </li>
+            <li className="flex flex-wrap items-center gap-2">
+              <strong className="w-20 lg:w-24">연락처</strong>
+              <span>051) 510-2219</span>
+            </li>
+            <li className="flex flex-wrap items-center gap-2">
+              <strong className="w-20 lg:w-24">연구실</strong>
+              <span>이사 후 수정</span>
+            </li>
           </ul>
         </div>
 
-        {/* 대외활동사항 섹션 (Career) */}
+        {/* Career 섹션 (원본 스타일 유지) */}
         <div className="text-gray-800 mt-8">
-          <h3 className="px-3 py-3 text-2xl sm:text-3xl font-semibold text-gray-800 flex items-center gap-2">
-            <Image
-              src="/logo.png"
-              alt="로고"
-              width={28}
-              height={28}
-              className="flex-shrink-0"
-            />
+          <h3 className="px-3 py-3 text-3xl font-semibold text-gray-800 flex items-center gap-2">
+            <Image src="/logo.png" alt="로고" width={30} height={30} />
             Career
           </h3>
-          <ul className="list-disc list-inside space-y-2 p-4 sm:p-8 pt-2 sm:pt-4 text-gray-700">
+          <ul className="list-disc list-inside space-y-2 px-6 lg:px-8 pt-1 text-gray-700">
             <li>부산광역시 정보보호 지역협의체 위원, 2024.08.01~</li>
             <li>육군본부 사이버전자전 자문위원, 2022.10.01 ~</li>
             <li>육군본부 교육사 드론과학기술그룹 자문위원, 2024.02.01~</li>
