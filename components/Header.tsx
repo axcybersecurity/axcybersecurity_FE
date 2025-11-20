@@ -63,7 +63,6 @@ export default function Header() {
         { title: '교수진', href: '/about?tab=professors' },
         { title: '구성원', href: '/about?tab=members' },
         { title: '졸업생', href: '/about?tab=graduated' },
-        { title: '공지사항', href: '/about?tab=notice' },
       ],
     },
     {
@@ -78,8 +77,9 @@ export default function Header() {
       title: '자료실',
       href: '/courses',
       sublinks: [
-        { title: '강의자료', href: '/about?tab=gallery' },
-        { title: '갤러리', href: '/about?tab=gallery' },
+        { title: '공지사항', href: '/courses?tab=notice' },
+        { title: '갤러리', href: '/courses?tab=gallery' },
+        { title: '강의자료', href: '/courses?tab=class' },
       ],
     },
   ];

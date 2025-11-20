@@ -2,39 +2,16 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { logoutApi } from '../lib/api';
 import NoticeList from '../components/NoticeList';
 
 export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-    setIsLoggedIn(!!token);
-  }, []);
-
-  const handleLogout = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      if (token) await logoutApi.logout(token);
-    } catch (e) {
-      console.error('로그아웃 실패:', e);
-    } finally {
-      localStorage.removeItem('token');
-      setIsLoggedIn(false);
-      window.location.reload();
-    }
-  };
 
   return (
     <div className="w-full">
       {/* ===== HERO ===== */}
       <section className="relative w-full">
         {/* 모바일 16:9 → md 21:9 → lg 8:3 비율 */}
-        <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[8/3]">
+        <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[8/3] overflow-hidden">
           <Image
             src="/main/3.png"
             alt="PNU InfoSec 히어로 이미지"
@@ -43,22 +20,11 @@ export default function Home() {
             priority
           />
 
-          {/* 로그인/로그아웃 */}
-          <div className="absolute top-3 right-3 sm:top-4 sm:right-6 md:top-6 md:right-8 z-30">
-            {isLoggedIn ? (
-              <button onClick={handleLogout} className="hover:opacity-80 transition-opacity" aria-label="로그아웃">
-                <Image src="/main/logout.svg" alt="" width={132} height={48} />
-              </button>
-            ) : (
-              <Link href="/login" className="hover:opacity-80 transition-opacity" aria-label="로그인">
-                <Image src="/main/loginbutton.svg" alt="" width={132} height={48} />
-              </Link>
-            )}
-          </div>
+          {/* 히어로 텍스트 + 갤러리 슬라이드 */}
+          <div className="absolute inset-0 z-10 flex items-center">
+            <div className="container mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
-          {/* 히어로 텍스트 */}
-          <div className="absolute inset-0 z-10">
-            <div className="container mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center">
+              {/* 왼쪽 히어로 텍스트 */}
               <div className="max-w-xl sm:max-w-2xl md:max-w-3xl">
                 <h1
                   className="text-xl sm:text-2xl md:text-3xl font-light mb-3 sm:mb-4 leading-none"
@@ -75,10 +41,60 @@ export default function Home() {
                   미래를 설계하다.
                 </p>
               </div>
+
+              {/* 오른쪽 자동 슬라이드 갤러리 */}
+              <Link
+                href="/courses?tab=gallery"
+                className="hidden md:block bg-white/60 backdrop-blur-md rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform"
+                style={{ width: '360px', height: '240px' }}
+              >
+                <div className="w-full h-full relative overflow-hidden">
+                  <div className="absolute inset-0 flex animate-slide-horizontal">
+                    {/* 갤러리 이미지 목록 — GalleryContent.tsx와 동일한 수대로 넣으면 됨 */}
+                    {[
+                      "/gallery/1.jpg",
+                      "/gallery/2.jpg",
+                      "/gallery/3.jpg",
+                      "/gallery/4.jpg",
+                      "/gallery/5.jpg",
+                    ].map((img, idx) => (
+                      <div key={idx} className="min-w-full h-full relative flex-shrink-0">
+                        <Image
+                          src={img}
+                          alt={`gallery-${idx}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+
             </div>
           </div>
         </div>
+
+        {/* 슬라이드 애니메이션 */}
+        <style jsx>{`
+          @keyframes slideHorizontal {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(0); }
+            25% { transform: translateX(-100%); }
+            45% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            70% { transform: translateX(-200%); }
+            75% { transform: translateX(-300%); }
+            95% { transform: translateX(-300%); }
+            100% { transform: translateX(-400%); }
+          }
+
+          .animate-slide-horizontal {
+            animation: slideHorizontal 30s infinite linear;
+          }
+        `}</style>
       </section>
+
 
       {/* ===== 연구실 주요성과 ===== */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
@@ -262,51 +278,122 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 연구실 소개(링크+문장) ===== */}
+      {/* ===== 연구주제 ===== */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-12">
         <h2
-          className="text-2xl sm:text-3xl font-extrabold text-center"
+          className="text-2xl sm:text-3xl font-extrabold text-center mb-8"
           style={{ color: '#282828', fontFamily: 'Pretendard' }}
         >
-          연구실 소개
+          연구주제
         </h2>
 
-        <div className="mt-6 sm:mt-10 flex flex-col gap-4 sm:gap-6 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* 연구주제 1 */}
+          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+            <div className="mb-4 flex justify-center">
+              <Image src="/main/AI.png" alt="AX융합 사이버보안 기술" width={120} height={120} className="object-contain" />
+            </div>
+            <h3
+              className="text-lg sm:text-xl font-bold mb-3 text-center"
+              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
+            >
+              AX융합 사이버보안 기술
+            </h3>
+            <p
+              className="text-sm sm:text-base text-gray-600 leading-relaxed text-center"
+              style={{ fontFamily: 'Pretendard' }}
+            >
+              AI 자가진화, 생성형 AI, AI 해킹, 적대적공격 등
+            </p>
+          </div>
+
+          {/* 연구주제 2 */}
+          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+            <div className="mb-4 flex justify-center">
+              <Image src="/main/Factory.png" alt="산업시설 사이버보안" width={120} height={120} className="object-contain" />
+            </div>
+            <h3
+              className="text-lg sm:text-xl font-bold mb-3 text-center"
+              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
+            >
+              산업시설 사이버보안
+            </h3>
+            <p
+              className="text-sm sm:text-base text-gray-600 leading-relaxed text-center"
+              style={{ fontFamily: 'Pretendard' }}
+            >
+              스마트공장, 에너지시설, 원자력 사이버보안
+            </p>
+          </div>
+
+          {/* 연구주제 3 */}
+          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+            <div className="mb-4 flex justify-center">
+              <Image src="/main/drone.png" alt="모빌리티 보안" width={120} height={120} className="object-contain" />
+            </div>
+            <h3
+              className="text-lg sm:text-xl font-bold mb-3 text-center"
+              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
+            >
+              모빌리티 보안
+            </h3>
+            <p
+              className="text-sm sm:text-base text-gray-600 leading-relaxed text-center"
+              style={{ fontFamily: 'Pretendard' }}
+            >
+              드론, 자동차, 로봇 사이버보안
+            </p>
+          </div>
+
+          {/* 연구주제 4 */}
+          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+            <div className="mb-4 flex justify-center">
+              <Image src="/main/Blockchain.png" alt="블록체인 응용기술" width={120} height={120} className="object-contain" />
+            </div>
+            <h3
+              className="text-lg sm:text-xl font-bold mb-3 text-center"
+              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
+            >
+              블록체인 응용기술
+            </h3>
+            <p
+              className="text-sm sm:text-base text-gray-600 leading-relaxed text-center"
+              style={{ fontFamily: 'Pretendard' }}
+            >
+              블록체인기술 적용연구
+            </p>
+          </div>
+
+          {/* 연구주제 5 */}
+          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+            <div className="mb-4 flex justify-center">
+              <Image src="/main/Hacking.png" alt="해킹/방어 및 리버싱 기술" width={120} height={120} className="object-contain" />
+            </div>
+            <h3
+              className="text-lg sm:text-xl font-bold mb-3 text-center"
+              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
+            >
+              해킹/방어 및 리버싱 기술
+            </h3>
+            <p
+              className="text-sm sm:text-base text-gray-600 leading-relaxed text-center"
+              style={{ fontFamily: 'Pretendard' }}
+            >
+              역공학, 포렌식기술
+            </p>
+          </div>
+        </div>
+
+        {/* 연구주제 자세히 보기 */}
+        <div className="mt-8 sm:mt-10 text-center">
           <a
-            href="#"
-            className="flex items-center gap-3 text-lg sm:text-xl font-medium text-[#02162E]"
+            href="/research?tab=topics"
+            className="inline-flex items-center gap-3 text-lg sm:text-xl font-medium text-[#02162E] hover:text-[#043A6F] transition-colors"
             style={{ fontFamily: 'Pretendard' }}
           >
             연구주제 자세히 보기
             <Image src="/main/Vector.svg" alt="Arrow" width={10} height={18} className="h-4 w-auto" />
           </a>
-
-          <p
-            className="text-center text-gray-500 text-base sm:text-lg leading-7"
-            style={{ fontFamily: 'Pretendard' }}
-          >
-            저희 정보 보호 및 physical AI 연구실에서는
-            <br className="hidden sm:block" />
-            정보보호 및 지능형 IoT를 주제로 다양한 연구를 진행중입니다.
-          </p>
-        </div>
-      </section>
-
-      {/* ===== 연구 주제 이미지 그리드 ===== */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 items-center">
-          {[
-            ['/main/Property 1=01_AI보안 및  산업용 AI.svg', 'AI보안 및 산업용 AI'],
-            ['/main/Property 1=02_AI기반  자연어처리.svg', 'AI기반 자연어처리'],
-            ['/main/Property 1=03_반도체 SoC 및 사이버 보안.svg', '반도체 SoC 및 사이버 보안'],
-            ['/main/Property 1=04_블록체인.svg', '블록체인'],
-            ['/main/Property 1=05_양자컴퓨팅 및 암호 해독.svg', '양자컴퓨팅 및 암호 해독'],
-            ['/main/Property 1=06_사이버보안.svg', '사이버보안'],
-          ].map(([src, alt]) => (
-            <div key={src} className="flex justify-center">
-              <Image src={src} alt={alt} width={240} height={411} className="h-auto w-full max-w-[200px]" />
-            </div>
-          ))}
         </div>
       </section>
 
