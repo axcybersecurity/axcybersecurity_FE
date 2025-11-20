@@ -12,15 +12,40 @@ type TopicItem = {
   id: string;
   ko: string;
   en: string;
+  description: string;
 };
 
 const TOPICS: TopicItem[] = [
-  { id: 'aiot', ko: 'AI보안 및 산업용 AI', en: 'Artificial Intelligence & IoT' },
-  { id: 'nlp', ko: 'AI기반 자연어처리', en: 'Artificial Intelligence-based natural language processing' },
-  { id: 'soc', ko: '반도체 SoC 및 사이버 보안', en: 'Hardware SOC & Cyber Security' },
-  { id: 'blockchain', ko: '블록체인', en: 'Blockchain Technology' },
-  { id: 'quantum', ko: '양자컴퓨팅 및 암호 해독', en: 'Quantum Computing & Cryptanalysis' },
-  { id: 'cybersec', ko: '사이버보안', en: 'Processing/Cybersecurity' },
+  {
+    id: 'ax-cybersecurity',
+    ko: 'AX융합 사이버보안 기술',
+    en: 'AX Convergence Cybersecurity Technology',
+    description: 'AI 자가진화, 생성형 AI, AI 해킹, 적대적공격 등'
+  },
+  {
+    id: 'industrial-security',
+    ko: '산업시설 사이버보안',
+    en: 'Industrial Facility Cybersecurity',
+    description: '스마트공장, 에너지시설, 원자력 사이버보안'
+  },
+  {
+    id: 'mobility-security',
+    ko: '모빌리티 보안',
+    en: 'Mobility Security',
+    description: '드론, 자동차, 로봇 사이버보안'
+  },
+  {
+    id: 'blockchain',
+    ko: '블록체인 응용기술',
+    en: 'Blockchain Application Technology',
+    description: '블록체인기술 적용연구'
+  },
+  {
+    id: 'hacking-reversing',
+    ko: '해킹/방어 및 리버싱 기술',
+    en: 'Hacking/Defense & Reversing Technology',
+    description: '역공학, 포렌식기술'
+  },
 ];
 
 export default function TopicsContent() {
@@ -28,7 +53,7 @@ export default function TopicsContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const active = searchParams.get('topic') ?? 'aiot';
+  const active = searchParams.get('topic') ?? 'ax-cybersecurity';
 
   const onSelect = (id: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -39,18 +64,16 @@ export default function TopicsContent() {
 
   const renderDetail = () => {
     switch (active) {
-      case 'aiot':
+      case 'ax-cybersecurity':
         return <AiotDetail />;
-      case 'nlp':
+      case 'industrial-security':
         return <NlpDetail />;
-      case 'soc':
+      case 'mobility-security':
         return <SocDetail />;
       case 'blockchain':
         return <BlockchainDetail />;
-      case 'quantum':
+      case 'hacking-reversing':
         return <QuantumDetail />;
-      case 'cybersec':
-        return <CybersecDetail />;
       default:
         return <AiotDetail />;
     }
@@ -80,7 +103,7 @@ export default function TopicsContent() {
 
       {/* 카드 그리드 */}
       <div className="bg-gray-100 bg-opacity-20 py-8 px-6 rounded-lg">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {TOPICS.map((topic) => {
             const isSelected = active === topic.id;
 
@@ -101,34 +124,26 @@ export default function TopicsContent() {
                     style={{
                       fontFamily: 'Pretendard',
                       fontWeight: 700,
-                      fontSize: '28px',
+                      fontSize: '24px',
                       lineHeight: '1.2',
                       color: isSelected ? '#EFF2F5' : '#0B2E5A',
                     }}
-                    className="break-keep"
+                    className="break-keep text-center"
                   >
                     {topic.ko}
                   </div>
 
-                  {/* 여기서 NLP만 natural 뒤에 줄바꿈 */}
                   <div
                     style={{
                       fontFamily: 'Pretendard',
                       fontWeight: 400,
-                      fontSize: '15px',
+                      fontSize: '13px',
                       lineHeight: '1.3',
                       color: isSelected ? '#EFF2F5' : '#6D6D6D',
                     }}
-                    className="break-keep whitespace-normal"
+                    className="break-keep whitespace-normal text-center"
                   >
-                    {topic.id === 'nlp' ? (
-                      <>
-                        Artificial Intelligence-based natural<br />
-                        language processing
-                      </>
-                    ) : (
-                      topic.en
-                    )}
+                    {topic.en}
                   </div>
                 </div>
               </button>
