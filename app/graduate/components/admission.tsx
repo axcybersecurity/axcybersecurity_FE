@@ -7,12 +7,12 @@ export default function Admission() {
       <div className="bg-white pt-10 sm:pt-12">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
-            <span>AI·블록체인·양자내성 보안의</span>
+            <span>AX융합 사이버 보안의</span>
             <br />
             차세대 연구를 주도할 대학원생을 모집합니다.
           </h2>
           <p className="mt-5 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
-            정보보호 및 지능형 사물인터넷 연구실에선 아래 연구 분야에 대한
+            AX 연구실에선 아래 연구 분야에 대한
             <strong className="font-semibold text-gray-800"> 대학원생(석사 과정, 박사과정)</strong>과
             <strong className="font-semibold text-gray-800"> Post Doc, 학부연구생</strong>을 모집합니다.
           </p>
@@ -32,26 +32,24 @@ export default function Admission() {
       {/* 지원 전공 및 모집 과정 섹션 */}
       <section className="bg-white px-4 sm:px-6 py-8 font-sans">
         <div className="container mx-auto">
-          <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-start md:justify-center md:gap-10">
+          <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-stretch md:justify-center md:gap-10">
+            
             {/* 지원전공 */}
-            <div className="flex flex-col items-start gap-3">
-              <div className="relative w-full sm:w-fit overflow-hidden rounded-2xl bg-sky-50/70 p-6 sm:p-8 shadow-sm">
+            <div className="flex flex-col items-start gap-3 w-full md:w-auto">
+              <div className="relative w-full sm:w-[340px] overflow-hidden rounded-2xl bg-sky-50/70 p-6 sm:p-8 shadow-sm h-full">
                 <div className="absolute left-6 top-10 h-16 w-px origin-top-left -rotate-45 transform bg-sky-300" />
                 <div className="relative">
                   <h3 className="text-xs sm:text-sm font-semibold text-sky-800">지원전공</h3>
                   <p className="mt-6 sm:mt-8 text-xl sm:text-2xl font-bold text-slate-800">
-                    정보융합학과 &gt; 컴퓨터공학 전공
+                    전공 무관
                   </p>
                 </div>
               </div>
-              <p className="max-w-prose text-left text-xs sm:text-sm text-gray-500">
-                (모집요강에 있는 AI 전공으로 지원할 경우에는 저희 연구실에 조인할 수 없으므로 지원시 전공 선택에 주의하세요)
-              </p>
             </div>
 
             {/* 모집과정 */}
-            <div>
-              <div className="relative w-full sm:w-fit overflow-hidden rounded-2xl bg-sky-50/70 p-6 sm:p-8 shadow-sm">
+            <div className="w-full md:w-auto">
+              <div className="relative w-full sm:w-[340px] overflow-hidden rounded-2xl bg-sky-50/70 p-6 sm:p-8 shadow-sm h-full">
                 <div className="absolute left-6 top-10 h-16 w-px origin-top-left -rotate-45 transform bg-sky-300" />
                 <div className="relative">
                   <h3 className="text-sm font-semibold text-sky-800">모집과정</h3>
@@ -61,9 +59,11 @@ export default function Admission() {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
+
 
       {/* 상세 내용 섹션 */}
       <div className="bg-white pb-12 sm:pb-16">
@@ -76,10 +76,7 @@ export default function Admission() {
             </div>
             <div className="space-y-4 text-gray-700">
               <p className="font-semibold text-gray-800">
-                지원 전공: 정보융합학과 &gt; 컴퓨터공학 전공 (AI 전공은 불가)
-              </p>
-              <p className="font-bold text-red-600">
-                (모집요강에 있는 AI 전공으로 지원할 경우에는 저희 연구실에 조인할 수 없으므로 지원시 전공 주의하세요)
+                지원 전공: 전공 무관
               </p>
               <p className="text-sm sm:text-base leading-7">
                 <span className="font-bold">T/O:</span> 2학기 석사 입학자 제한 없음
@@ -102,23 +99,13 @@ export default function Admission() {
                   <img src="/graduate_admissions/check.svg" alt="체크 아이콘" width="16" height="16" />
                   조건1
                 </span>
-                <p className="mt-2 text-sm sm:text-base text-gray-700 leading-7">
-                  이산수학, 컴퓨터구조, 컴퓨터보안, 데이터마이닝, C/C++/Python/Java/Android 프로그래밍, Verilog/VHDL, 컴퓨터 네트워크, 임베디드 시스템, 임베디드 리눅스, 해킹 기법, 인공지능, 확률 통계, 머신 러닝, 웹 서비스 관련 과목 중에서 최소 2개 이상의 과목을 수강했거나 해당 분야에 대해 지식이 있어야 함
-                </p>
+                <p className="mt-2 text-sm sm:text-base text-gray-700 leading-7">현 시점 학부 평균 학점이 3.3 이상이 되어야 함</p>
               </div>
               {/* 조건2 */}
               <div>
                 <span className="mb-2 inline-flex items-center gap-1.5 rounded-md bg-[#A0C1E1] px-3 py-1 text-xs sm:text-sm font-semibold text-white">
                   <img src="/graduate_admissions/check.svg" alt="체크 아이콘" width="16" height="16" />
                   조건2
-                </span>
-                <p className="mt-2 text-sm sm:text-base text-gray-700 leading-7">현 시점 학부 평균 학점이 3.0 이상이 되어야 함</p>
-              </div>
-              {/* 조건3 */}
-              <div>
-                <span className="mb-2 inline-flex items-center gap-1.5 rounded-md bg-[#A0C1E1] px-3 py-1 text-xs sm:text-sm font-semibold text-white">
-                  <img src="/graduate_admissions/check.svg" alt="체크 아이콘" width="16" height="16" />
-                  조건3
                 </span>
                 <p className="mt-2 text-sm sm:text-base text-gray-700 leading-7">
                   연구실 멤버들과 협력 및 융화가 잘 되어야하며 연구에 대한 열의가 있어야 함
@@ -139,7 +126,7 @@ export default function Admission() {
                 {
                   title: '1. 입학금 및 등록금 지원',
                   desc:
-                    '(컴퓨터공학 석사과정 지원 학생만 대상임)\n1.1 컴퓨터공학전공 → 융합보안인력양성 사업(본 연구실)에서 지원, 석사 4학기 등록금 100% 지원 (즉, 300만원 * 4학기)\n1.2 AI전공 → 지원불가.',
+                    '컴퓨터공학전공 → 융합보안인력양성 사업(본 연구실)에서 지원, 석사 4학기 등록금 100% 지원 (즉, 300만원 * 4학기)',
                 },
                 {
                   title:

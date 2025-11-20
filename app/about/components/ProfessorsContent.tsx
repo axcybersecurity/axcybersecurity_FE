@@ -100,7 +100,7 @@ const ProfessorsContext = () => {
             <li className="flex flex-wrap items-center gap-2">
               <strong className="w-20 lg:w-24">홈페이지</strong>
               <a href="http://infosec.pusan.ac.kr" className="text-blue-600 hover:underline break-all">
-                http://infosec.pusan.ac.kr
+                http://accs.pusan.ac.kr
               </a>
             </li>
             <li className="flex flex-wrap items-center gap-2">
@@ -109,11 +109,11 @@ const ProfessorsContext = () => {
             </li>
             <li className="flex flex-wrap items-center gap-2">
               <strong className="w-20 lg:w-24">연락처</strong>
-              <span>051) 510-2219</span>
+              <span>051) 510-3641</span>
             </li>
             <li className="flex flex-wrap items-center gap-2">
               <strong className="w-20 lg:w-24">연구실</strong>
-              <span>이사 후 수정</span>
+              <span>부산대학교 IT관 714호</span>
             </li>
           </ul>
         </div>

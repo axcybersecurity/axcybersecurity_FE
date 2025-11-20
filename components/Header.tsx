@@ -60,6 +60,7 @@ export default function Header() {
       title: '연구실 소개',
       href: '/about',
       sublinks: [
+        { title: '연구실', href: '/about?tab=main' },
         { title: '교수진', href: '/about?tab=professors' },
         { title: '구성원', href: '/about?tab=members' },
         { title: '졸업생', href: '/about?tab=graduated' },

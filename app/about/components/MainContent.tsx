@@ -3,33 +3,28 @@ import Image from 'next/image';
 const researchData = [
   {
     id: '01',
-    title: '지능형 IoT 인공지능',
-    topics: ['인공지능 기법 기반 지능형 사물인터넷 기술 연구', '딥러닝 기반 에너지 분석 및 에너지 사용량 예측 기술 연구', '머신러닝 기반 행동 분석, 상향 분석 및 예측 기술 연구', '통계 및 추론 기반 사물인터넷 데이터 분석 기술 연구', '지능형 사물인터넷용 빅데이터 플랫폼 구축 및 연구'],
+    title: 'AX융합 사이버보안 기술',
+    topics: ['AI 자가진화, 생성형 AI, AI 해킹, 적대적 공격'],
   },
   {
     id: '02',
-    title: '정보보호 IoT/HW/SW',
-    topics: ['사물인터넷 경량 암호 기술 연구', '차세대 양자화 암호 기술 연구', '암호 알고리즘 최적화 연구', '사물인터넷 플랫폼 보안 기술 연구', '사물인터넷 보안칩 기술 연구'],
+    title: '산업시설 사이버보안',
+    topics: ['스마트 공장 사이버보안, 에너지 시설 사이버보안, 원자력 사이버보안'],
   },
   {
     id: '03',
-    title: '블록체인',
-    topics: ['BFT 알고리즘 최적화 연구', '완전 분산된 원장 트랜잭션 연구', '가상화폐 프라이버시 보호 기법 연구', '리소스 최적화된 블록체인 채굴 기법 연구', '블록체인 트랜잭션 기밀성 보장기법 연구'],
+    title: '모빌리티 보안',
+    topics: ['드론 사이버보안, 자동차 사이버보안, 로봇 사이버보안'],
   },
   {
     id: '04',
-    title: '디지털트윈',
-    topics: ['인공지능 기법 기반 디지털트윈 구현 기술 연구', '에이전트 기반 모델링 및 시뮬레이션 기술 연구', '딥러닝 기반 건전성 예측 관리 기술 연구', '사물인터넷을 활용한 플랜트 제어 시뮬레이터 연구'],
+    title: '블록체인 응용기술',
+    topics: ['블록체인 응용기술'],
   },
   {
     id: '05',
-    title: '보안칩',
-    topics: ['하드웨어 암호 모듈 개별 연구', '암호 모듈 검증 및 테스트에 관한 연구', 'IoT 환경에서 최적화된 경량 암호 소프트웨어 및 TLS', 'DTLS 보안 프로토콜 연동 하드웨어칩 개발연구', 'IoT 디바이스용 암호에 대한 최적화 구현 연구'],
-  },
-  {
-    id: '06',
-    title: '보안 플랫폼',
-    topics: ['OneM2M 플랫폼 기반의 보안 기술 연구', '클라우드 기반 IoT 보안 기술 개발 및 연구', '스마트시티 플랫폼 기반의 보안 기술 연구', '이종 IoT 플랫폼 간 연동 기술 연구'],
+    title: '해킹/방어 및 리버싱 기술',
+    topics: ['역공학, 포렌식 기술'],
   },
 ];
 
@@ -41,16 +36,16 @@ type ResearchCardProps = {
 
 function ResearchCard({ id, title, topics }: ResearchCardProps) {
   return (
-    <div className="bg-[#1E293B] rounded-4xl p-8 text-white aspect-square">
-      <span className="text-s font-semibold text-orange-200 inline-block pr-5 pt-14 pb-4 mb-4">
+    <div className="bg-[#1E293B] rounded-4xl p-8 text-white">
+      <span className="text-s font-semibold text-orange-200 inline-block pr-5 b-4">
         {id}  
       </span>
-      <strong className="text-2xl font-bold mb-6">
+      <strong className="text-2xl font-bold">
          {title}
       </strong>
       <ul className="space-y-3">
         {topics.map((topic, index) => (
-          <li key={index} className="text-gray-300 text-xs">
+          <li key={index} className="text-gray-300 text-s pt-6">
             {topic}
           </li>
         ))}
@@ -69,7 +64,7 @@ export default function MainContent() {
             <br></br>
             <h2 className="text-4xl font-bold text-gray-800 mb-6">연구실 소개</h2>
             <p className="text-gray-600">
-                <br></br><strong className="text-xl">01&nbsp;&nbsp;&nbsp;연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 제6공학관 컴퓨터공학관
+                <br></br><strong className="text-xl">01&nbsp;&nbsp;&nbsp;연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관
             </p>
         </div>
         {/* 이미지 영역 */}
@@ -110,10 +105,10 @@ export default function MainContent() {
       {/* 연구 과제 */}
         <div className="w-full space-y-4">
             <p className="text-gray-600 mb-8">
-                <br></br><strong className="text-xl">02&nbsp;&nbsp;&nbsp;연구 과제</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;정보보호 및 지능형 IoT 주제로 진행되는 다양한 연구
+                <br></br><strong className="text-xl">02&nbsp;&nbsp;&nbsp;연구 주제</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AX융합 사이버보안 주제로 진행되는 다양한 연구
             </p>
             {/* 그리드 블록 */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 pt-4">
+        <div className="flex flex-col gap-8 w-full">
           {researchData.map((item) => (
             <ResearchCard
               key={item.id}
@@ -152,7 +147,7 @@ export default function MainContent() {
             </h3><br></br>
             <div className="space-y-2 text-gray-700">
                 <p>(46241) 부산광역시 금정구 부산대학로 63번길 2 (장전동)</p>
-                <p>부산대학교 제6공학관(컴퓨터공학관) 6512호</p>
+                <p>부산대학교 IT관 714호</p>
             </div>
             </div>
         </div>
