@@ -10,7 +10,6 @@ export default function Home() {
     <div className="w-full">
       {/* ===== HERO ===== */}
       <section className="relative w-full">
-        {/* 모바일 16:9 → md 21:9 → lg 8:3 비율 */}
         <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[8/3] overflow-hidden">
           <Image
             src="/main/3.png"
@@ -30,7 +29,7 @@ export default function Home() {
                   className="text-xl sm:text-2xl md:text-3xl font-light mb-3 sm:mb-4 leading-none"
                   style={{ color: '#282828', fontFamily: 'Pretendard' }}
                 >
-                  Information Security & AloT
+                  AI Transformation Cyber Security
                 </h1>
                 <p
                   className="text-2xl sm:text-4xl md:text-5xl font-semibold leading-snug"
@@ -95,125 +94,6 @@ export default function Home() {
         `}</style>
       </section>
 
-
-      {/* ===== 연구실 주요성과 ===== */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
-        <h2
-          className="text-2xl sm:text-3xl font-extrabold text-center"
-          style={{ color: '#282828', fontFamily: 'Pretendard' }}
-        >
-          연구실 주요성과
-        </h2>
-
-        <div className="mt-7 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          {/* 카드 1 */}
-          <div className="flex flex-col items-center text-center">
-            <div className="mb-5 sm:mb-6">
-              <Image src="/main/ICCV.png" alt="ICCV 논문" width={216} height={133} className="h-auto w-auto" />
-            </div>
-            <p
-              className="text-base sm:text-lg font-medium leading-tight"
-              style={{ color: '#02162E', fontFamily: 'Pretendard' }}
-            >
-              ICCV-23
-              <br />
-              논문 등재
-            </p>
-          </div>
-
-          {/* 카드 2 */}
-          <div className="flex flex-col items-center text-center">
-            <div className="mb-5 sm:mb-6">
-              <Image src="/main/CVPR.png" alt="CVPR 논문" width={216} height={133} className="h-auto w-auto" />
-            </div>
-            <p
-              className="text-base sm:text-lg font-medium leading-tight"
-              style={{ color: '#02162E', fontFamily: 'Pretendard' }}
-            >
-              CVR-2022
-              <br />
-              논문 등재
-            </p>
-          </div>
-
-          {/* 카드 3 */}
-          <div className="flex flex-col items-center text-center">
-            <div className="mb-5 sm:mb-6">
-              <Image
-                src="/main/성과로고_국가우수성과.png"
-                alt="국가연구개발 우수성과"
-                width={216}
-                height={133}
-                className="h-auto w-auto"
-              />
-            </div>
-            <p
-              className="text-base sm:text-lg font-medium leading-tight"
-              style={{ color: '#02162E', fontFamily: 'Pretendard' }}
-            >
-              국가연구개발
-              <br />
-              우수성과 100선
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== 공지/새소식 ===== */}
-      <section className="mt-8 sm:mt-12 lg:mt-20">
-        <div className="w-full" style={{ backgroundColor: '#D9D9D933' }}>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
-              {/* 공지사항 */}
-              <div className="w-full max-w-md mx-auto lg:mx-0">
-                <div className="flex items-center justify-between mb-4">
-                  <h3
-                    className="text-xl sm:text-2xl font-extrabold"
-                    style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
-                  >
-                    공지사항
-                  </h3>
-                  <svg className="w-7 h-7 sm:w-8 sm:h-9 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17l9.2-9.2M17 17V7H7" />
-                  </svg>
-                </div>
-                <div className="relative mb-5">
-                  <div className="h-[3px] w-24 bg-[#043A6F]" />
-                  <div className="absolute top-0 left-0 w-full h-px bg-black/70" />
-                </div>
-                <NoticeList
-                  limit={3}
-                  fontSize="lg"
-                  onNoticeClick={(notice) => {
-                    window.location.href = `/about?tab=notice&id=${notice.id}`;
-                  }}
-                />
-              </div>
-
-              {/* 새소식 */}
-              <div className="w-full max-w-md mx-auto lg:mx-0">
-                <div className="flex items-center justify-between mb-4">
-                  <h3
-                    className="text-xl sm:text-2xl font-extrabold"
-                    style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
-                  >
-                    새소식
-                  </h3>
-                  <svg className="w-7 h-7 sm:w-8 sm:h-9 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17l9.2-9.2M17 17V7H7" />
-                  </svg>
-                </div>
-                <div className="relative">
-                  <div className="h-[3px] w-20 bg-[#043A6F]" />
-                  <div className="absolute top-0 left-0 w-full h-px bg-black/70" />
-                </div>
-                {/* 새소식 리스트 추가 예정 */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ===== 연구실 소개(텍스트+이미지) ===== */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 lg:mt-28">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
@@ -242,24 +122,18 @@ export default function Home() {
                   className="text-sm sm:text-base leading-7"
                   style={{ color: '#282828', fontFamily: 'Pretendard' }}
                 >
-                  인터넷이 세상을 연결했다면, ISLAB은 그 연결을 지능과 안전으로 완성합니다. AI보안·양자내성 암호·블록체인·지능형IoT를
-                  한축으로 묶어, 사람·데이터·사물이 믿음을 주고받는 미래를 부산에서 설계하고 전세계로 확장합니다.
-                  연구로 끝나지 않고, 산업·정책·창업 생태계를 함께 움직여
+                  우리 AX융합 사이버보안 연구실은 AI보안, 산업시설 보안, 모빌리티 보안, 블록체인, 해킹·방어 기술을 
+                  <br></br>하나로 엮어 지능형·안전한 디지털 세계를 설계합니다.
+                  <br></br>AI 자가진화와 적대적 공격부터 스마트공장·드론·자동차 보안까지 연결된 모든 기술이 신뢰로 작동하는 미래 표준을 만들어 가겠습니다.
                 </p>
 
                 <p
                   className="text-base sm:text-lg md:text-xl leading-7"
                   style={{ color: '#282828', fontFamily: 'Pretendard' }}
                 >
-                  안전한 디지털 가치라는 새로운 표준을 만들어 가겠습니다.
+                  부산에서 시작해 세계로 확장되는 보안·지능 연구의 중심, 
+                  <br></br>ACCSLAB이 만들어 갑니다.
                 </p>
-
-                <button
-                  className="inline-block px-5 py-2 rounded-md border transition-all hover:-translate-y-0.5"
-                  style={{ borderColor: '#5E9BDC', color: '#5E9BDC', fontFamily: 'Pretendard' }}
-                >
-                  more
-                </button>
               </div>
             </div>
           </div>

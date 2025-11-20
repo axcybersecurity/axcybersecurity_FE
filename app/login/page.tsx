@@ -38,7 +38,7 @@ function LoginPageContent() {
   return (
     <div>
       {/* 히어로 섹션 - 후보.png 배경 */}
-      <div className="relative bg-[url('/후보.png')] bg-cover bg-center">
+      <div className="relative bg-[url('/page배경.jpg')] bg-cover bg-center">
         <div className="absolute inset-0 bg-black/50" aria-hidden="true" />
         <div className="relative container mx-auto px-6 py-12 flex flex-col items-center">
           <h1 className="text-3xl font-bold mb-8 border-b-4 border-white pb-4 pt-20 text-white inline-block">
@@ -74,7 +74,7 @@ function LoginPageContent() {
                 fontFamily: 'Pretendard',
                 fontWeight: 600,
                 fontStyle: 'normal',
-                fontSize: '18px',
+                fontSize: '20px',
                 lineHeight: '100%',
                 letterSpacing: '0%',
                 color: '#02162E'
@@ -133,17 +133,8 @@ function LoginPageContent() {
               </div>
             </div>
             
-            {/* Cover 1.svg 이미지 - 바깥쪽으로 분리 */}
-            <div className="flex justify-center mt-4">
-              <img 
-                src="/Cover 1.svg" 
-                alt="Cover" 
-                className="w-auto h-auto"
-              />
-            </div>
-            
             {/* 로그인 폼 */}
-            <div className="max-w-md mx-auto mt-8 mb-20">
+            <div className="max-w-md mx-auto mt-40 mb-20">
               <form className="space-y-6" onSubmit={handleLogin}>
                 {/* 아이디 또는 이메일 입력 필드 */}
                 <div>
@@ -262,7 +253,7 @@ function LoginPageContent() {
                       fontFamily: 'Pretendard',
                       fontWeight: 500,
                       fontStyle: 'normal',
-                      fontSize: '14px',
+                      fontSize: '18px',
                       lineHeight: '100%',
                       letterSpacing: '0%',
                       textAlign: 'center',

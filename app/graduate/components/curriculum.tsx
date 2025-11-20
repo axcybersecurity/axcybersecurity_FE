@@ -52,43 +52,13 @@ export default function Curriculum() {
           <div className="border-t border-gray-800">
             {/* 모바일: 1열, md 이상: 고정폭+유동폭 2열 */}
             <div className="grid grid-cols-1 md:grid-cols-[240px_1fr]">
-              {/* 정보보호 */}
+              {/* AX융합 사이버보안 기술 */}
               <div className="flex items-center justify-center text-center border-b border-r md:border-r border-gray-800 bg-gray-200 p-3 sm:p-4 font-semibold text-gray-700">
-                정보보호
+                AX융합 사이버보안 기술
               </div>
               <div className="flex items-center border-b border-gray-800 p-3 sm:p-4 text-gray-700 min-w-0">
                 <p className="text-sm sm:text-base leading-relaxed break-words">
-                  소프트웨어 보안, 시스템 보안, 네트워크 보안, 암호 모듈 설계, ASIC/FPGA 설계, 역공학, 경량화/최적화
-                </p>
-              </div>
-
-              {/* 인공지능 */}
-              <div className="flex items-center justify-center text-center border-b border-r md:border-r border-gray-800 bg-gray-200 p-3 sm:p-4 font-semibold text-gray-700">
-                인공지능
-              </div>
-              <div className="flex items-center border-b border-gray-800 p-3 sm:p-4 text-gray-700 min-w-0">
-                <p className="text-sm sm:text-base leading-relaxed break-words">
-                  자연어처리, Deep Learning(RNN, LSTM, CNN 등), Machine Learning, TensorFlow, Chatbot 분야
-                </p>
-              </div>
-
-              {/* 지능형 사물인터넷 */}
-              <div className="flex items-center justify-center text-center border-b border-r md:border-r border-gray-800 bg-gray-200 p-3 sm:p-4 font-semibold text-gray-700">
-                지능형 사물인터넷<br />(IoT : Internet of Things)
-              </div>
-              <div className="flex items-center border-b border-gray-800 p-3 sm:p-4 text-gray-700 min-w-0">
-                <p className="text-sm sm:text-base leading-relaxed break-words">
-                  데이터마이닝, 빅데이터, 확률/통계, 웹 서비스, 서비스 플랫폼, 센서네트워크
-                </p>
-              </div>
-
-              {/* 블록체인 */}
-              <div className="flex items-center justify-center text-center border-b border-r md:border-r border-gray-800 bg-gray-200 p-3 sm:p-4 font-semibold text-gray-700">
-                블록체인
-              </div>
-              <div className="flex items-center border-b border-gray-800 p-3 sm:p-4 text-gray-700 min-w-0">
-                <p className="text-sm sm:text-base leading-relaxed break-words">
-                  블록체인 기반 기술, 익명성 제공 블록체인, 프라이버시 보호형 블록체인, 금융 및 항만/물류용 블록체인, 암호 화폐 기반 기술
+                  AI 자가진화, 생성형 AI, AI 해킹, 적대적 공격 등
                 </p>
               </div>
 
@@ -98,17 +68,37 @@ export default function Curriculum() {
               </div>
               <div className="flex items-center border-b border-gray-800 p-3 sm:p-4 text-gray-700 min-w-0">
                 <p className="text-sm sm:text-base leading-relaxed break-words">
-                  원자력발전소, 원자로, 에너지 시설 등 산업시설에 대한 사이버보안 기술
+                  스마트공장 사이버보안, 에너지시설 사이버보안, 원자력 사이버보안
                 </p>
               </div>
 
-              {/* 모바일 사이버보안 */}
+              {/* 모빌리티 보안 */}
               <div className="flex items-center justify-center text-center border-b border-r md:border-r border-gray-800 bg-gray-200 p-3 sm:p-4 font-semibold text-gray-700">
-                모바일 사이버보안
+                모빌리티 보안
               </div>
               <div className="flex items-center border-b border-gray-800 p-3 sm:p-4 text-gray-700 min-w-0">
                 <p className="text-sm sm:text-base leading-relaxed break-words">
-                  자동차 사이버보안, 안티드론/사이버전자전 및 드론 사이버보안 기술
+                  드론 사이버보안, 자동차 사이버보안, 로봇 사이버보안
+                </p>
+              </div>
+
+              {/* 블록체인 응용기술 */}
+              <div className="flex items-center justify-center text-center border-b border-r md:border-r border-gray-800 bg-gray-200 p-3 sm:p-4 font-semibold text-gray-700">
+                블록체인 응용기술
+              </div>
+              <div className="flex items-center border-b border-gray-800 p-3 sm:p-4 text-gray-700 min-w-0">
+                <p className="text-sm sm:text-base leading-relaxed break-words">
+                  블록체인기술 적용 연구
+                </p>
+              </div>
+
+              {/* 해킹/방어 및 리버싱 기술 */}
+              <div className="flex items-center justify-center text-center border-b border-r md:border-r border-gray-800 bg-gray-200 p-3 sm:p-4 font-semibold text-gray-700">
+                해킹/방어 및 리버싱 기술
+              </div>
+              <div className="flex items-center border-b border-gray-800 p-3 sm:p-4 text-gray-700 min-w-0">
+                <p className="text-sm sm:text-base leading-relaxed break-words">
+                  역공학, 포렌식기술
                 </p>
               </div>
             </div>
@@ -116,11 +106,11 @@ export default function Curriculum() {
         </div>
       </div>
 
-      {/* --- 3. Why ISLAB 섹션 --- */}
+      {/* --- 3. Why ACCSLAB 섹션 --- */}
       <section className="bg-gray-100 py-14 sm:py-16 md:py-24">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-4xl">
-            <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl font-bold text-gray-800">Why ISLAB?</h2>
+            <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl font-bold text-gray-800">Why ACCSLAB?</h2>
             <ol className="list-inside list-decimal space-y-1 text-gray-700 text-sm sm:text-base">
               <li>국책·산학 프로젝트 50억 + (안정적 연구비 → 심화 연구비 걱정 ↓)</li>
               <li>논문·특허 200+ & Top-tier AI 학회 게재 (석·박사도 챌린저 ↑)</li>

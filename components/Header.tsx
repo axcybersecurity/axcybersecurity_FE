@@ -94,7 +94,7 @@ export default function Header() {
         {/* 왼쪽 로고 */}
         <div>
           <Link href="/">
-            <Image src="/메인로고.png" alt="메인로고" width={250} height={50}/>
+            <Image src="/main_logo.png" alt="메인로고" width={250} height={50}/>
           </Link>
         </div>
 
