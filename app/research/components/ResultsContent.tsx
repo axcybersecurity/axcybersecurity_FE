@@ -71,13 +71,13 @@ export default function ResultsContent() {
               <div className="space-y-4 text-left">
                 <ul className="list-disc list-inside text-gray-800 leading-relaxed">
                   <li>
-                    <strong>Heechan-Kim, Jaehyun-Kim, Kyungyun-Lee, Junyoung-Son.</strong> 2025. "Blockchain-Assisted Explainable AI Framework for Accountability in Autonomous Driving Systems"
+                    <strong>Heechan-Kim, Jaehyun-Kim, Kyungyun-Lee, Junyoung-Son.</strong> 2025. &quot;Blockchain-Assisted Explainable AI Framework for Accountability in Autonomous Driving Systems&quot;
                   </li>
                   <li>
-                    <strong>SeHwa-Ko, Kyeong-Min Lee, Eunse-Kang, Junyoung-Son.</strong> 2025. "FingerRatchet: A Lightweight Anonymous P2P Protocol with Out-of-Band Fingerprint Exchange"
+                    <strong>SeHwa-Ko, Kyeong-Min Lee, Eunse-Kang, Junyoung-Son.</strong> 2025. &quot;FingerRatchet: A Lightweight Anonymous P2P Protocol with Out-of-Band Fingerprint Exchange&quot;
                   </li>
                   <li>
-                    <strong>KyeongMin-Lee, YeonJeong-Hwang, Thi-Thu-Huong Le, JunYoung Son.</strong> 2025. "Performance Analysis of Signing Algorithms and Integrity Enhancement Techniques for MAVLink in PX4"
+                    <strong>KyeongMin-Lee, YeonJeong-Hwang, Thi-Thu-Huong Le, JunYoung Son.</strong> 2025. &quot;Performance Analysis of Signing Algorithms and Integrity Enhancement Techniques for MAVLink in PX4&quot;
                   </li>
                 </ul>
               </div>
@@ -87,19 +87,19 @@ export default function ResultsContent() {
               <div className="space-y-4 text-left">
                 <ul className="list-disc list-inside text-gray-800 leading-relaxed">
                   <li>
-                    <strong>Beomsun-Lee, Junyoung-Son.</strong> 2025. "Enhancing Automotive Cybersecurity Assurance Evaluation Based on CAL Expansion"
+                    <strong>Beomsun-Lee, Junyoung-Son.</strong> 2025. &quot;Enhancing Automotive Cybersecurity Assurance Evaluation Based on CAL Expansion&quot;
                   </li>
                   <li>
-                    <strong>Jiwon-Yun, Yeonjeong-Hwang, Junyoung-Son.</strong> 2025. "CVE-Based Analysis and Classification of Automotive Security Threats"
+                    <strong>Jiwon-Yun, Yeonjeong-Hwang, Junyoung-Son.</strong> 2025. &quot;CVE-Based Analysis and Classification of Automotive Security Threats&quot;
                   </li>
                   <li>
-                    <strong>KyeongMin-Lee, Yeonjeong-Hwang, Junyoung-Son.</strong> 2025. "An Analysis of the ARIA Algorithm Using Dynamic S-box Based on Isomorphic Mordell Elliptic Curves"
+                    <strong>KyeongMin-Lee, Yeonjeong-Hwang, Junyoung-Son.</strong> 2025. &quot;An Analysis of the ARIA Algorithm Using Dynamic S-box Based on Isomorphic Mordell Elliptic Curves&quot;
                   </li>
                   <li>
-                    <strong>Heechan-Kim, Kyungyun-Lee, Junyoung-Son.</strong> 2025. "Cross-Chain Protocols for Ensuring Blockchain Interoperability: Analysis of Limitations and Countermeasure Techniques"
+                    <strong>Heechan-Kim, Kyungyun-Lee, Junyoung-Son.</strong> 2025. &quot;Cross-Chain Protocols for Ensuring Blockchain Interoperability: Analysis of Limitations and Countermeasure Techniques&quot;
                   </li>
                   <li>
-                    <strong>SeHwa-Ko, Beomsun-Lee, Junyoung-Son.</strong> 2025. "A Survey of Lightweight Techniques for TLS 1.3"
+                    <strong>SeHwa-Ko, Beomsun-Lee, Junyoung-Son.</strong> 2025. &quot;A Survey of Lightweight Techniques for TLS 1.3&quot;
                   </li>
                 </ul>
               </div>
