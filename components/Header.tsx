@@ -14,17 +14,15 @@ export default function Header() {
   const router = useRouter();
   const isHomePage = pathname === '/';
 
-  // --- 스크롤 감지를 위한 상태 추가 ---
+  // --- 스크롤 감지를 위한 상태 ---
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // 스크롤 위치가 10px보다 크면 true
-      setIsScrolled(window.scrollY > 10);
+      // 10px 대신 화면 높이의 1% (1vh) 이상 스크롤 시 감지
+      setIsScrolled(window.scrollY > window.innerHeight * 0.01);
     };
-    // 스크롤 이벤트 리스너 등록
     window.addEventListener('scroll', handleScroll);
-    // 컴포넌트가 사라질 때 리스너 제거 (메모리 누수 방지)
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -47,7 +45,7 @@ export default function Header() {
       window.location.reload();
     }
   };
-  
+
   const navLinks = [
     {
       title: '대학원 진학',
@@ -86,38 +84,53 @@ export default function Header() {
     },
   ];
 
-  // --- 동적 클래스를 위한 변수 선언 ---
-  const headerClasses = isHomePage && !isScrolled ? 'bg-transparent text-black' : 'bg-white text-gray-800 shadow-md';
-  
+  // --- 동적 클래스 ---
+  const headerClasses = isHomePage && !isScrolled 
+    ? 'bg-transparent text-black' 
+    : 'bg-white text-gray-800 shadow-md';
+
   return (
-    <header className={`sticky top-0 z-50 transition-colors duration-300 ${headerClasses}`}>
-      <nav className="container mx-auto px-4 sm:px-6 h-16 sm:h-20 flex justify-between items-center">
-        {/* 왼쪽 로고 */}
+    <header 
+      className={`sticky top-0 z-50 transition-all duration-300 ${headerClasses}`}
+      // 헤더 높이: 고정 px 제거하고 화면 높이의 10vh 사용
+      style={{ height: '10vh', minHeight: '50px' }}
+    >
+      <nav className="container mx-auto px-[4vw] h-full flex justify-between items-center">
+        {/* 1. 왼쪽 로고 */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <Image 
-              src="/main_logo.png" 
-              alt="메인로고" 
-              width={250} 
-              height={50}
-              className="w-32 sm:w-48 md:w-60 h-auto"
-            />
+            {/* 로고 크기: 너비와 높이 비율을 vh/vw로 조정 */}
+            <div className="relative w-[25vw] lg:w-[15vw] h-[5vh] min-h-[30px]">
+              <Image 
+                src="/main_logo.png" 
+                alt="메인로고" 
+                fill
+                className="object-contain object-left"
+                priority
+              />
+            </div>
           </Link>
         </div>
 
-        {/* 데스크톱 메뉴 */}
-        <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+        {/* 2. 데스크톱 메뉴 (lg 이상에서 보임) */}
+        <div className="hidden lg:flex items-center gap-[3vw]">
           {navLinks.map((link) => (
             <div
               key={link.title}
-              className="relative"
+              className="relative group h-full flex items-center"
               onMouseEnter={() => setOpenDropdown(link.title)}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <Link href={link.href} className="hover:text-blue-600 focus:outline-none flex items-center text-sm xl:text-base">
+              <Link 
+                href={link.href} 
+                className="hover:text-blue-600 focus:outline-none flex items-center font-medium whitespace-nowrap transition-colors"
+                // 폰트 크기를 vh로 설정 (화면 높이에 따라 글자 크기 변경)
+                style={{ fontSize: 'clamp(1.4vh, 1.6vh, 2.2vh)' }} 
+              >
                 {link.title}
                 <svg
-                  className={`w-4 h-4 ml-1 transform transition-transform ${openDropdown === link.title ? 'rotate-180' : ''}`}
+                  // 아이콘 크기도 vh로 변경
+                  className={`w-[1.5vh] h-[1.5vh] ml-[0.5vh] transform transition-transform ${openDropdown === link.title ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -126,14 +139,17 @@ export default function Header() {
                 </svg>
               </Link>
 
+              {/* 드롭다운 메뉴 */}
               {openDropdown === link.title && link.sublinks.length > 0 && (
-                <div className="absolute left-0 top-full pt-1 w-auto z-10">
-                  <div className="bg-white border border-gray-200 rounded-md shadow-lg py-2">
+                // top 위치를 헤더 높이인 10vh에 맞춤
+                <div className="absolute left-1/2 transform -translate-x-1/2 top-[8vh] pt-[2vh] w-auto min-w-[12vw] z-20">
+                  <div className="bg-white border border-gray-200 rounded-md shadow-lg py-[1vh] overflow-hidden">
                     {link.sublinks.map((sublink) => (
                       <Link
                         key={sublink.title}
                         href={sublink.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 whitespace-nowrap"
+                        className="block px-[2vw] py-[1vh] text-gray-700 hover:bg-blue-50 hover:text-blue-600 whitespace-nowrap transition-colors text-center"
+                        style={{ fontSize: 'clamp(1.2vh, 1.4vh, 2vh)' }}
                       >
                         {sublink.title}
                       </Link>
@@ -144,34 +160,49 @@ export default function Header() {
             </div>
           ))}
 
-          {/* 로그인/로그아웃 버튼 */}
-          {isLoggedIn ? (
-            <button
-              onClick={handleLogout}
-              className="hover:opacity-80 transition-opacity"
-              aria-label="로그아웃"
-            >
-              <Image src="/main/logout.svg" alt="로그아웃" width={100} height={36} className="w-16 sm:w-20 md:w-24 h-auto" />
-            </button>
-          ) : (
-            <Link
-              href="/login"
-              className="hover:opacity-80 transition-opacity"
-              aria-label="로그인"
-            >
-              <Image src="/main/loginbutton.svg" alt="로그인" width={100} height={36} className="w-16 sm:w-20 md:w-24 h-auto" />
-            </Link>
-          )}
+          {/* 로그인/로그아웃 버튼 (데스크톱) */}
+          <div className="ml-[1vw]">
+            {isLoggedIn ? (
+              <button
+                onClick={handleLogout}
+                className="hover:opacity-80 transition-opacity relative"
+                // 버튼 크기 vh/vw 적용
+                style={{ width: '6vw', height: '4vh', minWidth: '60px' }}
+                aria-label="로그아웃"
+              >
+                <Image 
+                  src="/main/logout.svg" 
+                  alt="로그아웃" 
+                  fill
+                  className="object-contain" 
+                />
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                className="hover:opacity-80 transition-opacity relative block"
+                style={{ width: '6vw', height: '4vh', minWidth: '60px' }}
+                aria-label="로그인"
+              >
+                <Image 
+                  src="/main/loginbutton.svg" 
+                  alt="로그인" 
+                  fill
+                  className="object-contain" 
+                />
+              </Link>
+            )}
+          </div>
         </div>
 
-        {/* 모바일 메뉴 버튼 */}
+        {/* 3. 모바일 메뉴 버튼 (lg 미만에서 보임) */}
         <button
-          className="lg:hidden flex items-center justify-center w-10 h-10"
+          className="lg:hidden flex items-center justify-center p-[1vh]"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="메뉴 열기"
         >
           <svg
-            className="w-6 h-6"
+            className="w-[3vh] h-[3vh]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -185,53 +216,58 @@ export default function Header() {
         </button>
       </nav>
 
-      {/* 모바일 메뉴 */}
+      {/* 4. 모바일 메뉴 드롭다운 */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-gray-200 bg-white">
-          <div className="container mx-auto px-4 py-4 space-y-4">
+        // 높이 계산 시 px 제거하고 vh 사용 (100vh - 헤더높이10vh)
+        <div className="lg:hidden absolute top-[10vh] left-0 w-full bg-white border-t border-gray-200 shadow-xl overflow-y-auto max-h-[90vh]">
+          <div className="container mx-auto px-[4vw] py-[3vh] space-y-[2vh]">
             {navLinks.map((link) => (
-              <div key={link.title} className="border-b border-gray-100 pb-3">
+              <div key={link.title} className="border-b border-gray-100 pb-[1.5vh] last:border-0">
                 <Link
                   href={link.href}
-                  className="block text-base font-medium text-gray-800 mb-2"
+                  className="block font-bold text-gray-800 mb-[1vh] hover:text-blue-600"
+                  style={{ fontSize: '2vh' }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.title}
                 </Link>
-                <div className="pl-4 space-y-1">
+                <div className="pl-[4vw] space-y-[1vh] border-l-2 border-gray-100 ml-[0.5vw]">
                   {link.sublinks.map((sublink) => (
                     <Link
                       key={sublink.title}
                       href={sublink.href}
-                      className="block text-sm text-gray-600 py-1"
+                      className="block text-gray-600 hover:text-blue-500 py-[0.5vh]"
+                      style={{ fontSize: '1.6vh' }}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      {sublink.title}
+                      - {sublink.title}
                     </Link>
                   ))}
                 </div>
               </div>
             ))}
-            <div className="pt-2">
+            
+            {/* 모바일 로그인/로그아웃 */}
+            <div className="pt-[2vh] flex justify-center">
               {isLoggedIn ? (
                 <button
                   onClick={() => {
                     handleLogout();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full flex items-center justify-center"
+                  className="relative w-[12vh] h-[5vh]"
                   aria-label="로그아웃"
                 >
-                  <Image src="/main/logout.svg" alt="로그아웃" width={100} height={36} className="w-24 h-auto" />
+                  <Image src="/main/logout.svg" alt="로그아웃" fill className="object-contain" />
                 </button>
               ) : (
                 <Link
                   href="/login"
-                  className="w-full flex items-center justify-center"
+                  className="relative w-[12vh] h-[5vh]"
                   onClick={() => setIsMobileMenuOpen(false)}
                   aria-label="로그인"
                 >
-                  <Image src="/main/loginbutton.svg" alt="로그인" width={100} height={36} className="w-24 h-auto" />
+                  <Image src="/main/loginbutton.svg" alt="로그인" fill className="object-contain" />
                 </Link>
               )}
             </div>
