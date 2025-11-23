@@ -14,25 +14,22 @@ export default function Header() {
   const router = useRouter();
   const isHomePage = pathname === '/';
 
-  // --- 스크롤 감지를 위한 상태 ---
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // 10px 대신 화면 높이의 1% (1vh) 이상 스크롤 시 감지
-      setIsScrolled(window.scrollY > window.innerHeight * 0.01);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // --- 로그인 상태 확인 ---
   useEffect(() => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    const token =
+      typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     setIsLoggedIn(!!token);
   }, []);
 
-  // --- 로그아웃 핸들러 ---
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -84,72 +81,106 @@ export default function Header() {
     },
   ];
 
-  // --- 동적 클래스 ---
-  const headerClasses = isHomePage && !isScrolled 
-    ? 'bg-transparent text-black' 
-    : 'bg-white text-gray-800 shadow-md';
+  const headerClasses =
+    isHomePage && !isScrolled
+      ? 'bg-transparent text-black'
+      : 'bg-white text-gray-800 shadow-md';
+
+  const authButtonBase =
+    'relative hover:opacity-80 transition-opacity inline-block';
+  const authButtonSize =
+    [
+      'h-[3.2vh]',
+      'min-h-[26px]',
+      'w-[22vw]',
+      'min-w-[72px]',
+      'sm:h-[3.6vh]',
+      'sm:min-h-[28px]',
+      'sm:w-[18vw]',
+      'sm:min-w-[80px]',
+      'md:h-[4vh]',
+      'md:min-h-[32px]',
+      'md:w-[12vh]',
+      'md:min-w-[100px]',
+      'lg:h-[4.4vh]',
+      'lg:min-h-[36px]',
+      'lg:w-[13vh]',
+      'lg:min-w-[110px]',
+    ].join(' ');
+
+  // ✅ 세줄 메뉴(햄버거) 최소 크기 설정
+  const burgerButtonSize =
+    [
+      'flex flex-col justify-center items-center',
+      'w-[4vh]',
+      'h-[4vh]',
+      'min-w-[38px]', // 최소 너비
+      'min-h-[38px]', // 최소 높이
+      'sm:min-w-[40px]',
+      'sm:min-h-[40px]',
+    ].join(' ');
+
+  // 줄(스팬)도 너무 얇아지지 않도록 최소 높이 부여
+  const burgerLineBase =
+    'block w-full h-[0.3vh] min-h-[2px] rounded transition-transform duration-200';
 
   return (
-    <header 
-      className={`sticky top-0 z-50 transition-all duration-300 ${headerClasses}`}
-      // 헤더 높이: 고정 px 제거하고 화면 높이의 10vh 사용
-      style={{ height: '10vh', minHeight: '50px' }}
+    <header
+      className={`sticky top-0 z-50 transition-colors duration-300 ${headerClasses}`}
     >
-      <nav className="container mx-auto px-[4vw] h-full flex justify-between items-center">
-        {/* 1. 왼쪽 로고 */}
-        <div className="flex-shrink-0">
-          <Link href="/">
-            {/* 로고 크기: 너비와 높이 비율을 vh/vw로 조정 */}
-            <div className="relative w-[25vw] lg:w-[15vw] h-[5vh] min-h-[30px]">
-              <Image 
-                src="/main_logo.png" 
-                alt="메인로고" 
-                fill
-                className="object-contain object-left"
-                priority
-              />
-            </div>
+      <nav className="w-full px-4 sm:px-6 h-[10vh] min-h-16 flex justify-between items-center">
+        {/* 왼쪽 로고 */}
+        <div className="relative h-[6vh] min-h-[250px] w-[30vh] min-w-[200px]">
+          <Link href="/" className="block h-full w-full">
+            <Image
+              src="/main_logo.png"
+              alt="메인로고"
+              fill
+              priority
+              className="object-contain object-left"
+            />
           </Link>
         </div>
 
-        {/* 2. 데스크톱 메뉴 (lg 이상에서 보임) */}
-        <div className="hidden lg:flex items-center gap-[3vw]">
+        {/* 오른쪽 메뉴 - 데스크탑 */}
+        <div className="hidden md:flex items-center gap-[3vw]">
           {navLinks.map((link) => (
             <div
               key={link.title}
-              className="relative group h-full flex items-center"
+              className="relative"
               onMouseEnter={() => setOpenDropdown(link.title)}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <Link 
-                href={link.href} 
-                className="hover:text-blue-600 focus:outline-none flex items-center font-medium whitespace-nowrap transition-colors"
-                // 폰트 크기를 vh로 설정 (화면 높이에 따라 글자 크기 변경)
-                style={{ fontSize: 'clamp(1.4vh, 1.6vh, 2.2vh)' }} 
+              <Link
+                href={link.href}
+                className="hover:text-blue-600 focus:outline-none flex items-center text-[1.7vh] md:text-[2.2vh]"
               >
                 {link.title}
                 <svg
-                  // 아이콘 크기도 vh로 변경
-                  className={`w-[1.5vh] h-[1.5vh] ml-[0.5vh] transform transition-transform ${openDropdown === link.title ? 'rotate-180' : ''}`}
+                  className={`w-[1.6vh] h-[1.6vh] ml-[0.6vh] transform transition-transform ${
+                    openDropdown === link.title ? 'rotate-180' : ''
+                  }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
                 </svg>
               </Link>
 
-              {/* 드롭다운 메뉴 */}
               {openDropdown === link.title && link.sublinks.length > 0 && (
-                // top 위치를 헤더 높이인 10vh에 맞춤
-                <div className="absolute left-1/2 transform -translate-x-1/2 top-[8vh] pt-[2vh] w-auto min-w-[12vw] z-20">
-                  <div className="bg-white border border-gray-200 rounded-md shadow-lg py-[1vh] overflow-hidden">
+                <div className="absolute left-0 top-full pt-1 w-auto z-10">
+                  <div className="bg-white border border-gray-200 rounded-md shadow-lg py-2">
                     {link.sublinks.map((sublink) => (
                       <Link
                         key={sublink.title}
                         href={sublink.href}
-                        className="block px-[2vw] py-[1vh] text-gray-700 hover:bg-blue-50 hover:text-blue-600 whitespace-nowrap transition-colors text-center"
-                        style={{ fontSize: 'clamp(1.2vh, 1.4vh, 2vh)' }}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 whitespace-nowrap"
                       >
                         {sublink.title}
                       </Link>
@@ -160,117 +191,126 @@ export default function Header() {
             </div>
           ))}
 
-          {/* 로그인/로그아웃 버튼 (데스크톱) */}
-          <div className="ml-[1vw]">
-            {isLoggedIn ? (
-              <button
-                onClick={handleLogout}
-                className="hover:opacity-80 transition-opacity relative"
-                // 버튼 크기 vh/vw 적용
-                style={{ width: '6vw', height: '4vh', minWidth: '60px' }}
-                aria-label="로그아웃"
-              >
-                <Image 
-                  src="/main/logout.svg" 
-                  alt="로그아웃" 
-                  fill
-                  className="object-contain" 
-                />
-              </button>
-            ) : (
-              <Link
-                href="/login"
-                className="hover:opacity-80 transition-opacity relative block"
-                style={{ width: '6vw', height: '4vh', minWidth: '60px' }}
-                aria-label="로그인"
-              >
-                <Image 
-                  src="/main/loginbutton.svg" 
-                  alt="로그인" 
-                  fill
-                  className="object-contain" 
-                />
-              </Link>
-            )}
-          </div>
+          {/* 로그인/로그아웃 버튼 (데스크탑) */}
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className={`${authButtonBase} ${authButtonSize}`}
+              aria-label="로그아웃"
+            >
+              <Image
+                src="/main/logout.svg"
+                alt="로그아웃"
+                fill
+                className="object-contain"
+              />
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              className={`${authButtonBase} ${authButtonSize}`}
+              aria-label="로그인"
+            >
+              <Image
+                src="/main/loginbutton.svg"
+                alt="로그인"
+                fill
+                className="object-contain"
+              />
+            </Link>
+          )}
         </div>
 
-        {/* 3. 모바일 메뉴 버튼 (lg 미만에서 보임) */}
-        <button
-          className="lg:hidden flex items-center justify-center p-[1vh]"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="메뉴 열기"
-        >
-          <svg
-            className="w-[3vh] h-[3vh]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        {/* 오른쪽 메뉴 - 모바일 */}
+        <div className="flex items-center gap-2 md:hidden">
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className={`${authButtonBase} ${authButtonSize}`}
+              aria-label="로그아웃"
+            >
+              <Image
+                src="/main/logout.svg"
+                alt="로그아웃"
+                fill
+                className="object-contain"
+              />
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              className={`${authButtonBase} ${authButtonSize}`}
+              aria-label="로그인"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <Image
+                src="/main/loginbutton.svg"
+                alt="로그인"
+                fill
+                className="object-contain"
+              />
+            </Link>
+          )}
+
+          {/* ✅ 세줄 메뉴: 최소 크기 보장 */}
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            className={burgerButtonSize}
+            aria-label="메뉴 열기"
           >
-            {isMobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+            <span
+              className={`${burgerLineBase} ${
+                isMobileMenuOpen ? 'translate-y-[0.6vh] rotate-45 bg-gray-700' : 'bg-gray-800'
+              }`}
+            />
+            <span
+              className={`${burgerLineBase} my-[0.4vh] ${
+                isMobileMenuOpen ? 'opacity-0 bg-gray-800' : 'opacity-100 bg-gray-800'
+              }`}
+            />
+            <span
+              className={`${burgerLineBase} ${
+                isMobileMenuOpen
+                  ? '-translate-y-[0.6vh] -rotate-45 bg-gray-700'
+                  : 'bg-gray-800'
+              }`}
+            />
+          </button>
+        </div>
       </nav>
 
-      {/* 4. 모바일 메뉴 드롭다운 */}
       {isMobileMenuOpen && (
-        // 높이 계산 시 px 제거하고 vh 사용 (100vh - 헤더높이10vh)
-        <div className="lg:hidden absolute top-[10vh] left-0 w-full bg-white border-t border-gray-200 shadow-xl overflow-y-auto max-h-[90vh]">
-          <div className="container mx-auto px-[4vw] py-[3vh] space-y-[2vh]">
+        <div className="md:hidden w-full bg-white border-t border-gray-200">
+          <div className="px-4 py-2 flex flex-col gap-1">
             {navLinks.map((link) => (
-              <div key={link.title} className="border-b border-gray-100 pb-[1.5vh] last:border-0">
+              <div key={link.title} className="flex flex-col">
                 <Link
                   href={link.href}
-                  className="block font-bold text-gray-800 mb-[1vh] hover:text-blue-600"
-                  style={{ fontSize: '2vh' }}
+                  className="flex justify-between items-center py-2 text-sm"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {link.title}
+                  <span>{link.title}</span>
+                  {link.sublinks.length > 0 && (
+                    <span className="text-xs text-gray-500">▼</span>
+                  )}
                 </Link>
-                <div className="pl-[4vw] space-y-[1vh] border-l-2 border-gray-100 ml-[0.5vw]">
-                  {link.sublinks.map((sublink) => (
-                    <Link
-                      key={sublink.title}
-                      href={sublink.href}
-                      className="block text-gray-600 hover:text-blue-500 py-[0.5vh]"
-                      style={{ fontSize: '1.6vh' }}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      - {sublink.title}
-                    </Link>
-                  ))}
-                </div>
+                {link.sublinks.length > 0 && (
+                  <div className="pl-4 pb-1 flex flex-col gap-1">
+                    {link.sublinks.map((sublink) => (
+                      <Link
+                        key={sublink.title}
+                        href={sublink.href}
+                        className="py-1 text-xs text-gray-700"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {sublink.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
-            
-            {/* 모바일 로그인/로그아웃 */}
-            <div className="pt-[2vh] flex justify-center">
-              {isLoggedIn ? (
-                <button
-                  onClick={() => {
-                    handleLogout();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="relative w-[12vh] h-[5vh]"
-                  aria-label="로그아웃"
-                >
-                  <Image src="/main/logout.svg" alt="로그아웃" fill className="object-contain" />
-                </button>
-              ) : (
-                <Link
-                  href="/login"
-                  className="relative w-[12vh] h-[5vh]"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  aria-label="로그인"
-                >
-                  <Image src="/main/loginbutton.svg" alt="로그인" fill className="object-contain" />
-                </Link>
-              )}
-            </div>
           </div>
         </div>
       )}
