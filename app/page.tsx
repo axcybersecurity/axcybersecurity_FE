@@ -49,7 +49,7 @@ export default function Home() {
               >
                 <div className="w-full h-full relative overflow-hidden">
                   <div className="absolute inset-0 flex animate-slide-horizontal">
-                    {/* 갤러리 이미지 목록 — GalleryContent.tsx와 동일한 수대로 넣으면 됨 */}
+                    {/* 갤러리 이미지 목록 */}
                     {[
                       "/gallery/1.jpg",
                       "/gallery/2.jpg",
@@ -123,8 +123,8 @@ export default function Home() {
                   style={{ color: '#282828', fontFamily: 'Pretendard' }}
                 >
                   우리 AX융합 사이버보안 연구실은 AI보안, 산업시설 보안, 모빌리티 보안, 블록체인, 해킹·방어 기술을 
-                  <br></br>하나로 엮어 지능형·안전한 디지털 세계를 설계합니다.
-                  <br></br>AI 자가진화와 적대적 공격부터 스마트공장·드론·자동차 보안까지 연결된 모든 기술이 신뢰로 작동하는 미래 표준을 만들어 가겠습니다.
+                  <br />하나로 엮어 지능형·안전한 디지털 세계를 설계합니다.
+                  <br />AI 자가진화와 적대적 공격부터 스마트공장·드론·자동차 보안까지 연결된 모든 기술이 신뢰로 작동하는 미래 표준을 만들어 가겠습니다.
                 </p>
 
                 <p
@@ -132,7 +132,7 @@ export default function Home() {
                   style={{ color: '#282828', fontFamily: 'Pretendard' }}
                 >
                   부산에서 시작해 세계로 확장되는 보안·지능 연구의 중심, 
-                  <br></br>ACCSLAB이 만들어 갑니다.
+                  <br />ACCSLAB이 만들어 갑니다.
                 </p>
               </div>
             </div>
@@ -149,6 +149,115 @@ export default function Home() {
               priority
             />
           </div>
+        </div>
+      </section>
+
+       {/* ===== 연구 실적 ===== */}
+       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14 lg:mt-20">
+        <h2
+          className="text-2xl sm:text-3xl font-extrabold text-center mb-6 sm:mb-8"
+          style={{ color: '#282828', fontFamily: 'Pretendard' }}
+        >
+          연구 실적
+        </h2>
+
+        <p
+          className="text-sm sm:text-base text-gray-600 text-center max-w-3xl mx-auto mb-8 sm:mb-10"
+          style={{ fontFamily: 'Pretendard' }}
+        >
+          ACCSLAB은 AI 보안, 산업시설 보안, 모빌리티 보안, 블록체인, 해킹·방어 등 다양한 분야에서
+          국내외 학술지, 학회, 산학협력 과제를 통해 연구 성과를 축적하고 있습니다.
+        </p>
+
+        {/* 연구 실적 사진 3개 가로 배치 */}
+        <div className="mb-10 flex flex-wrap justify-center gap-4 sm:gap-6">
+          {[
+            '/research/result1.jpg',
+            '/research/result2.jpg',
+            '/research/result3.jpg',
+          ].map((src, idx) => (
+            <div
+              key={idx}
+              className="relative w-[28%] min-w-[180px] max-w-xs aspect-[4/3] rounded-xl overflow-hidden shadow-md"
+            >
+              <Image
+                src={src}
+                alt={`연구 실적 이미지 ${idx + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {/* 카드 1 */}
+          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow h-full">
+            <h3
+              className="text-lg sm:text-xl font-bold mb-3"
+              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
+            >
+              주요 논문 및 학술 활동
+            </h3>
+            <ul
+              className="space-y-2 text-sm sm:text-base text-gray-600"
+              style={{ fontFamily: 'Pretendard' }}
+            >
+              <li>• 그림1에 대한 설명</li>
+              <li>• 그림1에 대한 설명</li>
+              <li>• 그림1에 대한 설명</li>
+            </ul>
+          </div>
+
+          {/* 카드 2 */}
+          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow h-full">
+            <h3
+              className="text-lg sm:text-xl font-bold mb-3"
+              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}>
+              연구 과제 및 산학협력
+            </h3>
+            <ul
+              className="space-y-2 text-sm sm:text-base text-gray-600"
+              style={{ fontFamily: 'Pretendard' }}>
+              <li>• 그림2에 대한 설명</li>
+              <li>• 그림2에 대한 설명</li>
+              <li>• 그림2에 대한 설명</li>
+            </ul>
+          </div>
+
+          {/* 카드 3: 대회/수상/인증 */}
+          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow h-full">
+            <h3
+              className="text-lg sm:text-xl font-bold mb-3"
+              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}>
+              대회·수상 및 인증
+            </h3>
+            <ul
+              className="space-y-2 text-sm sm:text-base text-gray-600"
+              style={{ fontFamily: 'Pretendard' }}>
+              <li>• 그림3에 대한 설명</li>
+              <li>• 그림3에 대한 설명</li>
+              <li>• 그림3에 대한 설명</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* 연구 실적 자세히 보기 */}
+        <div className="mt-8 sm:mt-10 text-center">
+          <a
+            href="/research?tab=results"
+            className="inline-flex items-center gap-3 text-lg sm:text-xl font-medium text-[#02162E] hover:text-[#043A6F] transition-colors"
+            style={{ fontFamily: 'Pretendard' }}
+          >
+            연구 실적 자세히 보기
+            <Image
+              src="/main/Vector.svg"
+              alt="Arrow"
+              width={10}
+              height={18}
+              className="h-4 w-auto"
+            />
+          </a>
         </div>
       </section>
 
@@ -275,8 +384,7 @@ export default function Home() {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
         <h2
           className="text-2xl sm:text-3xl font-extrabold text-center"
-          style={{ color: '#282828', fontFamily: 'Pretendard' }}
-        >
+          style={{ color: '#282828', fontFamily: 'Pretendard' }}>
           산학협력기관
         </h2>
 

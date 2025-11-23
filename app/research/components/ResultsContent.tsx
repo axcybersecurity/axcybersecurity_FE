@@ -8,10 +8,61 @@ export default function ResultsContent() {
 
   const tabs = ['SCI', '국제학술대회', '국내논문 및 국내학술대회', '특허실적', '프로젝트'];
 
+  // ✅ 상단 요약 통계 (숫자 하드코딩)
+  const summaryStats = [
+    { key: 'SCI', label: 'SCI', value: 11, icon: '/results/sci.svg' },
+    { key: 'PATENT', label: '특허', value: 22, icon: '/results/patent.svg' },
+    { key: 'PROJECT', label: '프로젝트', value: 33, icon: '/results/project.svg' },
+    { key: 'AWARD', label: '수상', value: 44, icon: '/results/award.svg' },
+  ];
+
   return (
     <div className="relative pt-20 isolate">
       {/* 연구실적 리스트 */}
       <div className="w-full mt-16 sm:-mt-24 px-4">
+
+        {/* 상단 요약 (SCI / 특허 / 프로젝트 / 수상) */}
+        <div className="w-full max-w-4xl mx-auto mb-8 sm:mb-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
+            {summaryStats.map((item, idx) => (
+              <div key={item.key} className="flex items-center">
+                <div className="flex items-center gap-3">
+                  {/* 동그란 아이콘 배경 */}
+                  <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#F4F7FB]">
+                    <Image
+                      src={item.icon}
+                      alt={item.label}
+                      width={32}
+                      height={32}
+                      className="object-contain"
+                    />
+                  </div>
+
+                  {/* 텍스트 */}
+                  <div className="flex flex-col">
+                    <span
+                      className="text-xs sm:text-sm text-gray-800"
+                      style={{ fontFamily: 'Pretendard' }}
+                    >
+                      {item.label}
+                    </span>
+                    <span
+                      className="text-xl sm:text-2xl font-bold"
+                      style={{ color: '#0066CC', fontFamily: 'Pretendard' }}
+                    >
+                      {item.value}
+                    </span>
+                  </div>
+                </div>
+
+                {/* 세로 점선 구분선 (마지막 아이템 제외, 모바일에서는 숨김) */}
+                {idx < summaryStats.length - 1 && (
+                  <div className="hidden sm:block h-14 mx-6 border-l border-dashed border-gray-300" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* 탭 */}
         <div className="flex justify-center mb-6 sm:mb-8">
@@ -33,7 +84,7 @@ export default function ResultsContent() {
           </div>
         </div>
 
-        {/* 선택 탭 컨테이너 — 모든 탭 동일하게 사용 */}
+        {/* 선택 탭 컨테이너 */}
         <div className="mx-auto bg-white rounded-lg p-4 sm:p-6 mb-8 w-full max-w-[980px] shadow-sm">
           <div className="flex items-center gap-3 mb-4">
             <Image
@@ -60,7 +111,7 @@ export default function ResultsContent() {
           <div className="h-px bg-black mb-4 mx-auto w-full" />
 
           <div className="w-full min-h-[320px] sm:min-h-[420px] md:min-h-[500px] flex justify-start text-left px-2">
-            {/* 탭 내용 넣기 */}
+            {/* 탭 내용 */}
             {activeTab === 'SCI' && (
               <p className="text-black text-base sm:text-lg">
                 여기에 SCI 논문 내용이 들어갑니다

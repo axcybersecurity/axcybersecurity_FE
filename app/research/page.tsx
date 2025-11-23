@@ -27,7 +27,6 @@ function ResearchPageContent() {
           <h1 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 border-b-4 border-white pb-3 md:pb-4 pt-16 md:pt-20 text-white inline-block">
             {pageTitle}
           </h1>
-
           {/* 탭 영역: 중앙 정렬 + 모바일 스크롤 */}
           <div
             className="w-full max-w-5xl pb-6 md:pb-10 flex justify-center"
