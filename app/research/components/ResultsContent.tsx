@@ -128,6 +128,15 @@ export default function ResultsContent() {
                     <strong>SeHwa-Ko, Kyeong-Min Lee, Eunse-Kang, Junyoung-Son.</strong> 2025. &quot;FingerRatchet: A Lightweight Anonymous P2P Protocol with Out-of-Band Fingerprint Exchange&quot;
                   </li>
                   <li>
+                    <strong>Hyunjin-Jang, Jiwon-Yun, Yeonjeong-Hwang, Morsheda Akter, Howon-Kim, Junyoung-Son.</strong> 2025. &quot;Multi-class Attack Detection in CAN Networks using Lightweight 1D CNN&quot;
+                  </li>
+                  <li>
+                    <strong>Andro Aprila Adiputra, Ahmada Yusril Kadiptya, Thi-Thu-Huong Le, JunYoung-Son, Howon Kim.</strong> 2025. &quot;Enhancing Contextual Understanding with Multimodal Siamese Networks Using Contrastive Loss and Text Embeddings&quot;
+                  </li>
+                  <li>
+                    <strong>Thi-Thu-Huong Le, Andro Aprila Adiputra, YeonJeong-Hwang, JunYoung-Son, Howon Kim.</strong> 2025. &quot;Fine-Tuning Transformer LLMs for Detecting SQL Injection and XSS Vulnerabilities&quot;
+                  </li>
+                  <li>
                     <strong>KyeongMin-Lee, YeonJeong-Hwang, Thi-Thu-Huong Le, JunYoung Son.</strong> 2025. &quot;Performance Analysis of Signing Algorithms and Integrity Enhancement Techniques for MAVLink in PX4&quot;
                   </li>
                 </ul>
@@ -156,10 +165,27 @@ export default function ResultsContent() {
               </div>
             )}
 
+            {/* ✅ 특허실적 탭에 1~5 리스트 추가 */}
             {activeTab === '특허실적' && (
-              <p className="text-black text-base sm:text-lg">
-                여기에 특허실적 내용이 들어갑니다
-              </p>
+              <div className="space-y-4 text-left">
+                <ul className="list-disc list-inside text-gray-800 leading-relaxed">
+                  <li>
+                    <strong>Jiin-Jeong, Dobeom-Sung, Beomsun-Lee, Junyoung-Son.</strong> 2025. &quot;A Method and System for Value Assessment and Token-Based Transaction of Natural Language Data Generated from Social Media Posts&quot;
+                  </li>
+                  <li>
+                    <strong>Hyunjin-Jang, Yeonjeong-Hwang, Howon Kim, Junyoung-Son.</strong> 2025. &quot;GPU-BASED ACCELERATED POST-QUANTUM CRYPTOGRAPHY CALCULATION SYSTEM SUPPORTING SMAUG-T&quot;
+                  </li>
+                  <li>
+                    <strong>Heechan-Kim, Jaehan-Jo, Junyoung-Son.</strong> 2025. &quot;Blockchain System for Strengthening BMS Security for EV&quot;
+                  </li>
+                  <li>
+                    <strong>Heechan-Kim, Kyungyun-Lee, Jinsu-Kim, Junyoung-Son.</strong> 2025. &quot;Vehicle Rental Damage Evidence and Automatic Settlement System through Cross-Blockchain Interoperability&quot;
+                  </li>
+                  <li>
+                    <strong>Eunse-Kang, SeHwa-Ko, Howon Kim, Junyoung-Son.</strong> 2025. &quot;KMAC and cSHAKE AEAD Specification&quot;
+                  </li>
+                </ul>
+              </div>
             )}
 
             {activeTab === '프로젝트' && (

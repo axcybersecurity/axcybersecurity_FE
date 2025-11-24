@@ -41,23 +41,29 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* 오른쪽 자동 슬라이드 갤러리 */}
+              {/* 오른쪽 자동 슬라이드 갤러리 - 반응형 */}
               <Link
                 href="/courses?tab=gallery"
-                className="hidden md:block bg-white/60 backdrop-blur-md rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform"
-                style={{ width: '360px', height: '240px' }}
+                className="
+                  hidden md:block
+                  bg-white/60 backdrop-blur-md rounded-xl shadow-lg overflow-hidden
+                  hover:scale-105 transition-transform
+                  w-[28vw] min-w-[260px] max-w-[400px] aspect-[3/2]
+                "
               >
-                <div className="w-full h-full relative overflow-hidden">
+                <div className="relative w-full h-full overflow-hidden">
                   <div className="absolute inset-0 flex animate-slide-horizontal">
-                    {/* 갤러리 이미지 목록 */}
                     {[
-                      "/gallery/1.jpg",
-                      "/gallery/2.jpg",
-                      "/gallery/3.jpg",
-                      "/gallery/4.jpg",
-                      "/gallery/5.jpg",
+                      '/gallery/1.jpg',
+                      '/gallery/2.jpg',
+                      '/gallery/3.jpg',
+                      '/gallery/4.jpg',
+                      '/gallery/5.jpg',
                     ].map((img, idx) => (
-                      <div key={idx} className="min-w-full h-full relative flex-shrink-0">
+                      <div
+                        key={idx}
+                        className="min-w-full h-full relative flex-shrink-0"
+                      >
                         <Image
                           src={img}
                           alt={`gallery-${idx}`}
@@ -152,8 +158,8 @@ export default function Home() {
         </div>
       </section>
 
-       {/* ===== 연구 실적 ===== */}
-       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14 lg:mt-20">
+      {/* ===== 연구 실적 ===== */}
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14 lg:mt-20">
         <h2
           className="text-2xl sm:text-3xl font-extrabold text-center mb-6 sm:mb-8"
           style={{ color: '#282828', fontFamily: 'Pretendard' }}
@@ -169,23 +175,45 @@ export default function Home() {
           국내외 학술지, 학회, 산학협력 과제를 통해 연구 성과를 축적하고 있습니다.
         </p>
 
-        {/* 연구 실적 사진 3개 가로 배치 */}
+        {/* 연구 실적 사진 3개 + 제목 */}
         <div className="mb-10 flex flex-wrap justify-center gap-4 sm:gap-6">
           {[
-            '/research/result1.jpg',
-            '/research/result2.jpg',
-            '/research/result3.jpg',
-          ].map((src, idx) => (
+            {
+              src: '/result_picture/kisa_picture.png',
+              title: 'ACS 해킹방어대회 수상',
+            },
+            {
+              src: '/result_picture/KCF_picture.png',
+              title: '2025 국가암호공모전 수상',
+            },
+            {
+              src: '/result_picture/dive_picture.png',
+              title: 'DIVE AI 경진대회 수상',
+            },
+          ].map((item, idx) => (
             <div
               key={idx}
-              className="relative w-[28%] min-w-[180px] max-w-xs aspect-[4/3] rounded-xl overflow-hidden shadow-md"
+              className="flex flex-col items-center"
             >
-              <Image
-                src={src}
-                alt={`연구 실적 이미지 ${idx + 1}`}
-                fill
-                className="object-cover"
-              />
+              <div className="relative w-[24vh] min-w-[180px] max-w-xs aspect-[4/3] rounded-xl overflow-hidden shadow-md">
+                <Image
+                  src={item.src}
+                  alt={`연구 실적 이미지 ${idx + 1}`}
+                  fill
+                  className={
+                    idx === 1
+                      ? 'object-contain scale-75 origin-center'
+                      : 'object-cover'
+                  }
+                />
+              </div>
+              {/* 🔽 이미지 아래 작은 제목 */}
+              <p
+                className="mt-2 text-xs sm:text-sm text-gray-600 text-center"
+                style={{ fontFamily: 'Pretendard' }}
+              >
+                {item.title}
+              </p>
             </div>
           ))}
         </div>
@@ -213,28 +241,32 @@ export default function Home() {
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow h-full">
             <h3
               className="text-lg sm:text-xl font-bold mb-3"
-              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}>
+              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
+            >
               연구 과제 및 산학협력
             </h3>
             <ul
               className="space-y-2 text-sm sm:text-base text-gray-600"
-              style={{ fontFamily: 'Pretendard' }}>
+              style={{ fontFamily: 'Pretendard' }}
+            >
               <li>• 그림2에 대한 설명</li>
               <li>• 그림2에 대한 설명</li>
               <li>• 그림2에 대한 설명</li>
             </ul>
           </div>
 
-          {/* 카드 3: 대회/수상/인증 */}
+          {/* 카드 3 */}
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow h-full">
             <h3
               className="text-lg sm:text-xl font-bold mb-3"
-              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}>
+              style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
+            >
               대회·수상 및 인증
             </h3>
             <ul
               className="space-y-2 text-sm sm:text-base text-gray-600"
-              style={{ fontFamily: 'Pretendard' }}>
+              style={{ fontFamily: 'Pretendard' }}
+            >
               <li>• 그림3에 대한 설명</li>
               <li>• 그림3에 대한 설명</li>
               <li>• 그림3에 대한 설명</li>
@@ -274,7 +306,13 @@ export default function Home() {
           {/* 연구주제 1 */}
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <div className="mb-4 flex justify-center">
-              <Image src="/main/AI.png" alt="AX융합 사이버보안 기술" width={120} height={120} className="object-contain" />
+              <Image
+                src="/main/AI.png"
+                alt="AX융합 사이버보안 기술"
+                width={120}
+                height={120}
+                className="object-contain"
+              />
             </div>
             <h3
               className="text-lg sm:text-xl font-bold mb-3 text-center"
@@ -293,7 +331,13 @@ export default function Home() {
           {/* 연구주제 2 */}
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <div className="mb-4 flex justify-center">
-              <Image src="/main/Factory.png" alt="산업시설 사이버보안" width={120} height={120} className="object-contain" />
+              <Image
+                src="/main/Factory.png"
+                alt="산업시설 사이버보안"
+                width={120}
+                height={120}
+                className="object-contain"
+              />
             </div>
             <h3
               className="text-lg sm:text-xl font-bold mb-3 text-center"
@@ -312,7 +356,13 @@ export default function Home() {
           {/* 연구주제 3 */}
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <div className="mb-4 flex justify-center">
-              <Image src="/main/drone.png" alt="모빌리티 보안" width={120} height={120} className="object-contain" />
+              <Image
+                src="/main/drone.png"
+                alt="모빌리티 보안"
+                width={120}
+                height={120}
+                className="object-contain"
+              />
             </div>
             <h3
               className="text-lg sm:text-xl font-bold mb-3 text-center"
@@ -331,7 +381,13 @@ export default function Home() {
           {/* 연구주제 4 */}
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <div className="mb-4 flex justify-center">
-              <Image src="/main/Blockchain.png" alt="블록체인 응용기술" width={120} height={120} className="object-contain" />
+              <Image
+                src="/main/Blockchain.png"
+                alt="블록체인 응용기술"
+                width={120}
+                height={120}
+                className="object-contain"
+              />
             </div>
             <h3
               className="text-lg sm:text-xl font-bold mb-3 text-center"
@@ -350,7 +406,13 @@ export default function Home() {
           {/* 연구주제 5 */}
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <div className="mb-4 flex justify-center">
-              <Image src="/main/Hacking.png" alt="해킹/방어 및 리버싱 기술" width={120} height={120} className="object-contain" />
+              <Image
+                src="/main/Hacking.png"
+                alt="해킹/방어 및 리버싱 기술"
+                width={120}
+                height={120}
+                className="object-contain"
+              />
             </div>
             <h3
               className="text-lg sm:text-xl font-bold mb-3 text-center"
@@ -375,7 +437,13 @@ export default function Home() {
             style={{ fontFamily: 'Pretendard' }}
           >
             연구주제 자세히 보기
-            <Image src="/main/Vector.svg" alt="Arrow" width={10} height={18} className="h-4 w-auto" />
+            <Image
+              src="/main/Vector.svg"
+              alt="Arrow"
+              width={10}
+              height={18}
+              className="h-4 w-auto"
+            />
           </a>
         </div>
       </section>
@@ -384,7 +452,8 @@ export default function Home() {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
         <h2
           className="text-2xl sm:text-3xl font-extrabold text-center"
-          style={{ color: '#282828', fontFamily: 'Pretendard' }}>
+          style={{ color: '#282828', fontFamily: 'Pretendard' }}
+        >
           산학협력기관
         </h2>
 

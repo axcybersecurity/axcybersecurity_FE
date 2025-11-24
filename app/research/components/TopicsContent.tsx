@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import AiotDetail from './TopicsDetail/AiotDetail';
 import NlpDetail from './TopicsDetail/NlpDetail';
 import SocDetail from './TopicsDetail/SocDetail';
@@ -49,34 +49,10 @@ const TOPICS: TopicItem[] = [
 ];
 
 export default function TopicsContent() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const active = searchParams.get('topic') ?? 'ax-cybersecurity';
+  const [active, setActive] = useState<string>('ax-cybersecurity');
 
   const onSelect = (id: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set('tab', 'topics');
-    params.set('topic', id);
-    router.push(`${pathname}?${params.toString()}`);
-  };
-
-  const renderDetail = () => {
-    switch (active) {
-      case 'ax-cybersecurity':
-        return <AiotDetail />;
-      case 'industrial-security':
-        return <NlpDetail />;
-      case 'mobility-security':
-        return <SocDetail />;
-      case 'blockchain':
-        return <BlockchainDetail />;
-      case 'hacking-reversing':
-        return <QuantumDetail />;
-      default:
-        return <AiotDetail />;
-    }
+    setActive(id);
   };
 
   return (
@@ -152,8 +128,24 @@ export default function TopicsContent() {
         </div>
       </div>
 
-      {/* 선택된 주제 상세 */}
-      {renderDetail()}
+      {/* 선택된 주제 상세 - 모든 컴포넌트 렌더링하되 hidden으로 제어 */}
+      <div className="mt-8">
+        <div className={active === 'ax-cybersecurity' ? '' : 'hidden'}>
+          <AiotDetail />
+        </div>
+        <div className={active === 'industrial-security' ? '' : 'hidden'}>
+          <NlpDetail />
+        </div>
+        <div className={active === 'mobility-security' ? '' : 'hidden'}>
+          <SocDetail />
+        </div>
+        <div className={active === 'blockchain' ? '' : 'hidden'}>
+          <BlockchainDetail />
+        </div>
+        <div className={active === 'hacking-reversing' ? '' : 'hidden'}>
+          <QuantumDetail />
+        </div>
+      </div>
     </div>
   );
 }
