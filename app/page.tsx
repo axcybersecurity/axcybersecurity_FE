@@ -37,9 +37,9 @@ export default function Home() {
               fontFamily: 'Pretendard',
               fontSize: 'clamp(2.5vh, 5vh, 5vh)',
               lineHeight: 1.25,}}>
-              AI, 블록체인, IoT기술로
-              <br className="hidden sm:block" />
-              미래를 설계하다
+              AI, 블록체인, IoT기술로 
+              <br className="hidden sm:block" /><p> </p>
+               미래를 설계하다
             </p>
           </div>
 
@@ -246,6 +246,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* 연구주제 1 */}
+          <Link href="/research?tab=topics&topic=ax-cybersecurity" className="block">
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <div className="mb-4 flex justify-center">
               <Image
@@ -269,8 +270,9 @@ export default function Home() {
               AI 자가진화, 생성형 AI, AI 해킹, 적대적공격 등
             </p>
           </div>
-
+          </Link>
           {/* 연구주제 2 */}
+          <Link href="/research?tab=topics&topic=industrial-security" className="block">
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <div className="mb-4 flex justify-center">
               <Image
@@ -294,8 +296,10 @@ export default function Home() {
               스마트공장, 에너지시설, 원자력 사이버보안
             </p>
           </div>
+          </Link>
 
           {/* 연구주제 3 */}
+          <Link href="/research?tab=topics&topic=mobility-security" className="block">
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <div className="mb-4 flex justify-center">
               <Image
@@ -304,23 +308,24 @@ export default function Home() {
                 width={120}
                 height={120}
                 className="object-contain"
-              />
+                />
             </div>
             <h3
               className="text-lg sm:text-xl font-bold mb-3 text-center"
               style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
-            >
+              >
               모빌리티 보안
             </h3>
             <p
               className="text-sm sm:text-base text-gray-600 leading-relaxed text-center"
               style={{ fontFamily: 'Pretendard' }}
-            >
+              >
               드론, 자동차, 로봇 사이버보안
             </p>
           </div>
-
+          </Link>
           {/* 연구주제 4 */}
+          <Link href="/research?tab=topics&topic=blockchain" className="block">
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <div className="mb-4 flex justify-center">
               <Image
@@ -329,23 +334,25 @@ export default function Home() {
                 width={120}
                 height={120}
                 className="object-contain"
-              />
+                />
             </div>
             <h3
               className="text-lg sm:text-xl font-bold mb-3 text-center"
               style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
-            >
+              >
               블록체인 응용기술
             </h3>
             <p
               className="text-sm sm:text-base text-gray-600 leading-relaxed text-center"
               style={{ fontFamily: 'Pretendard' }}
-            >
+              >
               블록체인기술 적용연구
             </p>
           </div>
+          </Link>
 
           {/* 연구주제 5 */}
+          <Link href="/research?tab=topics&topic=hacking-reversing" className="block">
           <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
             <div className="mb-4 flex justify-center">
               <Image
@@ -354,23 +361,24 @@ export default function Home() {
                 width={120}
                 height={120}
                 className="object-contain"
-              />
+                />
             </div>
             <h3
               className="text-lg sm:text-xl font-bold mb-3 text-center"
               style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
-            >
+              >
               해킹/방어 및 리버싱 기술
             </h3>
             <p
               className="text-sm sm:text-base text-gray-600 leading-relaxed text-center"
               style={{ fontFamily: 'Pretendard' }}
-            >
+              >
               역공학, 포렌식기술
             </p>
           </div>
+          </Link>
         </div>
-
+        
         {/* 연구주제 자세히 보기 */}
         <div className="mt-8 sm:mt-10 text-center">
           <a

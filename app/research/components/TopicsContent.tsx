@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+
 import AiotDetail from './TopicsDetail/AiotDetail';
 import NlpDetail from './TopicsDetail/NlpDetail';
 import SocDetail from './TopicsDetail/SocDetail';
 import BlockchainDetail from './TopicsDetail/BlockchainDetail';
 import QuantumDetail from './TopicsDetail/QuantumDetail';
-import CybersecDetail from './TopicsDetail/CybersecDetail';
 
 type TopicItem = {
   id: string;
@@ -49,7 +50,14 @@ const TOPICS: TopicItem[] = [
 ];
 
 export default function TopicsContent() {
-  const [active, setActive] = useState<string>('ax-cybersecurity');
+  const searchParams = useSearchParams();
+  const topicFromUrl = searchParams.get('topic') || 'ax-cybersecurity';
+
+  const [active, setActive] = useState<string>(topicFromUrl);
+
+  useEffect(() => {
+    setActive(topicFromUrl);
+  }, [topicFromUrl]);
 
   const onSelect = (id: string) => {
     setActive(id);

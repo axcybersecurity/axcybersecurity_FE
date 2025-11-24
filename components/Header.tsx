@@ -25,6 +25,12 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
+    // 라우트(pathname)가 바뀔 때마다 모바일 메뉴 / 드롭다운 닫기
+    setIsMobileMenuOpen(false);
+    setOpenDropdown(null);
+  }, [pathname]);
+
+  useEffect(() => {
     const token =
       typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     setIsLoggedIn(!!token);
@@ -108,27 +114,23 @@ export default function Header() {
       'lg:min-w-[110px]',
     ].join(' ');
 
-  // ✅ 세줄 메뉴(햄버거) 최소 크기 설정
-  const burgerButtonSize =
-    [
-      'flex flex-col justify-center items-center',
-      'w-[2vh]',
-      'h-[2vh]',
-      'min-w-[25px]', // 최소 너비
-      'min-h-[25px]', // 최소 높이
-      'sm:min-w-[25px]',
-      'sm:min-h-[25px]',
-    ].join(' ');
+// 세줄 메뉴(햄버거) 버튼: flex에서 줄어들지 않게 + 정사각형 px 고정
+const burgerButtonSize = [
+  'flex flex-col justify-center items-center',
+  'shrink-0', // flex에서 눌리지 않도록
+  'w-9',      // 36px
+  'h-9',      // 36px
+].join(' ');
 
-  // 줄(스팬)도 너무 얇아지지 않도록 최소 높이 부여
-  const burgerLineBase =
-    'block w-full h-[0.3vh] min-h-[2px] rounded transition-transform duration-200';
+// 줄(스팬): 고정 길이/두께(px)로 X 모양이 깨지지 않게
+const burgerLineBase =
+  'block w-7 h-[2px] rounded bg-gray-800 transition-transform transition-opacity duration-200';
 
   return (
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${headerClasses}`}
     >
-      <nav className="w-full px-4 sm:px-6 h-[10vh] min-h-16 flex justify-between items-center">
+      <nav className="w-full px-4 sm:px-6 h-[11vh] min-h-16 flex justify-between items-center">
         {/* 왼쪽 로고 */}
         <div className="relative h-[6vh] min-h-[250px] w-[30vh] min-w-[200px]">
           <Link href="/" className="block h-full w-full">
@@ -252,31 +254,35 @@ export default function Header() {
             </Link>
           )}
 
-          {/* ✅ 세줄 메뉴: 최소 크기 보장 */}
+          {/* 세줄 메뉴: 최소 크기 보장 */}
           <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            className={burgerButtonSize}
-            aria-label="메뉴 열기"
-          >
-            <span
-              className={`${burgerLineBase} ${
-                isMobileMenuOpen ? 'translate-y-[0.6vh] rotate-45 bg-gray-700' : 'bg-gray-800'
-              }`}
-            />
-            <span
-              className={`${burgerLineBase} my-[0.4vh] ${
-                isMobileMenuOpen ? 'opacity-0 bg-gray-800' : 'opacity-100 bg-gray-800'
-              }`}
-            />
-            <span
-              className={`${burgerLineBase} ${
-                isMobileMenuOpen
-                  ? '-translate-y-[0.6vh] -rotate-45 bg-gray-700'
-                  : 'bg-gray-800'
-              }`}
-            />
-          </button>
+  type="button"
+  onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+  className={burgerButtonSize}
+  aria-label="메뉴 열기"
+>
+  {/* 위 줄 */}
+  <span
+    className={`${burgerLineBase} ${
+      isMobileMenuOpen ? 'translate-y-[6px] rotate-45 bg-gray-700' : ''
+    }`}
+  />
+
+  {/* 가운데 줄 */}
+  <span
+    className={`${burgerLineBase} my-[5px] ${
+      isMobileMenuOpen ? 'opacity-0' : ''
+    }`}
+  />
+
+  {/* 아래 줄 */}
+  <span
+    className={`${burgerLineBase} ${
+      isMobileMenuOpen ? '-translate-y-[7px] -rotate-45 bg-gray-700' : ''
+    }`}
+  />
+</button>
+
         </div>
       </nav>
 
