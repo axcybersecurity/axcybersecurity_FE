@@ -112,12 +112,12 @@ export default function Header() {
   const burgerButtonSize =
     [
       'flex flex-col justify-center items-center',
-      'w-[4vh]',
-      'h-[4vh]',
-      'min-w-[38px]', // 최소 너비
-      'min-h-[38px]', // 최소 높이
-      'sm:min-w-[40px]',
-      'sm:min-h-[40px]',
+      'w-[2vh]',
+      'h-[2vh]',
+      'min-w-[25px]', // 최소 너비
+      'min-h-[25px]', // 최소 높이
+      'sm:min-w-[25px]',
+      'sm:min-h-[25px]',
     ].join(' ');
 
   // 줄(스팬)도 너무 얇아지지 않도록 최소 높이 부여
@@ -143,7 +143,7 @@ export default function Header() {
         </div>
 
         {/* 오른쪽 메뉴 - 데스크탑 */}
-        <div className="hidden md:flex items-center gap-[3vw]">
+        <div className="hidden md:flex items-center gap-[3vh]">
           {navLinks.map((link) => (
             <div
               key={link.title}
@@ -153,7 +153,7 @@ export default function Header() {
             >
               <Link
                 href={link.href}
-                className="hover:text-blue-600 focus:outline-none flex items-center text-[1.7vh] md:text-[2.2vh]"
+                className="hover:text-blue-600 focus:outline-none flex items-center text-[1.7vh] md:text-[1.8vh]"
               >
                 {link.title}
                 <svg
