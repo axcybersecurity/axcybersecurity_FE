@@ -67,7 +67,6 @@ export default function Header() {
   const navLinks = [
     {
       title: '대학원 진학',
-      href: '/graduate',
       sublinks: [
         { title: '교육과정', href: '/graduate?tab=curriculum' },
         { title: '입학안내', href: '/graduate?tab=admission' },
@@ -179,8 +178,7 @@ export default function Header() {
               onMouseEnter={() => setOpenDropdown(link.title)}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <Link
-                href={link.href}
+              <button
                 className={`hover:text-blue-600 focus:outline-none flex items-center whitespace-nowrap ${navTextSize}`}
                 style={{ fontFamily: 'Pretendard', fontWeight: 'bold' }}
               >
@@ -200,7 +198,7 @@ export default function Header() {
                     d="M19 9l-7 7-7-7"
                   ></path>
                 </svg>
-              </Link>
+              </button>
 
               {/* 드롭다운 */}
               {openDropdown === link.title && link.sublinks.length > 0 && (
@@ -318,8 +316,7 @@ export default function Header() {
           <div className="px-4 py-2 flex flex-col gap-1">
             {navLinks.map((link) => (
               <div key={link.title} className="flex flex-col">
-                <Link
-                  href={link.href}
+                <button
                   className="flex justify-between items-center py-2 text-sm whitespace-nowrap"
                   style={{ fontFamily: 'Pretendard', fontWeight: 'bold' }}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -328,7 +325,7 @@ export default function Header() {
                   {link.sublinks.length > 0 && (
                     <span className="text-xs text-gray-500">▼</span>
                   )}
-                </Link>
+                </button>
                 {link.sublinks.length > 0 && (
                   <div className="pl-4 pb-1 flex flex-col gap-1">
                     {link.sublinks.map((sublink) => (
