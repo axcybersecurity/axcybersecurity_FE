@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="w-full mx-auto">
       {/* ===== HERO ===== */}
-      <section className="relative w-full">
+      <section className="relative w-full z-10">
         <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[8/3] overflow-hidden">
           <Image
             src="/main/BG.jpg"

@@ -145,7 +145,6 @@ export default function Header() {
   const burgerLineBase =
     'block w-7 h-[2px] rounded bg-gray-800 transition-transform transition-opacity duration-200';
 
-  // ✅ 드롭다운 박스/텍스트 크기 상수
   const dropdownBoxSize = 'min-w-[220px] py-3';
   const dropdownTextSize = [
     'text-[14px]',
@@ -159,8 +158,8 @@ export default function Header() {
     >
       <nav className="w-full px-4 sm:px-6 h-[10vh] min-h-18 flex justify-between items-center max-h-[50px]">
         {/* 왼쪽 로고 */}
-        <div className="relative h-[6vh] min-h-[250px] w-[30vh] min-w-[200px]">
-          <Link href="/" className="block h-full w-full">
+        <div className="relative h-[6vh] w-[30vh] min-w-[200px]">
+          <Link href="/" className="block h-full w-full z-5">
             <Image
               src="/main_logo.png"
               alt="메인로고"
@@ -203,7 +202,7 @@ export default function Header() {
                 </svg>
               </Link>
 
-              {/* 드롭다운: nav title 기준 중앙 정렬 + z-index 업 */}
+              {/* 드롭다운 */}
               {openDropdown === link.title && link.sublinks.length > 0 && (
                 <div className="absolute left-1/2 -translate-x-1/2 transform top-full pt-1 w-auto z-[90]">
                   <div

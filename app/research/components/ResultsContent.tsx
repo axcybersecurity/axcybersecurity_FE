@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import award from '../../../public/icon/sci_icon.png';
+import award from '../../../public/icon/award_icon.png';
 import sci from '../../../public/icon/sci_icon.png';
 import project from '../../../public/icon/project_icon.png';
 import patent from '../../../public/icon/patent_icon.png';
@@ -10,13 +10,13 @@ import patent from '../../../public/icon/patent_icon.png';
 export default function ResultsContent() {
   const [activeTab, setActiveTab] = useState('SCI');
 
-  const tabs = ['SCI', '국제학술대회', '국내논문 및 국내학술대회', '특허실적', '프로젝트'];
+  const tabs = ['SCI', '국제학술대회', '국내논문 및 국내학술대회', '특허실적', '프로젝트','수상'];
 
   const summaryStats = [
-    { key: 'SCI', label: 'SCI', value: 11, icon: sci },
-    { key: 'PATENT', label: '특허', value: 22, icon: patent },
-    { key: 'PROJECT', label: '프로젝트', value: 33, icon: project },
-    { key: 'AWARD', label: '수상', value: 44, icon: award },
+    { key: 'SCI', label: 'SCI', value: 0, icon: sci },
+    { key: 'PATENT', label: '특허', value: 5, icon: patent },
+    { key: 'PROJECT', label: '프로젝트', value: 0, icon: project },
+    { key: 'AWARD', label: '수상', value: 5, icon: award },
   ];
 
   return (
@@ -213,6 +213,30 @@ export default function ResultsContent() {
               <p className="text-black text-sm sm:text-base md:text-lg leading-relaxed">
                 여기에 프로젝트 내용이 들어갑니다
               </p>
+            )}
+
+            {/* 🔽 수상 탭 내용 추가 */}
+            {activeTab === '수상' && (
+              <div className="space-y-4 text-left text-sm sm:text-base leading-relaxed text-gray-800">
+                <ul className="list-disc list-inside space-y-2">
+                  <li>
+                    <strong>2025 국가암호공모전</strong> - 암호원천기술 분야 입상
+                  </li>
+                  <li>
+                    <strong>2025 국가암호공모전</strong> - KpqC 알고리즘 분야 입상
+                  </li>
+                  <li>
+                    <strong>2025 DIVE 헤커톤</strong> - 발제사 부문 1등
+                  </li>
+                  <li>
+                    <strong>2025 DIVE 헤커톤</strong> - 종합 3등
+                  </li>
+                  <li>
+                    <strong>ACS 영남권 해킹방어대회</strong> - 1등 · 2등 동시 수상
+                  </li>
+                </ul>
+                {/* 필요하면 위 항목들을 실제 실적에 맞게 수정해서 쓰면 됩니다 */}
+              </div>
             )}
           </div>
         </div>
