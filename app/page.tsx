@@ -11,7 +11,7 @@ export default function Home() {
       <section className="relative w-full">
         <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[8/3] overflow-hidden">
           <Image
-            src="/main/3.png"
+            src="/main/BG.jpg"
             alt="PNU InfoSec 히어로 이미지"
             className="object-cover object-center"
             fill
@@ -23,30 +23,6 @@ export default function Home() {
             <div className="container mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
               {/* 왼쪽 히어로 텍스트 */}
               <div className="max-w-xl sm:max-w-2xl md:max-w-3xl">
-                <h1
-                  className="font-light leading-none"
-                  style={{
-                    color: '#282828',
-                    fontFamily: 'Pretendard',
-                    fontSize: 'clamp(18px, 2.3vh, 40px)',
-                    marginBottom: '1.4vh',
-                  }}
-                >
-                  AI Transformation Cyber Security
-                </h1>
-                <p
-                  className="font-semibold leading-snug"
-                  style={{
-                    color: '#282828',
-                    fontFamily: 'Pretendard',
-                    fontSize: 'clamp(2vh, 3.5vh, 50px)',
-                    lineHeight: 1.25,
-                  }}
-                >
-                  AI, 블록체인, IoT기술로
-                  <br className="hidden sm:block" />
-                  미래를 설계하다
-                </p>
               </div>
 
               {/* 오른쪽 자동 슬라이드 갤러리 - 반응형 */}

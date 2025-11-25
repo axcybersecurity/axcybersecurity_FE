@@ -30,9 +30,25 @@ export default function Header() {
   }, [pathname]);
 
   useEffect(() => {
-    const token =
-      typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    if (typeof window === 'undefined') return;
+    const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'token') {
+        setIsLoggedIn(!!e.newValue);
+      }
+    };
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
   }, []);
 
   const handleLogout = async () => {
@@ -93,31 +109,30 @@ export default function Header() {
 
   const authButtonBase =
     'relative hover:opacity-80 transition-opacity inline-block';
-  const authButtonSize =
-    [
-      'h-[3.2vh]',
-      'min-h-[26px]',
-      'w-[22vw]',
-      'min-w-[72px]',
-      'sm:h-[3.6vh]',
-      'sm:min-h-[28px]',
-      'sm:w-[18vw]',
-      'sm:min-w-[80px]',
-      'md:h-[4vh]',
-      'md:min-h-[32px]',
-      'md:w-[12vh]',
-      'md:min-w-[100px]',
-      'lg:h-[4.4vh]',
-      'lg:min-h-[36px]',
-      'lg:w-[13vh]',
-      'lg:min-w-[110px]',
-    ].join(' ');
+  const authButtonSize = [
+    'h-[3.2vh]',
+    'min-h-[26px]',
+    'w-[22vw]',
+    'min-w-[72px]',
+    'sm:h-[3.6vh]',
+    'sm:min-h-[28px]',
+    'sm:w-[18vw]',
+    'sm:min-w-[80px]',
+    'md:h-[4vh]',
+    'md:min-h-[32px]',
+    'md:w-[12vh]',
+    'md:min-w-[100px]',
+    'lg:h-[4.4vh]',
+    'lg:min-h-[36px]',
+    'lg:w-[13vh]',
+    'lg:min-w-[110px]',
+  ].join(' ');
 
   const navTextSize = [
-    'text-[13px]',
-    'sm:text-[14px]',
-    'md:text-[15px]',
-    'xl:text-[15px]',
+    'text-[15px]',
+    'sm:text-[16px]',
+    'md:text-[17px]',
+    'xl:text-[18px]',
   ].join(' ');
 
   const burgerButtonSize = [
@@ -130,9 +145,17 @@ export default function Header() {
   const burgerLineBase =
     'block w-7 h-[2px] rounded bg-gray-800 transition-transform transition-opacity duration-200';
 
+  // ✅ 드롭다운 박스/텍스트 크기 상수
+  const dropdownBoxSize = 'min-w-[220px] py-3';
+  const dropdownTextSize = [
+    'text-[14px]',
+    'sm:text-[15px]',
+    'md:text-[16px]',
+  ].join(' ');
+
   return (
     <header
-      className={`sticky top-0 z-50 transition-colors duration-300 ${headerClasses}`}
+      className={`sticky top-0 z-[80] transition-colors duration-300 ${headerClasses}`}
     >
       <nav className="w-full px-4 sm:px-6 h-[10vh] min-h-18 flex justify-between items-center max-h-[50px]">
         {/* 왼쪽 로고 */}
@@ -149,7 +172,7 @@ export default function Header() {
         </div>
 
         {/* 오른쪽 메뉴 - 데스크탑 */}
-        <div className="hidden md:flex items-center gap-[3vh]">
+        <div className="hidden md:flex items-center gap-[4.5vh]">
           {navLinks.map((link) => (
             <div
               key={link.title}
@@ -180,15 +203,18 @@ export default function Header() {
                 </svg>
               </Link>
 
+              {/* 드롭다운: nav title 기준 중앙 정렬 + z-index 업 */}
               {openDropdown === link.title && link.sublinks.length > 0 && (
-                <div className="absolute left-0 top-full pt-1 w-auto z-10">
-                  <div className="bg-white border border-gray-200 rounded-md shadow-lg py-2">
+                <div className="absolute left-1/2 -translate-x-1/2 transform top-full pt-1 w-auto z-[90]">
+                  <div
+                    className={`bg-white border border-gray-200 rounded-md shadow-lg ${dropdownBoxSize}`}
+                  >
                     {link.sublinks.map((sublink) => (
                       <Link
                         key={sublink.title}
                         href={sublink.href}
-                        className="block px-4 py-2 text-[13px] sm:text-[14px] text-gray-700 hover:bg-gray-100 whitespace-nowrap"
-                        style={{ fontFamily: 'Pretendard' }}  
+                        className={`block px-5 py-2.5 text-gray-700 hover:bg-gray-100 whitespace-nowrap hover:font-bold ${dropdownTextSize}`}
+                        style={{ fontFamily: 'Pretendard' }}
                       >
                         {sublink.title}
                       </Link>
@@ -279,7 +305,9 @@ export default function Header() {
             />
             <span
               className={`${burgerLineBase} ${
-                isMobileMenuOpen ? '-translate-y-[7px] -rotate-45 bg-gray-700' : ''
+                isMobileMenuOpen
+                  ? '-translate-y-[7px] -rotate-45 bg-gray-700'
+                  : ''
               }`}
             />
           </button>
@@ -287,14 +315,14 @@ export default function Header() {
       </nav>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden w-full bg-white border-t border-gray-200">
+        <div className="md:hidden w-full bg-white border-t border-gray-200 relative z-[85]">
           <div className="px-4 py-2 flex flex-col gap-1">
             {navLinks.map((link) => (
               <div key={link.title} className="flex flex-col">
                 <Link
                   href={link.href}
                   className="flex justify-between items-center py-2 text-sm whitespace-nowrap"
-                  style={{ fontFamily: 'Pretendard' ,fontWeight: 'bold'}}
+                  style={{ fontFamily: 'Pretendard', fontWeight: 'bold' }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span className="whitespace-nowrap">{link.title}</span>
@@ -308,11 +336,13 @@ export default function Header() {
                       <Link
                         key={sublink.title}
                         href={sublink.href}
-                        className="py-1 text-xs text-gray-700 whitespace-nowrap"
+                        className="group py-1 text-xs text-gray-700 whitespace-nowrap"
                         style={{ fontFamily: 'Pretendard' }}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        {sublink.title}
+                        <span className="group-hover:font-bold transition-[font-weight]">
+                          {sublink.title}
+                        </span>
                       </Link>
                     ))}
                   </div>

@@ -16,7 +16,7 @@ const allMembersData: Member[] = [
 
   { name: '고세화 (랩장)', role: '석박통합', imageUrl: '/구성원소개사진/고세화.jpg', interests: 'Security', email:'sehwa@islab.re.kr'},
   { name: '김희찬 (부랩장)', role: '석박통합', imageUrl: '/구성원소개사진/김희찬.jpg', interests: 'Blockchain', email:'heechan@islab.re.kr'},
-  { name: 'Morsheda Akter Annie', role: '박사과정', imageUrl: '/구성원소개사진/Morsheda Akter Annie.jpg', interests: 'AI', email:'annie@islab.re.kr'},
+  { name: 'Morsheda Akter Annie', role: '박사과정', imageUrl: '/구성원소개사진/Morsheda_Akter_Annie.jpg', interests: 'AI', email:'annie@islab.re.kr'},
   
   { name: '이범수', role: '석사과정', imageUrl: '/구성원소개사진/이범수.jpg', interests: 'AI', email:'beomsu@islab.re.kr'},
   { name: '이경민', role: '석사과정', imageUrl: '/구성원소개사진/이경민.jpg', interests: 'Security', email:'kyeongmin@islab.re.kr'},
@@ -60,9 +60,9 @@ export default function MembersContent() {
         <h2
           style={{
             fontFamily: 'Pretendard',
-            fontWeight: 600,
-            fontSize: '40px',
-            lineHeight: '48px',
+            fontWeight: 600, 
+            fontSize: '4.5vh',
+            lineHeight: '4vh',
             color: '#02162E',
             marginBottom: '24px',
           }}
@@ -113,9 +113,33 @@ export default function MembersContent() {
                   <h2 className="text-3xl font-bold text-gray-900 mt-1 mb-4">
                     {member.name}
                   </h2>
-                  <p className="text-gray-500 text-s pt-4">📍 {member.role}</p>
-                  <p className="text-gray-500 text-s pt-4">✍️ {member.interests}</p>
-                  <p className="text-gray-500 text-s pt-4">✉️ {member.email}</p>
+                  <p
+                    className="text-gray-500 text-s pt-4"
+                    style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                    <span className="inline-block bg-gray-300 px-1 rounded">
+                      과정
+                    </span>{' '}
+                    {member.role}
+                  </p>
+
+                  <p
+                    className="text-gray-500 text-s pt-4"
+                    style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                    <span className="inline-block bg-gray-300 px-1 rounded">
+                      전공
+                    </span>{' '}
+                    {member.interests}
+                  </p>
+
+                  <p
+                    className="text-gray-500 text-s pt-4"
+                    style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                    <span className="inline-block bg-gray-300 px-1 rounded">
+                      메일
+                    </span>{' '}
+                    {member.email}
+                  </p>
+
                 </div>
               </div>
             </div>
