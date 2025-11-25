@@ -14,8 +14,8 @@ export default function Footer() {
           </p>
 
           <div className="pt-2">
-            <p>📞 +82 51-510-3641</p>
-            <p>✉️ jyson@pusan.ac.kr</p>
+            <p>+82 51-510-3641</p>
+            <p>jyson@pusan.ac.kr</p>
           </div>
 
           <div className="border-t border-gray-600 mt-6 pt-4 text-xs sm:text-sm text-gray-500">

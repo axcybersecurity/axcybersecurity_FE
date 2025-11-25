@@ -25,7 +25,6 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    // 라우트(pathname)가 바뀔 때마다 모바일 메뉴 / 드롭다운 닫기
     setIsMobileMenuOpen(false);
     setOpenDropdown(null);
   }, [pathname]);
@@ -114,23 +113,28 @@ export default function Header() {
       'lg:min-w-[110px]',
     ].join(' ');
 
-// 세줄 메뉴(햄버거) 버튼: flex에서 줄어들지 않게 + 정사각형 px 고정
-const burgerButtonSize = [
-  'flex flex-col justify-center items-center',
-  'shrink-0', // flex에서 눌리지 않도록
-  'w-9',      // 36px
-  'h-9',      // 36px
-].join(' ');
+  const navTextSize = [
+    'text-[13px]',
+    'sm:text-[14px]',
+    'md:text-[15px]',
+    'xl:text-[15px]',
+  ].join(' ');
 
-// 줄(스팬): 고정 길이/두께(px)로 X 모양이 깨지지 않게
-const burgerLineBase =
-  'block w-7 h-[2px] rounded bg-gray-800 transition-transform transition-opacity duration-200';
+  const burgerButtonSize = [
+    'flex flex-col justify-center items-center',
+    'shrink-0',
+    'w-9',
+    'h-9',
+  ].join(' ');
+
+  const burgerLineBase =
+    'block w-7 h-[2px] rounded bg-gray-800 transition-transform transition-opacity duration-200';
 
   return (
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${headerClasses}`}
     >
-      <nav className="w-full px-4 sm:px-6 h-[11vh] min-h-16 flex justify-between items-center">
+      <nav className="w-full px-4 sm:px-6 h-[10vh] min-h-18 flex justify-between items-center max-h-[50px]">
         {/* 왼쪽 로고 */}
         <div className="relative h-[6vh] min-h-[250px] w-[30vh] min-w-[200px]">
           <Link href="/" className="block h-full w-full">
@@ -155,11 +159,12 @@ const burgerLineBase =
             >
               <Link
                 href={link.href}
-                className="hover:text-blue-600 focus:outline-none flex items-center text-[1.7vh] md:text-[1.8vh]"
+                className={`hover:text-blue-600 focus:outline-none flex items-center whitespace-nowrap ${navTextSize}`}
+                style={{ fontFamily: 'Pretendard', fontWeight: 'bold' }}
               >
                 {link.title}
                 <svg
-                  className={`w-[1.6vh] h-[1.6vh] ml-[0.6vh] transform transition-transform ${
+                  className={`w-[14px] h-[14px] ml-[0.6vh] transform transition-transform ${
                     openDropdown === link.title ? 'rotate-180' : ''
                   }`}
                   fill="none"
@@ -182,7 +187,8 @@ const burgerLineBase =
                       <Link
                         key={sublink.title}
                         href={sublink.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 whitespace-nowrap"
+                        className="block px-4 py-2 text-[13px] sm:text-[14px] text-gray-700 hover:bg-gray-100 whitespace-nowrap"
+                        style={{ fontFamily: 'Pretendard' }}  
                       >
                         {sublink.title}
                       </Link>
@@ -254,35 +260,29 @@ const burgerLineBase =
             </Link>
           )}
 
-          {/* 세줄 메뉴: 최소 크기 보장 */}
+          {/* 세줄 메뉴 */}
           <button
-  type="button"
-  onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-  className={burgerButtonSize}
-  aria-label="메뉴 열기"
->
-  {/* 위 줄 */}
-  <span
-    className={`${burgerLineBase} ${
-      isMobileMenuOpen ? 'translate-y-[6px] rotate-45 bg-gray-700' : ''
-    }`}
-  />
-
-  {/* 가운데 줄 */}
-  <span
-    className={`${burgerLineBase} my-[5px] ${
-      isMobileMenuOpen ? 'opacity-0' : ''
-    }`}
-  />
-
-  {/* 아래 줄 */}
-  <span
-    className={`${burgerLineBase} ${
-      isMobileMenuOpen ? '-translate-y-[7px] -rotate-45 bg-gray-700' : ''
-    }`}
-  />
-</button>
-
+            type="button"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            className={burgerButtonSize}
+            aria-label="메뉴 열기"
+          >
+            <span
+              className={`${burgerLineBase} ${
+                isMobileMenuOpen ? 'translate-y-[6px] rotate-45 bg-gray-700' : ''
+              }`}
+            />
+            <span
+              className={`${burgerLineBase} my-[5px] ${
+                isMobileMenuOpen ? 'opacity-0' : ''
+              }`}
+            />
+            <span
+              className={`${burgerLineBase} ${
+                isMobileMenuOpen ? '-translate-y-[7px] -rotate-45 bg-gray-700' : ''
+              }`}
+            />
+          </button>
         </div>
       </nav>
 
@@ -293,10 +293,11 @@ const burgerLineBase =
               <div key={link.title} className="flex flex-col">
                 <Link
                   href={link.href}
-                  className="flex justify-between items-center py-2 text-sm"
+                  className="flex justify-between items-center py-2 text-sm whitespace-nowrap"
+                  style={{ fontFamily: 'Pretendard' ,fontWeight: 'bold'}}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <span>{link.title}</span>
+                  <span className="whitespace-nowrap">{link.title}</span>
                   {link.sublinks.length > 0 && (
                     <span className="text-xs text-gray-500">▼</span>
                   )}
@@ -307,7 +308,8 @@ const burgerLineBase =
                       <Link
                         key={sublink.title}
                         href={sublink.href}
-                        className="py-1 text-xs text-gray-700"
+                        className="py-1 text-xs text-gray-700 whitespace-nowrap"
+                        style={{ fontFamily: 'Pretendard' }}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {sublink.title}
