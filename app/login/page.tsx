@@ -8,7 +8,7 @@ function LoginPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const activeTab = searchParams.get('tab') || 'login';
-  
+
   const [loginData, setLoginData] = useState({
     login_id: '',
     password: ''
@@ -36,16 +36,34 @@ function LoginPageContent() {
   };
 
   return (
-    <div>
-      {/* 히어로 섹션 - 후보.png 배경 */}
-      <div className="relative bg-[url('/page배경.jpg')] bg-cover bg-center">
+    <div className="min-h-screen flex flex-col bg-white">
+      {/* ===== 히어로 섹션 (배경 + 탭) ===== */}
+      <div
+        className="relative bg-[url('/page배경.jpg')] bg-cover bg-center"
+        style={{ minHeight: '30vh' }}
+      >
         <div className="absolute inset-0 bg-black/50" aria-hidden="true" />
-        <div className="relative container mx-auto px-6 py-12 flex flex-col items-center">
-          <h1 className="text-3xl font-bold mb-8 border-b-4 border-white pb-4 pt-20 text-white inline-block">
+
+        <div
+          className="relative container mx-auto px-6 flex flex-col items-center"
+          style={{
+            paddingTop: '10vh',
+            paddingBottom: '5vh'
+          }}
+        >
+          <h1
+            className="mb-8 border-b-4 border-white pb-4 text-white inline-block"
+            style={{
+              paddingTop: '2vh',
+              fontSize: '3vh',
+              fontWeight: 700
+            }}
+          >
             {getPageTitle()}
           </h1>
-          <div className="flex pb-10">
-            {tabs.map(tab => (
+
+          <div className="flex" style={{ paddingBottom: '3vh' }}>
+            {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => router.push(tab.href)}
@@ -55,27 +73,32 @@ function LoginPageContent() {
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                <span className={activeTab === tab.id ? '' : ''}>
-                  {tab.title}
-                </span>
+                {tab.title}
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 콘텐츠 영역 */}
-      <div className="bg-white py-16 px-0">
+      {/* ===== 콘텐츠 영역 ===== */}
+      <div
+        className="flex-1"
+        style={{
+          paddingTop: '6vh',
+          paddingBottom: '6vh'
+        }}
+      >
+        {/* ==== 가입하기 탭 ==== */}
         {activeTab === 'register' && (
           <div className="container mx-auto px-6 flex justify-center items-center">
-            <p 
+            <p
               className="text-center"
               style={{
                 fontFamily: 'Pretendard',
                 fontWeight: 600,
                 fontStyle: 'normal',
-                fontSize: '20px',
-                lineHeight: '100%',
+                fontSize: '2.4vh',
+                lineHeight: '120%',
                 letterSpacing: '0%',
                 color: '#02162E'
               }}
@@ -84,204 +107,207 @@ function LoginPageContent() {
             </p>
           </div>
         )}
+
+        {/* ==== 로그인 탭 ==== */}
         {activeTab === 'login' && (
           <div className="container mx-auto px-6">
-            <div className="relative">
-              <div className="flex justify-center">
-                {/* 로그인 제목 - 중앙정렬에서 왼쪽으로 이동 */}
-                <div className="relative" style={{ transform: 'translateX(-200%)' }}>
-                <h2 
-                  style={{
-                    fontFamily: 'Pretendard',
-                    fontWeight: 700,
-                    fontStyle: 'normal',
-                      fontSize: '35px',
-                    lineHeight: '100%',
-                    letterSpacing: '0%',
-                    color: '#02162E',
-                    marginBottom: '8px'
-                  }}
-                >
-                  로그인(Login)
-                </h2>
-                <div 
-                  className="relative inline-block" 
-                  style={{ 
-                    width: '100%'
-                  }}
-                >
-                  <div 
-                    className="border-b-[3px] border-black absolute" 
-                    style={{ 
-                      width: '100%',
-                      top: '0px'
-                    }}
-                  ></div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* 1px 밑줄 - 3px 밑줄과 겹치게 */}
-              <div 
-                className="absolute flex justify-center" 
-                style={{ 
-                  top: '62px',
-                  width: '100%'
-                }}
-              >
-                <div className="border-b border-black w-7/10"></div>
-              </div>
-            </div>
-            
-            {/* 로그인 폼 */}
-            <div className="max-w-md mx-auto mt-40 mb-20">
-              <form className="space-y-6" onSubmit={handleLogin}>
-                {/* 아이디 또는 이메일 입력 필드 */}
+            {/* 전체 로그인 블록 */}
+            <div
+              className="max-w-3xl mx-auto"
+              style={{ marginTop: '10vh', marginBottom: '8vh' }}
+            >
+              {/* ===== 제목 + 라인 ===== */}
+              <div className="mb-12">
                 <div>
-                  <label className="block mb-2">
-                    <span
-                      style={{
-                        fontFamily: 'Pretendard',
-                        fontWeight: 600,
-                        fontStyle: 'normal',
-                        fontSize: '18px',
-                        lineHeight: '100%',
-                        letterSpacing: '-1px',
-                        color: '#02162E'
-                      }}
-                    >
-                      아이디 또는 이메일
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: 'Pretendard',
-                        fontWeight: 500,
-                        fontStyle: 'normal',
-                        fontSize: '18px',
-                        lineHeight: '100%',
-                        letterSpacing: '0%',
-                        color: '#A0A1A1'
-                      }}
-                    >
-                      {' '}ID or Email
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    value={loginData.login_id}
-                    onChange={(e) => setLoginData({...loginData, login_id: e.target.value})}
-                    className="w-full px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    style={{ border: '1px solid #A8A3A3' }}
-                  />
-                </div>
-                
-                {/* 비밀번호 입력 필드 */}
-                <div>
-                  <label className="block mb-2">
-                    <span
-                      style={{
-                        fontFamily: 'Pretendard',
-                        fontWeight: 600,
-                        fontStyle: 'normal',
-                        fontSize: '18px',
-                        lineHeight: '100%',
-                        letterSpacing: '-1px',
-                        color: '#02162E'
-                      }}
-                    >
-                      비밀번호
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: 'Pretendard',
-                        fontWeight: 500,
-                        fontStyle: 'normal',
-                        fontSize: '18px',
-                        lineHeight: '100%',
-                        letterSpacing: '0%',
-                        color: '#A0A1A1'
-                      }}
-                    >
-                      {' '}Password
-                    </span>
-                  </label>
-                  <input
-                    type="password"
-                    value={loginData.password}
-                    onChange={(e) => setLoginData({...loginData, password: e.target.value})}
-                    className="w-full px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    style={{ border: '1px solid #A8A3A3' }}
-                  />
-                </div>
-                
-                {/* 로그인 상태 유지 체크박스 */}
-                <div className="flex items-center -mt-2.5">
-                  <input
-                    type="checkbox"
-                    id="keepLogin"
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 rounded appearance-none"
-                    style={{ 
-                      border: '2px solid #000000',
-                      backgroundColor: 'white'
-                    }}
-                  />
-                  <label 
-                    htmlFor="keepLogin" 
-                    className="ml-2 block"
+                  {/* 제목 */}
+                  <h2
+                    className="inline-block"
                     style={{
                       fontFamily: 'Pretendard',
-                      fontWeight: 500,
+                      fontWeight: 700,
                       fontStyle: 'normal',
-                      fontSize: '14px',
+                      fontSize: '4vh',
                       lineHeight: '100%',
                       letterSpacing: '0%',
                       color: '#02162E'
                     }}
                   >
-                    로그인 상태 유지
-                  </label>
-                </div>
-                
-                {/* 로그인 버튼 */}
-                <div>
-                  <button
-                    type="submit"
-                    className="w-full py-3.5 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-                    style={{ 
-                      backgroundColor: '#3B99D3', 
-                      borderRadius: '4px',
-                      fontFamily: 'Pretendard',
-                      fontWeight: 500,
-                      fontStyle: 'normal',
-                      fontSize: '18px',
-                      lineHeight: '100%',
-                      letterSpacing: '0%',
-                      textAlign: 'center',
-                      color: '#EFF2F5'
-                    }}
-                  >
-                    로그인
-                  </button>
-                </div>
-                
-                {/* 비밀번호 찾기 링크 */}
-                <div className="text-left">
-                  <a
-                    href="#"
-                    className="text"
+                    로그인(Login)
+                  </h2>
+
+                  {/* 제목 아래에 가로선 */}
+                  <div
                     style={{
-                      fontSize: '15px',
-                      fontFamily: 'Pretendard',
-                      fontWeight: 500,
-                      fontStyle: 'normal',
-                      lineHeight: '100%',
-                      letterSpacing: '0%'
+                      marginTop: '1.5vh',   // 제목과 선 사이 간격
+                      height: '1px',
+                      width: '100%',        // 부모 너비 전체로 선
+                      backgroundColor: '#02162E'
                     }}
-                  >
-                    비밀번호를 잊으셨나요?
-                  </a>
+                  />
+                </div>
               </div>
-              </form>
+
+              {/* ===== 로그인 폼 ===== */}
+              <div className="max-w-md">
+                <form className="space-y-6" onSubmit={handleLogin}>
+                  {/* 아이디 또는 이메일 입력 필드 */}
+                  <div>
+                    <label className="block mb-2">
+                      <span
+                        style={{
+                          fontFamily: 'Pretendard',
+                          fontWeight: 600,
+                          fontStyle: 'normal',
+                          fontSize: '2.2vh',
+                          lineHeight: '100%',
+                          letterSpacing: '-0.05vh',
+                          color: '#02162E'
+                        }}
+                      >
+                        아이디 또는 이메일
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: 'Pretendard',
+                          fontWeight: 500,
+                          fontStyle: 'normal',
+                          fontSize: '2.2vh',
+                          lineHeight: '100%',
+                          letterSpacing: '0%',
+                          color: '#A0A1A1'
+                        }}
+                      >
+                        {' '}ID or Email
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      value={loginData.login_id}
+                      onChange={(e) =>
+                        setLoginData({ ...loginData, login_id: e.target.value })
+                      }
+                      className="w-full px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      style={{
+                        border: '1px solid #A8A3A3',
+                        minHeight: '5vh'
+                      }}
+                    />
+                  </div>
+
+                  {/* 비밀번호 입력 필드 */}
+                  <div>
+                    <label className="block mb-2">
+                      <span
+                        style={{
+                          fontFamily: 'Pretendard',
+                          fontWeight: 600,
+                          fontStyle: 'normal',
+                          fontSize: '2.2vh',
+                          lineHeight: '100%',
+                          letterSpacing: '-0.05vh',
+                          color: '#02162E'
+                        }}
+                      >
+                        비밀번호
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: 'Pretendard',
+                          fontWeight: 500,
+                          fontStyle: 'normal',
+                          fontSize: '2.2vh',
+                          lineHeight: '100%',
+                          letterSpacing: '0%',
+                          color: '#A0A1A1'
+                        }}
+                      >
+                        {' '}Password
+                      </span>
+                    </label>
+                    <input
+                      type="password"
+                      value={loginData.password}
+                      onChange={(e) =>
+                        setLoginData({ ...loginData, password: e.target.value })
+                      }
+                      className="w-full px-3 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      style={{
+                        border: '1px solid #A8A3A3',
+                        minHeight: '5vh'
+                      }}
+                    />
+                  </div>
+
+                  {/* 로그인 상태 유지 체크박스 */}
+                  <div className="flex items-center" style={{ marginTop: '-1vh' }}>
+                    <input
+                      type="checkbox"
+                      id="keepLogin"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 rounded appearance-none"
+                      style={{
+                        border: '2px solid #000000',
+                        backgroundColor: 'white'
+                      }}
+                    />
+                    <label
+                      htmlFor="keepLogin"
+                      className="ml-2 block"
+                      style={{
+                        fontFamily: 'Pretendard',
+                        fontWeight: 500,
+                        fontStyle: 'normal',
+                        fontSize: '1.8vh',
+                        lineHeight: '100%',
+                        letterSpacing: '0%',
+                        color: '#02162E'
+                      }}
+                    >
+                      로그인 상태 유지
+                    </label>
+                  </div>
+
+                  {/* 로그인 버튼 */}
+                  <div>
+                    <button
+                      type="submit"
+                      className="w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                      style={{
+                        paddingTop: '2.2vh',
+                        paddingBottom: '2.2vh',
+                        backgroundColor: '#3B99D3',
+                        borderRadius: '4px',
+                        fontFamily: 'Pretendard',
+                        fontWeight: 500,
+                        fontStyle: 'normal',
+                        fontSize: '2.4vh',
+                        lineHeight: '100%',
+                        letterSpacing: '0%',
+                        textAlign: 'center',
+                        color: '#EFF2F5'
+                      }}
+                    >
+                      로그인
+                    </button>
+                  </div>
+
+                  {/* 비밀번호 찾기 링크 */}
+                  <div className="text-left">
+                    <a
+                      href="#"
+                      style={{
+                        fontSize: '2vh',
+                        fontFamily: 'Pretendard',
+                        fontWeight: 500,
+                        fontStyle: 'normal',
+                        lineHeight: '100%',
+                        letterSpacing: '0%'
+                      }}
+                    >
+                      비밀번호를 잊으셨나요?
+                    </a>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         )}
