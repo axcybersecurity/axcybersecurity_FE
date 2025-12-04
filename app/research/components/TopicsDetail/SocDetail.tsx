@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import socPicture from '../../TopicsPicture/SoC_picture.png';
 
 export default function SocDetail() {
   return (
@@ -6,181 +7,53 @@ export default function SocDetail() {
       <div className="max-w-5xl mx-auto">
         {/* 메인 타이틀 */}
         <h3 className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]">
-          반도체 SoC 및 사이버 보안
+          모빌리티 보안
         </h3>
 
-        {/* --- TLS 보안칩 --- */}
+        {/* --- AI 기반 드론 탐지 연구 --- */}
         <section className="mt-10">
-          <h4 className="mt-2 mx-auto text-xl sm:text-2xl font-bold text-[#043A6F] break-keep">
-            TLS/SSL(TLS1.2, TLS1.3)지원 보안칩 개발 연구
+        {/* 그림 영역 */}
+        <div className="mt-4 max-w-4xl mx-auto">
+          <Image
+            src={socPicture}
+            alt="GraphRAG 기반 사이버보안 LLM 시스템 개념도"
+            width={892}
+            height={448}
+            className="w-full h-auto rounded-md"
+          />
+        </div>
+
+          <h4 className="mt-[3vh] mx-auto text-xl sm:text-2xl font-bold text-[#043A6F] break-keep">
+            AI 기반 드론 탐지 연구
           </h4>
           <p className="mt-1 mx-auto text-base sm:text-lg text-black break-keep">
-            (Research on TLS Security Chip Optimization and Implementation)
+            (Research on AI-based Drone Detection)
           </p>
 
           <div className="mt-6 mx-auto max-w-3xl text-sm sm:text-base leading-relaxed text-[#282828] space-y-1">
-            <p>– TLS 1.2 및 보안 표준 프로토콜 호환 칩 FPGA 구현 및 ASIC(공정) 구현</p>
-            <p>– 보안 칩과 연동을 위한 TLS/SSL 라이브러리 API(OpenSSL, MbedTLS, WolfSSL, GnuSSL 등) 구현 및 최적화 연구</p>
-            <p>– CPS(Cyber Physical System) 응용 프로토콜(CoAP, MQTT 등) 호환 암호 코어 및 인터페이스 개발</p>
-            <p>– 실시간 제어 프로토콜(PROFINET, ModBus 등)의 보안성 제공을 위한 기술 연구</p>
-            <p>– 양자내성암호(Post Quantum cryptography) 최적화 구현 및 양자내성암호 TLS 라이브러리/CPS 응용 프로토콜 연동 연구</p>
-          </div>
-
-          <div className="mt-8 mx-auto w-full max-w-[964px]">
-            <Image
-              src="/반도체_01.svg"
-              alt="Semiconductor"
-              width={964}
-              height={844}
-              className="w-full h-auto"
-            />
-          </div>
-
-          <div className="mt-6 mx-auto max-w-3xl text-sm sm:text-base leading-relaxed text-[#282828] space-y-1">
-            <p>– 블록 암호, 스트림 암호, 타원곡선 암호 등 암호 모듈 고속화/최적화 및 물리채널 공격(DPA, CPA, EM Attack, Timing Attack 등) 방지 기법 연구</p>
-            <p>– HMAC, DRBG, KDF 등을 활용한 키 생성 프로토콜 및 제어 모듈 구현 및 최적화 연구</p>
-            <p>– CPS(Cyber Physical System) 응용 프로토콜(CoAP, MQTT 등) 호환 암호 코어 및 인터페이스 개발</p>
-            <p>– End-To-End 보안 및 유선/무선 네트워크 보안성을 위한 Layer2 보안(MACsec), Layer3 보안(IPSec) 하드웨어 구현 및 고속화 기법 연구</p>
+            <p>■ AI 기반 드론 탐지 연구(Research on AI-based Drone Detection)</p>
+            <p>– 장거리 드론에 대한 시계열 데이터 구축과 LSTM 및 GRU 조기 탐지 알고리즘 개발 연구</p>
+            <p>– Unity3D 기반 가상 환경에서의 드론 시뮬레이션을 통한 합성 데이터 생성 및 도메인 적응 기법 연구</p>
+            <p>– 카메라, 레이더, 음향 센서 데이터의 멀티모달 트랜스포머 네트워크 기반 통합 분석</p>
           </div>
         </section>
 
-        {/* --- Hardware 기반 딥러닝 가속기 --- */}
+        {/* --- 안티드론 및 드론 제어권 탈취 연구 --- */}
         <section className="mt-16">
           <h4 className="mx-auto text-xl sm:text-2xl font-bold text-[#043A6F] break-keep">
-            Hardware 기반 딥러닝 가속기 연구
+            안티드론 및 드론 제어권 탈취 연구
           </h4>
           <p className="mt-1 mx-auto text-base sm:text-lg text-black break-keep">
-            (Research on Hardware Based Deep Learning Accelator)
+            (Research on Anti-drone Techniques and Drone Control Hijacking)
           </p>
 
           <div className="mt-6 mx-auto max-w-3xl text-sm sm:text-base leading-relaxed text-[#282828] space-y-1">
-            <p>
-              – Real-Time Object Detection Model(Yolo v2, Yolo v4 등)에 대한 RTL(Register Transfer Level) 기반 딥러닝 추론 가속회로
-              Verilog 구현 및 FPGA/ASIC 개발
-            </p>
-            <p>
-              – 딥러닝 가속기 입력 데이터(Image Data, Weight Data)에 대한 데이터 전처리(Fixed Point, Dynamic Fixed Point, Round up 기법,
-              Floating Point 연산기 최적화 등) 및 객체 탐지 결과(Bounding box, Class) 데이터 후처리 기법 연구
-            </p>
-            <p>
-              – BNN(Binarized Neural Network) 기반 추론 연산 가속 회로 Verilog 구현 및 호스트 프로세서와의 연동을 통한 System On Chip 개발
-            </p>
-            <p>
-              – 외부 메모리 저장 파라미터에 대한 DRAM 타겟 공격(Bit Flip Attack, Code Corruption Attack, EM Attack 등) 방어 기법
-              (데이터 무결성 및 기밀성 보장 구조) 연구
-            </p>
-          </div>
-
-          <p className="mt-4 text-center text-sm sm:text-base text-black">
-            [딥러닝 가속기 설계 구조]
-          </p>
-          <div className="mt-4 mx-auto w-full max-w-[971px]">
-            <Image
-              src="/DeepLearning_Accelator.svg"
-              alt="DeepLearning Accelator"
-              width={971}
-              height={447}
-              className="w-full h-auto"
-            />
-          </div>
-
-          <p className="mt-10 text-center text-sm sm:text-base text-black">
-            [내부 메모리 스케줄링 기법 최적화 연구]
-          </p>
-          <div className="mt-4 mx-auto w-full max-w-[985px]">
-            <Image
-              src="/memory_scheduling.svg"
-              alt="Memory Scheduling"
-              width={985}
-              height={519}
-              className="w-full h-auto"
-            />
-          </div>
-
-          <div className="mt-6 mx-auto max-w-3xl text-sm sm:text-base leading-relaxed text-[#282828] space-y-1">
-            <p>– 딥러닝 가속기에 대한 물리채널 공격(Power Analysis, Timing Attack, Glitch Attack 등) 방어 기법 연구</p>
-            <p>– 딥러닝 가속기 메모리 스케줄링 최적화(Line based Reuse, Hybrid Reuse) 기법 연구</p>
-            <p>– Binarized Layer 연산기 최적화 기법(Logic Gate 기반 Binarized Convolution Method, Bit Shift 기반 Batch Normalization 등) 연구</p>
-          </div>
-        </section>
-
-        {/* --- 시스템 구조 및 보안 연구 --- */}
-        <section className="mt-16">
-          <h4 className="mx-auto text-xl sm:text-2xl font-bold text-[#043A6F] break-keep">
-            시스템 구조 및 보안 연구
-          </h4>
-          <p className="mt-1 mx-auto text-base sm:text-lg text-black break-keep">
-            (RISC-V, ARM, Intel, Research on System Architecture and Security)
-          </p>
-
-          <div className="mt-6 mx-auto max-w-3xl text-sm sm:text-base leading-relaxed text-[#282828] space-y-1">
-            <p>– 저사양 및 임베디드 디바이스를 위한 32-bit/64-bit 코프로세서(Coprocessor) 구조 설계 및 개발 연구</p>
-            <p>– 명령어 파이프라인 최적화 연구(Out-Of-Order Completion) 및 명령어 확장(Vector Processing Unit) 연구</p>
-          </div>
-
-          <p className="mt-12 text-center text-sm sm:text-base text-black">
-            [내부 메모리 스케줄링 기법 최적화 연구]
-          </p>
-          <div className="mt-4 mx-auto w-full max-w-[985px]">
-            <Image
-              src="/Table.svg"
-              alt="내부 메모리 스케줄링 기법 최적화 연구"
-              width={985}
-              height={369}
-              className="w-full h-auto"
-            />
-          </div>
-
-          <div className="mt-6 mx-auto max-w-3xl text-sm sm:text-base leading-relaxed text-[#282828] space-y-1">
-            <p>– ARIA-GCM 및 HMAC 기반 메모리 격리(무결성/기밀성 보장) 기술 연구(키, IV 등 파라미터 보호 기법, 초기화 및 인터페이스 차단 등)</p>
-            <p>– RISC-V ISA(Instruction Set Architecture) 및 PMP(Physical Memory Protection)를 활용한 명령어 수준의 도메인 격리</p>
-            <p>  (Domain Isolation) 및 TMA(Tagged Memory Architecture) 기술 연구</p>
-          </div>
-
-          <p className="mt-12 text-center text-sm sm:text-base text-black">
-            [명령어 수준의 도메인 격리 기술 연구]
-          </p>
-          <div className="mt-4 mx-auto w-full max-w-[744px]">
-            <Image
-              src="/domain.svg"
-              alt="Domain"
-              width={744}
-              height={377}
-              className="w-full h-auto"
-            />
-          </div>
-        </section>
-
-        {/* --- KCMVP Security Level 3 --- */}
-        <section className="mt-16">
-          <h4 className="mx-auto text-xl sm:text-2xl font-bold text-[#043A6F] break-keep">
-            KCMVP Security Level 3용 보안칩 개발 및 Tamper Resistence 기술 연구
-          </h4>
-          <p className="mt-1 mx-auto text-base sm:text-lg text-black break-keep">
-            (RISC-V, ARM, Intel, Research on System Architecture and Security)
-          </p>
-
-          <div className="mt-4 mb-8 mx-auto max-w-3xl text-sm sm:text-base leading-relaxed text-[#282828] space-y-6">
-            <div className="space-y-1">
-              <p>– Security Level 3를 갖는 고보안성 하드웨어 보안 모듈 핵심 기술 연구</p>
-              <p>– Tamper Resistence, Tamper Evidence 기술 연구</p>
-            </div>
-
-            <div className="space-y-1">
-              <p>■ Security Level 3 이상의 고보안성 하드웨어 보안 핵심 기술 연구</p>
-              <p>– HSM(Hardware Security Module), TPM(Trusted Platform Module)에서처럼, 높은 보안성을 갖는 키 관리 기술 연구 필요</p>
-              <p>– 부채널 공격(Side-channel Attack) 저항성 제공 필요 (Timing attack, SPA/DPA 공격 대응 기술 보유 필요)</p>
-              <p>– 높은 엔트로피 값을 갖는 암호키(비밀정보) 생성 기술 필요</p>
-              <p>– 자격 기반 주요 기능/데이터 접근 제어 기술 제공 필요</p>
-            </div>
-
-            <div className="space-y-1">
-              <p>■ Security Level 3를 위한 Tamper Resistance, Tamper Evidence 기술 연구</p>
-              <p>– 물리적 Tamper Resistance 기술로는 물리적 보안 강화(특수 케이스, 홀로그램 스티커, 개봉 여부 확인 스티커, eSeal 등) 기술 및 수단 존재함</p>
-              <p>– 논리적 Tamper Resistance 기술로는 S/W 무결성 검증, 보안 부팅, eSeal, Isolation/Segmentation 등, 다양한 기술이 존재할 수 있음</p>
-              <p>– Tamper Resistance 기술은 침입탐지 센서나 물리적 손상 여부 확인 장치(홀로그램 스티커 등), 논리적 침입 탐지 기술을 기반으로 하는</p>
-              <p>  Tamper Evidence 기술과 함께 사용되어, 그 보안성을 높임</p>
-            </div>
+            <p>■ 안티드론 및 드론 제어권 탈취 연구(Research on Anti-drone Techniques and Drone Control Hijacking)</p>
+            <p>– 802.11 프로토콜 취약점을 이용한 GCS Deauthentication 공격 연구</p>
+            <p>– SDR 활용 MAVLink 프로토콜 기반 드론 조종 패킷의 도청 및 재전송 공격 연구</p>
+            <p>– 드론 펌웨어에 대한 Reverse Engineering 및 ROP 기반 코드 실행 취약점 연구</p>
+            <p>– 드론 무선통신 간의 암호 취약점에 대한 분석 및 통신 안전성에 대한 연구</p>
+            <p>– 물리적 파괴 방식의 한계를 극복하는 소프트웨어 기반 드론 방어 기술 연구</p>
           </div>
         </section>
       </div>
