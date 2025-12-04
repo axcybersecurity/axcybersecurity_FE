@@ -144,7 +144,7 @@ export default function Header() {
   const burgerLineBase =
     'block w-7 h-[2px] rounded bg-gray-800 transition-transform transition-opacity duration-200';
 
-  const dropdownBoxSize = 'min-w-[220px] py-3';
+  const dropdownBoxSize = 'py-3 px-2';
   const dropdownTextSize = [
     'text-[14px]',
     'sm:text-[15px]',
