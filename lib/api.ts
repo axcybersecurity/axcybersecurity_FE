@@ -54,3 +54,77 @@ export const noticeApi = {
       }
     }),
 };
+
+// 포스팅 API
+export const postApi = {
+  // 목록 조회
+  getPosts: (skip: number = 0, limit: number = 10) => 
+    api.get('/posts/', {
+      params: { skip, limit }
+    }),
+  
+  // 상세 조회
+  getPost: (postId: number) => 
+    api.get(`/posts/${postId}`),
+  
+  // 생성 (multipart/form-data) - 여러 이미지 지원
+  createPost: (
+    images: File[], 
+    caption: string, 
+    description: string, 
+    authorId: number, 
+    token: string
+  ) => {
+    const formData = new FormData();
+    // 여러 이미지 파일 추가
+    images.forEach((image) => {
+      formData.append('images', image);
+    });
+    formData.append('caption', caption);
+    formData.append('description', description);
+    formData.append('author_id', authorId.toString());
+    
+    return api.post('/posts/', formData, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+  },
+  
+  // 수정 (multipart/form-data) - 여러 이미지 지원
+  updatePost: (
+    postId: number,
+    data: {
+      caption?: string;
+      description?: string;
+      images?: File[];
+    },
+    token: string
+  ) => {
+    const formData = new FormData();
+    if (data.caption !== undefined) formData.append('caption', data.caption);
+    if (data.description !== undefined) formData.append('description', data.description);
+    // 여러 이미지 파일 추가
+    if (data.images && data.images.length > 0) {
+      data.images.forEach((image) => {
+        formData.append('images', image);
+      });
+    }
+    
+    return api.put(`/posts/${postId}`, formData, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+  },
+  
+  // 삭제
+  deletePost: (postId: number, token: string) => 
+    api.delete(`/posts/${postId}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }),
+};
