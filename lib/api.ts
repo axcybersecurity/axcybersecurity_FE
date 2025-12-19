@@ -72,7 +72,6 @@ export const postApi = {
     images: File[], 
     caption: string, 
     description: string, 
-    authorId: number, 
     token: string
   ) => {
     const formData = new FormData();
@@ -82,12 +81,10 @@ export const postApi = {
     });
     formData.append('caption', caption);
     formData.append('description', description);
-    formData.append('author_id', authorId.toString());
     
     return api.post('/posts/', formData, {
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'multipart/form-data'
+        'Authorization': `Bearer ${token}`
       }
     });
   },
@@ -114,8 +111,7 @@ export const postApi = {
     
     return api.put(`/posts/${postId}`, formData, {
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'multipart/form-data'
+        'Authorization': `Bearer ${token}`
       }
     });
   },
