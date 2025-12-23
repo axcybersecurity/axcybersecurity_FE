@@ -61,7 +61,7 @@ export default function MembersContent() {
           style={{
             fontFamily: 'Pretendard',
             fontWeight: 600, 
-            fontSize: '4.5vh',
+            fontSize: '40px',
             lineHeight: '4vh',
             color: '#02162E',
             marginBottom: '24px',
