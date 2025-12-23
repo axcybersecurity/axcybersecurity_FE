@@ -100,12 +100,12 @@ const ProfessorsContext = () => {
             <li className="flex flex-wrap items-center gap-2">
               <strong className="w-20 lg:w-24">홈페이지</strong>
               <a href="http://infosec.pusan.ac.kr" className="text-blue-600 hover:underline break-all">
-                http://accs.pusan.ac.kr
+                https://accs.pusan.ac.kr
               </a>
             </li>
             <li className="flex flex-wrap items-center gap-2">
               <strong className="w-20 lg:w-24">전공분야</strong>
-              <span>AX융합사이버보안</span>
+              <span>AX융합사이버보안, 블록체인/금융/산업시설 보안, 해킹/방어 기술, 역공학/테스팅, 생성형 AI 보안</span>
             </li>
             <li className="flex flex-wrap items-center gap-2">
               <strong className="w-20 lg:w-24">연락처</strong>

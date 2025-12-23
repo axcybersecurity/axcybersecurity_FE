@@ -79,9 +79,9 @@ export default function Admission() {
                 지원 전공: 전공 무관
               </p>
               <p className="text-sm sm:text-base leading-7">
-                <span className="font-bold">T/O:</span> 2학기 석사 입학자 제한 없음
+                <span className="font-bold">T/O:</span> 석사 입학자 제한 없음
                 <br />
-                2학기 석사 입학생에게는 T/O 제한이 없습니다. 많은 지원 바랍니다. 또한, 연구실은 대학 본원(장전동)에 있습니다. 양산과는 관련없습니다.
+                석사 입학생에게는 T/O 제한이 없습니다. 많은 지원 바랍니다. 또한, 연구실은 대학 본원(장전동)에 있습니다. 양산과는 관련없습니다.
               </p>
             </div>
           </section>
@@ -132,7 +132,7 @@ export default function Admission() {
                   title:
                     '2.추가로, 매월 연구 장학금 및 생활 보조금 지원(학부생,석사,박사 과정 모두)',
                   desc:
-                    '(학부연구생: 약 월 130만원, 석사: 월 220만원, 박사 월 300만원, Post Doc (협의가능) @ 2025년 2학기 기준)\n(월 지급 연구장학금 및 생활보조금 지원 금액은 저희 연구실 학생들에게만 해당됩니다. 타 연구실은 각 연구실 상황에 따라 적을 수 있습니다)',
+                    '학부연구생: 약 월 130만원, 석사: 월 220만원, 박사 월 300만원, Post Doc (협의가능)\n석박통합 시 추가 지원 + a\n(월 지급 연구장학금 및 생활보조금 지원 금액은 저희 연구실 학생들에게만 해당됩니다. 타 연구실은 각 연구실 상황에 따라 적을 수 있습니다)',
                 },
                 {
                   title:
@@ -196,7 +196,7 @@ export default function Admission() {
           <section>
             <div className="mb-8 sm:mb-12 flex items-center gap-3">
               <img src="/logo.png" alt="연락처 로고" width="32" height="32" className="object-contain" />
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">연락처</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">문의</h2>
             </div>
 
             <div className="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2">

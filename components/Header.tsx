@@ -155,7 +155,7 @@ export default function Header() {
     <header
       className={`sticky top-0 z-[80] transition-colors duration-300 ${headerClasses}`}
     >
-      <nav className="w-full px-4 sm:px-6 h-[10vh] min-h-18 flex justify-between items-center max-h-[50px]">
+      <nav className="w-full px-4 sm:px-6 h-[10vh] min-h-18 flex justify-between items-center max-h-[100px]">
         {/* 왼쪽 로고 */}
         <div className="relative h-[6vh] w-[30vh] min-w-[200px]">
           <Link href="/" className="block h-full w-full z-5">

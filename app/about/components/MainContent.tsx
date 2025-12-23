@@ -19,7 +19,7 @@ const researchData = [
   {
     id: '04',
     title: '블록체인 응용기술',
-    topics: ['블록체인 응용기술'],
+    topics: ['블록체인기술 적용연구'],
   },
   {
     id: '05',
@@ -143,7 +143,7 @@ export default function MainContent() {
             {/* 오른쪽: 텍스트 영역 */}
             <div className="flex-1">
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                부산대학교 정보보호 및 사물지능 연구실
+                부산대학교 AX융합 사이버보안 연구실
             </h3><br></br>
             <div className="space-y-2 text-gray-700">
                 <p>(46241) 부산광역시 금정구 부산대학로 63번길 2 (장전동)</p>

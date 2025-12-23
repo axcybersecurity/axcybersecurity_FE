@@ -111,18 +111,6 @@ export default function Curriculum() {
         <div className="container mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-4xl">
             <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl font-bold text-gray-800">Why ACCSLAB?</h2>
-            <ol className="list-inside list-decimal space-y-1 text-gray-700 text-sm sm:text-base">
-              <li>국책·산학 프로젝트 50억 + (안정적 연구비 → 심화 연구비 걱정 ↓)</li>
-              <li>논문·특허 200+ & Top-tier AI 학회 게재 (석·박사도 챌린저 ↑)</li>
-              <li>네이버랩스·삼성전자(ETRI) 등 커리어 하이 커리어인 (졸업 후 진로 확실)</li>
-            </ol>
-            <div className="mt-5 sm:mt-6 space-y-3 sm:space-y-4 text-xs sm:text-sm leading-relaxed text-gray-600">
-              <p>본 연구실은 2008년 개설 이래 총 12명의 박사와 51명의 석사를 배출했습니다.</p>
-              <p>
-                본 연구실 출신 학생들은 졸업 후, 대학교수(현직) 1명, 정부출연연구원(ETRI 부설연구소) 4명, 벤처 CEO, 네이버랩스, 한국전자통신연구원,
-                삼성전자, 한국주택금융공사, 닐무늬핀, 블록체인 전문 벤처 기업 등 각 분야에서 실력을 인정받으면서 활약중에 있습니다.
-              </p>
-            </div>
           </div>
 
           <div className="mt-10 md:mt-16 grid grid-cols-1 gap-8 sm:gap-10 text-center sm:grid-cols-2 lg:grid-cols-5">
