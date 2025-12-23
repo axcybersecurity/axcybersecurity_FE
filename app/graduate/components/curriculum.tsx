@@ -10,7 +10,7 @@ export default function Curriculum() {
       <div className="bg-white pt-10 sm:pt-12">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
-            <span>AI·블록체인·양자내성 보안의</span>
+            <span>AX융합 사이버 보안의</span>
             <br />
             차세대 연구를 주도할 대학원생을 모집합니다.
           </h2>
