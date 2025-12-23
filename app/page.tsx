@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import NoticeList from '../components/NoticeList';
 
 export default function Home() {
   return (

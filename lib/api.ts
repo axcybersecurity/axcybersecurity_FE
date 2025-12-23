@@ -69,6 +69,7 @@ export const postApi = {
   
   // 생성 (multipart/form-data) - 여러 이미지 지원
   createPost: (
+    //id auto
     images: File[], 
     caption: string, 
     description: string, 
