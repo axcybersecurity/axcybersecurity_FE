@@ -149,7 +149,7 @@ export default function GalleryContent() {
                 }}
                 className="py-2 px-3 sm:px-4 outline-none text-black w-full h-full text-sm sm:text-base min-w-0 bg-transparent"
               />
-              <button className="h-full px-3 sm:px-5 bg-blue-800 hover:bg-blue-700 transition-colors text-white whitespace-nowrap text-sm sm:text-base flex-shrink-0">
+              <button className="flex-shrink-0 px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 transition-colors">
                 검색
               </button>
             </div>
@@ -158,7 +158,7 @@ export default function GalleryContent() {
             {isLoggedIn && (
               <button 
                 onClick={handleUpload}
-                className="h-10 px-4 sm:px-6 bg-blue-800 text-white rounded hover:bg-blue-700 transition-colors font-medium whitespace-nowrap text-sm sm:text-base flex-shrink-0"
+                className="flex-shrink-0 px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 transition-colors"
               >
                 업로드
               </button>
