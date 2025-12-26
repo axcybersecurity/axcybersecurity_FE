@@ -121,7 +121,7 @@ export default function GalleryWrite({ onBack, onSave }: GalleryWriteProps) {
               onChange={(e) => setCaption(e.target.value)}
               placeholder="제목을 입력하세요"
               disabled={isSubmitting}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+              className="text-black w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
@@ -133,7 +133,7 @@ export default function GalleryWrite({ onBack, onSave }: GalleryWriteProps) {
               placeholder="내용을 입력하세요"
               rows={3}
               disabled={isSubmitting}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none resize-none"
+              className="text-black w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none resize-none"
             />
           </div>
 
