@@ -24,6 +24,7 @@ export const logoutApi = {
 
 // 공지사항 API
 export const noticeApi = {
+  
   // 목록 조회
   getNotices: () => api.get('/notices/'),
   
@@ -85,7 +86,8 @@ export const postApi = {
     
     return api.post('/posts/', formData, {
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': undefined
       }
     });
   },
@@ -112,7 +114,8 @@ export const postApi = {
     
     return api.put(`/posts/${postId}`, formData, {
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': undefined
       }
     });
   },

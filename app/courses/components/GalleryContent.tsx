@@ -9,8 +9,10 @@ interface Post {
   id: number;
   caption: string;
   description: string;
-  images: string[];
+  image_paths: string[];
+  author_id: number;
   created_at: string;
+  updated_at?: string | null;
 }
 
 interface GalleryImage {
@@ -53,17 +55,24 @@ export default function GalleryContent() {
     try {
       setIsLoading(true);
       const response = await postApi.getPosts(0, 100); // 충분한 수의 포스트 가져오기
-      const posts: Post[] = response.data;
+      // 백엔드 응답 구조: { posts: Post[], total: number } 또는 Post[]
+      const posts: Post[] = response.data.posts || response.data;
       
       // 각 포스트의 첫 번째 이미지를 사용하여 갤러리 아이템 생성
       const galleryItems: GalleryImage[] = posts
-        .filter(post => post.images && post.images.length > 0)
-        .map(post => ({
-          imageUrl: post.images[0], // 첫 번째 이미지 사용
-          caption: post.caption || '',
-          date: post.created_at ? new Date(post.created_at).toISOString().split('T')[0] : '',
-          postId: post.id
-        }));
+        .filter(post => post.image_paths && post.image_paths.length > 0)
+        .map(post => {
+          // 백엔드에서 "uploads/xxx.jpg" 형태의 경로를 반환하므로 URL로 변환
+          // 예: "uploads/abc123.jpg" -> "/api/uploads/abc123.jpg"
+          const imageUrl = `/api/${post.image_paths[0]}`;
+          
+          return {
+            imageUrl: imageUrl,
+            caption: post.caption || '',
+            date: post.created_at ? new Date(post.created_at).toISOString().split('T')[0] : '',
+            postId: post.id
+          };
+        });
       
       setGalleryData(galleryItems);
     } catch (error) {

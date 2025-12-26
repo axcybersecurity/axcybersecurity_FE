@@ -1,16 +1,13 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-module.exports = {
+const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/:path*',
-        destination: 'https://accs.pusan.ac.kr/api/:path*',
+        source: "/api/:path*",
+        destination: "https://accs.pusan.ac.kr/api/:path*",
       },
     ];
   },
-}
-export default nextConfig;
+};
+module.exports = nextConfig;
+ 
+ 

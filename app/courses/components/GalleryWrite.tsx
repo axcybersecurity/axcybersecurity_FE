@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import axios, { AxiosError } from 'axios';
 import { postApi } from '../../../lib/api';
 
 interface GalleryWriteProps {
@@ -10,10 +9,6 @@ interface GalleryWriteProps {
   onSave?: (gallery: { caption: string; description: string; images: File[] }) => void;
 }
 
-// 에러 응답 객체의 구조를 정의합니다.
-interface ErrorResponse {
-  detail?: string;
-}
 
 // 이미지 압축 및 리사이즈 함수
 const compressImage = (file: File, maxWidth: number = 1920, maxHeight: number = 1920, quality: number = 0.8): Promise<File> => {
@@ -175,23 +170,13 @@ export default function GalleryWrite({ onBack, onSave }: GalleryWriteProps) {
         }
       }
 
-      // FormData 생성
-      const formData = new FormData();
-      compressedImages.forEach((image) => {
-        formData.append('images', image);
-      });
-      formData.append('caption', caption.trim());
-      formData.append('description', description.trim());
-
-      // axios로 직접 요청 (FormData는 Content-Type을 자동으로 설정)
-      // 서버가 슬래시를 요구하므로 /api/posts/로 요청
-      await axios.post('/api/posts/', formData, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-        maxRedirects: 5, // 리다이렉트 허용
-        validateStatus: (status) => status < 500 // 4xx는 에러로 처리하되 5xx는 허용
-      });
+      // postApi.createPost 사용 (api.ts에서 정의된 함수)
+      await postApi.createPost(
+        compressedImages,
+        caption.trim(),
+        description.trim(),
+        token
+      );
 
       alert('성공적으로 업로드되었습니다.');
       
@@ -204,17 +189,19 @@ export default function GalleryWrite({ onBack, onSave }: GalleryWriteProps) {
       }
       onBack();
     } catch (error) {
-      console.error('Upload Error:', error);
+      console.error('업로드 실패:', error);
       
-      if (error instanceof AxiosError) {
-        if (error.response?.status === 413) {
+      // 에러 응답에서 메시지 추출
+      if (error && typeof error === 'object' && 'response' in error) {
+        const axiosError = error as { response?: { status?: number; data?: { detail?: string } } };
+        if (axiosError.response?.status === 413) {
           alert('파일 크기가 너무 큽니다. 이미지를 압축하거나 더 작은 이미지를 선택해주세요.');
         } else {
-          const data = error.response?.data as ErrorResponse;
-          alert(data?.detail || '업로드 중 오류가 발생했습니다.');
+          const detail = axiosError.response?.data?.detail;
+          alert(detail || '업로드 중 오류가 발생했습니다.');
         }
       } else {
-        alert('알 수 없는 오류가 발생했습니다.');
+        alert('업로드 중 오류가 발생했습니다.');
       }
     } finally {
       setIsSubmitting(false);
@@ -241,8 +228,7 @@ export default function GalleryWrite({ onBack, onSave }: GalleryWriteProps) {
               onChange={(e) => setCaption(e.target.value)}
               placeholder="제목을 입력하세요"
               disabled={isSubmitting}
-              className="w-full px-4 py-3 border border-gray-300 ro
-              unded-md focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
