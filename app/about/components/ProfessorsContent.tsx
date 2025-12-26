@@ -50,7 +50,7 @@ export default function ProfessorsContext() {
 
                   {/* 모바일에서 로고를 자연스럽게 아래에 */}
                   <div className="mt-6 md:hidden">
-                    <Image src="/부산대로고.png" alt="부산대 로고" width={90} height={90} />
+                    <Image src="/pnu_logo.png" alt="부산대 로고" width={90} height={90} />
                   </div>
                 </div>
 
