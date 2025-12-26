@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { postApi } from '../lib/api';
@@ -9,33 +9,48 @@ interface Post {
   id: number;
   caption: string;
   description: string;
-  images: string[];
+  image_paths: string[];
   created_at: string;
 }
 
 type SlideItem = {
   imageUrl: string;
+  postId: number;
+  createdAt: string;
 };
 
 export default function Home() {
-  const [slideImages, setSlideImages] = useState<SlideItem[]>([]);
+  const [slideItems, setSlideItems] = useState<SlideItem[]>([]);
   const [slideLoading, setSlideLoading] = useState(true);
+
+  // ✅ 추가: 현재 슬라이드 인덱스 + 트랜지션 on/off
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [enableTransition, setEnableTransition] = useState(true);
 
   useEffect(() => {
     const loadSlideImages = async () => {
       try {
         setSlideLoading(true);
-        const res = await postApi.getPosts(0, 10); // 최근 10개 정도만
-        const posts: Post[] = res.data;
 
-        const images: SlideItem[] = posts
-          .filter((p) => Array.isArray(p.images) && p.images.length > 0)
-          .map((p) => ({ imageUrl: p.images[0] }));
+        const res = await postApi.getPosts(0, 30);
+        const posts: Post[] = (res.data?.posts ?? res.data) as Post[];
 
-        setSlideImages(images);
+        const items: SlideItem[] = (posts || [])
+          .filter((p) => Array.isArray(p.image_paths) && p.image_paths.length > 0)
+          .map((p) => ({
+            imageUrl: `/api/${p.image_paths[0]}`,
+            postId: p.id,
+            createdAt: p.created_at,
+          }))
+          .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+          .slice(0, 5);
+
+        setSlideItems(items);
+        setSlideIndex(0);
+        setEnableTransition(true);
       } catch (e) {
         console.error('슬라이드 이미지 로드 실패:', e);
-        setSlideImages([]);
+        setSlideItems([]);
       } finally {
         setSlideLoading(false);
       }
@@ -44,9 +59,45 @@ export default function Home() {
     loadSlideImages();
   }, []);
 
+  // ✅ 무한루프용: 마지막에 첫 장 복제
+  const loopItems = useMemo(() => {
+    if (slideItems.length === 0) return [];
+    return [...slideItems, slideItems[0]];
+  }, [slideItems]);
+
+  // ✅ “머무름(hold) → 빠른 이동” 타이밍 제어
+  useEffect(() => {
+    if (slideItems.length === 0) return;
+
+    const HOLD_MS = 3500;     // 머무는 시간
+    const MOVE_MS = 500;      // 이동 시간(transition duration과 맞춰야 함)
+
+    const t = setTimeout(() => {
+      setEnableTransition(true);
+      setSlideIndex((prev) => prev + 1);
+    }, HOLD_MS);
+
+    return () => clearTimeout(t);
+  }, [slideIndex, slideItems.length]);
+
+  // ✅ 트랜지션 끝났을 때: 복제 슬라이드(인덱스=5)에 도달하면 “순간이동”으로 0으로
+  const handleTransitionEnd = () => {
+    if (slideItems.length === 0) return;
+
+    if (slideIndex === slideItems.length) {
+      // 지금 화면은 "복제된 0번" 이므로, 트랜지션 끄고 진짜 0번으로 순간 이동
+      setEnableTransition(false);
+      setSlideIndex(0);
+
+      // 다음 프레임에서 다시 트랜지션 켜기(안 켜면 이후 이동이 뚝뚝 끊김)
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setEnableTransition(true));
+      });
+    }
+  };
+
   return (
     <div className="w-full mx-auto">
-      {/* ===== HERO ===== */}
       <section className="relative w-full z-10">
         <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[8/3] overflow-hidden">
           <Image
@@ -57,13 +108,10 @@ export default function Home() {
             priority
           />
 
-          {/* 히어로 텍스트 + 갤러리 슬라이드 */}
           <div className="absolute inset-0 z-10 flex items-center">
             <div className="container mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-              {/* 왼쪽 히어로 텍스트 */}
               <div className="max-w-xl sm:max-w-2xl md:max-w-3xl"></div>
 
-              {/* 오른쪽 자동 슬라이드 갤러리 - 반응형 */}
               <Link
                 href="/courses?tab=gallery"
                 className="
@@ -77,31 +125,38 @@ export default function Home() {
                     <div className="flex items-center justify-center w-full h-full text-gray-600 text-sm">
                       로딩 중...
                     </div>
-                  ) : slideImages.length === 0 ? (
+                  ) : slideItems.length === 0 ? (
                     <div className="flex items-center justify-center w-full h-full text-gray-600 text-sm">
                       갤러리 이미지 없음
                     </div>
                   ) : (
-                    <div className="absolute inset-0 flex animate-slide-horizontal">
-                      {/* 무한 루프가 자연스럽게 보이게: 1번 더 이어붙이기 */}
-                      {[...slideImages, ...slideImages].map((item, idx) => (
-                        <div
-                          key={`${item.imageUrl}-${idx}`}
-                          className="min-w-full h-full relative flex-shrink-0"
-                        >
-                          <Image
-                            src={item.imageUrl}
-                            alt={`gallery-${idx}`}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 400px"
-                            unoptimized={
-                              item.imageUrl.startsWith('http') ||
-                              item.imageUrl.startsWith('/api')
-                            }
-                          />
-                        </div>
-                      ))}
+                    <div className="absolute inset-0">
+                      {/* ✅ 트랙: w-full이 핵심(translateX % 기준을 컨테이너 폭으로 고정) */}
+                      <div
+                        className="w-full h-full flex"
+                        onTransitionEnd={handleTransitionEnd}
+                        style={{
+                          transform: `translateX(-${slideIndex * 100}%)`,
+                          transition: enableTransition ? 'transform 350ms ease-in-out' : 'none',
+                          willChange: 'transform',
+                        }}
+                      >
+                        {loopItems.map((item, idx) => (
+                          <div
+                            key={`${item.postId}-${idx}`}
+                            className="min-w-full h-full relative flex-shrink-0"
+                          >
+                            <Image
+                              src={item.imageUrl}
+                              alt={`gallery-slide-${idx}`}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 768px) 100vw, 400px"
+                              unoptimized={true}
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -109,23 +164,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* 슬라이드 애니메이션 */}
-        <style jsx>{`
-          @keyframes slideHorizontal {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-100%);
-            }
-          }
-
-          .animate-slide-horizontal {
-            animation: slideHorizontal 25s infinite linear;
-          }
-        `}</style>
       </section>
+
       {/* ===== 연구실 소개(텍스트+이미지) ===== */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 lg:mt-28">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
