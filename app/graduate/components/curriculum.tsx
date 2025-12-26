@@ -15,7 +15,7 @@ export default function Curriculum() {
             차세대 연구를 주도할 대학원생을 모집합니다.
           </h2>
           <p className="mt-5 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
-            정보보호 및 지능형 사물인터넷 연구실에선 아래 연구 분야에 대한
+            AX융합사이버보안연구실에서는 아래 연구 분야에 대한
             <strong className="font-semibold text-gray-800"> 대학원생(석사 과정, 박사과정)</strong>과
             <strong className="font-semibold text-gray-800"> Post Doc, 학부연구생</strong>을 모집합니다.
           </p>

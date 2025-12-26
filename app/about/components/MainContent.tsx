@@ -74,7 +74,7 @@ export default function MainContent() {
             <div className="lg:col-span-3">
               <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[16/9]">
                 <Image
-                  src="/ex1.png"
+                  src="/about_main/ex1.png"
                   alt="연구실 사진 1"
                   fill
                   className="object-cover"
@@ -88,7 +88,7 @@ export default function MainContent() {
             <div className="lg:col-span-1 flex flex-col gap-4">
               <div className="relative flex-1 overflow-hidden rounded-xl bg-gray-100">
                 <Image
-                  src="/ex2.png"
+                  src="/about_main/ex2.png"
                   alt="연구실 사진 2"
                   fill
                   className="object-cover"
@@ -98,7 +98,7 @@ export default function MainContent() {
 
               <div className="relative flex-1 overflow-hidden rounded-xl bg-gray-100">
                 <Image
-                  src="/ex3.png"
+                  src="/about_main/ex3.png"
                   alt="연구실 사진 3"
                   fill
                   className="object-cover"
@@ -113,7 +113,7 @@ export default function MainContent() {
         {/* 소개글 영역 */}
         <div className="w-full space-y-4">
             <p className="text-gray-600">
-                <br></br><strong className="text-2xl">연구생 연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관(102) 801호(석사 및 박사 연구실), 709호(학부연구생 연구실)
+                <br></br><strong className="text-2xl">연구생 연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관(102) 801호(석사 및 박사 연구실), 708호(학부연구생 연구실)
             </p>
         </div>
         {/* 이미지 영역 */}
@@ -123,7 +123,7 @@ export default function MainContent() {
     <div>
       <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[1/1]">
         <Image
-          src="/ex1.png"
+          src="/about_main/801.png"
           alt="연구실 사진 1"
           fill
           className="object-cover"
@@ -137,7 +137,7 @@ export default function MainContent() {
     <div>
       <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[1/1]">
         <Image
-          src="/ex2.png"
+          src="/about_main/708.png"
           alt="연구실 사진 2"
           fill
           className="object-cover"

@@ -1,9 +1,49 @@
 'use client';
 
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { postApi } from '../lib/api';
+
+interface Post {
+  id: number;
+  caption: string;
+  description: string;
+  images: string[];
+  created_at: string;
+}
+
+type SlideItem = {
+  imageUrl: string;
+};
 
 export default function Home() {
+  const [slideImages, setSlideImages] = useState<SlideItem[]>([]);
+  const [slideLoading, setSlideLoading] = useState(true);
+
+  useEffect(() => {
+    const loadSlideImages = async () => {
+      try {
+        setSlideLoading(true);
+        const res = await postApi.getPosts(0, 10); // 최근 10개 정도만
+        const posts: Post[] = res.data;
+
+        const images: SlideItem[] = posts
+          .filter((p) => Array.isArray(p.images) && p.images.length > 0)
+          .map((p) => ({ imageUrl: p.images[0] }));
+
+        setSlideImages(images);
+      } catch (e) {
+        console.error('슬라이드 이미지 로드 실패:', e);
+        setSlideImages([]);
+      } finally {
+        setSlideLoading(false);
+      }
+    };
+
+    loadSlideImages();
+  }, []);
+
   return (
     <div className="w-full mx-auto">
       {/* ===== HERO ===== */}
@@ -21,8 +61,7 @@ export default function Home() {
           <div className="absolute inset-0 z-10 flex items-center">
             <div className="container mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
               {/* 왼쪽 히어로 텍스트 */}
-              <div className="max-w-xl sm:max-w-2xl md:max-w-3xl">
-              </div>
+              <div className="max-w-xl sm:max-w-2xl md:max-w-3xl"></div>
 
               {/* 오른쪽 자동 슬라이드 갤러리 - 반응형 */}
               <Link
@@ -34,27 +73,37 @@ export default function Home() {
                   w-[28vw] min-w-[260px] max-w-[400px] aspect-[3/2]"
               >
                 <div className="relative w-full h-full overflow-hidden">
-                  <div className="absolute inset-0 flex animate-slide-horizontal">
-                    {[
-                      '/gallery/1.jpg',
-                      '/gallery/2.jpg',
-                      '/gallery/3.jpg',
-                      '/gallery/4.jpg',
-                      '/gallery/5.jpg',
-                    ].map((img, idx) => (
-                      <div
-                        key={idx}
-                        className="min-w-full h-full relative flex-shrink-0"
-                      >
-                        <Image
-                          src={img}
-                          alt={`gallery-${idx}`}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    ))}
-                  </div>
+                  {slideLoading ? (
+                    <div className="flex items-center justify-center w-full h-full text-gray-600 text-sm">
+                      로딩 중...
+                    </div>
+                  ) : slideImages.length === 0 ? (
+                    <div className="flex items-center justify-center w-full h-full text-gray-600 text-sm">
+                      갤러리 이미지 없음
+                    </div>
+                  ) : (
+                    <div className="absolute inset-0 flex animate-slide-horizontal">
+                      {/* 무한 루프가 자연스럽게 보이게: 1번 더 이어붙이기 */}
+                      {[...slideImages, ...slideImages].map((item, idx) => (
+                        <div
+                          key={`${item.imageUrl}-${idx}`}
+                          className="min-w-full h-full relative flex-shrink-0"
+                        >
+                          <Image
+                            src={item.imageUrl}
+                            alt={`gallery-${idx}`}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 400px"
+                            unoptimized={
+                              item.imageUrl.startsWith('http') ||
+                              item.imageUrl.startsWith('/api')
+                            }
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </Link>
             </div>
@@ -67,38 +116,16 @@ export default function Home() {
             0% {
               transform: translateX(0);
             }
-            20% {
-              transform: translateX(0);
-            }
-            25% {
-              transform: translateX(-100%);
-            }
-            45% {
-              transform: translateX(-100%);
-            }
-            50% {
-              transform: translateX(-200%);
-            }
-            70% {
-              transform: translateX(-200%);
-            }
-            75% {
-              transform: translateX(-300%);
-            }
-            95% {
-              transform: translateX(-300%);
-            }
             100% {
-              transform: translateX(-400%);
+              transform: translateX(-100%);
             }
           }
 
           .animate-slide-horizontal {
-            animation: slideHorizontal 30s infinite linear;
+            animation: slideHorizontal 25s infinite linear;
           }
         `}</style>
       </section>
-
       {/* ===== 연구실 소개(텍스트+이미지) ===== */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 lg:mt-28">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
@@ -438,14 +465,33 @@ export default function Home() {
         </h2>
 
         <div className="mt-8 sm:mt-12 mb-16 sm:mb-28 flex justify-center">
-          <Image
-            src="/main/Main_흐르는텍스트_산학협력기관.svg"
-            alt="산학협력기관 흐르는 텍스트"
-            width={1127}
-            height={100}
-            className="w-full max-w-5xl h-auto object-contain"
-          />
-        </div>
+  <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 max-w-5xl w-full">
+    <Image
+      src="/main/NANYANG.png"
+      alt="난양공대 로고"
+      width={220}
+      height={80}
+      className="h-16 w-auto object-contain"
+    />
+
+    <Image
+      src="/main/SNL.png"
+      alt="SNL 로고"
+      width={220}
+      height={80}
+      className="h-16 w-auto object-contain"
+    />
+
+    <Image
+      src="/main/UQ.png"
+      alt="UQ 로고"
+      width={220}
+      height={80}
+      className="h-16 w-auto object-contain"
+    />
+  </div>
+</div>
+
       </section>
     </div>
   );
