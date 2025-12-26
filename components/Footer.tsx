@@ -14,7 +14,7 @@ export default function Footer() {
           </p>
 
           <div className="pt-2">
-            <p>+82 51-510-3641</p>
+            <p>+82 51-510-2219</p>
             <p>jyson@pusan.ac.kr</p>
           </div>
 

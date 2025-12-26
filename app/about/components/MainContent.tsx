@@ -64,7 +64,7 @@ export default function MainContent() {
             <br></br>
             <h2 className="text-4xl font-bold text-gray-800 mb-6">연구실 소개</h2>
             <p className="text-gray-600">
-                <br></br><strong className="text-xl">01&nbsp;&nbsp;&nbsp;연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관(102) 801호
+                <br></br><strong className="text-2xl">교수 연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관(102) 801호
             </p>
         </div>
         {/* 이미지 영역 */}
@@ -109,11 +109,51 @@ export default function MainContent() {
           </div>
         </div>
       </div>
+      <div className="flex flex-col items-center gap-12">
+        {/* 소개글 영역 */}
+        <div className="w-full space-y-4">
+            <p className="text-gray-600">
+                <br></br><strong className="text-2xl">연구생 연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관(102) 801호(석사 및 박사 연구실), 709호(학부연구생 연구실)
+            </p>
+        </div>
+        {/* 이미지 영역 */}
+        <div className="w-full">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+    {/* 왼쪽 이미지 */}
+    <div>
+      <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[1/1]">
+        <Image
+          src="/ex1.png"
+          alt="연구실 사진 1"
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          priority
+        />
+      </div>
+    </div>
+
+    {/* 오른쪽 이미지 */}
+    <div>
+      <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[1/1]">
+        <Image
+          src="/ex2.png"
+          alt="연구실 사진 2"
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
 
       {/* 연구 과제 */}
         <div className="w-full space-y-4">
             <p className="text-gray-600 mb-8">
-                <br></br><strong className="text-xl">02&nbsp;&nbsp;&nbsp;연구 주제</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AX융합 사이버보안 주제로 진행되는 다양한 연구
+                <br></br><strong className="text-2xl">연구 주제</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AX융합 사이버보안 주제로 진행되는 다양한 연구
             </p>
             {/* 그리드 블록 */}
         <div className="flex flex-col gap-8 w-full">

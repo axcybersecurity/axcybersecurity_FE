@@ -139,48 +139,19 @@ export default function Curriculum() {
               <img src="/graduate_curriculums/hand_and_coin.jpg" alt="월 생활장학금 지급" width="72" height="72" className="sm:w-20 sm:h-20" />
               <h3 className="mt-3 sm:mt-4 text-base sm:text-lg font-bold text-gray-800">월 생활장학금 지급</h3>
               <p className="mt-2 text-xs sm:text-sm text-gray-600">
-                학부생 100만원 / 석사 180만원 / 박사 250만원<br />+ 성과 따라 추가 최대 100만원
+                학부생 130만원 / 석사 220만원 / 박사 300만원<br />+ 석박통합 시 추가 지원 + a
               </p>
             </div>
             <div className="flex flex-col items-center">
               <img src="/graduate_curriculums/cap.jpg" alt="탄탄한 졸업 후 진로" width="72" height="72" className="sm:w-20 sm:h-20" />
               <h3 className="mt-3 sm:mt-4 text-base sm:text-lg font-bold text-gray-800">탄탄한 졸업 후 진로</h3>
               <p className="mt-2 text-xs sm:text-sm text-gray-600">
-                교수/출연연/대기업/스타트업/금융기업 등<br />다양한 분야 진출
+                교수/출연연/대기업/스타트업/금융기업 등 다양한 분야 진출
               </p>
             </div>
           </div>
         </div>
       </section>
-
-      {/* --- 4. 대학원 교육과정 섹션 --- */}
-      <div className="bg-white py-14 sm:py-16 md:py-24">
-        <div className="container mx-auto flex flex-col px-4 sm:px-6">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <img src="/logo.png" alt="로고" width="28" height="28" className="sm:w-8 sm:h-8" />
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
-              대학원 교육과정
-            </h2>
-          </div>
-          <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500">※ 아래 부산대 교과과정은 2025년 기준입니다.</p>
-
-          <div className="relative mt-6 sm:mt-8">
-            <a
-              href="/curriculum.pdf"
-              download="부산대학교_대학원_교과과정.pdf"
-              className="inline-flex items-center justify-center gap-2
-                         rounded-lg bg-blue-800 px-5 sm:px-6 py-2 sm:py-2.5
-                         text-sm sm:text-base font-semibold text-white
-                         shadow-lg transition-transform duration-200 ease-in-out
-                         hover:scale-105 hover:bg-blue-700
-                         focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50"
-            >
-              <span>대학원 교과과정 다운로드</span>
-              <img src="/graduate_curriculums/download.svg" alt="다운로드 아이콘" width="18" height="18" className="sm:w-5 sm:h-5" />
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

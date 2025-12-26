@@ -428,6 +428,25 @@ export default function Home() {
           />
         </div>
       </section>
+      {/* ===== 산학협력대학교 ===== */}
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
+        <h2
+          className="text-2xl sm:text-3xl font-extrabold text-center"
+          style={{ color: '#282828', fontFamily: 'Pretendard' }}
+        >
+          국제협력대학교
+        </h2>
+
+        <div className="mt-8 sm:mt-12 mb-16 sm:mb-28 flex justify-center">
+          <Image
+            src="/main/Main_흐르는텍스트_산학협력기관.svg"
+            alt="산학협력기관 흐르는 텍스트"
+            width={1127}
+            height={100}
+            className="w-full max-w-5xl h-auto object-contain"
+          />
+        </div>
+      </section>
     </div>
   );
 }
