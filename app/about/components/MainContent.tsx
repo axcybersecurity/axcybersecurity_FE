@@ -68,37 +68,45 @@ export default function MainContent() {
             </p>
         </div>
         {/* 이미지 영역 */}
-        <div className="flex gap-4">
-            <div className="w-3/4">
-                <Image 
-                src="/3.png" 
-                alt="연구실 사진 1" 
-                width={800} 
-                height={600}
-                className="w-full h-full rounded-lg object-cover" 
+        <div className="w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-stretch">
+            {/* 왼쪽 큰 이미지 (높이 기준이 됨) */}
+            <div className="lg:col-span-3">
+              <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[16/9]">
+                <Image
+                  src="/ex1.png"
+                  alt="연구실 사진 1"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 75vw"
+                  priority
                 />
-            </div>
-            <div className="w-1/4 flex flex-col gap-4">
-                <div className="flex-1">
-                <Image 
-                    src="/3.png" 
-                    alt="연구실 사진 2" 
-                    width={250} 
-                    height={300} 
-                    className="w-full h-full rounded-lg object-fill" 
-                />
-                </div>
-                <div className="flex-1">
-                <Image 
-                    src="/3.png" 
-                    alt="연구실 사진 3" 
-                    width={250} 
-                    height={300} 
-                    className="w-full h-full rounded-lg object-fill" 
-                />
-                </div>
+              </div>
             </div>
 
+            {/* 오른쪽: 큰 이미지 높이에 맞춰 2장 반반 */}
+            <div className="lg:col-span-1 flex flex-col gap-4">
+              <div className="relative flex-1 overflow-hidden rounded-xl bg-gray-100">
+                <Image
+                  src="/ex2.png"
+                  alt="연구실 사진 2"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                />
+              </div>
+
+              <div className="relative flex-1 overflow-hidden rounded-xl bg-gray-100">
+                <Image
+                  src="/ex3.png"
+                  alt="연구실 사진 3"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
