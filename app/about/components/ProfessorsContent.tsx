@@ -56,7 +56,7 @@ export default function ProfessorsContext() {
 
                 {/* md 이상에서 우측(원본 느낌) */}
                 <div className="hidden md:block shrink-0">
-                  <Image src="/부산대로고.png" alt="부산대 로고" width={90} height={90} />
+                  <Image src="/pnu_logo.png" alt="부산대 로고" width={90} height={90} />
                 </div>
               </div>
             </div>
