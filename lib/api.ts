@@ -24,6 +24,7 @@ export const logoutApi = {
 
 // 공지사항 API
 export const noticeApi = {
+  
   // 목록 조회
   getNotices: () => api.get('/notices/'),
   
