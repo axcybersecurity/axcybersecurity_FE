@@ -5,11 +5,13 @@ import cyperPicture2 from '../../TopicsPicture/cyper_picture2.png';
 export default function QuantumDetail() {
   return (
     <div className="p-6 sm:p-8 md:p-12 font-['Pretendard']">
-      <div className="max-w-4xl mx-auto">
         {/* 메인 타이틀 */}
-        <h2 className="text-4xl font-semibold text-center text-[#02162E] break-keep">
-          보안 통신 프로토콜 설계
-        </h2>
+      <h3
+        className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]"
+        style={{ fontFamily: 'Pretendard' }}
+      >
+        보안 통신 프로토콜 설계
+      </h3>
 
         {/* --- 보안 통신 프로토콜 설계 --- */}
         <section className="mt-12">
@@ -60,6 +62,5 @@ export default function QuantumDetail() {
           </div>
         </section>
       </div>
-    </div>
   );
 }

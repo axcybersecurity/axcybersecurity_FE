@@ -1,16 +1,13 @@
 import Image from 'next/image';
-
-// 같은 폴더에 있는 이미지 파일을 정적 import
 import axPicture from '../../TopicsPicture/ax_picture.png';
 import is2dImage from '../../TopicsPicture/ax_picture2.png';
 
 export default function AiotDetail() {
   return (
-    <div className="mt-8 px-4 sm:px-6 lg:px-0">
-      {/* 메인 제목 */}
+    <div className="p-6 sm:p-8 md:p-12 font-['Pretendard']">
+      {/* 메인 타이틀 */}
       <h3
-        className="mx-auto text-center font-semibold break-keep
-                   text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]"
+        className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]"
         style={{ fontFamily: 'Pretendard' }}
       >
         AX융합 사이버보안 기술

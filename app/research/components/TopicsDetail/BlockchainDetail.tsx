@@ -4,7 +4,7 @@ import blockChainPicture2 from '../../TopicsPicture/blockchain_picture2.png';
 
 export default function BlockchainDetail() {
   return (
-    <div className="mt-8 px-4 sm:px-6 lg:px-0 pb-12">
+    <div className="p-6 sm:p-8 md:p-12 font-['Pretendard']">
       {/* 메인 타이틀 */}
       <h3
         className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]"
@@ -13,7 +13,6 @@ export default function BlockchainDetail() {
         블록체인
       </h3>
 
-      <div className="mt-8 max-w-5xl mx-auto" style={{ fontFamily: 'Pretendard' }}>
         {/* ============= 1. 블록체인 연동 BMS ============= */}
         <section>
           {/* 그림 영역 */}
@@ -70,6 +69,5 @@ export default function BlockchainDetail() {
           </div>
         </section>
       </div>
-    </div>
   );
 }

@@ -9,6 +9,25 @@ const api = axios.create({
   },
 });
 
+// 응답 인터셉터: 401 에러 시 토큰 제거 및 로그인 상태 업데이트
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      // 토큰이 만료되었거나 유효하지 않은 경우
+      if (typeof window !== 'undefined') {
+        if (localStorage.getItem('token')) {
+          localStorage.removeItem('token');
+          // localStorage.removeItem()은 다른 탭에 자동으로 storage 이벤트를 발생시킴
+          // 같은 탭에서는 커스텀 이벤트로 업데이트
+          window.dispatchEvent(new Event('token-expired'));
+        }
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
 export const loginApi = {
   login: (loginData: { login_id: string; password: string }) =>
     api.post('/auth/login', loginData),
