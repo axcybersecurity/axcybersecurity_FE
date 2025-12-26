@@ -3,16 +3,22 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import GalleryWrite from './GalleryWrite';
+import { postApi } from '../../../lib/api';
+
+interface Post {
+  id: number;
+  caption: string;
+  description: string;
+  images: string[];
+  created_at: string;
+}
 
 interface GalleryImage {
   imageUrl: string;
   caption: string;
   date: string;
+  postId: number;
 }
-
-const galleryData: GalleryImage[] = [
-  { imageUrl: '/gallery/photo1.jpg', caption: '2025년 워크샵 단체 사진', date: '2025-07-07' },
-];
 
 const ITEMS_PER_PAGE = 6;
 
@@ -21,6 +27,8 @@ export default function GalleryContent() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isUploading, setIsUploading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [galleryData, setGalleryData] = useState<GalleryImage[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   // 로그인 상태 확인
   useEffect(() => {
@@ -38,6 +46,36 @@ export default function GalleryContent() {
     };
     window.addEventListener('storage', handleStorage);
     return () => window.removeEventListener('storage', handleStorage);
+  }, []);
+
+  // 갤러리 데이터 로드
+  const loadGalleryData = async () => {
+    try {
+      setIsLoading(true);
+      const response = await postApi.getPosts(0, 100); // 충분한 수의 포스트 가져오기
+      const posts: Post[] = response.data;
+      
+      // 각 포스트의 첫 번째 이미지를 사용하여 갤러리 아이템 생성
+      const galleryItems: GalleryImage[] = posts
+        .filter(post => post.images && post.images.length > 0)
+        .map(post => ({
+          imageUrl: post.images[0], // 첫 번째 이미지 사용
+          caption: post.caption || '',
+          date: post.created_at ? new Date(post.created_at).toISOString().split('T')[0] : '',
+          postId: post.id
+        }));
+      
+      setGalleryData(galleryItems);
+    } catch (error) {
+      console.error('갤러리 데이터 로드 실패:', error);
+      setGalleryData([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadGalleryData();
   }, []);
 
   const filteredImages = galleryData.filter(item =>
@@ -62,15 +100,10 @@ export default function GalleryContent() {
     return (
       <GalleryWrite 
         onBack={() => setIsUploading(false)}
-        onSave={async (newGallery) => {
-          try {
-            // 실제 API 연동 시 이 부분에서 데이터를 처리합니다.
-            console.log('새 갤러리 데이터:', newGallery);
-            setIsUploading(false);
-            alert('업로드 완료 (백엔드 연동 필요)');
-          } catch (error) {
-            console.error('업로드 실패:', error);
-          }
+        onSave={async () => {
+          // 업로드 완료 후 갤러리 목록 새로고침
+          await loadGalleryData();
+          setIsUploading(false);
         }}
       />
     );
@@ -135,9 +168,13 @@ export default function GalleryContent() {
 
         {/* --- 갤러리 그리드 --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
-          {paginatedImages.length > 0 ? (
+          {isLoading ? (
+            <div className="col-span-full py-20 text-center text-gray-500 font-medium">
+              로딩 중...
+            </div>
+          ) : paginatedImages.length > 0 ? (
             paginatedImages.map((item, index) => (
-              <div key={index} className="bg-white overflow-hidden border transition-transform duration-300 hover:shadow-lg">
+              <div key={`${item.postId}-${index}`} className="bg-white overflow-hidden border transition-transform duration-300 hover:shadow-lg">
                 <div className="relative w-full aspect-video">
                   <Image
                     src={item.imageUrl}
@@ -145,6 +182,7 @@ export default function GalleryContent() {
                     fill
                     style={{ objectFit: 'cover' }}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    unoptimized={item.imageUrl.startsWith('http') || item.imageUrl.startsWith('/api')}
                   />
                 </div>
                 <div className="p-4">
@@ -155,7 +193,7 @@ export default function GalleryContent() {
             ))
           ) : (
             <div className="col-span-full py-20 text-center text-gray-500 font-medium">
-              검색 결과가 없습니다.
+              {searchTerm ? '검색 결과가 없습니다.' : '갤러리가 비어있습니다.'}
             </div>
           )}
 
