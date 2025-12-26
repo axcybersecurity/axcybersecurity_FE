@@ -46,8 +46,15 @@ export default function GalleryContent() {
         setIsLoggedIn(!!e.newValue);
       }
     };
+    const handleTokenExpired = () => {
+      setIsLoggedIn(false);
+    };
     window.addEventListener('storage', handleStorage);
-    return () => window.removeEventListener('storage', handleStorage);
+    window.addEventListener('token-expired', handleTokenExpired);
+    return () => {
+      window.removeEventListener('storage', handleStorage);
+      window.removeEventListener('token-expired', handleTokenExpired);
+    };
   }, []);
 
   // 갤러리 데이터 로드
