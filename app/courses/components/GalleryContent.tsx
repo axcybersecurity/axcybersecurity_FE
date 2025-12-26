@@ -30,14 +30,14 @@ export default function GalleryContent() {
   const [galleryData, setGalleryData] = useState<GalleryImage[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // 로그인 상태 확인
+  const [deleteId, setDeleteId] = useState<number | null>(null);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
   }, []);
 
-  // 로그인 상태 변경 감지 (다른 탭에서 로그인/로그아웃 시)
   useEffect(() => {
     const handleStorage = (e: StorageEvent) => {
       if (e.key === 'token') {
@@ -48,24 +48,22 @@ export default function GalleryContent() {
     return () => window.removeEventListener('storage', handleStorage);
   }, []);
 
-  // 갤러리 데이터 로드
   const loadGalleryData = async () => {
     try {
       setIsLoading(true);
-      const response = await postApi.getPosts(0, 100); // 충분한 수의 포스트 가져오기
+      const response = await postApi.getPosts(0, 50);
       const posts: Post[] = response.data;
-      
-      // 각 포스트의 첫 번째 이미지를 사용하여 갤러리 아이템 생성
-      const galleryItems: GalleryImage[] = posts
-        .filter(post => post.images && post.images.length > 0)
-        .map(post => ({
-          imageUrl: post.images[0], // 첫 번째 이미지 사용
+
+      const apiItems: GalleryImage[] = posts
+        .filter((post) => post.images && post.images.length > 0)
+        .map((post) => ({
+          imageUrl: post.images[0],
           caption: post.caption || '',
           date: post.created_at ? new Date(post.created_at).toISOString().split('T')[0] : '',
-          postId: post.id
+          postId: post.id,
         }));
-      
-      setGalleryData(galleryItems);
+
+      setGalleryData(apiItems);
     } catch (error) {
       console.error('갤러리 데이터 로드 실패:', error);
       setGalleryData([]);
@@ -78,7 +76,29 @@ export default function GalleryContent() {
     loadGalleryData();
   }, []);
 
-  const filteredImages = galleryData.filter(item =>
+  const handleDelete = async () => {
+    if (deleteId === null) return;
+    
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('로그인이 필요합니다.');
+        setDeleteId(null);
+        return;
+      }
+
+      await postApi.deletePost(deleteId, token);
+      alert('삭제되었습니다.');
+      setDeleteId(null);
+      loadGalleryData();
+    } catch (error) {
+      console.error('삭제 실패:', error);
+      alert('삭제에 실패했습니다.');
+      setDeleteId(null);
+    }
+  };
+
+  const filteredImages = galleryData.filter((item) =>
     item.caption.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -86,22 +106,11 @@ export default function GalleryContent() {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedImages = filteredImages.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-  const handleUpload = () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      alert('로그인이 필요합니다.');
-      return;
-    }
-    setIsUploading(true);
-  };
-
-  // --- 업로드 모드(GalleryWrite) 렌더링 ---
   if (isUploading) {
     return (
-      <GalleryWrite 
+      <GalleryWrite
         onBack={() => setIsUploading(false)}
         onSave={async () => {
-          // 업로드 완료 후 갤러리 목록 새로고침
           await loadGalleryData();
           setIsUploading(false);
         }}
@@ -109,11 +118,33 @@ export default function GalleryContent() {
     );
   }
 
-  // --- 기본 목록 모드 렌더링 ---
   return (
-    <div className="py-8">
+    <div className="py-8 relative">
+      {/* --- 삭제 확인 모달 (배경 딤 처리 강화: 모달만 떠 보이도록) --- */}
+      {deleteId !== null && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white p-6 rounded-lg shadow-2xl max-w-sm w-full mx-4 border border-gray-100">
+            <h3 className="text-lg font-bold mb-2 text-gray-900">삭제 확인</h3>
+            <p className="text-gray-600 mb-6">정말로 이 사진을 삭제하시겠습니까?</p>
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setDeleteId(null)}
+                className="px-4 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-200 transition-colors"
+              >
+                취소
+              </button>
+              <button
+                onClick={handleDelete}
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+              >
+                삭제
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="container mx-auto px-6">
-        {/* --- 제목 --- */}
         <div className="mb-8">
           <h2
             style={{
@@ -133,11 +164,8 @@ export default function GalleryContent() {
           </div>
         </div>
 
-        {/* --- 검색창 및 업로드 버튼 영역 --- */}
         <div className="flex justify-end mt-4">
-          <div className="flex items-center gap-2 sm:gap-4 border border-black rounded-md p-1.5 bg-white shadow-sm">
-            
-            {/* 검색 입력 영역 (높이를 h-10으로 통일) */}
+          <div className="flex items-center gap-2 border border-black rounded-md p-1.5 bg-white shadow-sm">
             <div className="flex items-center bg-gray-50 rounded h-10 w-full max-w-[250px] sm:max-w-sm border border-gray-200">
               <input
                 type="text"
@@ -147,17 +175,15 @@ export default function GalleryContent() {
                   setSearchTerm(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="py-2 px-3 sm:px-4 outline-none text-black w-full h-full text-sm sm:text-base min-w-0 bg-transparent"
+                className="py-2 px-3 outline-none text-black w-full h-full text-sm bg-transparent"
               />
               <button className="flex-shrink-0 px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 transition-colors">
                 검색
               </button>
             </div>
-
-            {/* 업로드 버튼 (로그인 시에만 표시) */}
             {isLoggedIn && (
-              <button 
-                onClick={handleUpload}
+              <button
+                onClick={() => setIsUploading(true)}
                 className="flex-shrink-0 px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 transition-colors"
               >
                 업로드
@@ -166,23 +192,33 @@ export default function GalleryContent() {
           </div>
         </div>
 
-        {/* --- 갤러리 그리드 --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
           {isLoading ? (
-            <div className="col-span-full py-20 text-center text-gray-500 font-medium">
-              로딩 중...
-            </div>
+            <div className="col-span-full py-20 text-center text-gray-500">로딩 중...</div>
           ) : paginatedImages.length > 0 ? (
-            paginatedImages.map((item, index) => (
-              <div key={`${item.postId}-${index}`} className="bg-white overflow-hidden border transition-transform duration-300 hover:shadow-lg">
+            paginatedImages.map((item) => (
+              <div
+                key={item.postId}
+                className="group relative bg-white overflow-hidden border transition-all duration-300 hover:shadow-lg"
+              >
+                {isLoggedIn && (
+                  <button
+                    onClick={() => setDeleteId(item.postId)}
+                    className="absolute top-3 right-3 z-20 w-8 h-8 bg-black bg-opacity-50 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-all duration-200 opacity-0 group-hover:opacity-100 shadow-md"
+                    title="삭제"
+                  >
+                    ✕
+                  </button>
+                )}
+
                 <div className="relative w-full aspect-video">
                   <Image
                     src={item.imageUrl}
                     alt={item.caption}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    unoptimized={item.imageUrl.startsWith('http') || item.imageUrl.startsWith('/api')}
+                    unoptimized={true}
                   />
                 </div>
                 <div className="p-4">
@@ -192,23 +228,15 @@ export default function GalleryContent() {
               </div>
             ))
           ) : (
-            <div className="col-span-full py-20 text-center text-gray-500 font-medium">
-              {searchTerm ? '검색 결과가 없습니다.' : '갤러리가 비어있습니다.'}
-            </div>
+            <div className="col-span-full py-20 text-center text-gray-500">데이터가 없습니다.</div>
           )}
-
-          {/* 빈 공간 유지용 플레이스홀더 */}
-          {Array.from({ length: Math.max(0, ITEMS_PER_PAGE - paginatedImages.length) }).map((_, index) => (
-            <div key={`placeholder-${index}`} className="hidden lg:block h-[1px]" />
-          ))}
         </div>
 
-        {/* --- 페이지네이션 바 --- */}
         <div className="flex justify-center items-center gap-4 mt-8">
           <button
-            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 bg-white rounded-md disabled:opacity-30 text-gray-800 border hover:bg-gray-50 transition-colors shadow-sm"
+            className="px-4 py-2 bg-white rounded-md disabled:opacity-30 text-gray-800 border shadow-sm"
           >
             &lt;
           </button>
@@ -216,9 +244,9 @@ export default function GalleryContent() {
             {currentPage} / {totalPages}
           </span>
           <button
-            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-white rounded-md disabled:opacity-30 text-gray-800 border hover:bg-gray-50 transition-colors shadow-sm"
+            className="px-4 py-2 bg-white rounded-md disabled:opacity-30 text-gray-800 border shadow-sm"
           >
             &gt;
           </button>
