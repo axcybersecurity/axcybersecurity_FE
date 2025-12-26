@@ -60,7 +60,7 @@ export default function GalleryContent() {
   const loadGalleryData = async () => {
     try {
       setIsLoading(true);
-      const response = await postApi.getPosts(0, 100); // 충분한 수의 포스트 가져오기
+      const response = await postApi.getPosts(0, 10); // 충분한 수의 포스트 가져오기
       // 백엔드 응답 구조: { posts: Post[], total: number } 또는 Post[]
       const posts: Post[] = response.data.posts || response.data;
       
