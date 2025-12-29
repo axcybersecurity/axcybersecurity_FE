@@ -98,73 +98,82 @@ export default function Home() {
 
   return (
     <div className="w-full mx-auto">
-      <section className="relative w-full z-10">
-        <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[8/3] overflow-hidden">
-          <Image
-            src="/main/BG.jpg"
-            alt="PNU InfoSec 히어로 이미지"
-            className="object-cover object-center"
-            fill
-            priority
-          />
+      <section className="relative w-full overflow-hidden z-10">
+        {/* ===== 배경 이미지 ===== */}
+        <Image
+          src="/main/bg.png" // ← 새 배경 이미지 경로
+          alt="Hero Background"
+          fill
+          priority
+          className="object-cover"
+        />
 
-          <div className="absolute inset-0 z-10 flex items-center">
-            <div className="container mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-              <div className="max-w-xl sm:max-w-2xl md:max-w-3xl"></div>
+        {/* ===== 화면 기준 50:50 분할 ===== */}
+        <div className="relative z-10 min-h-[70vh] lg:min-h-[80vh] grid grid-cols-1 lg:grid-cols-2">
+          {/* ===== LEFT : TEXT (왼쪽 반 섹션 정중앙) ===== */}
+          <div className="flex items-center justify-center px-6 lg:px-12">
+            <div className="max-w-xl">
+              <p className="text-2xl sm:text-2xl text-gray-600 mb-3">
+                Information Security &amp; AIoT
+              </p>
 
-              <Link
-                href="/courses?tab=gallery"
-                  className="
-                    hidden md:block
-                    bg-white/60 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden
-                    hover:scale-105 transition-transform
-                    w-[38vw] lg:w-[34vw] xl:w-[30vw]
-                    min-w-[360px] lg:min-w-[420px]
-                    max-w-[640px] xl:max-w-[760px]
-                    aspect-[16/10] lg:aspect-[3/2]"
-                >
-                <div className="relative w-full h-full overflow-hidden">
-                  {slideLoading ? (
-                    <div className="flex items-center justify-center w-full h-full text-gray-600 text-sm">
-                      로딩 중...
-                    </div>
-                  ) : slideItems.length === 0 ? (
-                    <div className="flex items-center justify-center w-full h-full text-gray-600 text-sm">
-                      갤러리 이미지 없음
-                    </div>
-                  ) : (
-                    <div className="absolute inset-0">
-                      {/* ✅ 트랙: w-full이 핵심(translateX % 기준을 컨테이너 폭으로 고정) */}
-                      <div
-                        className="w-full h-full flex"
-                        onTransitionEnd={handleTransitionEnd}
-                        style={{
-                          transform: `translateX(-${slideIndex * 100}%)`,
-                          transition: enableTransition ? 'transform 350ms ease-in-out' : 'none',
-                          willChange: 'transform',
-                        }}
-                      >
-                        {loopItems.map((item, idx) => (
-                          <div
-                            key={`${item.postId}-${idx}`}
-                            className="min-w-full h-full relative flex-shrink-0"
-                          >
-                            <Image
-                              src={item.imageUrl}
-                              alt={`gallery-slide-${idx}`}
-                              fill
-                              className="object-cover"
-                              sizes="(max-width: 768px) 100vw, 400px"
-                              unoptimized={true}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </Link>
+              <h1 className="font-bold leading-tight text-4xl sm:text-4xl lg:text-4xl xl:text-5xl text-[#282828]">
+                AI, 블록체인, IoT 기술로
+                <br />
+                미래를 설계하다
+              </h1>
             </div>
+          </div>
+
+          {/* ===== RIGHT : SLIDE (오른쪽 반 섹션 정중앙) ===== */}
+          <div className="hidden md:flex items-center justify-center px-6 lg:px-12">
+            <Link
+              href="/courses?tab=gallery"
+              className="
+                bg-white/60 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden
+                hover:scale-[1.03] transition-transform
+                w-[clamp(360px,32vw,620px)]
+                aspect-[16/10] lg:aspect-[3/2]
+              "
+            >
+              <div className="relative w-full h-full">
+                {slideLoading ? (
+                  <div className="flex items-center justify-center w-full h-full text-gray-600 text-sm">
+                    로딩 중...
+                  </div>
+                ) : slideItems.length === 0 ? (
+                  <div className="flex items-center justify-center w-full h-full text-gray-600 text-sm">
+                    갤러리 이미지 없음
+                  </div>
+                ) : (
+                  <div
+                    className="flex h-full"
+                    onTransitionEnd={handleTransitionEnd}
+                    style={{
+                      transform: `translateX(-${slideIndex * 100}%)`,
+                      transition: enableTransition ? 'transform 350ms ease-in-out' : 'none',
+                      willChange: 'transform',
+                    }}
+                  >
+                    {loopItems.map((item, idx) => (
+                      <div
+                        key={`${item.postId}-${idx}`}
+                        className="min-w-full h-full relative flex-shrink-0"
+                      >
+                        <Image
+                          src={item.imageUrl}
+                          alt={`gallery-slide-${idx}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 400px"
+                          unoptimized
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Link>
           </div>
         </div>
       </section>
