@@ -109,9 +109,9 @@ export default function Home() {
         />
 
         {/* ===== 화면 기준 50:50 분할 ===== */}
-        <div className="relative z-10 min-h-[70vh] lg:min-h-[80vh] grid grid-cols-1 lg:grid-cols-2">
+        <div className="relative z-10 min-h-[70vh] lg:min-h-[80vh] grid grid-cols-1 lg:grid-cols-2 gap-x-0">
           {/* ===== LEFT : TEXT (왼쪽 반 섹션 정중앙) ===== */}
-          <div className="flex items-center justify-center px-6 lg:px-12">
+          <div className="flex items-center justify-center pl-6 lg:pl-12 pr-6 lg:pr-0 lg:-mr-40">
             <div className="max-w-xl">
               <p className="text-2xl sm:text-2xl text-gray-600 mb-3">
                 Information Security &amp; AIoT
@@ -126,7 +126,7 @@ export default function Home() {
           </div>
 
           {/* ===== RIGHT : SLIDE (오른쪽 반 섹션 정중앙) ===== */}
-          <div className="hidden md:flex items-center justify-center px-6 lg:px-12">
+          <div className="hidden md:flex items-center justify-center pl-6 lg:pl-0 lg:-ml-8 pr-6 lg:pr-30">
             <Link
               href="/courses?tab=gallery"
               className="
