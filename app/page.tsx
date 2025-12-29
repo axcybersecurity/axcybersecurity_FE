@@ -114,12 +114,15 @@ export default function Home() {
 
               <Link
                 href="/courses?tab=gallery"
-                className="
-                  hidden md:block
-                  bg-white/60 backdrop-blur-md rounded-xl shadow-lg overflow-hidden
-                  hover:scale-105 transition-transform
-                  w-[28vw] min-w-[260px] max-w-[400px] aspect-[3/2]"
-              >
+                  className="
+                    hidden md:block
+                    bg-white/60 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden
+                    hover:scale-105 transition-transform
+                    w-[38vw] lg:w-[34vw] xl:w-[30vw]
+                    min-w-[360px] lg:min-w-[420px]
+                    max-w-[640px] xl:max-w-[760px]
+                    aspect-[16/10] lg:aspect-[3/2]"
+                >
                 <div className="relative w-full h-full overflow-hidden">
                   {slideLoading ? (
                     <div className="flex items-center justify-center w-full h-full text-gray-600 text-sm">

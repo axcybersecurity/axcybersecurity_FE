@@ -72,9 +72,9 @@ export default function MainContent() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-stretch">
             {/* 왼쪽 큰 이미지 (높이 기준이 됨) */}
             <div className="lg:col-span-3">
-              <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[16/9]">
+              <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[4/3]">
                 <Image
-                  src="/about_main/ex1.png"
+                  src="/about_main/714.png"
                   alt="연구실 사진 1"
                   fill
                   className="object-cover"
@@ -88,7 +88,7 @@ export default function MainContent() {
             <div className="lg:col-span-1 flex flex-col gap-4">
               <div className="relative flex-1 overflow-hidden rounded-xl bg-gray-100">
                 <Image
-                  src="/about_main/ex2.png"
+                  src="/about_main/it.png"
                   alt="연구실 사진 2"
                   fill
                   className="object-cover"
@@ -98,7 +98,7 @@ export default function MainContent() {
 
               <div className="relative flex-1 overflow-hidden rounded-xl bg-gray-100">
                 <Image
-                  src="/about_main/ex3.png"
+                  src="/about_main/714_2.png"
                   alt="연구실 사진 3"
                   fill
                   className="object-cover"
