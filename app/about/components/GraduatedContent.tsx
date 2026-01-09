@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface Member {
   name: string;
@@ -13,6 +14,7 @@ interface Member {
 
 const allMembersData: Member[] = [
   
+  { name: '황연정', role: '석사과정', imageUrl: '/구성원소개사진/황연정.jpg', interests: 'Security', email:'yeonjeong@islab.re.kr'},
 ];
 
 const InfoRow = ({ label, value, href }: { label: string; value: string; href?: string }) => {

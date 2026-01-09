@@ -21,14 +21,14 @@ const allMembersData: Member[] = [
   { name: '이범수', role: '석사과정', imageUrl: '/구성원소개사진/이범수.jpg', interests: 'AI', email:'beomsu@islab.re.kr'},
   { name: '이경민', role: '석사과정', imageUrl: '/구성원소개사진/이경민.jpg', interests: 'Security', email:'kyeongmin@islab.re.kr'},
   { name: '윤지원', role: '석사과정', imageUrl: '/구성원소개사진/윤지원.jpg', interests: 'AI / Security', email:'jiwon@islab.re.kr'},
-  { name: '황연정', role: '석사과정', imageUrl: '/구성원소개사진/황연정.jpg', interests: 'Security', email:'yeonjeong@islab.re.kr'},
-  
+  { name: '권태현', role: '석사과정', imageUrl: '/pnu_logo.png', interests: 'Security', email:'yeonjeong@islab.re.kr'},
+  { name: '정중환', role: '석사과정', imageUrl: '/pnu_logo.png', interests: 'Security', email:'yeonjeong@islab.re.kr'},
+  { name: '김진수', role: '학석통합', imageUrl: '/구성원소개사진/김진수.jpg', interests: 'Blockchain', email:'jinsu@islab.re.kr'},
+  { name: '박영주', role: '학석통합', imageUrl: '/구성원소개사진/박영주.jpg', interests: 'AI / Security', email:'yeongju@islab.re.kr'},
+
   { name: '이경윤', role: '학부연구생', imageUrl: '/구성원소개사진/이경윤.jpg', interests: 'Blockchain', email:'kyungyun@islab.re.kr'},
   { name: '성도범', role: '학부연구생', imageUrl: '/구성원소개사진/성도범.jpg', interests: 'Security', email:'dobeom@islab.re.kr'},
-  { name: '김진수', role: '학부연구생', imageUrl: '/구성원소개사진/김진수.jpg', interests: 'Blockchain', email:'jinsu@islab.re.kr'},
   { name: '정지인', role: '학부연구생', imageUrl: '/구성원소개사진/정지인.jpg', interests: 'AI / Security', email:'jiin@islab.re.kr'},
-  { name: '박영주', role: '학부연구생', imageUrl: '/구성원소개사진/박영주.jpg', interests: 'AI / Security', email:'yeongju@islab.re.kr'},
-  { name: '하승원', role: '학부연구생', imageUrl: '/구성원소개사진/하승원.jpg', interests: 'AI', email:'seungwon@islab.re.kr'},
   { name: 'Sofi Nafikova', role: '학부연구생', imageUrl: '/구성원소개사진/Sofi_Nafikova.jpg', interests: 'AI', email:'nafikovasofi0@gmail.com'},
   { name: 'Adilet Kadyrov', role: '학부연구생', imageUrl: '/구성원소개사진/Adilet_Kadyrov.jpg', interests: 'AI / Security', email:'adilet.kadyrov@outlook.com'},
   
@@ -47,6 +47,9 @@ export default function MembersContent() {
   }
   if (activeTab === '박사후 및 전임 연구원') {
     return member.role === '박사후연구원' || member.role === '전임연구원';
+  }
+  if (activeTab === '석사과정') {
+    return member.role === '석사과정' || member.role === '학석통합';
   }
   return member.role === activeTab;
 });
