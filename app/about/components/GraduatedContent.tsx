@@ -7,14 +7,12 @@ interface Member {
   name: string;
   role: string;
   graduated: string;
-  company: string;
   email: string;
-  web: string;
+  imageUrl: string;
 }
 
 const allMembersData: Member[] = [
-  
-  { name: '황연정', role: '석사과정', imageUrl: '/구성원소개사진/황연정.jpg', interests: 'Security', email:'yeonjeong@islab.re.kr'},
+  { name: '황연정', role: '석사졸업', imageUrl: '/구성원소개사진/황연정.jpg', graduated: '2026', email:'yeonjeong@islab.re.kr'},
 ];
 
 const InfoRow = ({ label, value, href }: { label: string; value: string; href?: string }) => {
@@ -86,25 +84,58 @@ export default function GraduatedContent() {
         </div>
 
         {/* --- 멤버 카드 그리드 --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredMembers.map((member, index) => (
-            <div
-              key={index}
-              className="bg-white border rounded-lg p-6"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                🎓 {member.name}
-              </h3>
-              <div className="space-y-3">
-                <InfoRow label="과정" value={member.role} />
-                <InfoRow label="졸업" value={member.graduated} />
-                <InfoRow label="직장" value={member.company} />
-                <InfoRow label="메일" value={member.email} href={`mailto:${member.email}`} />
-                <InfoRow label="WEB" value={member.web} href={member.web} />
-              </div>
-            </div>
-          ))}
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                  {filteredMembers.map((member, index) => (
+                    <div
+                      key={index}
+                      className="bg-white border transition-all duration-300"
+                    >
+                      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 p-4">
+                        <div className="flex-shrink-0 w-52 h-64">
+                          <Image
+                            src={member.imageUrl}
+                            alt={`${member.name} 프로필 사진`}
+                            width={208}
+                            height={256} 
+                            className="w-full h-full object-cover rounded-full"
+                          />
+                        </div>
+                        <div className="text-center sm:text-left pt-8">
+                          <h2 className="text-3xl font-bold text-gray-900 mt-1 mb-4">
+                            {member.name}
+                          </h2>
+                          <p
+                            className="text-gray-500 text-s pt-4"
+                            style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                            <span className="inline-block bg-gray-300 px-1 rounded">
+                              과정
+                            </span>{' '}
+                            {member.role}
+                          </p>
+        
+                          <p
+                            className="text-gray-500 text-s pt-4"
+                            style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                            <span className="inline-block bg-gray-300 px-1 rounded">
+                              졸업
+                            </span>{' '}
+                            {member.graduated}
+                          </p>
+        
+                          <p
+                            className="text-gray-500 text-s pt-4"
+                            style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                            <span className="inline-block bg-gray-300 px-1 rounded">
+                              메일
+                            </span>{' '}
+                            {member.email}
+                          </p>
+        
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-// 구성원 데이터 타입을 교수님 카드와 유사하게 정의
 interface Member {
   name: string;
   role: string;
