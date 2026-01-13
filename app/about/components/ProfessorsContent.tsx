@@ -93,6 +93,10 @@ export default function ProfessorsContext() {
           </h3>
 
           <ul className="list-disc list-inside space-y-2 px-6 text-gray-700 lg:px-8">
+            <li className="text-xl mt-4">해양수산부 기술자문위원화 위원 2025.12.5~</li>
+            <li className="text-xl mt-4">한국원자력환경공단 과업심의워원 2025.10.01~</li>
+            <li className="text-xl mt-4">한국국제협력단 기술자문위원회 위원  2023.12~</li>
+            <li className="text-xl mt-4">지역보안포럼위원장 2025.10.30~</li>
             <li className="text-xl mt-4">부산광역시 정보보호 지역협의체 위원, 2024.08.01~</li>
             <li className="text-xl mt-4">육군본부 사이버전자전 자문위원, 2022.10.01~</li>
             <li className="text-xl mt-4">육군본부 교육사 드론과학기술그룹 자문위원, 2024.02.01~</li>

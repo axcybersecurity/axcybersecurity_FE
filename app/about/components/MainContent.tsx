@@ -179,7 +179,7 @@ export default function MainContent() {
             {/* 왼쪽: 지도 영역 */}
             <div className="flex-1 w-full h-80 rounded-lg overflow-hidden">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d968.913118453998!2d129.08172541772404!3d35.23081559965055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356893ed44882865%3A0x7734040946809f1!2z7KCcNuqzte2Vmeq0gCAo7Lu07ZOo7YSw6rO17ZWZ6rSAKQ!5e0!3m2!1sko!2skr!4v1756780665500!5m2!1sko!2skr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1846.7637687627798!2d129.08208807360762!3d35.230548539219484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568930014f9f367%3A0xea79b066b7eb63eb!2z67aA7IKw64yA7ZWZ6rWQIElU6rSA!5e0!3m2!1sko!2skr!4v1768277024306!5m2!1sko!2skr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
