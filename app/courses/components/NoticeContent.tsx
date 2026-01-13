@@ -213,7 +213,7 @@ export default function NoticeContent() {
               }}
             />
           </div>
-          <div className="relative flex-grow">
+          <div className="relative flex-grow text-black">
             <select 
               value={currentSearchType} 
               onChange={(e) => setCurrentSearchType(e.target.value)}
