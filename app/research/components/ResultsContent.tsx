@@ -123,33 +123,33 @@ export default function ResultsContent() {
                 <ul className="list-disc list-inside space-y-2">
                   <li>
                     <strong>Heechan-Kim, Jaehyun-Kim, Kyungyun-Lee, Junyoung-Son.</strong>{' '}
-                    2025. &quot;Blockchain-Assisted Explainable AI Framework for Accountability in Autonomous Driving Systems&quot;
+                    2025. Blockchain-Assisted Explainable AI Framework for Accountability in Autonomous Driving Systems
                   </li>
                   <li>
                     <strong>SeHwa-Ko, Kyeong-Min Lee, Eunse-Kang, Junyoung-Son.</strong>{' '}
-                    2025. &quot;FingerRatchet: A Lightweight Anonymous P2P Protocol with Out-of-Band Fingerprint Exchange&quot;
+                    2025. FingerRatchet: A Lightweight Anonymous P2P Protocol with Out-of-Band Fingerprint Exchange
                   </li>
                   <li>
                     <strong>Hyunjin-Jang, Jiwon-Yun, Yeonjeong-Hwang, Morsheda Akter, Howon-Kim, Junyoung-Son.</strong>{' '}
-                    2025. &quot;Multi-class Attack Detection in CAN Networks using Lightweight 1D CNN&quot;
+                    2025. Multi-class Attack Detection in CAN Networks using Lightweight 1D CNN
                   </li>
                   <li>
                     <strong>
                       Andro Aprila Adiputra, Ahmada Yusril Kadiptya, Thi-Thu-Huong Le, JunYoung-Son, Howon Kim.
                     </strong>{' '}
-                    2025. &quot;Enhancing Contextual Understanding with Multimodal Siamese Networks Using Contrastive Loss and Text Embeddings&quot;
+                    2025. Enhancing Contextual Understanding with Multimodal Siamese Networks Using Contrastive Loss and Text Embeddings
                   </li>
                   <li>
                     <strong>
                       Thi-Thu-Huong Le, Andro Aprila Adiputra, YeonJeong-Hwang, JunYoung-Son, Howon Kim.
                     </strong>{' '}
-                    2025. &quot;Fine-Tuning Transformer LLMs for Detecting SQL Injection and XSS Vulnerabilities&quot;
+                    2025. Fine-Tuning Transformer LLMs for Detecting SQL Injection and XSS Vulnerabilities
                   </li>
                   <li>
                     <strong>
                       KyeongMin-Lee, YeonJeong-Hwang, Thi-Thu-Huong Le, JunYoung Son.
                     </strong>{' '}
-                    2025. &quot;Performance Analysis of Signing Algorithms and Integrity Enhancement Techniques for MAVLink in PX4&quot;
+                    2025. Performance Analysis of Signing Algorithms and Integrity Enhancement Techniques for MAVLink in PX4
                   </li>
                 </ul>
               </div>
