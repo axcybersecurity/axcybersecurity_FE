@@ -18,7 +18,6 @@ const allMembersData: Member[] = [
   
   { name: '이범수', role: '석사과정', imageUrl: '/구성원소개사진/이범수.jpg', interests: 'AI', email:'beomsu@islab.re.kr'},
   { name: '이경민', role: '석사과정', imageUrl: '/구성원소개사진/이경민.jpg', interests: 'Security', email:'kyeongmin@islab.re.kr'},
-  { name: '윤지원', role: '석사과정', imageUrl: '/구성원소개사진/윤지원.jpg', interests: 'AI / Security', email:'jiwon@islab.re.kr'},
   { name: '권태현', role: '석사과정', imageUrl: '/구성원소개사진/권태현.jpg', interests: 'AI / Security', email:'xogus2389@pusan.ac.kr '},
   { name: '정중환', role: '석사과정', imageUrl: '/구성원소개사진/정중환.jpg', interests: 'Security', email:'wwat1313@naver.com'},
   { name: '성도범', role: '학석통합', imageUrl: '/구성원소개사진/성도범.jpg', interests: 'Security', email:'dobeom@islab.re.kr'},
@@ -30,7 +29,6 @@ const allMembersData: Member[] = [
   { name: 'Sofi Nafikova', role: '학부연구생', imageUrl: '/구성원소개사진/Sofi_Nafikova.jpg', interests: 'AI', email:'nafikovasofi0@gmail.com'},
   { name: 'Adilet Kadyrov', role: '학부연구생', imageUrl: '/구성원소개사진/Adilet_Kadyrov.jpg', interests: 'AI / Security', email:'adilet.kadyrov@outlook.com'},
   
-  { name: '현창훈', role: '박사후연구원', imageUrl: '/구성원소개사진/현창훈.jpg', interests: 'AI Security', email:'chhyun@pusan.ac.kr'}, 
   { name: '윤승리', role: '전임연구원', imageUrl: '/구성원소개사진/윤승리.jpg', interests: 'RAG / GraphRAG', email:'dbstmdfl11@pusan.ac.kr'}, 
   { name: '주연신', role: '전임연구원', imageUrl: '/구성원소개사진/주연신.jpg', interests: 'Computer Network / Security', email:'jy.soo@pusan.ac.kr'}, 
   

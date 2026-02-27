@@ -64,7 +64,7 @@ export default function MainContent() {
             <br></br>
             <h2 className="text-4xl font-bold text-gray-800 mb-6">연구실 소개</h2>
             <p className="text-gray-600">
-                <br></br><strong className="text-2xl">교수 연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관(102) 801호
+                <br></br><strong className="text-2xl">교수 연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관(102) 714호
             </p>
         </div>
         {/* 이미지 영역 */}
