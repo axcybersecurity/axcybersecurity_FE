@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import axPicture from '../../TopicsPicture/ax_picture.png';
 import is2dImage from '../../TopicsPicture/ax_picture2.png';
+import axPicture3 from '../../TopicsPicture/ax_picture3.png';
 
 export default function AiotDetail() {
   return (
@@ -54,6 +55,28 @@ export default function AiotDetail() {
               – CTI 지식 기반 보안 위협 데이터를 그래프 DB로 통합하고, 시스템의 각 계층과의 연결에 대한
               아키텍쳐 및 파이프라인 설계
             </div>
+          </div>
+        </div>
+        {/* 그림 영역 */}
+        <div className="mt-4 max-w-4xl mx-auto">
+          <Image
+            src={axPicture3}
+            alt="IS²D(Intelligent Self-evolving Security Dome) 보안 메커니즘 개념도"
+            width={892}
+            height={448}
+            className="w-full h-auto rounded-md"
+          />
+        </div>
+        {/* 본문 */}
+        <div
+          className="mt-[3vh] space-y-4 text-sm sm:text-base leading-relaxed text-[#282828]"
+          style={{ fontFamily: 'Pretendard' }}
+        >
+          <div>
+            <div>■ GraphRAG 기반 메디컬 LLM 시스템</div>
+            <div>– 임상적으로 정규화된 그래프 DB구축(SNOMED CT:국제 보건의료 용어 표준 체계)</div>
+            <div>– AI 기반 메디컬 생태계 지식 구조 분석</div>
+            <div>멀티오믹스/시공간/모달리티 별 임팩트 분석</div>
           </div>
         </div>
       </section>
