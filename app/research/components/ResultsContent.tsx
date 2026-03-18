@@ -114,7 +114,7 @@ export default function ResultsContent() {
           <div className="w-full min-h-[35vh] sm:min-h-[40vh] md:min-h-[45vh] flex justify-start text-left">
             {activeTab === 'SCI' && (
               <p className="text-black text-sm sm:text-base md:text-lg leading-relaxed">
-                여기에 SCI 논문 내용이 들어갑니다
+                
               </p>
             )}
 
@@ -211,7 +211,7 @@ export default function ResultsContent() {
 
             {activeTab === '프로젝트' && (
               <p className="text-black text-sm sm:text-base md:text-lg leading-relaxed">
-                여기에 프로젝트 내용이 들어갑니다
+                
               </p>
             )}
 
@@ -220,10 +220,7 @@ export default function ResultsContent() {
               <div className="space-y-4 text-left text-sm sm:text-base leading-relaxed text-gray-800">
                 <ul className="list-disc list-inside space-y-2">
                   <li>
-                    <strong>2025 국가암호공모전</strong> - 암호원천기술 분야 입상
-                  </li>
-                  <li>
-                    <strong>2025 국가암호공모전</strong> - KpqC 알고리즘 분야 입상
+                    <strong>2025 RISE 창업 경진대회</strong> - 대상 수상
                   </li>
                   <li>
                     <strong>2025 DIVE 헤커톤</strong> - 발제사 부문 1등
@@ -232,7 +229,10 @@ export default function ResultsContent() {
                     <strong>2025 DIVE 헤커톤</strong> - 종합 3등
                   </li>
                   <li>
-                    <strong>ACS 영남권 해킹방어대회</strong> - 1등 · 2등 동시 수상
+                    <strong>2025 ACS 영남권 해킹방어대회</strong> - 1등 수상
+                  </li>
+                  <li>
+                    <strong>2025 ACS 영남권 해킹방어대회</strong> - 2등 수상
                   </li>
                 </ul>
                 {/* 필요하면 위 항목들을 실제 실적에 맞게 수정해서 쓰면 됩니다 */}

@@ -12,24 +12,24 @@ interface Member {
 }
 
 const allMembersData: Member[] = [
-  { name: '고세화 (랩장)', role: '석박통합', imageUrl: '/구성원소개사진/고세화.jpg', interests: 'Security', email:'sehwa@islab.re.kr'},
-  { name: '김희찬 (부랩장)', role: '석박통합', imageUrl: '/구성원소개사진/김희찬.jpg', interests: 'Blockchain', email:'heechan@islab.re.kr'},
-  { name: 'Morsheda Akter Annie', role: '박사과정', imageUrl: '/구성원소개사진/Morsheda_Akter_Annie.jpg', interests: 'AI', email:'annie@islab.re.kr'},
+  { name: '고세화 (랩장)', role: '석박통합', imageUrl: '/구성원소개사진/고세화.jpg', interests: 'Security', email:'kosh7707@pusan.ac.kr'},
+  { name: '김희찬 (부랩장)', role: '석박통합', imageUrl: '/구성원소개사진/김희찬.jpg', interests: 'Blockchain', email:'727khc@gmail.com'},
+  { name: 'Morsheda Akter Annie', role: '박사과정', imageUrl: '/구성원소개사진/Morsheda_Akter_Annie.jpg', interests: 'AI', email:'anniislam1108@gmail.com'},
   
-  { name: '이범수', role: '석사과정', imageUrl: '/구성원소개사진/이범수.jpg', interests: 'AI', email:'beomsu@islab.re.kr'},
-  { name: '이경민', role: '석사과정', imageUrl: '/구성원소개사진/이경민.jpg', interests: 'Security', email:'kyeongmin@islab.re.kr'},
-  { name: '권태현', role: '석사과정', imageUrl: '/구성원소개사진/권태현.jpg', interests: 'AI / Security', email:'xogus2389@pusan.ac.kr '},
-  { name: '정중환', role: '석사과정', imageUrl: '/구성원소개사진/정중환.jpg', interests: 'Security', email:'wwat1313@naver.com'},
+  { name: '이범수', role: '석사과정', imageUrl: '/구성원소개사진/이범수.jpg', interests: 'AI', email:'beomsulee198@gmail.com'},
+  { name: '이경민', role: '석사과정', imageUrl: '/구성원소개사진/이경민.jpg', interests: 'Security', email:'min99819@pusan.ac.kr'},
+  { name: '권태현', role: '석사과정', imageUrl: '/구성원소개사진/권태현.jpg', interests: 'AI / Security', email:'tgwon0947@gmail.com'},
+  { name: '정중환', role: '석사과정', imageUrl: '/구성원소개사진/정중환.jpg', interests: 'Security', email:'wwat1313@gmail.com'},
   { name: '김종률', role: '석사과정', imageUrl: '/구성원소개사진/김종률.jpg', interests: 'Security', email:'flora827@naver.com'},
-  { name: '성도범', role: '학석통합', imageUrl: '/구성원소개사진/성도범.jpg', interests: 'Security', email:'dobeom@islab.re.kr'},
-  { name: '김진수', role: '학석통합', imageUrl: '/구성원소개사진/김진수.jpg', interests: 'Blockchain', email:'jinsu@islab.re.kr'},
-  { name: '박영주', role: '학석통합', imageUrl: '/구성원소개사진/박영주.jpg', interests: 'AI / Security', email:'yeongju@islab.re.kr'},
-
-  { name: '이경윤', role: '학부연구생', imageUrl: '/구성원소개사진/이경윤.jpg', interests: 'Blockchain', email:'kyungyun@islab.re.kr'},
-  { name: '정지인', role: '학부연구생', imageUrl: '/구성원소개사진/정지인.jpg', interests: 'AI / Security', email:'jiin@islab.re.kr'},
+  { name: '성도범', role: '학석통합', imageUrl: '/구성원소개사진/성도범.jpg', interests: 'Security', email:'sdb0605@naver.com'},
+  { name: '김진수', role: '학석통합', imageUrl: '/구성원소개사진/김진수.jpg', interests: 'Blockchain', email:'mig03830@pusan.ac.kr'},
+  { name: '박영주', role: '학석통합', imageUrl: '/구성원소개사진/박영주.jpg', interests: 'AI / Security', email:'joo111505050@pusan.ac.kr'},
+  { name: 'Adilet Kadyrov', role: '학석통합', imageUrl: '/구성원소개사진/Adilet_Kadyrov.jpg', interests: 'AI / Security', email:'adilet.kadyrov@outlook.com'},
+ 
+  { name: '이경윤', role: '학부연구생', imageUrl: '/구성원소개사진/이경윤.jpg', interests: 'Blockchain', email:'kylee0293@gmail.com'},
+  { name: '정지인', role: '학부연구생', imageUrl: '/구성원소개사진/정지인.jpg', interests: 'AI / Security', email:'gini202355709@gmail.com'},
   { name: 'Sofi Nafikova', role: '학부연구생', imageUrl: '/구성원소개사진/Sofi_Nafikova.jpg', interests: 'AI', email:'nafikovasofi0@gmail.com'},
-  { name: 'Adilet Kadyrov', role: '학부연구생', imageUrl: '/구성원소개사진/Adilet_Kadyrov.jpg', interests: 'AI / Security', email:'adilet.kadyrov@outlook.com'},
-  
+   
   { name: '윤승리', role: '전임연구원', imageUrl: '/구성원소개사진/윤승리.jpg', interests: 'RAG / GraphRAG', email:'dbstmdfl11@pusan.ac.kr'}, 
   { name: '주연신', role: '전임연구원', imageUrl: '/구성원소개사진/주연신.jpg', interests: 'Computer Network / Security', email:'jy.soo@pusan.ac.kr'}, 
   

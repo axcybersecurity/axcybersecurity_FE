@@ -172,17 +172,18 @@ export default function Header() {
     >
       <nav className="w-full px-4 sm:px-6 h-[10vh] min-h-18 flex justify-between items-center max-h-[100px]">
         {/* 왼쪽 로고 */}
-        <div className="relative h-[9vh] w-[45vh] min-w-[200px]">
-          <Link href="/" className="block h-full w-full z-5">
-            <Image
-              src="/main_logo.png"
-              alt="메인로고"
-              fill
-              priority
-              className="object-contain object-left"
-            />
-          </Link>
-        </div>
+<div className="relative w-[240px] h-[50px] sm:w-[320px] sm:h-[60px] md:w-[400px] md:h-[75px] lg:w-[480px] lg:h-[85px]">
+  <Link href="/" className="block h-full w-full z-10">
+    <Image
+      src="/main_logo.png"
+      alt="메인로고"
+      fill
+      priority
+      sizes="(max-width: 768px) 240px, (max-width: 1024px) 320px, 480px"
+      className="object-contain object-left"
+    />
+  </Link>
+</div>
 
         {/* 오른쪽 메뉴 - 데스크탑 */}
         <div className="hidden md:flex items-center gap-[4.5vh]">
