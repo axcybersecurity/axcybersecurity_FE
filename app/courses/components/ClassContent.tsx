@@ -1,26 +1,41 @@
 'use client';
 
-import React from 'react';
-import NoticeList from '../../../components/NoticeList';
+import React, { useState } from 'react';
+import ClassNoticeContent from './ClassNoticeContent';
 
 const ClassContent: React.FC = () => {
+  const [openNoticeBoard, setOpenNoticeBoard] = useState(false);
+
+  if (openNoticeBoard) {
+    return <ClassNoticeContent onBack={() => setOpenNoticeBoard(false)} />;
+  }
 
   return (
     <div className="min-h-screen p-4 max-w-6xl mx-auto">
       {/* Header Section */}
-        <div className="text-white p-4 mb-4 rounded-lg" style={{backgroundColor: '#20354C'}}>
+      <button
+        type="button"
+        onClick={() => setOpenNoticeBoard(true)}
+        className="w-full text-left text-white p-4 mb-4 rounded-lg"
+        style={{ backgroundColor: '#20354C' }}
+      >
         <div className="text-sm mb-1">과목</div>
-        <div className="text-xl" style={{
-          fontFamily: 'Pretendard',
-          fontWeight: 500,
-          fontStyle: 'normal',
-          lineHeight: '100%',
-          letterSpacing: '0%'
-        }}>정보보안</div>
-      </div>
+        <div
+          className="text-xl"
+          style={{
+            fontFamily: 'Pretendard',
+            fontWeight: 500,
+            fontStyle: 'normal',
+            lineHeight: '100%',
+            letterSpacing: '0%',
+          }}
+        >
+          정보보안
+        </div>
+      </button>
 
       {/* Lecture Materials Section */}
-      <div className="rounded p-4 shadow-sm" style={{backgroundColor: '#EFF2F5'}}>
+      <div className="rounded p-4 shadow-sm" style={{ backgroundColor: '#EFF2F5' }}>
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center">
             <img src="/logo.png" alt="로고" className="w-6 h-6 mr-2" />
@@ -34,7 +49,7 @@ const ClassContent: React.FC = () => {
           </div>
         </div>
         <div className="border-b-2 border-black mb-3"></div>
-        
+
         <div className="space-y-2">
           {/* 강의자료 목록이 여기에 표시됩니다 */}
         </div>
