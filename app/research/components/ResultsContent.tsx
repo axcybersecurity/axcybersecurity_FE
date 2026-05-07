@@ -168,15 +168,15 @@ export default function ResultsContent() {
                   </li>
                   <li>
                     <strong>KyeongMin-Lee, Yeonjeong-Hwang, Junyoung-Son.</strong>{' '}
-                    CISC-S'2025. &quot;An Analysis of the ARIA Algorithm Using Dynamic S-box Based on Isomorphic Mordell Elliptic Curves&quot;
+                    CISC-S&apos;2025. &quot;An Analysis of the ARIA Algorithm Using Dynamic S-box Based on Isomorphic Mordell Elliptic Curves&quot;
                   </li>
                   <li>
                     <strong>Heechan-Kim, Kyungyun-Lee, Junyoung-Son.</strong>{' '}
-                    CISC-S'2025. &quot;Cross-Chain Protocols for Ensuring Blockchain Interoperability: Analysis of Limitations and Countermeasure Techniques&quot;
+                    CISC-S&apos;2025. &quot;Cross-Chain Protocols for Ensuring Blockchain Interoperability: Analysis of Limitations and Countermeasure Techniques&quot;
                   </li>
                   <li>
                     <strong>SeHwa-Ko, Beomsun-Lee, Junyoung-Son.</strong>{' '}
-                    CISC-S'2025. &quot;A Survey of Lightweight Techniques for TLS 1.3&quot;
+                    CISC-S&apos;2025. &quot;A Survey of Lightweight Techniques for TLS 1.3&quot;
                   </li>
                 </ul>
               </div>
