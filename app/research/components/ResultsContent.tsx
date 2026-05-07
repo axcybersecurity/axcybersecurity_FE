@@ -158,25 +158,25 @@ export default function ResultsContent() {
             {activeTab === '국내논문 및 국내학술대회' && (
               <div className="space-y-4 text-left text-sm sm:text-base leading-relaxed text-gray-800">
                 <ul className="list-disc list-inside space-y-2">
-                  <li>
-                    <strong>Beomsun-Lee, Junyoung-Son.</strong>{' '}
-                    2025. &quot;Enhancing Automotive Cybersecurity Assurance Evaluation Based on CAL Expansion&quot;
+                <li> 
+                <strong>Beomsun-Lee, Junyoung-Son.</strong>{' '}
+                    KSAE 2025 Annual Spring Conference. &quot;Enhancing Automotive Cybersecurity Assurance Evaluation Based on CAL Expansion&quot;
                   </li>
                   <li>
                     <strong>Jiwon-Yun, Yeonjeong-Hwang, Junyoung-Son.</strong>{' '}
-                    2025. &quot;CVE-Based Analysis and Classification of Automotive Security Threats&quot;
+                    KSAE 2025 Annual Spring Conference. &quot;CVE-Based Analysis and Classification of Automotive Security Threats&quot;
                   </li>
                   <li>
                     <strong>KyeongMin-Lee, Yeonjeong-Hwang, Junyoung-Son.</strong>{' '}
-                    2025. &quot;An Analysis of the ARIA Algorithm Using Dynamic S-box Based on Isomorphic Mordell Elliptic Curves&quot;
+                    CISC-S'2025. &quot;An Analysis of the ARIA Algorithm Using Dynamic S-box Based on Isomorphic Mordell Elliptic Curves&quot;
                   </li>
                   <li>
                     <strong>Heechan-Kim, Kyungyun-Lee, Junyoung-Son.</strong>{' '}
-                    2025. &quot;Cross-Chain Protocols for Ensuring Blockchain Interoperability: Analysis of Limitations and Countermeasure Techniques&quot;
+                    CISC-S'2025. &quot;Cross-Chain Protocols for Ensuring Blockchain Interoperability: Analysis of Limitations and Countermeasure Techniques&quot;
                   </li>
                   <li>
                     <strong>SeHwa-Ko, Beomsun-Lee, Junyoung-Son.</strong>{' '}
-                    2025. &quot;A Survey of Lightweight Techniques for TLS 1.3&quot;
+                    CISC-S'2025. &quot;A Survey of Lightweight Techniques for TLS 1.3&quot;
                   </li>
                 </ul>
               </div>
