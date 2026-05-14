@@ -61,14 +61,6 @@ export default function ClassNoticeWrite({ onBack, onSave }: ClassNoticeWritePro
   return (
     <div className="py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h2 className="text-4xl font-semibold text-[#02162E] mb-6">공지사항 작성</h2>
-          <div className="flex items-center">
-            <div className="w-44 border-t-[3px] border-blue-800" />
-            <div className="flex-1 border-t border-gray-300" />
-          </div>
-        </div>
-
         <div className="bg-white rounded-lg shadow-sm border">
           <div className="border-b border-gray-200 p-6">
             <label className="block mb-2">

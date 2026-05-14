@@ -82,17 +82,16 @@ export const noticeApi = {
 // 클래스 공지사항 API
 export const classNoticeApi = {
   // 목록 조회
-  getNotices: () => api.get('/class-notices/'),
+  getNotices: () => api.get('/classnotice/'),
 
   // 상세 조회
-  getNotice: (id: number) => api.get(`/class-notices/${id}`),
+  getNotice: (id: number) => api.get(`/classnotice/${id}`),
 
   // 생성 (multipart/form-data, 첨부파일 포함)
   createNotice: (formData: FormData, token: string) =>
-    api.post('/class-notices/', formData, {
+    api.post('/classnotice/', formData, {
       headers: {
         'Authorization': `Bearer ${token}`,
-        'Content-Type': undefined,
       },
     }),
 
@@ -105,7 +104,7 @@ export const classNoticeApi = {
     },
     token: string
   ) =>
-    api.put(`/class-notices/${id}`, data, {
+    api.put(`/classnotice/${id}`, data, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
@@ -113,7 +112,7 @@ export const classNoticeApi = {
 
   // 삭제
   deleteNotice: (id: number, token: string) =>
-    api.delete(`/class-notices/${id}`, {
+    api.delete(`/classnotice/${id}`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       },

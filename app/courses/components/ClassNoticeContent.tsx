@@ -24,7 +24,7 @@ interface Notice {
 }
 
 interface ClassNoticeContentProps {
-  onBack: () => void;
+  onBack?: () => void;
 }
 
 const ITEMS_PER_PAGE = 10;
@@ -179,6 +179,7 @@ export default function ClassNoticeContent({ onBack }: ClassNoticeContentProps) 
       <div className="py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="text-lg">로딩 중...</div>
+          {onBack && (
           <div className="mt-6">
             <button
               onClick={onBack}
@@ -186,7 +187,7 @@ export default function ClassNoticeContent({ onBack }: ClassNoticeContentProps) 
             >
               이전으로
             </button>
-          </div>
+          </div>)}
         </div>
       </div>
     );
@@ -196,7 +197,7 @@ export default function ClassNoticeContent({ onBack }: ClassNoticeContentProps) 
     <div className="py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h2 className="text-4xl font-semibold text-[#02162E] mb-6">공지사항</h2>
+          <h2 className="text-4xl font-semibold text-[#02162E] mb-6">강의자료</h2>
           <div className="flex items-center">
             <div className="w-44 border-t-[3px] border-blue-800" />
             <div className="flex-1 border-t border-gray-300" />
