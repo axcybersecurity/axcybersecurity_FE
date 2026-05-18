@@ -240,7 +240,6 @@ export default function GalleryContent() {
                 </div>
                 <div className="p-4">
                   <p className="font-semibold text-gray-700 truncate">{item.caption}</p>
-                  <p className="text-xs text-gray-500 pt-3">{item.date}</p>
                 </div>
               </div>
             ))
