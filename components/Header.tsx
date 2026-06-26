@@ -109,9 +109,9 @@ export default function Header() {
       title: '컨퍼런스',
       href: '',
       sublinks: [
-        { title: 'AI 컨퍼런스', href: 'https://aideadlin.es/?sub=ML,CV,NLP,RO,SP,DM' },
-        { title: '보안 및 프라이버시 컨퍼런스', href: 'https://sec-deadlines.github.io/' },
-        { title: '블록체인 컨퍼런스', href: 'https://www.securities.io/bitcoin-events/' },
+        { title: 'AI 컨퍼런스', href: '/conference?tab=ai' },
+        { title: '보안 및 프라이버시 컨퍼런스', href: '/conference?tab=security' },
+        { title: '블록체인 컨퍼런스', href: '/conference?tab=blockchain' },
       ],
     },
   ];
