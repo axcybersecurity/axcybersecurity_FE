@@ -1,46 +1,65 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import type { CSSProperties } from 'react';
+
+type ConferenceDeadline = {
+  date: string | null;
+  label: string;
+};
+
 type Conference = {
   name: string;
-  deadline: string;
+  fullName: string;
+  deadlines: ConferenceDeadline[];
   tags: string[];
-  url?: string;
+  url: string;
 };
 
 const blockchainConferences: Conference[] = [
   {
-    name: 'FC 2025',
-    deadline: 'Fri Sep 13 2024 20:59:59 GMT+0900',
-    tags: ['blockchain', 'cryptography', 'finance'],
-    url: 'https://fc.net',
+    name: 'DISC 2027',
+    fullName: 'International Symposium on Distributed Computing',
+    deadlines: [
+      {
+        date: '2027-06-01T11:59:59Z',
+        label: '~ May–June 2027 · estimated deadline for DISC 2027',
+      },
+    ],
+    tags: ['Blockchain', 'Distributed Computing'],
+    url: 'https://www.disc-conference.org/wp/',
   },
-  {
-    name: 'IEEE ICBC 2025',
-    deadline: 'Mon Dec 02 2024 20:59:59 GMT+0900',
-    tags: ['blockchain', 'cryptocurrency', 'distributed systems'],
-    url: 'https://icbc2025.ieee-icbc.org',
-  },
-  {
-    name: 'AFT 2025',
-    deadline: 'Fri Feb 07 2025 20:59:59 GMT+0900',
-    tags: ['blockchain', 'financial technology', 'distributed systems'],
-    url: 'https://aft.acm.org',
-  },
-  {
-    name: 'Tokenomics 2025',
-    deadline: 'Mon Mar 10 2025 20:59:59 GMT+0900',
-    tags: ['tokenomics', 'blockchain', 'cryptoeconomics'],
-    url: 'https://tokenomics-conference.org',
-  },
-  {
-    name: 'DeFi Security Summit 2025',
-    deadline: 'Wed Apr 16 2025 20:59:59 GMT+0900',
-    tags: ['defi', 'smart contract', 'security'],
-    url: 'https://defisecuritysummit.org',
-  },
-];
+];;
+
+function getCountdown(deadline: string | null) {
+  if (!deadline) return 'TBA';
+
+  const now = new Date().getTime();
+  const target = new Date(deadline).getTime();
+  const diff = target - now;
+
+  if (diff <= 0) return '마감됨';
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / (60 * 60 * 24));
+  const hours = Math.floor((totalSeconds / (60 * 60)) % 24);
+  const minutes = Math.floor((totalSeconds / 60) % 60);
+  const seconds = totalSeconds % 60;
+
+  return `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
+}
 
 export default function BlockchainContent() {
+  const [, setNow] = useState(new Date());
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setNow(new Date());
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <section style={styles.container}>
       <div style={styles.list}>
@@ -50,18 +69,18 @@ export default function BlockchainContent() {
               <h3 style={styles.title}>
                 {conference.name}
 
-                {conference.url && (
-                  <a
-                    href={conference.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={styles.link}
-                    aria-label={`${conference.name} website`}
-                  >
-                    🌐
-                  </a>
-                )}
+                <a
+                  href={conference.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={styles.link}
+                  aria-label={`${conference.name} website`}
+                >
+                  🌐
+                </a>
               </h3>
+
+              <p style={styles.fullName}>{conference.fullName}</p>
 
               <div style={styles.tags}>
                 {conference.tags.map((tag) => (
@@ -73,9 +92,17 @@ export default function BlockchainContent() {
             </div>
 
             <div style={styles.right}>
-              <p style={styles.deadline}>
-                <strong>Deadline:</strong> {conference.deadline}
-              </p>
+              {conference.deadlines.map((deadline) => (
+                <div key={deadline.label} style={styles.deadlineGroup}>
+                  <p style={styles.deadline}>
+                    <strong>Deadline:</strong> {deadline.label}
+                  </p>
+
+                  <p style={styles.countdown}>
+                    <strong>Countdown:</strong> {getCountdown(deadline.date)}
+                  </p>
+                </div>
+              ))}
             </div>
           </article>
         ))}
@@ -85,7 +112,7 @@ export default function BlockchainContent() {
 }
 
 const styles: {
-  [key: string]: React.CSSProperties;
+  [key: string]: CSSProperties;
 } = {
   container: {
     width: '100%',
@@ -112,10 +139,17 @@ const styles: {
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
-    margin: '0 0 12px',
+    margin: '0 0 8px',
     fontSize: '22px',
     fontWeight: 500,
     color: '#111827',
+  },
+
+  fullName: {
+    margin: '0 0 12px',
+    fontSize: '13px',
+    color: '#4b5563',
+    lineHeight: 1.5,
   },
 
   link: {
@@ -143,10 +177,21 @@ const styles: {
     paddingTop: '4px',
   },
 
+  deadlineGroup: {
+    marginBottom: '12px',
+  },
+
   deadline: {
-    margin: 0,
+    margin: '0 0 6px',
     fontSize: '13px',
     color: '#111827',
+    lineHeight: 1.6,
+  },
+
+  countdown: {
+    margin: 0,
+    fontSize: '13px',
+    color: '#2563eb',
     lineHeight: 1.6,
   },
 };
