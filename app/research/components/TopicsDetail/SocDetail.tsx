@@ -5,10 +5,7 @@ export default function SocDetail() {
   return (
     <div className="p-6 sm:p-8 md:p-12 font-['Pretendard']">
         {/* 메인 타이틀 */}
-        <h3 
-          className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]"
-          style={{ fontFamily: 'Pretendard' }}
-        >모빌리티 보안
+        <h3 className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E] font-pretendard">모빌리티 보안
         </h3>
 
         {/* --- AI 기반 드론 탐지 연구 --- */}

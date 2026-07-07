@@ -67,9 +67,7 @@ export default function TopicsContent() {
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* 연구주제 제목 */}
       <div className="mb-8">
-        <h2
-          style={{
-            fontFamily: 'Pretendard',
+        <h2 className="font-pretendard" style={{
             fontWeight: 600,
             fontSize: '40px',
             lineHeight: '48px',
@@ -105,28 +103,26 @@ export default function TopicsContent() {
               >
                 <div className="flex flex-col items-center gap-2 w-full">
                   <div
-                    style={{
-                      fontFamily: 'Pretendard',
-                      fontWeight: 700,
-                      fontSize: '24px',
-                      lineHeight: '1.2',
-                      color: isSelected ? '#EFF2F5' : '#0B2E5A',
-                    }}
-                    className="break-keep text-center"
-                  >
+                      style={{
+                        fontWeight: 700,
+                        fontSize: '24px',
+                        lineHeight: '1.2',
+                        color: isSelected ? '#EFF2F5' : '#0B2E5A',
+                      }}
+                      className="break-keep text-center font-pretendard"
+                    >
                     {topic.ko}
                   </div>
 
                   <div
-                    style={{
-                      fontFamily: 'Pretendard',
-                      fontWeight: 400,
-                      fontSize: '13px',
-                      lineHeight: '1.3',
-                      color: isSelected ? '#EFF2F5' : '#6D6D6D',
-                    }}
-                    className="break-keep whitespace-normal text-center"
-                  >
+                      style={{
+                        fontWeight: 400,
+                        fontSize: '13px',
+                        lineHeight: '1.3',
+                        color: isSelected ? '#EFF2F5' : '#6D6D6D',
+                      }}
+                      className="break-keep whitespace-normal text-center font-pretendard"
+                    >
                     {topic.en}
                   </div>
                 </div>

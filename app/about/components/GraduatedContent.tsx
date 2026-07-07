@@ -50,9 +50,7 @@ export default function GraduatedContent() {
       <div className="container mx-auto px-6">
         {/* === 제목 === */}
         <div className="mb-8">
-        <h2
-          style={{
-            fontFamily: 'Pretendard',
+        <h2 className="font-pretendard" style={{
             fontWeight: 600,
             fontSize: '40px',
             lineHeight: '48px',
@@ -106,27 +104,21 @@ export default function GraduatedContent() {
                           <h2 className="text-3xl font-bold text-gray-900 mt-1 mb-4">
                             {member.name}
                           </h2>
-                          <p
-                            className="text-gray-500 text-s pt-4"
-                            style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                          <p className="text-gray-500 text-s pt-4 font-pretendard" style={{ fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
                             <span className="inline-block bg-gray-300 px-1 rounded">
                               과정
                             </span>{' '}
                             {member.role}
                           </p>
         
-                          <p
-                            className="text-gray-500 text-s pt-4"
-                            style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                          <p className="text-gray-500 text-s pt-4 font-pretendard" style={{ fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
                             <span className="inline-block bg-gray-300 px-1 rounded">
                               졸업
                             </span>{' '}
                             {member.graduated}
                           </p>
         
-                          <p
-                            className="text-gray-500 text-s pt-4"
-                            style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                          <p className="text-gray-500 text-s pt-4 font-pretendard" style={{ fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
                             <span className="inline-block bg-gray-300 px-1 rounded">
                               메일
                             </span>{' '}

@@ -184,10 +184,8 @@ export default function Home() {
           {/* 텍스트 */}
           <div className="flex-1 w-full">
             <h2
-              className="font-semibold leading-tight"
+              className="font-semibold leading-tight font-pretendard text-dark"
               style={{
-                color: '#282828',
-                fontFamily: 'Pretendard',
                 fontSize: 'clamp(1.7vh, 2.8vh, 2.8vh)',
                 lineHeight: 1.25,
               }}
@@ -201,10 +199,8 @@ export default function Home() {
             >
               <div className="p-5 sm:p-8 lg:p-10 space-y-5">
                 <h3
-                  className="font-medium"
+                  className="font-medium font-pretendard text-dark"
                   style={{
-                    color: '#282828',
-                    fontFamily: 'Pretendard',
                     fontSize: 'clamp(2vh, 2.5vh, 2.5vh)',
                   }}
                 >
@@ -212,10 +208,8 @@ export default function Home() {
                 </h3>
 
                 <p
-                  className="leading-7"
+                  className="leading-7 font-pretendard text-dark"
                   style={{
-                    color: '#282828',
-                    fontFamily: 'Pretendard',
                     fontSize: 'clamp(1vh, 2vh, 1.7vh)',
                     lineHeight: 1.8,
                   }}
@@ -229,14 +223,10 @@ export default function Home() {
                   신뢰로 작동하는 미래 표준을 만들어 가겠습니다.
                 </p>
 
-                <p
-                  style={{
-                    color: '#282828',
-                    fontFamily: 'Pretendard',
+                <p className="font-pretendard text-dark" style={{
                     fontSize: 'clamp(1vh, 2vh, 1.7vh)',
                     lineHeight: 1.7,
-                  }}
-                >
+                  }}>
                   부산에서 시작해 세계로 확장되는 보안·지능 연구의 중심,
                   <br />
                   ACCSLAB이 만들어 갑니다.
@@ -261,17 +251,9 @@ export default function Home() {
 
       {/* ===== 연구 실적 ===== */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14 lg:mt-20">
-        <h2
-          className="text-2xl sm:text-3xl font-extrabold text-center mb-6 sm:mb-8"
-          style={{ color: '#282828', fontFamily: 'Pretendard' }}
-        >
-          연구 실적
-        </h2>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-center mb-6 sm:mb-8 font-pretendard text-dark">연구 실적</h2>
 
-        <p
-          className="text-sm sm:text-base text-gray-600 text-center max-w-3xl mx-auto mb-8 sm:mb-10"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <p className="text-sm sm:text-base text-gray-600 text-center max-w-3xl mx-auto mb-8 sm:mb-10 font-pretendard">
           ACCSLAB은 AI 보안, 산업시설 보안, 모빌리티 보안, 블록체인, 해킹·방어 등 다양한 분야에서
           국내외 학술지, 학회, 산학협력 과제를 통해 연구 성과를 축적하고 있습니다.
         </p>
@@ -302,10 +284,7 @@ export default function Home() {
                   }
                 />
               </div>
-              <p
-                className="mt-2 text-xs sm:text-sm text-gray-600 text-center"
-                style={{ fontFamily: 'Pretendard' }}
-              >
+              <p className="mt-2 text-xs sm:text-sm text-gray-600 text-center font-pretendard">
                 {item.title}
               </p>
             </div>
@@ -315,12 +294,7 @@ export default function Home() {
 
       {/* ===== 연구주제 ===== */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-12">
-        <h2
-          className="text-2xl sm:text-3xl font-extrabold text-center mb-8"
-          style={{ color: '#282828', fontFamily: 'Pretendard' }}
-        >
-          연구주제
-        </h2>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-center mb-8 font-pretendard text-dark">연구주제</h2>
 
         {/* 위 3개 + 아래 2개 (넓을 때 가운데 정렬) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -336,16 +310,10 @@ export default function Home() {
                   className="object-contain w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
                 />
               </div>
-              <h3
-                className="font-bold mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl text-center"
-                style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
-              >
+              <h3 className="font-bold mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl text-center font-pretendard text-brand">
                 AX융합 사이버보안 기술
               </h3>
-              <p
-                className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed text-center"
-                style={{ fontFamily: 'Pretendard' }}
-              >
+              <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed text-center font-pretendard">
                 AI 자가진화, 생성형 AI, AI 해킹, 적대적공격 등
               </p>
             </div>
@@ -363,16 +331,10 @@ export default function Home() {
                   className="object-contain w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
                 />
               </div>
-              <h3
-                className="font-bold mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl text-center"
-                style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
-              >
+              <h3 className="font-bold mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl text-center font-pretendard text-brand">
                 산업시설 사이버보안
               </h3>
-              <p
-                className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed text-center"
-                style={{ fontFamily: 'Pretendard' }}
-              >
+              <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed text-center font-pretendard">
                 스마트공장, 에너지시설, 원자력 사이버보안
               </p>
             </div>
@@ -390,18 +352,8 @@ export default function Home() {
                   className="object-contain w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
                 />
               </div>
-              <h3
-                className="font-bold mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl text-center"
-                style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
-              >
-                모빌리티 보안
-              </h3>
-              <p
-                className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed text-center"
-                style={{ fontFamily: 'Pretendard' }}
-              >
-                드론, 자동차, 로봇 사이버보안
-              </p>
+              <h3 className="font-bold mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl text-center font-pretendard text-brand">모빌리티 보안</h3>
+              <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed text-center font-pretendard">드론, 자동차, 로봇 사이버보안</p>
             </div>
           </Link>
 
@@ -422,16 +374,10 @@ export default function Home() {
                     className="object-contain w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
                   />
                 </div>
-                <h3
-                  className="font-bold mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl text-center"
-                  style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
-                >
+                <h3 className="font-bold mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl text-center font-pretendard text-brand">
                   블록체인 응용기술
                 </h3>
-                <p
-                  className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed text-center"
-                  style={{ fontFamily: 'Pretendard' }}
-                >
+                <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed text-center font-pretendard">
                   블록체인기술 적용연구
                 </p>
               </div>
@@ -452,18 +398,8 @@ export default function Home() {
                     className="object-contain w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
                   />
                 </div>
-                <h3
-                  className="font-bold mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl text-center"
-                  style={{ color: '#043A6F', fontFamily: 'Pretendard' }}
-                >
-                  해킹/방어 및 리버싱 기술
-                </h3>
-                <p
-                  className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed text-center"
-                  style={{ fontFamily: 'Pretendard' }}
-                >
-                  역공학, 포렌식기술
-                </p>
+                <h3 className="font-bold mb-2 sm:mb-3 text-base sm:text-lg lg:text-xl text-center font-pretendard text-brand">해킹/방어 및 리버싱 기술</h3>
+                <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed text-center font-pretendard">역공학, 포렌식기술</p>
               </div>
             </Link>
           </div>
@@ -473,8 +409,7 @@ export default function Home() {
         <div className="mt-8 sm:mt-10 text-center">
           <a
             href="/research?tab=topics"
-            className="inline-flex items-center gap-3 text-lg sm:text-xl font-medium text-[#02162E] hover:text-[#043A6F] transition-colors"
-            style={{ fontFamily: 'Pretendard' }}
+            className="inline-flex items-center gap-3 text-lg sm:text-xl font-medium text-[#02162E] hover:text-[#043A6F] transition-colors font-pretendard"
           >
             연구주제 자세히 보기
             <Image
@@ -490,12 +425,7 @@ export default function Home() {
 
       {/* ===== 산학협력기관 ===== */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
-        <h2
-          className="text-2xl sm:text-3xl font-extrabold text-center"
-          style={{ color: '#282828', fontFamily: 'Pretendard' }}
-        >
-          산학협력기관
-        </h2>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-center font-pretendard text-dark">산학협력기관</h2>
 
         <div className="mt-8 sm:mt-12 mb-16 sm:mb-28 flex justify-center">
           <Image
@@ -509,12 +439,7 @@ export default function Home() {
       </section>
       {/* ===== 산학협력대학교 ===== */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
-        <h2
-          className="text-2xl sm:text-3xl font-extrabold text-center"
-          style={{ color: '#282828', fontFamily: 'Pretendard' }}
-        >
-          국제협력대학교
-        </h2>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-center font-pretendard text-dark">국제협력대학교</h2>
 
         <div className="mt-8 sm:mt-12 mb-16 sm:mb-28 flex justify-center">
   <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 max-w-5xl w-full">

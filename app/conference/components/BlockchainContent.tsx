@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import type { CSSProperties } from 'react';
 
 type ConferenceDeadline = {
   date: string | null;
@@ -61,44 +60,44 @@ export default function BlockchainContent() {
   }, []);
 
   return (
-    <section style={styles.container}>
-      <div style={styles.list}>
+    <section className="conference-container">
+      <div className="conference-list">
         {blockchainConferences.map((conference) => (
-          <article key={conference.name} style={styles.item}>
-            <div style={styles.left}>
-              <h3 style={styles.title}>
+          <article key={conference.name} className="conference-item">
+            <div className="conference-left">
+              <h3 className="conference-title">
                 {conference.name}
 
                 <a
                   href={conference.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={styles.link}
+                  className="conference-link"
                   aria-label={`${conference.name} website`}
                 >
                   🌐
                 </a>
               </h3>
 
-              <p style={styles.fullName}>{conference.fullName}</p>
+              <p className="conference-fullName">{conference.fullName}</p>
 
-              <div style={styles.tags}>
+              <div className="conference-tags">
                 {conference.tags.map((tag) => (
-                  <span key={tag} style={styles.tag}>
+                  <span key={tag} className="conference-tag">
                     {tag}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div style={styles.right}>
+            <div className="conference-right">
               {conference.deadlines.map((deadline) => (
-                <div key={deadline.label} style={styles.deadlineGroup}>
-                  <p style={styles.deadline}>
+                <div key={deadline.label} className="conference-deadlineGroup">
+                  <p className="conference-deadline">
                     <strong>Deadline:</strong> {deadline.label}
                   </p>
 
-                  <p style={styles.countdown}>
+                  <p className="conference-countdown">
                     <strong>Countdown:</strong> {getCountdown(deadline.date)}
                   </p>
                 </div>
@@ -110,88 +109,3 @@ export default function BlockchainContent() {
     </section>
   );
 }
-
-const styles: {
-  [key: string]: CSSProperties;
-} = {
-  container: {
-    width: '100%',
-  },
-
-  list: {
-    width: '100%',
-    borderTop: '1px solid #e5e7eb',
-  },
-
-  item: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 460px',
-    gap: '40px',
-    padding: '22px 0',
-    borderBottom: '1px solid #e5e7eb',
-  },
-
-  left: {
-    minWidth: 0,
-  },
-
-  title: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    margin: '0 0 8px',
-    fontSize: '22px',
-    fontWeight: 500,
-    color: '#111827',
-  },
-
-  fullName: {
-    margin: '0 0 12px',
-    fontSize: '13px',
-    color: '#4b5563',
-    lineHeight: 1.5,
-  },
-
-  link: {
-    fontSize: '16px',
-    textDecoration: 'none',
-  },
-
-  tags: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '8px',
-  },
-
-  tag: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    minHeight: '24px',
-    padding: '0 8px',
-    backgroundColor: '#f3f4f6',
-    color: '#2563eb',
-    fontSize: '12px',
-  },
-
-  right: {
-    paddingTop: '4px',
-  },
-
-  deadlineGroup: {
-    marginBottom: '12px',
-  },
-
-  deadline: {
-    margin: '0 0 6px',
-    fontSize: '13px',
-    color: '#111827',
-    lineHeight: 1.6,
-  },
-
-  countdown: {
-    margin: 0,
-    fontSize: '13px',
-    color: '#2563eb',
-    lineHeight: 1.6,
-  },
-};

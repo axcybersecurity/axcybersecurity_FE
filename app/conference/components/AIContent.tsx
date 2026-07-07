@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import type { CSSProperties } from 'react';
 
 type Conference = {
   name: string;
@@ -205,40 +204,40 @@ export default function AIContent() {
   }, []);
 
   return (
-    <section style={styles.container}>
-      <div style={styles.list}>
+    <section className="conference-container">
+      <div className="conference-list">
         {aiConferences.map((conference) => (
-          <article key={`${conference.name}-${conference.deadlineLabel}`} style={styles.item}>
-            <div style={styles.left}>
-              <h3 style={styles.title}>
+          <article key={`${conference.name}-${conference.deadlineLabel}`} className="conference-item">
+            <div className="conference-left">
+              <h3 className="conference-title">
                 {conference.name}
 
                 <a
                   href={conference.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={styles.link}
+                  className="conference-link"
                   aria-label={`${conference.name} website`}
                 >
                   🌐
                 </a>
               </h3>
 
-              <div style={styles.tags}>
+              <div className="conference-tags">
                 {conference.tags.map((tag) => (
-                  <span key={tag} style={styles.tag}>
+                  <span key={tag} className="conference-tag">
                     {tag}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div style={styles.right}>
-              <p style={styles.deadline}>
+            <div className="conference-right">
+              <p className="conference-deadline">
                 <strong>Deadline:</strong> {conference.deadlineLabel}
               </p>
 
-              <p style={styles.countdown}>
+              <p className="conference-countdown">
                 <strong>Countdown:</strong> {getCountdown(conference.deadline)}
               </p>
             </div>
@@ -248,77 +247,3 @@ export default function AIContent() {
     </section>
   );
 }
-
-const styles: {
-  [key: string]: CSSProperties;
-} = {
-  container: {
-    width: '100%',
-  },
-
-  list: {
-    width: '100%',
-    borderTop: '1px solid #e5e7eb',
-  },
-
-  item: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 460px',
-    gap: '40px',
-    padding: '22px 0',
-    borderBottom: '1px solid #e5e7eb',
-  },
-
-  left: {
-    minWidth: 0,
-  },
-
-  title: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    margin: '0 0 12px',
-    fontSize: '22px',
-    fontWeight: 500,
-    color: '#111827',
-  },
-
-  link: {
-    fontSize: '16px',
-    textDecoration: 'none',
-  },
-
-  tags: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '8px',
-  },
-
-  tag: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    minHeight: '24px',
-    padding: '0 8px',
-    backgroundColor: '#f3f4f6',
-    color: '#2563eb',
-    fontSize: '12px',
-  },
-
-  right: {
-    paddingTop: '4px',
-  },
-
-  deadline: {
-    margin: '0 0 6px',
-    fontSize: '13px',
-    color: '#111827',
-    lineHeight: 1.6,
-  },
-
-  countdown: {
-    margin: 0,
-    fontSize: '13px',
-    color: '#2563eb',
-    lineHeight: 1.6,
-  },
-};

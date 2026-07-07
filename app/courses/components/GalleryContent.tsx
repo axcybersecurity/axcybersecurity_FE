@@ -163,9 +163,7 @@ export default function GalleryContent() {
 
       <div className="container mx-auto px-6">
         <div className="mb-8">
-          <h2
-            style={{
-              fontFamily: 'Pretendard',
+          <h2 className="font-pretendard" style={{
               fontWeight: 600,
               fontSize: '40px',
               lineHeight: '48px',
