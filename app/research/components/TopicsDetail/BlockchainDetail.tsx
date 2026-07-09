@@ -7,8 +7,7 @@ export default function BlockchainDetail() {
     <div className="p-6 sm:p-8 md:p-12 font-['Pretendard']">
       {/* 메인 타이틀 */}
       <h3
-        className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]"
-           className="font-pretendard"
+        className="mx-auto text-center font-pretendard font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]"
       >
         블록체인
       </h3>
