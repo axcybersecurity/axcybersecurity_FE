@@ -6,10 +6,7 @@ export default function QuantumDetail() {
   return (
     <div className="p-6 sm:p-8 md:p-12 font-['Pretendard']">
         {/* 메인 타이틀 */}
-      <h3
-        className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]"
-        style={{ fontFamily: 'Pretendard' }}
-      >
+      <h3 className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E] font-pretendard">
         보안 통신 프로토콜 설계
       </h3>
 

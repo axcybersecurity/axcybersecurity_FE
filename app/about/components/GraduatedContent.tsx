@@ -12,7 +12,7 @@ interface Member {
 }
 
 const allMembersData: Member[] = [
-  { name: '황연정', role: '석사졸업', imageUrl: '/구성원소개사진/황연정.jpg', graduated: '2026', email:'yeonjeong@islab.re.kr'},
+  { name: '황연정', role: '석사졸업', imageUrl: '/구성원소개사진/황연정.jpg', graduated: '2026 - 한국전자통신연구원 정규직', email:'yeonjeong@islab.re.kr'},
   { name: '윤지원', role: '석사졸업', imageUrl: '/구성원소개사진/윤지원.jpg', graduated: '2026 - LG전자 입사', email:'jiwon@islab.re.kr'},
   { name: '현창훈', role: '박사후연구원', imageUrl: '/구성원소개사진/현창훈.jpg', graduated: '2026 - 순천대학교 교수 임용', email:'chhyun@pusan.ac.kr'}, 
 ];
@@ -50,9 +50,7 @@ export default function GraduatedContent() {
       <div className="container mx-auto px-6">
         {/* === 제목 === */}
         <div className="mb-8">
-        <h2
-          style={{
-            fontFamily: 'Pretendard',
+        <h2 className="font-pretendard" style={{
             fontWeight: 600,
             fontSize: '40px',
             lineHeight: '48px',
@@ -106,27 +104,21 @@ export default function GraduatedContent() {
                           <h2 className="text-3xl font-bold text-gray-900 mt-1 mb-4">
                             {member.name}
                           </h2>
-                          <p
-                            className="text-gray-500 text-s pt-4"
-                            style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                          <p className="text-gray-500 text-s pt-4 font-pretendard" style={{ fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
                             <span className="inline-block bg-gray-300 px-1 rounded">
                               과정
                             </span>{' '}
                             {member.role}
                           </p>
         
-                          <p
-                            className="text-gray-500 text-s pt-4"
-                            style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                          <p className="text-gray-500 text-s pt-4 font-pretendard" style={{ fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
                             <span className="inline-block bg-gray-300 px-1 rounded">
                               졸업
                             </span>{' '}
                             {member.graduated}
                           </p>
         
-                          <p
-                            className="text-gray-500 text-s pt-4"
-                            style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                          <p className="text-gray-500 text-s pt-4 font-pretendard" style={{ fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
                             <span className="inline-block bg-gray-300 px-1 rounded">
                               메일
                             </span>{' '}

@@ -59,9 +59,7 @@ export default function MembersContent() {
       <div className="container mx-auto px-6">
         {/* === 제목 === */}
         <div className="mb-8">
-        <h2
-          style={{
-            fontFamily: 'Pretendard',
+        <h2 className="font-pretendard" style={{
             fontWeight: 600, 
             fontSize: '40px',
             lineHeight: '4vh',
@@ -115,9 +113,7 @@ export default function MembersContent() {
                   <h2 className="text-3xl font-bold text-gray-900 mt-1 mb-4">
                     {member.name}
                   </h2>
-                  <p
-                    className="text-gray-500 text-s pt-4"
-                    style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                  <p className="text-gray-500 text-s pt-4 font-pretendard" style={{ fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
                     <span className="inline-block bg-gray-300 px-1 rounded">
                       과정
                     </span>{' '}
@@ -125,8 +121,8 @@ export default function MembersContent() {
                   </p>
 
                   <p
-                    className="text-gray-500 text-s pt-4"
-                    style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                    className="text-gray-500 text-s pt-4 font-pretendard"
+                    style={{ fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
                     <span className="inline-block bg-gray-300 px-1 rounded">
                       전공
                     </span>{' '}
@@ -134,8 +130,8 @@ export default function MembersContent() {
                   </p>
 
                   <p
-                    className="text-gray-500 text-s pt-4"
-                    style={{ fontFamily: 'Pretendard', fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
+                    className="text-gray-500 text-s pt-4 font-pretendard"
+                    style={{ fontSize: '1.5vh', lineHeight: 1.5 , color: 'black'}}>
                     <span className="inline-block bg-gray-300 px-1 rounded">
                       메일
                     </span>{' '}

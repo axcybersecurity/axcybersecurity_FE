@@ -5,10 +5,7 @@ export default function NlpDetail() {
   return (
     <div className="p-6 sm:p-8 md:p-12 font-['Pretendard']">
       {/* 메인 타이틀 */}
-      <h3
-        className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]"
-        style={{ fontFamily: 'Pretendard' }}
-      >
+      <h3 className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E] font-pretendard">
         산업시설 사이버보안
       </h3>
 
@@ -26,24 +23,15 @@ export default function NlpDetail() {
         </div>
 
         {/* 한 줄 띄운 후 섹션 제목 */}
-        <h4
-          className="mt-[4vh] text-xl sm:text-2xl font-bold text-[#043A6F]"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <h4 className="mt-[4vh] text-xl sm:text-2xl font-bold text-[#043A6F] font-pretendard">
           산업시설 사이버 보안 기술 연구
         </h4>
 
-        <p
-          className="mt-1 text-base sm:text-lg text-black"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <p className="mt-1 text-base sm:text-lg text-black font-pretendard">
           (Cybersecurity Research for Industrial Facilities such as Nuclear Power Plants, Reactors, and Others)
         </p>
 
-        <div
-          className="mt-6 text-sm sm:text-base leading-relaxed text-[#282828]"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <div className="mt-6 text-sm sm:text-base leading-relaxed text-[#282828] font-pretendard">
           <div className="space-y-4">
             <div>■ 원자력발전소, 원자로, 기타 산업 시설 등 산업시설에 대한 사이버 보안 기술 연구</div>
             <div>– 산업 시설을 목적으로 하는 공격 식별 및 평가 검증</div>

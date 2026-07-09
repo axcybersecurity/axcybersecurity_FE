@@ -7,28 +7,19 @@ export default function AiotDetail() {
   return (
     <div className="p-6 sm:p-8 md:p-12 font-['Pretendard']">
       {/* 메인 타이틀 */}
-      <h3
-        className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E]"
-        style={{ fontFamily: 'Pretendard' }}
-      >
+      <h3 className="mx-auto text-center font-semibold break-keep text-2xl sm:text-3xl md:text-4xl leading-snug text-[#02162E] font-pretendard">
         AX융합 사이버보안 기술
       </h3>
 
       {/* ===== 섹션 1: GraphRAG 기반 사이버보안 LLM 시스템 ===== */}
       <section className="mt-8 max-w-5xl mx-auto">
         {/* 한글 제목 */}
-        <h4
-          className="text-xl sm:text-2xl font-bold text-[#043A6F]"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <h4 className="text-xl sm:text-2xl font-bold text-[#043A6F] font-pretendard">
           GraphRAG 기반 사이버보안 LLM 시스템
         </h4>
 
         {/* 영어 부제 */}
-        <p
-          className="mt-1 text-base sm:text-lg text-black"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <p className="mt-1 text-base sm:text-lg text-black font-pretendard">
           (GraphRAG-based Cybersecurity LLM System)
         </p>
 
@@ -43,10 +34,7 @@ export default function AiotDetail() {
           />
         </div>
         {/* 본문 */}
-        <div
-          className="mt-[3vh] space-y-4 text-sm sm:text-base leading-relaxed text-[#282828]"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <div className="mt-[3vh] space-y-4 text-sm sm:text-base leading-relaxed text-[#282828] font-pretendard">
           <div>
             <div>■ GraphRAG 기반 사이버보안 LLM 시스템</div>
             <div>– 그래프 DB 구축 및 매니지먼트 개념도 설계</div>
@@ -68,10 +56,7 @@ export default function AiotDetail() {
           />
         </div>
         {/* 본문 */}
-        <div
-          className="mt-[3vh] space-y-4 text-sm sm:text-base leading-relaxed text-[#282828]"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <div className="mt-[3vh] space-y-4 text-sm sm:text-base leading-relaxed text-[#282828] font-pretendard">
           <div>
             <div>■ GraphRAG 기반 메디컬 LLM 시스템</div>
             <div>– 임상적으로 정규화된 그래프 DB구축(SNOMED CT:국제 보건의료 용어 표준 체계)</div>
@@ -84,18 +69,12 @@ export default function AiotDetail() {
       {/* ===== 섹션 2: IS²D(Intelligent Self-evolving Security Dome) ===== */}
       <section className="mt-16 max-w-5xl mx-auto mb-16">
         {/* 한글 제목 */}
-        <h4
-          className="text-xl sm:text-2xl font-bold text-[#043A6F]"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <h4 className="text-xl sm:text-2xl font-bold text-[#043A6F] font-pretendard">
           IS²D(Intelligent Self-evolving Security Dome) 보안 메커니즘
         </h4>
 
         {/* 영어 부제 */}
-        <p
-          className="mt-1 text-base sm:text-lg text-black"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <p className="mt-1 text-base sm:text-lg text-black font-pretendard">
           (IS²D – Intelligent Self-evolving Security Dome Mechanism)
         </p>
 
@@ -111,10 +90,7 @@ export default function AiotDetail() {
         </div>
 
         {/* 본문 */}
-        <div
-          className="mt-[3vh] space-y-4 text-sm sm:text-base leading-relaxed text-[#282828]"
-          style={{ fontFamily: 'Pretendard' }}
-        >
+        <div className="mt-[3vh] space-y-4 text-sm sm:text-base leading-relaxed text-[#282828] font-pretendard">
           <div>
             <div>■ IS²D(Intelligent Self-evolving Security Dome) 보안 메커니즘</div>
             <div>– 생성형 AI 기반 적대적 공격 및 방어, 자가진화 구조 기반 사이버 아이언돔 개발</div>
