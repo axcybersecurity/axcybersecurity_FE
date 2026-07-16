@@ -6,9 +6,9 @@ import BlockchainContent from './components/BlockchainContent';
 type ConferenceTab = 'ai' | 'security' | 'blockchain';
 
 type ConferencePageProps = {
-  searchParams: {
+  searchParams: Promise<{
     tab?: string;
-  };
+  }>;
 };
 
 const tabs: {
@@ -33,8 +33,8 @@ const tabs: {
   },
 ];
 
-export default function ConferencePage({ searchParams }: ConferencePageProps) {
-  const tab = searchParams.tab;
+export default async function ConferencePage({ searchParams }: ConferencePageProps) {
+  const { tab } = await searchParams;
 
   const currentTab: ConferenceTab =
     tab === 'security' || tab === 'blockchain' || tab === 'ai'
