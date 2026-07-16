@@ -49,6 +49,8 @@ body {
 /* Consolidated component styles (migrated from inline styles) */
 .conference-container { width: 100%; }
 .conference-list { width: 100%; border-top: 1px solid #e5e7eb; }
+.conference-groupDivider { display: flex; align-items: center; gap: 14px; margin: 18px 0 4px; color: #334155; font-size: 17px; font-weight: 700; }
+.conference-groupDivider::after { content: ''; flex: 1; height: 3px; background: #cbd5e1; }
 .conference-item { display: grid; grid-template-columns: 1fr 460px; gap: 40px; padding: 22px 0; border-bottom: 1px solid #e5e7eb; }
 .conference-left { min-width: 0; }
 .conference-title { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 22px; font-weight: 500; color: #111827; }

@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import AIContent from './components/AIContent';
-import SecurityContent from './components/SecurityContent';
-import BlockchainContent from './components/BlockchainContent';
+import TopContent from './components/TopContent';
+import NonTopContent from './components/NonTopContent';
 
-type ConferenceTab = 'ai' | 'security' | 'blockchain';
+type ConferenceTab = 'top' | 'non-top';
 
 type ConferencePageProps = {
   searchParams: Promise<{
@@ -17,29 +16,21 @@ const tabs: {
   href: string;
 }[] = [
   {
-    label: 'AI 컨퍼런스',
-    value: 'ai',
-    href: '/conference?tab=ai',
+    label: 'Top CS',
+    value: 'top',
+    href: '/conference?tab=top',
   },
   {
-    label: '보안 및 프라이버시 컨퍼런스',
-    value: 'security',
-    href: '/conference?tab=security',
-  },
-  {
-    label: '블록체인 컨퍼런스',
-    value: 'blockchain',
-    href: '/conference?tab=blockchain',
+    label: 'Non-top',
+    value: 'non-top',
+    href: '/conference?tab=non-top',
   },
 ];
 
 export default async function ConferencePage({ searchParams }: ConferencePageProps) {
   const { tab } = await searchParams;
 
-  const currentTab: ConferenceTab =
-    tab === 'security' || tab === 'blockchain' || tab === 'ai'
-      ? tab
-      : 'ai';
+  const currentTab: ConferenceTab = tab === 'non-top' ? 'non-top' : 'top';
 
   return (
     <main className="conference-page">
@@ -72,9 +63,8 @@ export default async function ConferencePage({ searchParams }: ConferencePagePro
       </section>
 
       <section className="conference-content">
-        {currentTab === 'ai' && <AIContent />}
-        {currentTab === 'security' && <SecurityContent />}
-        {currentTab === 'blockchain' && <BlockchainContent />}
+        {currentTab === 'top' && <TopContent />}
+        {currentTab === 'non-top' && <NonTopContent />}
       </section>
     </main>
   );
