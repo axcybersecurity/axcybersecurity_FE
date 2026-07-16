@@ -24,6 +24,14 @@ interface GalleryImage {
 
 const ITEMS_PER_PAGE = 6;
 
+const getGalleryImageUrl = (imagePath: string) => {
+  if (/^(https?:)?\/\//.test(imagePath) || imagePath.startsWith('/api/')) {
+    return imagePath;
+  }
+
+  return `/api/${imagePath.replace(/^\/+/, '')}`;
+};
+
 export default function GalleryContent() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -70,7 +78,7 @@ export default function GalleryContent() {
         .map(post => {
           // 백엔드에서 "uploads/xxx.jpg" 형태의 경로를 반환하므로 URL로 변환
           // 예: "uploads/abc123.jpg" -> "/api/uploads/abc123.jpg"
-          const imageUrl = `/api/${post.image_paths[0]}`;
+          const imageUrl = getGalleryImageUrl(post.image_paths[0]);
           
           return {
             imageUrl: imageUrl,

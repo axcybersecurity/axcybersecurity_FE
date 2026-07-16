@@ -19,6 +19,14 @@ type SlideItem = {
   createdAt: string;
 };
 
+const getGalleryImageUrl = (imagePath: string) => {
+  if (/^(https?:)?\/\//.test(imagePath) || imagePath.startsWith('/api/')) {
+    return imagePath;
+  }
+
+  return `/api/${imagePath.replace(/^\/+/, '')}`;
+};
+
 export default function Home() {
   const [slideItems, setSlideItems] = useState<SlideItem[]>([]);
   const [slideLoading, setSlideLoading] = useState(true);
@@ -38,7 +46,7 @@ export default function Home() {
         const items: SlideItem[] = (posts || [])
           .filter((p) => Array.isArray(p.image_paths) && p.image_paths.length > 0)
           .map((p) => ({
-            imageUrl: `/api/${p.image_paths[0]}`,
+            imageUrl: getGalleryImageUrl(p.image_paths[0]),
             postId: p.id,
             createdAt: p.created_at,
           }))
