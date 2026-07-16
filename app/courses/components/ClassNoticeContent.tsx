@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
+import axios from 'axios';
 import ClassNoticeDetail from './ClassNoticeDetail';
 import ClassNoticeWrite from './ClassNoticeWrite';
 import ClassNoticeEdit from './ClassNoticeEdit';
@@ -124,8 +125,23 @@ export default function ClassNoticeContent({ onBack }: ClassNoticeContentProps) 
             setIsWriting(false);
             await fetchNotices();
           } catch (error) {
-            console.error('공지사항 작성 실패:', error);
-            alert('공지사항 작성에 실패했습니다.');
+            console.error('강의자료 작성 실패:', error);
+
+            if (axios.isAxiosError(error)) {
+              const status = error.response?.status;
+              const detail = error.response?.data?.detail;
+              const message =
+                typeof detail === 'string'
+                  ? detail
+                  : detail
+                    ? JSON.stringify(detail)
+                    : error.message;
+
+              alert(`강의자료 작성에 실패했습니다.${status ? ` (${status})` : ''}\n${message}`);
+              return;
+            }
+
+            alert('강의자료 작성에 실패했습니다. 잠시 후 다시 시도해주세요.');
           }
         }}
       />

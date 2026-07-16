@@ -44,7 +44,7 @@ export default function ConferencePage({ searchParams }: ConferencePageProps) {
   return (
     <main className="conference-page">
       <section className="conference-header">
-        <h1 className="conference-h1">Conference Deadlines</h1>
+        <h1 className="conference-h1">CS Top Conferences</h1>
 
         <p className="conference-description">
           연구 분야별 주요 컨퍼런스와 마감기한을 확인할 수 있습니다.

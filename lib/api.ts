@@ -92,6 +92,8 @@ export const classNoticeApi = {
     api.post('/classnotice/', formData, {
       headers: {
         'Authorization': `Bearer ${token}`,
+        // 공통 JSON 헤더를 제거해 브라우저가 multipart boundary를 설정하도록 한다.
+        'Content-Type': undefined,
       },
     }),
 
