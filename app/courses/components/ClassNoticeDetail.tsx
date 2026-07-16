@@ -27,6 +27,14 @@ interface ClassNoticeDetailProps {
   onEdit?: () => void;
 }
 
+const getDownloadUrl = (fileUrl: string) => {
+  if (/^(https?:)?\/\//.test(fileUrl) || fileUrl.startsWith('/api/')) {
+    return fileUrl;
+  }
+
+  return `/api/${fileUrl.replace(/^\/+/, '')}`;
+};
+
 export default function ClassNoticeDetail({
   notice,
   onBack,
@@ -119,7 +127,7 @@ export default function ClassNoticeDetail({
                     </div>
 
                     <a
-                      href={file.file_url}
+                      href={getDownloadUrl(file.file_url)}
                       download={file.original_name}
                       target="_blank"
                       rel="noreferrer"
