@@ -2,8 +2,14 @@
 
 import { useEffect, useState } from 'react';
 
+type ConferenceDeadline = {
+  date: string | null;
+  label: string;
+};
+
 type Conference = {
   name: string;
+  fullName: string;
   deadline: string | null;
   deadlineLabel: string;
   tags: string[];
@@ -14,6 +20,7 @@ const aiConferences: Conference[] = [
   // 기존 사진의 AI 분류
   {
     name: 'EACL 2027',
+    fullName: 'Conference of the European Chapter of the Association for Computational Linguistics',
     deadline: '2026-08-04T11:59:59Z',
     deadlineLabel: 'ARR submission deadline · Aug 3, 2026 AoE',
     tags: ['AI', 'NLP'],
@@ -21,6 +28,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'AAMAS 2027',
+    fullName: 'International Joint Conference on Autonomous Agents and Multi-agent Systems',
     deadline: '2026-10-09T11:59:00Z',
     deadlineLabel: 'Submission deadline · Oct 9, 2026 11:59 UTC',
     tags: ['AI', 'Multi-agent'],
@@ -28,6 +36,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'IUI 2027',
+    fullName: 'ACM International Conference on Intelligent User Interfaces',
     deadline: '2026-08-21T11:59:59Z',
     deadlineLabel: 'Full paper deadline · Aug 20, 2026 AoE',
     tags: ['AI', 'HCI'],
@@ -35,6 +44,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'CogSci 2027',
+    fullName: 'Annual Meeting of the Cognitive Science Society',
     deadline: null,
     deadlineLabel: 'TBA · CFP not published yet',
     tags: ['AI', 'Cognitive Science'],
@@ -42,6 +52,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'NAACL/HLT 2027',
+    fullName: 'Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies',
     deadline: null,
     deadlineLabel: 'TBA · CFP not published yet',
     tags: ['AI', 'NLP'],
@@ -49,6 +60,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'CVPR 2027',
+    fullName: 'IEEE/CVF Conference on Computer Vision and Pattern Recognition',
     deadline: '2027-03-15T11:59:59Z',
     deadlineLabel: '~ March 2027 · estimated paper deadline',
     tags: ['AI', 'Computer Vision', 'Spotlight'],
@@ -56,6 +68,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'NeurIPS 2027',
+    fullName: 'Conference on Neural Information Processing Systems',
     deadline: '2027-05-15T11:59:59Z',
     deadlineLabel: '~ May 2027 · estimated paper deadline',
     tags: ['AI', 'Machine Learning', 'Spotlight'],
@@ -63,6 +76,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'ECCV',
+    fullName: 'European Conference on Computer Vision',
     deadline: null,
     deadlineLabel: 'TBA · biannual conference, next CFP not published yet',
     tags: ['AI', 'Computer Vision'],
@@ -72,6 +86,7 @@ const aiConferences: Conference[] = [
   // 추가 사진 1: AI / ML & AI Security
   {
     name: 'AAAI 2028',
+    fullName: 'AAAI Conference on Artificial Intelligence',
     deadline: '2027-07-15T11:59:59Z',
     deadlineLabel: '~ July 2027 · estimated deadline for AAAI 2028',
     tags: ['AI', 'Artificial Intelligence'],
@@ -79,6 +94,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'CVPR 2028',
+    fullName: 'IEEE/CVF Conference on Computer Vision and Pattern Recognition',
     deadline: '2027-08-15T11:59:59Z',
     deadlineLabel: '~ June–August 2027 · estimated deadline for CVPR 2028',
     tags: ['AI', 'Computer Vision'],
@@ -86,6 +102,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'NeurIPS 2027',
+    fullName: 'Conference on Neural Information Processing Systems',
     deadline: '2027-05-15T11:59:59Z',
     deadlineLabel: '~ May 2027 · estimated deadline for NeurIPS 2027',
     tags: ['AI', 'Machine Learning'],
@@ -93,6 +110,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'ICCV 2027',
+    fullName: 'IEEE/CVF International Conference on Computer Vision',
     deadline: '2027-03-15T11:59:59Z',
     deadlineLabel: '~ March 2027 · estimated deadline for ICCV 2027',
     tags: ['AI', 'Computer Vision'],
@@ -100,6 +118,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'ICML 2027',
+    fullName: 'International Conference on Machine Learning',
     deadline: '2027-01-26T11:59:59Z',
     deadlineLabel: '~ January–February 2027 · estimated deadline for ICML 2027',
     tags: ['AI', 'Machine Learning'],
@@ -107,6 +126,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'ICCV 2027 Spotlight',
+    fullName: 'IEEE/CVF International Conference on Computer Vision, Spotlight Presentation',
     deadline: '2027-03-15T11:59:59Z',
     deadlineLabel: '~ March 2027 · estimated deadline for ICCV 2027',
     tags: ['AI', 'Computer Vision', 'Spotlight'],
@@ -116,6 +136,7 @@ const aiConferences: Conference[] = [
   // 추가 사진 2: AI
   {
     name: 'IJCAI 2027',
+    fullName: 'International Joint Conference on Artificial Intelligence',
     deadline: '2027-01-15T11:59:59Z',
     deadlineLabel: '~ mid-January 2027 · estimated deadline',
     tags: ['AI'],
@@ -123,6 +144,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'COLT 2027',
+    fullName: 'Conference on Learning Theory',
     deadline: '2027-02-05T11:59:59Z',
     deadlineLabel: '~ early February 2027 · estimated deadline',
     tags: ['AI', 'Learning Theory'],
@@ -130,6 +152,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'UAI 2027',
+    fullName: 'Conference on Uncertainty in Artificial Intelligence',
     deadline: '2027-02-25T11:59:59Z',
     deadlineLabel: '~ late February 2027 · estimated deadline',
     tags: ['AI', 'Uncertainty'],
@@ -137,6 +160,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'EMNLP 2027',
+    fullName: 'Conference on Empirical Methods in Natural Language Processing',
     deadline: '2027-05-15T11:59:59Z',
     deadlineLabel: '~ mid-May 2027 · estimated ARR cutoff',
     tags: ['AI', 'NLP'],
@@ -144,6 +168,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'KR 2027',
+    fullName: 'International Conference on Principles of Knowledge Representation and Reasoning',
     deadline: '2027-02-15T11:59:59Z',
     deadlineLabel: '~ mid-February 2027 · estimated deadline',
     tags: ['AI', 'Knowledge Representation'],
@@ -153,6 +178,7 @@ const aiConferences: Conference[] = [
   // 추가 사진 2: AI-Adjacent
   {
     name: 'CIKM 2027',
+    fullName: 'ACM International Conference on Information and Knowledge Management',
     deadline: '2027-05-25T11:59:59Z',
     deadlineLabel: '~ mid/late May 2027 · estimated deadline',
     tags: ['AI-Adjacent', 'Data Mining', 'Information Retrieval'],
@@ -160,6 +186,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'WSDM 2027',
+    fullName: 'ACM International Conference on Web Search and Data Mining',
     deadline: '2026-08-18T11:59:59Z',
     deadlineLabel: '~ mid-August 2026 · official/expected WSDM 2027 paper deadline',
     tags: ['AI-Adjacent', 'Web Search', 'Data Mining'],
@@ -167,6 +194,7 @@ const aiConferences: Conference[] = [
   },
   {
     name: 'ICDM 2027',
+    fullName: 'IEEE International Conference on Data Mining',
     deadline: '2027-06-05T11:59:59Z',
     deadlineLabel: '~ early June 2027 · estimated deadline',
     tags: ['AI-Adjacent', 'Data Mining'],
