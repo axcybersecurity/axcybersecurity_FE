@@ -29,7 +29,7 @@ const getGalleryImageUrl = (imagePath: string) => {
     return imagePath;
   }
 
-  return `/api/${imagePath.replace(/^\/+/, '')}`;
+  return `${imagePath.replace(/^\/+/, '')}`;
 };
 
 export default function GalleryContent() {
