@@ -78,7 +78,7 @@ export default function NoticeDetail({ notice, onBack, onDelete, onEdit }: Notic
           {/* 내용 */}
           <div className="p-6">
             <div 
-              className="prose max-w-none"
+              className="prose max-w-none text-black [&_*]:!text-black"
               dangerouslySetInnerHTML={{ __html: noticeData.content || '내용이 없습니다.' }}
             />
           </div>

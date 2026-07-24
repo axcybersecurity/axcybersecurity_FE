@@ -100,7 +100,7 @@ export default function ClassNoticeDetail({
 
           <div className="p-6 border-b border-gray-200">
             <div
-              className="prose max-w-none"
+              className="prose max-w-none text-black [&_*]:!text-black"
               dangerouslySetInnerHTML={{ __html: noticeData.content || '내용이 없습니다.' }}
             />
           </div>

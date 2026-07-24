@@ -29,6 +29,7 @@ const allMembersData: Member[] = [
   { name: '이경윤', role: '학부연구생', imageUrl: '/구성원소개사진/이경윤.jpg', interests: 'Blockchain', email:'kylee0293@gmail.com'},
   { name: '정지인', role: '학부연구생', imageUrl: '/구성원소개사진/정지인.jpg', interests: 'AI / Security', email:'gini202355709@gmail.com'},
   { name: 'Sofi Nafikova', role: '학부연구생', imageUrl: '/구성원소개사진/Sofi_Nafikova.jpg', interests: 'AI', email:'nafikovasofi0@gmail.com'},
+  { name: '황진섭', role: '학부연구생', imageUrl: '/구성원소개사진/황진섭.jpg', interests: 'Network Security', email:'hwangjs0823@pusan.ac.kr'},
    
   { name: '윤승리', role: '전임연구원', imageUrl: '/구성원소개사진/윤승리.jpg', interests: 'RAG / GraphRAG', email:'dbstmdfl11@pusan.ac.kr'}, 
   { name: '주연신', role: '전임연구원', imageUrl: '/구성원소개사진/주연신.jpg', interests: 'Computer Network / Security', email:'jy.soo@pusan.ac.kr'}, 
