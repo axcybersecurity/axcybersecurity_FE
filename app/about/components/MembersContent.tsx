@@ -14,6 +14,7 @@ interface Member {
 const allMembersData: Member[] = [
   { name: '고세화 (랩장)', role: '석박통합', imageUrl: '/구성원소개사진/고세화.jpg', interests: 'Security', email:'kosh7707@pusan.ac.kr'},
   { name: '김희찬 (부랩장)', role: '석박통합', imageUrl: '/구성원소개사진/김희찬.jpg', interests: 'Blockchain', email:'727khc@gmail.com'},
+  { name: 'Ding Qiuyu', role: '석박통합', imageUrl: '/구성원소개사진/Ding_Qiuyu.jpg', interests: 'AI', email:'ronading@naver.com'},
   { name: 'Morsheda Akter Annie', role: '박사과정', imageUrl: '/구성원소개사진/Morsheda_Akter_Annie.jpg', interests: 'AI', email:'anniislam1108@gmail.com'},
   
   { name: '이범수', role: '석사과정', imageUrl: '/구성원소개사진/이범수.jpg', interests: 'AI', email:'beomsulee198@gmail.com'},
@@ -21,6 +22,7 @@ const allMembersData: Member[] = [
   { name: '권태현', role: '석사과정', imageUrl: '/구성원소개사진/권태현.jpg', interests: 'AI / Security', email:'tgwon0947@gmail.com'},
   { name: '정중환', role: '석사과정', imageUrl: '/구성원소개사진/정중환.jpg', interests: 'Security', email:'wwat1313@gmail.com'},
   { name: '김종률', role: '석사과정', imageUrl: '/구성원소개사진/김종률.jpg', interests: 'Security', email:'flora827@naver.com'},
+  { name: 'Angika Roy', role: '석사과정', imageUrl: '/구성원소개사진/Angika_Roy.jpg', interests: 'AI', email:'angikaroy@gmail.com'},
   { name: '성도범', role: '학석통합', imageUrl: '/구성원소개사진/성도범.jpg', interests: 'Security', email:'sdb0605@naver.com'},
   { name: '김진수', role: '학석통합', imageUrl: '/구성원소개사진/김진수.jpg', interests: 'Blockchain', email:'mig03830@pusan.ac.kr'},
   { name: '박영주', role: '학석통합', imageUrl: '/구성원소개사진/박영주.jpg', interests: 'AI / Security', email:'joo111505050@pusan.ac.kr'},

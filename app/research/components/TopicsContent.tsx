@@ -8,6 +8,7 @@ import NlpDetail from './TopicsDetail/NlpDetail';
 import SocDetail from './TopicsDetail/SocDetail';
 import BlockchainDetail from './TopicsDetail/BlockchainDetail';
 import QuantumDetail from './TopicsDetail/QuantumDetail';
+import MarineAxDetail from './TopicsDetail/MarineAxDetail';
 
 type TopicItem = {
   id: string;
@@ -47,6 +48,12 @@ const TOPICS: TopicItem[] = [
     en: 'Hacking/Defense & Reversing Technology',
     description: '역공학, 포렌식기술'
   },
+  {
+    id: 'marine-ax',
+    ko: '해양AX융합기술',
+    en: 'Marine AX Convergence Technology',
+    description: '해양 분야 AX 융합기술'
+  },
 ];
 
 export default function TopicsContent() {
@@ -85,7 +92,7 @@ export default function TopicsContent() {
 
       {/* 카드 그리드 */}
       <div className="bg-gray-100 bg-opacity-20 py-8 px-6 rounded-lg">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {TOPICS.map((topic) => {
             const isSelected = active === topic.id;
 
@@ -148,6 +155,9 @@ export default function TopicsContent() {
         </div>
         <div className={active === 'hacking-reversing' ? '' : 'hidden'}>
           <QuantumDetail />
+        </div>
+        <div className={active === 'marine-ax' ? '' : 'hidden'}>
+          <MarineAxDetail />
         </div>
       </div>
     </div>
