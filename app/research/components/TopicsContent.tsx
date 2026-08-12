@@ -1,12 +1,14 @@
 'use client';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+
 import AiotDetail from './TopicsDetail/AiotDetail';
 import NlpDetail from './TopicsDetail/NlpDetail';
 import SocDetail from './TopicsDetail/SocDetail';
 import BlockchainDetail from './TopicsDetail/BlockchainDetail';
 import QuantumDetail from './TopicsDetail/QuantumDetail';
-import CybersecDetail from './TopicsDetail/CybersecDetail';
+import MarineAxDetail from './TopicsDetail/MarineAxDetail';
 
 type TopicItem = {
   id: string;
@@ -46,46 +48,33 @@ const TOPICS: TopicItem[] = [
     en: 'Hacking/Defense & Reversing Technology',
     description: '역공학, 포렌식기술'
   },
+  {
+    id: 'marine-ax',
+    ko: '해양AX융합기술',
+    en: 'Marine AX Convergence Technology',
+    description: '해양 분야 AX 융합기술'
+  },
 ];
 
 export default function TopicsContent() {
-  const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const topicFromUrl = searchParams.get('topic') || 'ax-cybersecurity';
 
-  const active = searchParams.get('topic') ?? 'ax-cybersecurity';
+  const [active, setActive] = useState<string>(topicFromUrl);
+
+  useEffect(() => {
+    setActive(topicFromUrl);
+  }, [topicFromUrl]);
 
   const onSelect = (id: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set('tab', 'topics');
-    params.set('topic', id);
-    router.push(`${pathname}?${params.toString()}`);
-  };
-
-  const renderDetail = () => {
-    switch (active) {
-      case 'ax-cybersecurity':
-        return <AiotDetail />;
-      case 'industrial-security':
-        return <NlpDetail />;
-      case 'mobility-security':
-        return <SocDetail />;
-      case 'blockchain':
-        return <BlockchainDetail />;
-      case 'hacking-reversing':
-        return <QuantumDetail />;
-      default:
-        return <AiotDetail />;
-    }
+    setActive(id);
   };
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* 연구주제 제목 */}
       <div className="mb-8">
-        <h2
-          style={{
-            fontFamily: 'Pretendard',
+        <h2 className="font-pretendard" style={{
             fontWeight: 600,
             fontSize: '40px',
             lineHeight: '48px',
@@ -103,7 +92,7 @@ export default function TopicsContent() {
 
       {/* 카드 그리드 */}
       <div className="bg-gray-100 bg-opacity-20 py-8 px-6 rounded-lg">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {TOPICS.map((topic) => {
             const isSelected = active === topic.id;
 
@@ -121,28 +110,26 @@ export default function TopicsContent() {
               >
                 <div className="flex flex-col items-center gap-2 w-full">
                   <div
-                    style={{
-                      fontFamily: 'Pretendard',
-                      fontWeight: 700,
-                      fontSize: '24px',
-                      lineHeight: '1.2',
-                      color: isSelected ? '#EFF2F5' : '#0B2E5A',
-                    }}
-                    className="break-keep text-center"
-                  >
+                      style={{
+                        fontWeight: 700,
+                        fontSize: '24px',
+                        lineHeight: '1.2',
+                        color: isSelected ? '#EFF2F5' : '#0B2E5A',
+                      }}
+                      className="break-keep text-center font-pretendard"
+                    >
                     {topic.ko}
                   </div>
 
                   <div
-                    style={{
-                      fontFamily: 'Pretendard',
-                      fontWeight: 400,
-                      fontSize: '13px',
-                      lineHeight: '1.3',
-                      color: isSelected ? '#EFF2F5' : '#6D6D6D',
-                    }}
-                    className="break-keep whitespace-normal text-center"
-                  >
+                      style={{
+                        fontWeight: 400,
+                        fontSize: '13px',
+                        lineHeight: '1.3',
+                        color: isSelected ? '#EFF2F5' : '#6D6D6D',
+                      }}
+                      className="break-keep whitespace-normal text-center font-pretendard"
+                    >
                     {topic.en}
                   </div>
                 </div>
@@ -152,8 +139,27 @@ export default function TopicsContent() {
         </div>
       </div>
 
-      {/* 선택된 주제 상세 */}
-      {renderDetail()}
+      {/* 선택된 주제 상세 - 모든 컴포넌트 렌더링하되 hidden으로 제어 */}
+      <div className="mt-8">
+        <div className={active === 'ax-cybersecurity' ? '' : 'hidden'}>
+          <AiotDetail />
+        </div>
+        <div className={active === 'industrial-security' ? '' : 'hidden'}>
+          <NlpDetail />
+        </div>
+        <div className={active === 'mobility-security' ? '' : 'hidden'}>
+          <SocDetail />
+        </div>
+        <div className={active === 'blockchain' ? '' : 'hidden'}>
+          <BlockchainDetail />
+        </div>
+        <div className={active === 'hacking-reversing' ? '' : 'hidden'}>
+          <QuantumDetail />
+        </div>
+        <div className={active === 'marine-ax' ? '' : 'hidden'}>
+          <MarineAxDetail />
+        </div>
+      </div>
     </div>
   );
 }

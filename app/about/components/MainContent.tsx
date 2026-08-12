@@ -19,7 +19,7 @@ const researchData = [
   {
     id: '04',
     title: '블록체인 응용기술',
-    topics: ['블록체인 응용기술'],
+    topics: ['블록체인기술 적용연구'],
   },
   {
     id: '05',
@@ -64,48 +64,96 @@ export default function MainContent() {
             <br></br>
             <h2 className="text-4xl font-bold text-gray-800 mb-6">연구실 소개</h2>
             <p className="text-gray-600">
-                <br></br><strong className="text-xl">01&nbsp;&nbsp;&nbsp;연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관
+                <br></br><strong className="text-2xl">교수 연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관(102) 714호
             </p>
         </div>
         {/* 이미지 영역 */}
-        <div className="flex gap-4">
-            <div className="w-3/4">
-                <Image 
-                src="/3.png" 
-                alt="연구실 사진 1" 
-                width={800} 
-                height={600}
-                className="w-full h-full rounded-lg object-cover" 
+        <div className="w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-stretch">
+            {/* 왼쪽 큰 이미지 (높이 기준이 됨) */}
+            <div className="lg:col-span-3">
+              <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[4/3]">
+                <Image
+                  src="/about_main/714.png"
+                  alt="연구실 사진 1"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 75vw"
+                  priority
                 />
-            </div>
-            <div className="w-1/4 flex flex-col gap-4">
-                <div className="flex-1">
-                <Image 
-                    src="/3.png" 
-                    alt="연구실 사진 2" 
-                    width={250} 
-                    height={300} 
-                    className="w-full h-full rounded-lg object-fill" 
-                />
-                </div>
-                <div className="flex-1">
-                <Image 
-                    src="/3.png" 
-                    alt="연구실 사진 3" 
-                    width={250} 
-                    height={300} 
-                    className="w-full h-full rounded-lg object-fill" 
-                />
-                </div>
+              </div>
             </div>
 
+            {/* 오른쪽: 큰 이미지 높이에 맞춰 2장 반반 */}
+            <div className="lg:col-span-1 flex flex-col gap-4">
+              <div className="relative flex-1 overflow-hidden rounded-xl bg-gray-100">
+                <Image
+                  src="/about_main/it.png"
+                  alt="연구실 사진 2"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                />
+              </div>
+
+              <div className="relative flex-1 overflow-hidden rounded-xl bg-gray-100">
+                <Image
+                  src="/about_main/714_2.png"
+                  alt="연구실 사진 3"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                />
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div className="flex flex-col items-center gap-12">
+        {/* 소개글 영역 */}
+        <div className="w-full space-y-4">
+            <p className="text-gray-600">
+                <br></br><strong className="text-2xl">연구생 연구실</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부산대학교 IT관(102) 801호(석사 및 박사 연구실), 708호(학부연구생 연구실)
+            </p>
+        </div>
+        {/* 이미지 영역 */}
+        <div className="w-full">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+    {/* 왼쪽 이미지 */}
+    <div>
+      <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[1/1]">
+        <Image
+          src="/about_main/801.png"
+          alt="연구실 사진 1"
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          priority
+        />
+      </div>
+    </div>
+
+    {/* 오른쪽 이미지 */}
+    <div>
+      <div className="relative w-full overflow-hidden rounded-xl bg-gray-100 aspect-[1/1]">
+        <Image
+          src="/about_main/708.png"
+          alt="연구실 사진 2"
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
       </div>
 
       {/* 연구 과제 */}
         <div className="w-full space-y-4">
             <p className="text-gray-600 mb-8">
-                <br></br><strong className="text-xl">02&nbsp;&nbsp;&nbsp;연구 주제</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AX융합 사이버보안 주제로 진행되는 다양한 연구
+                <br></br><strong className="text-2xl">연구 주제</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AX융합 사이버보안 주제로 진행되는 다양한 연구
             </p>
             {/* 그리드 블록 */}
         <div className="flex flex-col gap-8 w-full">
@@ -131,7 +179,7 @@ export default function MainContent() {
             {/* 왼쪽: 지도 영역 */}
             <div className="flex-1 w-full h-80 rounded-lg overflow-hidden">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d968.913118453998!2d129.08172541772404!3d35.23081559965055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356893ed44882865%3A0x7734040946809f1!2z7KCcNuqzte2Vmeq0gCAo7Lu07ZOo7YSw6rO17ZWZ6rSAKQ!5e0!3m2!1sko!2skr!4v1756780665500!5m2!1sko!2skr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1846.7637687627798!2d129.08208807360762!3d35.230548539219484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568930014f9f367%3A0xea79b066b7eb63eb!2z67aA7IKw64yA7ZWZ6rWQIElU6rSA!5e0!3m2!1sko!2skr!4v1768277024306!5m2!1sko!2skr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -143,7 +191,7 @@ export default function MainContent() {
             {/* 오른쪽: 텍스트 영역 */}
             <div className="flex-1">
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                부산대학교 정보보호 및 사물지능 연구실
+                부산대학교 AX융합 사이버보안 연구실
             </h3><br></br>
             <div className="space-y-2 text-gray-700">
                 <p>(46241) 부산광역시 금정구 부산대학로 63번길 2 (장전동)</p>

@@ -2,38 +2,61 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { logoutApi } from '../lib/api';
 
 export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
   const isHomePage = pathname === '/';
 
-  // --- 스크롤 감지를 위한 상태 추가 ---
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // 스크롤 위치가 10px보다 크면 true
       setIsScrolled(window.scrollY > 10);
     };
-    // 스크롤 이벤트 리스너 등록
     window.addEventListener('scroll', handleScroll);
-    // 컴포넌트가 사라질 때 리스너 제거 (메모리 누수 방지)
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // --- 로그인 상태 확인 ---
   useEffect(() => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    setIsMobileMenuOpen(false);
+    setOpenDropdown(null);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
   }, []);
 
-  // --- 로그아웃 핸들러 ---
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'token') {
+        setIsLoggedIn(!!e.newValue);
+      }
+    };
+    const handleTokenExpired = () => {
+      setIsLoggedIn(false);
+    };
+    window.addEventListener('storage', handleStorage);
+    window.addEventListener('token-expired', handleTokenExpired);
+    return () => {
+      window.removeEventListener('storage', handleStorage);
+      window.removeEventListener('token-expired', handleTokenExpired);
+    };
+  }, []);
+
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -46,11 +69,10 @@ export default function Header() {
       window.location.reload();
     }
   };
-  
+
   const navLinks = [
     {
       title: '대학원 진학',
-      href: '/graduate',
       sublinks: [
         { title: '교육과정', href: '/graduate?tab=curriculum' },
         { title: '입학안내', href: '/graduate?tab=admission' },
@@ -83,23 +105,88 @@ export default function Header() {
         { title: '강의자료', href: '/courses?tab=class' },
       ],
     },
+    {
+      title: '컨퍼런스',
+      href: '',
+      sublinks: [
+        { title: 'AI 컨퍼런스', href: '/conference?tab=ai' },
+        { title: '보안 및 프라이버시 컨퍼런스', href: '/conference?tab=security' },
+        { title: '블록체인 컨퍼런스', href: '/conference?tab=blockchain' },
+      ],
+    },
   ];
 
-  // --- 동적 클래스를 위한 변수 선언 ---
-  const headerClasses = isHomePage && !isScrolled ? 'bg-transparent text-black' : 'bg-white text-gray-800 shadow-md';
-  
-  return (
-    <header className={`sticky top-0 z-50 transition-colors duration-300 ${headerClasses}`}>
-      <nav className="container mx-auto px-6 h-20 flex justify-between items-center">
-        {/* 왼쪽 로고 */}
-        <div>
-          <Link href="/">
-            <Image src="/main_logo.png" alt="메인로고" width={250} height={50}/>
-          </Link>
-        </div>
+  const headerClasses =
+    isHomePage && !isScrolled
+      ? 'bg-transparent text-black'
+      : 'bg-white text-gray-800 shadow-md';
 
-        {/* 오른쪽 메뉴 */}
-        <div className="flex items-center space-x-8">
+  const authButtonBase =
+    'relative hover:opacity-80 transition-opacity inline-block';
+  const authButtonSize = [
+    'h-[3.2vh]',
+    'min-h-[26px]',
+    'w-[22vw]',
+    'min-w-[72px]',
+    'sm:h-[3.6vh]',
+    'sm:min-h-[28px]',
+    'sm:w-[18vw]',
+    'sm:min-w-[80px]',
+    'md:h-[4vh]',
+    'md:min-h-[32px]',
+    'md:w-[12vh]',
+    'md:min-w-[100px]',
+    'lg:h-[4.4vh]',
+    'lg:min-h-[36px]',
+    'lg:w-[13vh]',
+    'lg:min-w-[110px]',
+  ].join(' ');
+
+  const navTextSize = [
+    'text-[15px]',
+    'sm:text-[16px]',
+    'md:text-[17px]',
+    'xl:text-[18px]',
+  ].join(' ');
+
+  const burgerButtonSize = [
+    'flex flex-col justify-center items-center',
+    'shrink-0',
+    'w-9',
+    'h-9',
+  ].join(' ');
+
+  const burgerLineBase =
+    'block w-7 h-[2px] rounded bg-gray-800 transition-transform transition-opacity duration-200';
+
+  const dropdownBoxSize = 'py-3 px-2';
+  const dropdownTextSize = [
+    'text-[14px]',
+    'sm:text-[15px]',
+    'md:text-[16px]',
+  ].join(' ');
+
+  return (
+    <header
+      className={`sticky top-0 z-[80] transition-colors duration-300 ${headerClasses}`}
+    >
+      <nav className="w-full px-4 sm:px-6 h-[10vh] min-h-18 flex justify-between items-center max-h-[100px]">
+        {/* 왼쪽 로고 */}
+<div className="relative w-[240px] h-[50px] sm:w-[320px] sm:h-[60px] md:w-[400px] md:h-[75px] lg:w-[480px] lg:h-[85px]">
+  <Link href="/" className="block h-full w-full z-10">
+    <Image
+      src="/main_logo.png"
+      alt="메인로고"
+      fill
+      priority
+      sizes="(max-width: 768px) 240px, (max-width: 1024px) 320px, 480px"
+      className="object-contain object-left"
+    />
+  </Link>
+</div>
+
+        {/* 오른쪽 메뉴 - 데스크탑 */}
+        <div className="hidden md:flex items-center gap-[4.5vh]">
           {navLinks.map((link) => (
             <div
               key={link.title}
@@ -107,26 +194,40 @@ export default function Header() {
               onMouseEnter={() => setOpenDropdown(link.title)}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <Link href={link.href} className="hover:text-blue-600 focus:outline-none flex items-center">
+              <button
+                className={`hover:text-blue-600 focus:outline-none flex items-center whitespace-nowrap ${navTextSize}`}
+                style={{ fontFamily: 'Pretendard', fontWeight: 'bold' }}
+              >
                 {link.title}
                 <svg
-                  className={`w-4 h-4 ml-1 transform transition-transform ${openDropdown === link.title ? 'rotate-180' : ''}`}
+                  className={`w-[14px] h-[14px] ml-[0.6vh] transform transition-transform ${
+                    openDropdown === link.title ? 'rotate-180' : ''
+                  }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
                 </svg>
-              </Link>
+              </button>
 
+              {/* 드롭다운 */}
               {openDropdown === link.title && link.sublinks.length > 0 && (
-                <div className="absolute left-0 top-full pt-1 w-auto z-10">
-                  <div className="bg-white border border-gray-200 rounded-md shadow-lg py-2">
+                <div className="absolute left-1/2 -translate-x-1/2 transform top-full pt-1 w-auto z-[90]">
+                  <div
+                    className={`bg-white border border-gray-200 rounded-md shadow-lg ${dropdownBoxSize}`}
+                  >
                     {link.sublinks.map((sublink) => (
                       <Link
                         key={sublink.title}
                         href={sublink.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 whitespace-nowrap"
+                        className={`block px-5 py-2.5 text-gray-700 hover:bg-gray-100 whitespace-nowrap hover:font-bold ${dropdownTextSize}`}
+                        style={{ fontFamily: 'Pretendard' }}
                       >
                         {sublink.title}
                       </Link>
@@ -137,26 +238,132 @@ export default function Header() {
             </div>
           ))}
 
-          {/* 로그인/로그아웃 버튼 */}
+          {/* 로그인/로그아웃 버튼 (데스크탑) */}
           {isLoggedIn ? (
             <button
               onClick={handleLogout}
-              className="hover:opacity-80 transition-opacity"
+              className={`${authButtonBase} ${authButtonSize}`}
               aria-label="로그아웃"
             >
-              <Image src="/main/logout.svg" alt="로그아웃" width={100} height={36} />
+              <Image
+                src="/main/logout.svg"
+                alt="로그아웃"
+                fill
+                className="object-contain"
+              />
             </button>
           ) : (
             <Link
               href="/login"
-              className="hover:opacity-80 transition-opacity"
+              className={`${authButtonBase} ${authButtonSize}`}
               aria-label="로그인"
             >
-              <Image src="/main/loginbutton.svg" alt="로그인" width={100} height={36} />
+              <Image
+                src="/main/loginbutton.svg"
+                alt="로그인"
+                fill
+                className="object-contain"
+              />
             </Link>
           )}
         </div>
+
+        {/* 오른쪽 메뉴 - 모바일 */}
+        <div className="flex items-center gap-2 md:hidden">
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className={`${authButtonBase} ${authButtonSize}`}
+              aria-label="로그아웃"
+            >
+              <Image
+                src="/main/logout.svg"
+                alt="로그아웃"
+                fill
+                className="object-contain"
+              />
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              className={`${authButtonBase} ${authButtonSize}`}
+              aria-label="로그인"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <Image
+                src="/main/loginbutton.svg"
+                alt="로그인"
+                fill
+                className="object-contain"
+              />
+            </Link>
+          )}
+
+          {/* 세줄 메뉴 */}
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            className={burgerButtonSize}
+            aria-label="메뉴 열기"
+          >
+            <span
+              className={`${burgerLineBase} ${
+                isMobileMenuOpen ? 'translate-y-[6px] rotate-45 bg-gray-700' : ''
+              }`}
+            />
+            <span
+              className={`${burgerLineBase} my-[5px] ${
+                isMobileMenuOpen ? 'opacity-0' : ''
+              }`}
+            />
+            <span
+              className={`${burgerLineBase} ${
+                isMobileMenuOpen
+                  ? '-translate-y-[7px] -rotate-45 bg-gray-700'
+                  : ''
+              }`}
+            />
+          </button>
+        </div>
       </nav>
+
+      {isMobileMenuOpen && (
+        <div className="md:hidden w-full bg-white border-t border-gray-200 relative z-[85]">
+          <div className="px-4 py-2 flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <div key={link.title} className="flex flex-col">
+                <button
+                  className="flex justify-between items-center py-2 text-sm whitespace-nowrap"
+                  style={{ fontFamily: 'Pretendard', fontWeight: 'bold' }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className="whitespace-nowrap">{link.title}</span>
+                  {link.sublinks.length > 0 && (
+                    <span className="text-xs text-gray-500">▼</span>
+                  )}
+                </button>
+                {link.sublinks.length > 0 && (
+                  <div className="pl-4 pb-1 flex flex-col gap-1">
+                    {link.sublinks.map((sublink) => (
+                      <Link
+                        key={sublink.title}
+                        href={sublink.href}
+                        className="group py-1 text-xs text-gray-700 whitespace-nowrap"
+                        style={{ fontFamily: 'Pretendard' }}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <span className="group-hover:font-bold transition-[font-weight]">
+                          {sublink.title}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

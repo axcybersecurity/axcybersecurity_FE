@@ -10,12 +10,12 @@ export default function Curriculum() {
       <div className="bg-white pt-10 sm:pt-12">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
-            <span>AI·블록체인·양자내성 보안의</span>
+            <span>AX융합 사이버 보안의</span>
             <br />
             차세대 연구를 주도할 대학원생을 모집합니다.
           </h2>
           <p className="mt-5 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
-            정보보호 및 지능형 사물인터넷 연구실에선 아래 연구 분야에 대한
+            AX융합사이버보안연구실에서는 아래 연구 분야에 대한
             <strong className="font-semibold text-gray-800"> 대학원생(석사 과정, 박사과정)</strong>과
             <strong className="font-semibold text-gray-800"> Post Doc, 학부연구생</strong>을 모집합니다.
           </p>
@@ -111,18 +111,6 @@ export default function Curriculum() {
         <div className="container mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-4xl">
             <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl font-bold text-gray-800">Why ACCSLAB?</h2>
-            <ol className="list-inside list-decimal space-y-1 text-gray-700 text-sm sm:text-base">
-              <li>국책·산학 프로젝트 50억 + (안정적 연구비 → 심화 연구비 걱정 ↓)</li>
-              <li>논문·특허 200+ & Top-tier AI 학회 게재 (석·박사도 챌린저 ↑)</li>
-              <li>네이버랩스·삼성전자(ETRI) 등 커리어 하이 커리어인 (졸업 후 진로 확실)</li>
-            </ol>
-            <div className="mt-5 sm:mt-6 space-y-3 sm:space-y-4 text-xs sm:text-sm leading-relaxed text-gray-600">
-              <p>본 연구실은 2008년 개설 이래 총 12명의 박사와 51명의 석사를 배출했습니다.</p>
-              <p>
-                본 연구실 출신 학생들은 졸업 후, 대학교수(현직) 1명, 정부출연연구원(ETRI 부설연구소) 4명, 벤처 CEO, 네이버랩스, 한국전자통신연구원,
-                삼성전자, 한국주택금융공사, 닐무늬핀, 블록체인 전문 벤처 기업 등 각 분야에서 실력을 인정받으면서 활약중에 있습니다.
-              </p>
-            </div>
           </div>
 
           <div className="mt-10 md:mt-16 grid grid-cols-1 gap-8 sm:gap-10 text-center sm:grid-cols-2 lg:grid-cols-5">
@@ -151,48 +139,19 @@ export default function Curriculum() {
               <img src="/graduate_curriculums/hand_and_coin.jpg" alt="월 생활장학금 지급" width="72" height="72" className="sm:w-20 sm:h-20" />
               <h3 className="mt-3 sm:mt-4 text-base sm:text-lg font-bold text-gray-800">월 생활장학금 지급</h3>
               <p className="mt-2 text-xs sm:text-sm text-gray-600">
-                학부생 100만원 / 석사 180만원 / 박사 250만원<br />+ 성과 따라 추가 최대 100만원
+                학부생 130만원 / 석사 220만원 / 박사 300만원<br />+ 석박통합 시 추가 지원 + a
               </p>
             </div>
             <div className="flex flex-col items-center">
               <img src="/graduate_curriculums/cap.jpg" alt="탄탄한 졸업 후 진로" width="72" height="72" className="sm:w-20 sm:h-20" />
               <h3 className="mt-3 sm:mt-4 text-base sm:text-lg font-bold text-gray-800">탄탄한 졸업 후 진로</h3>
               <p className="mt-2 text-xs sm:text-sm text-gray-600">
-                교수/출연연/대기업/스타트업/금융기업 등<br />다양한 분야 진출
+                교수/출연연/대기업/스타트업/금융기업 등 다양한 분야 진출
               </p>
             </div>
           </div>
         </div>
       </section>
-
-      {/* --- 4. 대학원 교육과정 섹션 --- */}
-      <div className="bg-white py-14 sm:py-16 md:py-24">
-        <div className="container mx-auto flex flex-col px-4 sm:px-6">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <img src="/logo.png" alt="로고" width="28" height="28" className="sm:w-8 sm:h-8" />
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
-              대학원 교육과정
-            </h2>
-          </div>
-          <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500">※ 아래 부산대 교과과정은 2025년 기준입니다.</p>
-
-          <div className="relative mt-6 sm:mt-8">
-            <a
-              href="/curriculum.pdf"
-              download="부산대학교_대학원_교과과정.pdf"
-              className="inline-flex items-center justify-center gap-2
-                         rounded-lg bg-blue-800 px-5 sm:px-6 py-2 sm:py-2.5
-                         text-sm sm:text-base font-semibold text-white
-                         shadow-lg transition-transform duration-200 ease-in-out
-                         hover:scale-105 hover:bg-blue-700
-                         focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50"
-            >
-              <span>대학원 교과과정 다운로드</span>
-              <img src="/graduate_curriculums/download.svg" alt="다운로드 아이콘" width="18" height="18" className="sm:w-5 sm:h-5" />
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
