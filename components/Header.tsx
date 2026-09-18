@@ -109,9 +109,8 @@ export default function Header() {
       title: '컨퍼런스',
       href: '',
       sublinks: [
-        { title: 'AI 컨퍼런스', href: '/conference?tab=ai' },
-        { title: '보안 및 프라이버시 컨퍼런스', href: '/conference?tab=security' },
-        { title: '블록체인 컨퍼런스', href: '/conference?tab=blockchain' },
+        { title: '주요 컨퍼런스', href: '/conference?tab=topcs' },
+        { title: '이외 컨퍼런스', href: '/conference?tab=non-top' },
       ],
     },
   ];

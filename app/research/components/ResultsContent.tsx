@@ -234,6 +234,9 @@ export default function ResultsContent() {
                   <li>
                     <strong>2025 ACS 영남권 해킹방어대회</strong> - 2등 수상
                   </li>
+                  <li>
+                    <strong>2026 DIVE 해커톤</strong> - 발제사 부문 2등 수상
+                  </li>
                 </ul>
                 {/* 필요하면 위 항목들을 실제 실적에 맞게 수정해서 쓰면 됩니다 */}
               </div>

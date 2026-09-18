@@ -26,6 +26,11 @@ const researchData = [
     title: '해킹/방어 및 리버싱 기술',
     topics: ['역공학, 포렌식 기술'],
   },
+  {
+    id: '06',
+    title: '해양 AX 융합 기술',
+    topics: ['해양 위협, 해양 객체, 해양 생물 관련 Marine AX 기술'],
+  },
 ];
 
 type ResearchCardProps = {

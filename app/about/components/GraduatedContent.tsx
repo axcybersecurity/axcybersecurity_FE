@@ -14,6 +14,7 @@ interface Member {
 const allMembersData: Member[] = [
   { name: '황연정', role: '석사졸업', imageUrl: '/구성원소개사진/황연정.jpg', graduated: '2026 - 한국전자통신연구원 정규직', email:'yeonjeong@islab.re.kr'},
   { name: '윤지원', role: '석사졸업', imageUrl: '/구성원소개사진/윤지원.jpg', graduated: '2026 - LG전자 입사', email:'jiwon@islab.re.kr'},
+  { name: '이범수', role: '석사졸업', imageUrl: '/구성원소개사진/이범수.jpg', graduated: '2026', email:'beomsulee198@gmail.com'},
   { name: '현창훈', role: '박사후연구원', imageUrl: '/구성원소개사진/현창훈.jpg', graduated: '2026 - 순천대학교 교수 임용', email:'chhyun@pusan.ac.kr'}, 
 ];
 
